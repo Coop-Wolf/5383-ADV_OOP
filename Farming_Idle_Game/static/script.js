@@ -296,7 +296,7 @@ function renderEquipment(
 
 
         let buttonText =
-            `Upgrade — $${item.upgrade_cost.toFixed(2)}`;
+            `Upgrade — ${formatMoney(item.upgrade_cost)}`;
 
         let buttonDisabled =
             false;
@@ -326,7 +326,7 @@ function renderEquipment(
                 </span>
 
                 <span class="profit">
-                    $${item.profit.toFixed(2)}/sec
+                    $${formatMoney(item.profit)}/sec
                 </span>
 
             </div>
@@ -361,6 +361,10 @@ function renderEquipment(
 // Render Shop
 // ====================
 
+// ====================
+// Render Shop
+// ====================
+
 function renderShop(
     equipmentTypes,
     containerId,
@@ -380,6 +384,11 @@ function renderShop(
     container.innerHTML = "";
 
 
+    // Get how many of this equipment type are owned
+    const equipmentCount =
+        getEquipmentCount(type, game);
+
+
     equipmentTypes.forEach((item, index) => {
 
         const card =
@@ -389,14 +398,14 @@ function renderShop(
 
 
         const maxEquipment =
-            getEquipmentCount(type, game) >= 6;
+            equipmentCount >= 6;
 
         const cannotAfford =
             game.money < item.cost;
 
 
         let buttonText =
-            `Buy`;
+            "Buy";
 
         let buttonDisabled =
             false;
@@ -411,6 +420,9 @@ function renderShop(
 
         } else if (cannotAfford) {
 
+            buttonText =
+                `Need ${formatMoney(item.cost)}`;
+
             buttonDisabled = true;
         }
 
@@ -422,13 +434,16 @@ function renderShop(
             </h4>
 
             <div class="shop-price">
-                $${item.cost.toFixed(2)}
+                $${formatMoney(item.cost)}
             </div>
 
             <div class="shop-income">
-                +$${item.profit.toFixed(2)}/sec
+                +$${formatMoney(item.profit)}/sec
             </div>
 
+            <div class="shop-owned">
+                ${equipmentCount} / 6 owned
+            </div>
 
             <button
                 onclick="buyEquipment('${type}', ${index})"
