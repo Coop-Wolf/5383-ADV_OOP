@@ -557,3 +557,391 @@ color: #888;
 
     color: #666;
 }
+
+
+
+/* ====================
+   Farm Stats
+   ==================== */
+
+.farm-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.farm-stat {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 18px;
+    text-align: center;
+}
+
+.farm-stat-label {
+    display: block;
+    font-size: 13px;
+    color: #777;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.farm-stat-value {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+
+/* ====================
+   Visual Farm
+   ==================== */
+
+.visual-farm {
+    position: relative;
+    width: 100%;
+    height: 500px;
+
+    border-radius: 18px;
+    overflow: hidden;
+
+    margin-bottom: 25px;
+
+    border: 1px solid #ddd;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+
+/* Sky */
+
+.farm-sky {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 42%;
+
+    background: #8fd3ff;
+}
+
+
+/* Sun */
+
+.sun {
+    position: absolute;
+
+    top: 30px;
+    right: 45px;
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 50%;
+
+    background: #ffd54f;
+
+    box-shadow:
+        0 0 30px rgba(255, 213, 79, 0.8);
+}
+
+
+/* Clouds */
+
+.cloud {
+    position: absolute;
+
+    width: 90px;
+    height: 30px;
+
+    background: white;
+
+    border-radius: 30px;
+
+    opacity: 0.9;
+}
+
+.cloud::before,
+.cloud::after {
+    content: "";
+
+    position: absolute;
+
+    background: white;
+
+    border-radius: 50%;
+}
+
+.cloud::before {
+    width: 40px;
+    height: 40px;
+
+    left: 15px;
+    bottom: 5px;
+}
+
+.cloud::after {
+    width: 50px;
+    height: 50px;
+
+    right: 10px;
+    bottom: 5px;
+}
+
+.cloud-1 {
+    top: 55px;
+    left: 15%;
+}
+
+.cloud-2 {
+    top: 100px;
+    left: 60%;
+}
+
+
+/* Land */
+
+.farm-land {
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 68%;
+
+    background: #79b84b;
+
+    overflow: hidden;
+}
+
+
+/* Darker grass edge */
+
+.farm-land::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 15px;
+
+    background: #65a13c;
+}
+
+
+/* Trees */
+
+.farm-tree {
+    position: absolute;
+
+    font-size: 42px;
+
+    z-index: 3;
+}
+
+.tree-1 {
+    left: 3%;
+    top: 15%;
+}
+
+.tree-2 {
+    right: 4%;
+    top: 18%;
+}
+
+.tree-3 {
+    left: 8%;
+    bottom: 5%;
+}
+
+.tree-4 {
+    right: 10%;
+    bottom: 8%;
+}
+
+
+/* Farmhouse */
+
+.farmhouse {
+    position: absolute;
+
+    left: 12%;
+    top: 15%;
+
+    width: 100px;
+
+    text-align: center;
+
+    z-index: 4;
+}
+
+.house-roof {
+    font-size: 50px;
+
+    line-height: 35px;
+
+    color: #9e4f35;
+}
+
+.house-body {
+    font-size: 70px;
+
+    line-height: 70px;
+}
+
+
+/* Barn */
+
+.barn {
+    position: absolute;
+
+    right: 12%;
+    top: 20%;
+
+    width: 100px;
+
+    text-align: center;
+
+    z-index: 4;
+}
+
+.barn-roof {
+    font-size: 50px;
+
+    line-height: 35px;
+
+    color: #a33d32;
+}
+
+.barn-body {
+    font-size: 65px;
+
+    line-height: 65px;
+}
+
+
+/* Crop Field */
+
+.crop-field {
+    position: absolute;
+
+    left: 30%;
+    bottom: 8%;
+
+    width: 38%;
+    height: 48%;
+
+    background: #9b6b3d;
+
+    border: 8px solid #7c542f;
+
+    border-radius: 8px;
+
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-around;
+
+    z-index: 2;
+}
+
+.crop-row {
+    font-size: 20px;
+
+    white-space: nowrap;
+
+    letter-spacing: 3px;
+}
+
+
+/* Dirt Road */
+
+.farm-road {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 45px;
+
+    background: #c89b68;
+
+    border-top: 4px solid #ad8152;
+
+    border-bottom: 4px solid #ad8152;
+
+    z-index: 1;
+}
+
+
+/* Equipment */
+
+.farm-equipment {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 10;
+
+    pointer-events: none;
+}
+
+.farm-equipment-item {
+    position: absolute;
+
+    transform: translate(-50%, -50%);
+
+    font-size: 30px;
+
+    filter:
+        drop-shadow(2px 3px 2px rgba(0, 0, 0, 0.25));
+
+    transition: transform 0.2s;
+}
+
+.farm-equipment-item:hover {
+    transform:
+        translate(-50%, -50%)
+        scale(1.15);
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .visual-farm {
+        height: 400px;
+    }
+
+    .crop-field {
+        left: 24%;
+        width: 52%;
+    }
+
+    .farmhouse {
+        left: 4%;
+        transform: scale(0.8);
+    }
+
+    .barn {
+        right: 2%;
+        transform: scale(0.8);
+    }
+
+    .farm-tree {
+        font-size: 32px;
+    }
+
+}

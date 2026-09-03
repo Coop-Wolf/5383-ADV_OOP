@@ -7,6 +7,7 @@ async function updateGame() {
     const response = await fetch("/game");
     const game = await response.json();
 
+    renderVisualFarm(game)
 
     // ====================
     // Basic Stats
@@ -666,6 +667,120 @@ async function prestige() {
         updateGame();
 
     }
+}
+
+
+// ====================
+// Render Visual Farm
+// ====================
+
+function renderVisualFarm(game) {
+
+    const container =
+        document.getElementById("farm-equipment");
+
+    if (!container) {
+        return;
+    }
+
+    container.innerHTML = "";
+
+
+    const equipmentGroups = [
+
+        {
+            equipment: game.farmers,
+            icon: "👨‍🌾"
+        },
+
+        {
+            equipment: game.plows,
+            icon: "🔧"
+        },
+
+        {
+            equipment: game.tractors,
+            icon: "🚜"
+        },
+
+        {
+            equipment: game.harvesters,
+            icon: "🌾"
+        },
+
+        {
+            equipment: game.crop_dusters,
+            icon: "✈️"
+        },
+
+        {
+            equipment: game.drones,
+            icon: "🚁"
+        }
+
+    ];
+
+
+    let equipmentIndex = 0;
+
+
+    equipmentGroups.forEach(group => {
+
+        group.equipment.forEach(() => {
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "farm-equipment-item";
+
+
+            item.textContent =
+                group.icon;
+
+
+            /*
+                Spread equipment around
+                different areas of the farm.
+            */
+
+            const positions = [
+                [20, 65],
+                [25, 75],
+                [75, 65],
+                [82, 75],
+                [18, 50],
+                [75, 50],
+                [28, 85],
+                [70, 85],
+                [40, 75],
+                [60, 75],
+                [35, 55],
+                [65, 55]
+            ];
+
+
+            const position =
+                positions[
+                    equipmentIndex % positions.length
+                ];
+
+
+            item.style.left =
+                `${position[0]}%`;
+
+            item.style.top =
+                `${position[1]}%`;
+
+
+            container.appendChild(item);
+
+
+            equipmentIndex++;
+
+        });
+
+    });
 }
 
 

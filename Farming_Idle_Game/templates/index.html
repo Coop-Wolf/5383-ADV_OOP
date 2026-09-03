@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Farming Idle Game</title>
+    <title>My Farm</title>
 
     <link rel="stylesheet" href="/static/style.css">
 </head>
@@ -16,182 +16,132 @@
 
         <!-- Header -->
         <header class="game-header">
-            <h1>🌾 Farming Idle Game</h1>
-            <p>Build your farm and grow your fortune!</p>
+
+            <h1>🌾 My Farm</h1>
+
+            <p>
+                Build your farm and grow your agricultural empire.
+            </p>
+
         </header>
 
 
-        <!-- Stats -->
-        <section class="stats">
+        <!-- Money -->
+        <section class="farm-stats">
 
-            <div class="stat-card">
-                <span class="stat-label">Money</span>
+            <div class="farm-stat">
 
-                <span class="stat-value">
-                    $<span id="money">0.00</span>
+                <span class="farm-stat-label">
+                    Money
                 </span>
+
+                <span
+                    id="money"
+                    class="farm-stat-value">
+                    $0
+                </span>
+
             </div>
 
 
-            <div class="stat-card">
-                <span class="stat-label">Income</span>
+            <div class="farm-stat">
 
-                <span class="stat-value">
-                    $<span id="income">0.00</span>
+                <span class="farm-stat-label">
+                    Income
                 </span>
 
-                <span class="per-second">
-                    /sec
-                </span>
-            </div>
-
-
-            <div class="stat-card">
-                <span class="stat-label">Prestige</span>
-
-                <span class="stat-value">
-                    <span id="prestige-points">0</span>
+                <span
+                    id="income"
+                    class="farm-stat-value">
+                    $0/sec
                 </span>
 
-                <span class="per-second">
-                    +<span id="prestige-bonus">0</span>% earnings
-                </span>
             </div>
 
         </section>
 
 
-        <!-- Prestige -->
-        <section class="section">
+        <!-- Visual Farm -->
+        <section class="visual-farm">
 
-            <div class="section-header">
-                <div>
-                    <h2>Prestige</h2>
+            <div class="farm-sky">
+                <div class="sun"></div>
 
-                    <p>
-                        Reset your farm to earn a permanent earnings bonus.
-                    </p>
-                </div>
+                <div class="cloud cloud-1"></div>
+                <div class="cloud cloud-2"></div>
             </div>
 
+            <div class="farm-land">
 
-            <p>
-                Prestige Requirement:
-                <strong>
-                    $<span id="prestige-requirement">100,000</span>
-                </strong>
-            </p>
+                <!-- Trees -->
+                <div class="farm-tree tree-1">🌳</div>
+                <div class="farm-tree tree-2">🌳</div>
+                <div class="farm-tree tree-3">🌲</div>
+                <div class="farm-tree tree-4">🌲</div>
 
+                <!-- Farmhouse -->
+                <div class="farmhouse">
+                    <div class="house-roof">▲</div>
+                    <div class="house-body">🏠</div>
+                </div>
 
-            <p>
-                Current Bonus:
-                <strong>
-                    +<span id="prestige-total-bonus">0</span>%
-                </strong>
-            </p>
+                <!-- Barn -->
+                <div class="barn">
+                    <div class="barn-roof">▲</div>
+                    <div class="barn-body">🏚️</div>
+                </div>
 
+                <!-- Crop Field -->
+                <div class="crop-field">
 
-            <button
-                id="prestige-button"
-                onclick="prestige()"
-                disabled
-            >
-                Need $100,000
-            </button>
+                    <div class="crop-row">🌱 🌱 🌱 🌱 🌱 🌱</div>
+                    <div class="crop-row">🌱 🌱 🌱 🌱 🌱 🌱</div>
+                    <div class="crop-row">🌱 🌱 🌱 🌱 🌱 🌱</div>
+                    <div class="crop-row">🌱 🌱 🌱 🌱 🌱 🌱</div>
 
+                </div>
+
+                <!-- Dirt Road -->
+                <div class="farm-road"></div>
+
+                <!-- Equipment -->
+                <div
+                    id="farm-equipment"
+                    class="farm-equipment">
+                </div>
+            </div>
         </section>
 
 
-        <!-- Your Farm -->
+        <!-- Equipment -->
         <section class="section">
 
             <div class="section-header">
+
                 <div>
-                    <h2>Your Farm</h2>
+
+                    <h2>Your Equipment</h2>
 
                     <p>
-                        Manage your equipment and upgrades.
+                        Upgrade your equipment to increase production.
                     </p>
-                </div>
-            </div>
 
-
-            <!-- Farmers -->
-            <div class="equipment-section">
-
-                <h3>👨‍🌾 Farmers</h3>
-
-                <div
-                    id="farmers"
-                    class="equipment-grid">
                 </div>
 
             </div>
 
 
-            <!-- Plows -->
-            <div class="equipment-section">
+            <div id="farmers"></div>
 
-                <h3>🚜 Plows</h3>
+            <div id="plows"></div>
 
-                <div
-                    id="plows"
-                    class="equipment-grid">
-                </div>
+            <div id="tractors"></div>
 
-            </div>
+            <div id="harvesters"></div>
 
+            <div id="crop-dusters"></div>
 
-            <!-- Tractors -->
-            <div class="equipment-section">
-
-                <h3>🚜 Tractors</h3>
-
-                <div
-                    id="tractors"
-                    class="equipment-grid">
-                </div>
-
-            </div>
-
-
-            <!-- Harvesters -->
-            <div class="equipment-section">
-
-                <h3>🌾 Harvesters</h3>
-
-                <div
-                    id="harvesters"
-                    class="equipment-grid">
-                </div>
-
-            </div>
-
-
-            <!-- Crop Dusters -->
-            <div class="equipment-section">
-
-                <h3>✈️ Crop Dusters</h3>
-
-                <div
-                    id="crop-dusters"
-                    class="equipment-grid">
-                </div>
-
-            </div>
-
-
-            <!-- Drones -->
-            <div class="equipment-section">
-
-                <h3>🚁 Drones</h3>
-
-                <div
-                    id="drones"
-                    class="equipment-grid">
-                </div>
-
-            </div>
+            <div id="drones"></div>
 
         </section>
 
@@ -201,21 +151,48 @@
     <!-- Navigation -->
     <nav class="bottom-nav">
 
-        <a href="/" class="nav-item active">
-            <span class="nav-icon">🌾</span>
-            <span>Farm</span>
+        <a
+            href="/"
+            class="nav-item active">
+
+            <span class="nav-icon">
+                🌾
+            </span>
+
+            <span>
+                Farm
+            </span>
+
         </a>
 
 
-        <a href="/shop" class="nav-item">
-            <span class="nav-icon">🛒</span>
-            <span>Shop</span>
+        <a
+            href="/shop"
+            class="nav-item">
+
+            <span class="nav-icon">
+                🛒
+            </span>
+
+            <span>
+                Shop
+            </span>
+
         </a>
 
 
-        <a href="/achievements" class="nav-item">
-            <span class="nav-icon">🏆</span>
-            <span>Achievements</span>
+        <a
+            href="/achievements"
+            class="nav-item">
+
+            <span class="nav-icon">
+                🏆
+            </span>
+
+            <span>
+                Achievements
+            </span>
+
         </a>
 
     </nav>
