@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Farming Idle Game</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <main class="game">
+
+        <!-- Header -->
+        <header class="game-header">
+            <h1>🌾 Farming Idle Game</h1>
+            <p>Build your farm and grow your fortune!</p>
+        </header>
+
+
+        <!-- Stats -->
+        <section class="stats">
+
+            <div class="stat-card">
+                <span class="stat-label">Money</span>
+
+                <span class="stat-value">
+                    $<span id="money">0.00</span>
+                </span>
+            </div>
+
+
+            <div class="stat-card">
+                <span class="stat-label">Income</span>
+
+                <span class="stat-value">
+                    $<span id="income">0.00</span>
+                </span>
+
+                <span class="per-second">
+                    /sec
+                </span>
+            </div>
+
+
+            <div class="stat-card">
+                <span class="stat-label">Prestige</span>
+
+                <span class="stat-value">
+                    <span id="prestige-points">0</span>
+                </span>
+
+                <span class="per-second">
+                    +<span id="prestige-bonus">0</span>% earnings
+                </span>
+            </div>
+
+        </section>
+
+
+        <!-- Prestige -->
+        <section class="section">
+
+            <div class="section-header">
+                <div>
+                    <h2>Prestige</h2>
+
+                    <p>
+                        Reset your farm to earn a permanent earnings bonus.
+                    </p>
+                </div>
+            </div>
+
+
+            <p>
+                Prestige Requirement:
+                <strong>
+                    $<span id="prestige-requirement">100,000</span>
+                </strong>
+            </p>
+
+
+            <p>
+                Current Bonus:
+                <strong>
+                    +<span id="prestige-total-bonus">0</span>%
+                </strong>
+            </p>
+
+
+            <button
+                id="prestige-button"
+                onclick="prestige()"
+                disabled
+            >
+                Need $100,000
+            </button>
+
+        </section>
+
+
+        <!-- Your Farm -->
+        <section class="section">
+
+            <div class="section-header">
+                <div>
+                    <h2>Your Farm</h2>
+
+                    <p>
+                        Manage your equipment and upgrades.
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- Farmers -->
+            <div class="equipment-section">
+
+                <h3>👨‍🌾 Farmers</h3>
+
+                <div
+                    id="farmers"
+                    class="equipment-grid">
+                </div>
+
+            </div>
+
+
+            <!-- Plows -->
+            <div class="equipment-section">
+
+                <h3>🚜 Plows</h3>
+
+                <div
+                    id="plows"
+                    class="equipment-grid">
+                </div>
+
+            </div>
+
+
+            <!-- Tractors -->
+            <div class="equipment-section">
+
+                <h3>🚜 Tractors</h3>
+
+                <div
+                    id="tractors"
+                    class="equipment-grid">
+                </div>
+
+            </div>
+
+
+            <!-- Harvesters -->
+            <div class="equipment-section">
+
+                <h3>🌾 Harvesters</h3>
+
+                <div
+                    id="harvesters"
+                    class="equipment-grid">
+                </div>
+
+            </div>
+
+
+            <!-- Crop Dusters -->
+            <div class="equipment-section">
+
+                <h3>✈️ Crop Dusters</h3>
+
+                <div
+                    id="crop-dusters"
+                    class="equipment-grid">
+                </div>
+
+            </div>
+
+
+            <!-- Drones -->
+            <div class="equipment-section">
+
+                <h3>🚁 Drones</h3>
+
+                <div
+                    id="drones"
+                    class="equipment-grid">
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Navigation -->
+    <nav class="bottom-nav">
+
+        <a href="/" class="nav-item active">
+            <span class="nav-icon">🌾</span>
+            <span>Farm</span>
+        </a>
+
+
+        <a href="/shop" class="nav-item">
+            <span class="nav-icon">🛒</span>
+            <span>Shop</span>
+        </a>
+
+
+        <a href="/achievements" class="nav-item">
+            <span class="nav-icon">🏆</span>
+            <span>Achievements</span>
+        </a>
+
+    </nav>
+
+
+    <script src="/static/script.js"></script>
+
+</body>
+
+</html>
