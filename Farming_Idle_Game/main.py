@@ -190,8 +190,56 @@ MAX_LEVEL = 10
 
 # Prestige
 prestige_points = 0
-PRESTIGE_REQUIREMENT = 100000
-PRESTIGE_BONUS = 0.10
+
+# Money required for each prestige
+PRESTIGE_REQUIREMENTS = [
+    100000,     # 1st Prestige
+    500000,     # 2nd Prestige
+    1000000     # 3rd Prestige
+]
+
+# Bonus for each prestige
+# 10% -> 30% -> 50% -> 2x
+PRESTIGE_BONUSES = [
+    0.10,       # 1st Prestige = 1.10x
+    0.50,       # 2nd Prestige = 1.50x
+    1.00        # 3rd Prestige = 2.00x
+]
+
+
+def get_prestige_bonus():
+    """
+    Returns the current prestige bonus as a decimal.
+    
+    0 prestige = 0% bonus
+    1 prestige = 10% bonus
+    2 prestige = 30% bonus
+    3 prestige = 50% bonus
+    4+ prestige = 100% bonus (2x income)
+    """
+    if prestige_points == 0:
+        return 0
+
+    if prestige_points >= 4:
+        return PRESTIGE_BONUSES[3]
+
+    return PRESTIGE_BONUSES[prestige_points - 1]
+
+
+def get_prestige_requirement():
+    """
+    Returns how much money is required for the next prestige.
+    
+    1st prestige = $100,000
+    2nd prestige = $500,000
+    3rd prestige = $1,000,000
+    4th+ prestige = $1,000,000
+    """
+    if prestige_points < len(PRESTIGE_REQUIREMENTS):
+        return PRESTIGE_REQUIREMENTS[prestige_points]
+
+    return PRESTIGE_REQUIREMENTS[-1]
+
 
 
 # Achievements
@@ -287,7 +335,7 @@ def generate_money():
                 total_profit += d.profit
 
             # Apply prestige bonus
-            multiplier = 1 + (prestige_points * PRESTIGE_BONUS)
+            multiplier = 1 + get_prestige_bonus()
 
             money += total_profit * multiplier
 
@@ -424,11 +472,11 @@ def game_state():
     with money_lock:
         return {
             "money": money,
-            "income_per_second": get_total_profit() * (1 + (prestige_points * PRESTIGE_BONUS)),
+            "income_per_second": get_total_profit() * (1 + get_prestige_bonus()),
 
             "prestige_points": prestige_points,
-            "prestige_multiplier": 1 + (prestige_points * PRESTIGE_BONUS),
-            "prestige_requirement": PRESTIGE_REQUIREMENT,
+            "prestige_multiplier": 1 + get_prestige_bonus(),
+            "prestige_requirement": get_prestige_requirement(),
 
             "achievements": get_achievement_data(),
 
@@ -973,10 +1021,10 @@ def prestige():
 
     with money_lock:
 
-        if money < PRESTIGE_REQUIREMENT:
+        if money < get_prestige_requirement():
             return {
                 "success": False,
-                "message": f"You need ${PRESTIGE_REQUIREMENT:,.0f} to prestige."
+                "message": f"You need ${get_prestige_requirement():,.0f} to prestige."
             }
 
         # Reset money

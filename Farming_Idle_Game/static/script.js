@@ -23,7 +23,7 @@ async function updateGame() {
 
 
     if (incomeElement) {
-        incomeElement.textContent = `${formatMoney(game.income_per_second)}/sec`;
+        incomeElement.textContent = formatMoney(game.income_per_second);
     }
 
 
@@ -296,7 +296,7 @@ function renderEquipment(
 
 
         let buttonText =
-            `Upgrade — ${formatMoney(item.upgrade_cost)}`;
+            `Upgrade — $${formatMoney(item.upgrade_cost)}`;
 
         let buttonDisabled =
             false;
@@ -421,7 +421,7 @@ function renderShop(
         } else if (cannotAfford) {
 
             buttonText =
-                `Need ${formatMoney(item.cost)}`;
+                `Need $${formatMoney(item.cost)}`;
 
             buttonDisabled = true;
         }

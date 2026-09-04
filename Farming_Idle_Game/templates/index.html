@@ -7,6 +7,8 @@
 
     <title>Farming Idle Game</title>
 
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌾</text></svg>">
+
     <link rel="stylesheet" href="/static/style.css">
 </head>
 
@@ -24,38 +26,37 @@
         <!-- Stats -->
         <section class="stats">
 
-            <div class="stat-card">
+            <!-- Money / Income -->
+            <div class="stat-card money-card">
+
                 <span class="stat-label">Money</span>
 
                 <span class="stat-value">
                     $<span id="money">0.00</span>
                 </span>
+
+                <div class="income-display">
+                    Income:
+                    <strong>
+                        $<span id="income">0.00</span>
+                    </strong>
+                    <span>/sec</span>
+                </div>
+
             </div>
 
 
-            <div class="stat-card">
-                <span class="stat-label">Income</span>
+            <!-- Prestige -->
+            <div class="stat-card prestige-card">
 
-                <span class="stat-value">
-                    $<span id="income">0.00</span>
-                </span>
-
-                <span class="per-second">
-                    /sec
-                </span>
-            </div>
-
-
-            <div class="stat-card">
                 <span class="stat-label">Prestige</span>
 
-                <span class="stat-value">
-                    <span id="prestige-points">0</span>
+                <span class="prestige-level">
+                    Prestige Points: <span id="prestige-points">0</span>
                 </span>
 
-                <span class="per-second">
-                    +<span id="prestige-bonus">0</span>% earnings
-                </span>
+                <span class="prestige-bonus"> Prestige Bonus: <span id="prestige-bonus">0</span>% </span>
+
             </div>
 
         </section>
