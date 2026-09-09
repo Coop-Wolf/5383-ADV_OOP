@@ -92,9 +92,37 @@ class Person:
 
 # Player
 class Player(Person):
+
+    def __init__(self, name, chips=100, bet=0):
+        super().__init__(name, chips)
+        self.bet = bet
+        self.starting_amount = chips
+
     def decide_action(self, dealer_visible_card=None):
         choice = input(f"{self.name}, hit or stand? ").strip().lower()
         return "hit" if choice == "hit" else "stand"
+    
+    def get_starting_amount(self):
+        return self.starting_amount
+    
+    def get_player_info(self):
+        return f"{self.name}: {self.chips} chips"
+
+    def place_bet(self):
+        while True:
+            bet = int(input(f"{self.name}, place your bet: "))
+
+            if bet <= 0:
+                print("ERROR: bet must be greater than 0. Try again.")
+                print()
+            elif bet > self.chips:
+                print("ERROR: bet exceeded player chip amount. Try again.")
+                print()
+            else:
+                break
+
+        self.chips -= bet
+        self.bet = bet
 
 
 # Dealer
@@ -122,6 +150,7 @@ class Game():
 
         # Reset hands for a fresh round
         for player in self.players:
+            player.place_bet()
             player.hand = Hand()
         self.dealer.hand = Hand()
 
@@ -182,18 +211,63 @@ class Game():
                 print(f"{player.name} loses (busted).")
             elif dealer_busted:
                 print(f"{player.name} wins! Dealer busted.")
+                player.chips += player.bet * 2
             elif player_value > dealer_value:
                 print(f"{player.name} wins! {player_value} beats {dealer_value}.")
+                player.chips += player.bet * 2
             elif player_value < dealer_value:
                 print(f"{player.name} loses. {dealer_value} beats {player_value}.")
             else:
                 print(f"{player.name} pushes (tie) at {player_value}.")
+                player.chips += player.bet
+                
+    def players_info(self):
+        for player in self.players:
+            print(player.get_player_info())
 
 
 
-player = Player("Cooper")
-player2 = Player("Kenzi")
-player3 = Player("Bob")
+# Get number of players
+def get_players():
+    num_players = int(input("Number of players: "))
 
-game = Game([player, player2, player3])
-game.play_round()
+    players = []
+
+    for i in range(num_players):
+        name = input(f"Player {i+1} Name: ")
+        money = input(f"Money for {name}: ")
+        players.append(Player(name, chips=int(money)))
+        
+    print()
+    print()
+    return players
+
+
+def ask_to_continue(player):
+    choice = input(f"{player.name}, would you like to keep playing? (y/n): ").strip().lower()
+    return choice == "y"
+
+# Main game loop
+peeps = get_players()
+game = Game(peeps)
+
+while game.players:
+    game.play_round()
+
+    print("\n--- Round Results ---")
+    for player in game.players:
+        print(player.get_player_info())
+    print()
+
+    # Ask each player if they want to continue
+    remaining_players = []
+    for player in game.players:
+        if ask_to_continue(player):
+            remaining_players.append(player)
+        else:
+            print(f"{player.name} started with {player.get_starting_amount()}, and has left the table with {player.chips} chips.")
+
+    game.players = remaining_players
+
+    if not game.players:
+        print("\nAll players have left. Game over!")
