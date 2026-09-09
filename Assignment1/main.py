@@ -1,7 +1,7 @@
 import random
 
 
-# Card
+# Cards
 class Card:
     def __init__(self, suit, rank):
         self.suit = suit
@@ -11,14 +11,15 @@ class Card:
         if self.rank in ["Jack", "Queen", "King"]:
             return 10
         if self.rank == "Ace":
-            return 11  # Hand class will adjust this down if needed
+            # Hand class will adjust this down if needed
+            return 11  
         return int(self.rank)
 
     def __str__(self):
         return f"{self.rank} of {self.suit}"
 
 
-# Deck
+# Cards in Deck
 class Deck:
     SUITS = ["Hearts", "Diamonds", "Clubs", "Spades"]
     RANKS = ["2", "3", "4", "5", "6", "7", "8", "9", "10",
@@ -34,7 +35,7 @@ class Deck:
         return self.cards.pop()
 
 
-# Hand
+# Hand per player and dealer
 class Hand:
     def __init__(self):
         self.cards = []
@@ -63,7 +64,7 @@ class Hand:
         return ", ".join(str(card) for card in self.cards)
 
 
-# Person
+# Person is a parent class to players and the dealer
 class Person:
 
     def __init__(self, name, chips=100):
@@ -141,7 +142,7 @@ class Dealer(Person):
 class Game():
     def __init__(self, players):
         self.deck = Deck()
-        self.players = players          # list of Player subclass instances (Human/Bot)
+        self.players = players
         self.dealer = Dealer("Dealer")
 
     def play_round(self):
