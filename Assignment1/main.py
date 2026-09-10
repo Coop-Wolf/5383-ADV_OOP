@@ -7,30 +7,34 @@ class Card:
         self.suit = suit
         self.rank = rank
 
+    # Return value of card
     def get_value(self):
         if self.rank in ["Jack", "Queen", "King"]:
             return 10
         if self.rank == "Ace":
             # Hand class will adjust this down if needed
-            return 11  
+            return 11
         return int(self.rank)
 
+    # Return value and suit of card
     def __str__(self):
         return f"{self.rank} of {self.suit}"
 
 
-# Cards in Deck
+# Deck is a list of unique cards
 class Deck:
     SUITS = ["Hearts", "Diamonds", "Clubs", "Spades"]
     RANKS = ["2", "3", "4", "5", "6", "7", "8", "9", "10",
               "Jack", "Queen", "King", "Ace"]
 
+    # Put every possible card in the "cards" list
     def __init__(self):
         self.cards = [Card(suit, rank) for suit in self.SUITS for rank in self.RANKS]
 
     def shuffle(self):
         random.shuffle(self.cards)
 
+    # Get a card off the list of cards
     def deal_card(self):
         return self.cards.pop()
 
@@ -38,11 +42,14 @@ class Deck:
 # Hand per player and dealer
 class Hand:
     def __init__(self):
+        # List of cards
         self.cards = []
 
+    # Add a card to hand
     def add_card(self, card):
         self.cards.append(card)
 
+    # Get total value of hand
     def get_value(self):
         total = sum(card.get_value() for card in self.cards)
         aces = sum(1 for card in self.cards if card.rank == "Ace")
@@ -57,6 +64,7 @@ class Hand:
     def is_bust(self):
         return self.get_value() > 21
 
+    # Blackjack can only happen with opening hand
     def is_blackjack(self):
         return len(self.cards) == 2 and self.get_value() == 21
 
@@ -77,17 +85,21 @@ class Person:
         self.hand.add_card(card)
         return card
 
+    # Do nothing here
     def stand(self):
-        pass  # no state change needed; turn simply ends
+        pass
 
     def get_hand_value(self):
         return self.hand.get_value()
 
     def is_bust(self):
         return self.hand.is_bust()
+    
+    def is_blackjack(self):
+        return self.hand.is_blackjack()
 
+    # Child class will override
     def decide_action(self, dealer_visible_card=None):
-        # Default behavior — subclasses override this
         return "stand"
 
 
@@ -95,13 +107,21 @@ class Person:
 class Player(Person):
 
     def __init__(self, name, chips=100, bet=0):
+        # initialze name and chips from parent class
         super().__init__(name, chips)
+        
+        # initialize bet and starting_amount
         self.bet = bet
         self.starting_amount = chips
 
+    # Player can either hit or stand
     def decide_action(self, dealer_visible_card=None):
         choice = input(f"{self.name}, hit or stand? ").strip().lower()
-        return "hit" if choice == "hit" else "stand"
+        
+        if choice == "hit" or choice == "stand":
+            return choice
+        else:
+            self.decide_action()
     
     def get_starting_amount(self):
         return self.starting_amount
@@ -110,6 +130,8 @@ class Player(Person):
         return f"{self.name}: {self.chips} chips"
 
     def place_bet(self):
+        
+        # Continue until player places correct bet amount
         while True:
             bet = int(input(f"{self.name}, place your bet: "))
 
@@ -128,6 +150,8 @@ class Player(Person):
 
 # Dealer
 class Dealer(Person):
+    
+    # Must hit until 17 or higher
     def decide_action(self, dealer_visible_card=None):
         return "hit" if self.get_hand_value() < 17 else "stand"
 
@@ -141,10 +165,12 @@ class Dealer(Person):
 # Game loop
 class Game():
     def __init__(self, players):
+        # create a deck of shuffled cards, players, and dealer
         self.deck = Deck()
         self.players = players
         self.dealer = Dealer("Dealer")
 
+    # Main game loop
     def play_round(self):
         self.deck = Deck()
         self.deck.shuffle()
@@ -152,9 +178,14 @@ class Game():
         # Reset hands for a fresh round
         for player in self.players:
             player.place_bet()
+
             player.hand = Hand()
         self.dealer.hand = Hand()
+        
+        print()
+        print()
 
+        # Deal 2 cards per player/dealer and show display cards
         self.deal_initial_cards()
         self.show_table()
 
@@ -165,9 +196,11 @@ class Game():
         self.determine_winner()
 
     def deal_initial_cards(self):
+        # deal 2 cards to every player and dealer
         for _ in range(2):
             for player in self.players + [self.dealer]:
                 player.hit(self.deck)
+                
 
     def show_table(self):
         for player in self.players:
@@ -178,6 +211,10 @@ class Game():
         while True:
             if player.is_bust():
                 print(f"{player.name} busts!")
+                break
+            
+            if player.is_blackjack():
+                print(f"{player.name} BlackJack!")
                 break
 
             action = player.decide_action(dealer_visible_card=self.dealer.hand.cards[0])
@@ -210,6 +247,9 @@ class Game():
 
             if player.is_bust():
                 print(f"{player.name} loses (busted).")
+            elif player.is_blackjack():
+                print(f"{player.name} wins! (Blackjack).")
+                player.chips += 2.5 
             elif dealer_busted:
                 print(f"{player.name} wins! Dealer busted.")
                 player.chips += player.bet * 2
@@ -231,7 +271,6 @@ class Game():
 # Get number of players
 def get_players():
     num_players = int(input("Number of players: "))
-
     players = []
 
     for i in range(num_players):
@@ -240,7 +279,6 @@ def get_players():
         players.append(Player(name, chips=int(money)))
         
     print()
-    print()
     return players
 
 
@@ -248,12 +286,19 @@ def ask_to_continue(player):
     choice = input(f"{player.name}, would you like to keep playing? (y/n): ").strip().lower()
     return choice == "y"
 
-# Main game loop
+
 peeps = get_players()
 game = Game(peeps)
 
+
+# Main game loop
 while game.players:
+    print("====================")
+    print()
     game.play_round()
+    print()
+    print("====================")
+    print()
 
     print("\n--- Round Results ---")
     for player in game.players:
