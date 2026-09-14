@@ -1,25 +1,12 @@
-from .person import Person
-
 # Player
-class Player(Person):
+class Player:
 
-    def __init__(self, name, chips=100, bet=0):
-        # initialze name and chips from parent class
-        super().__init__(name, chips)
-        
-        # initialize bet and starting_amount
-        self.bet = bet
+    def __init__(self, name, chips=100):
+        self.name = name
+        self.chips = chips
+        self.bet = 0
         self.starting_amount = chips
-
-    # Player can either hit or stand
-    def decide_action(self, dealer_visible_card=None):
-        choice = input(f"{self.name}, hit or stand? ").strip().lower()
         
-        if choice == "hit" or choice == "stand":
-            return choice
-        else:
-            self.decide_action()
-    
     def get_starting_amount(self):
         return self.starting_amount
     
