@@ -1,4 +1,3 @@
-# Cards
 class Card:
     def __init__(self, suit, rank):
         self.suit = suit
@@ -15,4 +14,11 @@ class Card:
 
     # Return value and suit of card
     def __str__(self):
-        return f"{self.rank} of {self.suit}"
+        suit_symbols = {
+            "Spades": "♠",
+            "Hearts": "♥",
+            "Diamonds": "♦",
+            "Clubs": "♣"
+        }
+
+        return f"{self.rank} {suit_symbols[self.suit]}"

@@ -2,6 +2,7 @@ from .blackjackplayer import BlackjackPlayer
 from .dealer import Dealer
 from .deck import Deck
 from .blackjackhand import BlackjackHand
+import os
 
 
 class Blackjack:
@@ -16,13 +17,15 @@ class Blackjack:
         ]
 
         self.dealer = Dealer()
+        
+    def clear_screen(self):
+        os.system("cls" if os.name == "nt" else "clear")
 
     # Main Blackjack session loop
     def play(self):
         while True:
+            self.welcome()
             self.play_round()
-
-            self.players_info()
 
             while True:
                 choice = input("\nPlay another round? (y/n): ").strip().lower()
@@ -40,18 +43,19 @@ class Blackjack:
         self.deck = Deck()
         self.deck.shuffle()
 
-        # Reset hands for a fresh round
+        # Reset hands and place bets
         for blackjack_player in self.blackjack_players:
             blackjack_player.place_bet()
             blackjack_player.hand = BlackjackHand()
 
         self.dealer.hand = BlackjackHand()
 
-        print()
-        print()
-
-        # Deal 2 cards to every player and dealer
+        # Deal initial cards
+        self.clear_screen()
         self.deal_initial_cards()
+
+        # Show completed initial deal
+        self.clear_screen()
         self.show_table()
 
         # Player turns
@@ -60,6 +64,10 @@ class Blackjack:
 
         # Dealer turn
         self.take_dealer_turn()
+
+        # Show final table
+        self.clear_screen()
+        self.show_table()
 
         # Determine winners
         self.determine_winner()
@@ -73,14 +81,41 @@ class Blackjack:
             self.dealer.hit(self.deck)
 
     def show_table(self):
+        print()
+        print("=" * 50)
+        print("                  BLACKJACK")
+        print("=" * 50)
+        print()
+
+        print("  YOUR HANDS")
+        print("  " + "-" * 44)
+
         for blackjack_player in self.blackjack_players:
+            value = blackjack_player.get_hand_value()
+
+            if value > 21:
+                status = "(Busted)"
+            elif blackjack_player.is_blackjack():
+                status = "(Blackjack)"
+            else:
+                status = ""
+
             print(
-                f"{blackjack_player.name}'s hand: "
-                f"{blackjack_player.hand} "
-                f"(Value: {blackjack_player.get_hand_value()})"
+                f"  {blackjack_player.name:<15}"
+                f"{str(blackjack_player.hand):<22}"
+                f"Value: {value:<3} {status}"
             )
 
-        print(f"Dealer shows: {self.dealer.get_visible_hand()}")
+        # Dealer section is OUTSIDE the player loop
+        print()
+        print("  DEALER")
+        print("  " + "-" * 44)
+        print(
+            f"  {str(self.dealer.get_visible_hand()):<22}"
+        )
+
+        print()
+        print("=" * 50)
 
     def take_player_turn(self, blackjack_player):
         while True:
@@ -89,7 +124,7 @@ class Blackjack:
                 break
 
             if blackjack_player.is_blackjack():
-                print(f"{blackjack_player.name} Blackjack!")
+                print(f"{blackjack_player.name} has Blackjack!")
                 break
 
             action = blackjack_player.decide_action(
@@ -100,88 +135,156 @@ class Blackjack:
                 card = blackjack_player.hit(self.deck)
 
                 print(
-                    f"{blackjack_player.name} draws {card}. "
-                    f"Hand: {blackjack_player.hand} "
-                    f"(Value: {blackjack_player.get_hand_value()})"
+                    f"\n{blackjack_player.name} draws {card}."
                 )
+
+                # Immediately refresh the table
+                self.clear_screen()
+                self.show_table()
+
             else:
                 print(
-                    f"{blackjack_player.name} stands at "
+                    f"\n{blackjack_player.name} stands at "
                     f"{blackjack_player.get_hand_value()}."
                 )
+
+                # Refresh the table
+                self.clear_screen()
+                self.show_table()
+
                 break
+            
 
     def take_dealer_turn(self):
+        print()
+        print("=" * 50)
+        print("                 DEALER TURN")
+        print("=" * 50)
+        print()
+
         print(
-            f"\nDealer's full hand: {self.dealer.hand} "
-            f"(Value: {self.dealer.get_hand_value()})"
+            f"  Dealer's hand: {self.dealer.hand}"
         )
+        print(
+            f"  Dealer's value: {self.dealer.get_hand_value()}"
+        )
+        print()
 
         while not self.dealer.is_bust():
             action = self.dealer.decide_action()
 
             if action == "hit":
                 card = self.dealer.hit(self.deck)
-
-                print(
-                    f"Dealer draws {card}. "
-                    f"Hand: {self.dealer.hand} "
-                    f"(Value: {self.dealer.get_hand_value()})"
-                )
+                print(f"  Dealer draws {card}.")
             else:
                 print(
-                    f"Dealer stands at "
+                    f"  Dealer stands at "
                     f"{self.dealer.get_hand_value()}."
                 )
                 break
+
+        if self.dealer.is_bust():
+            print(
+                f"  Dealer busts at "
+                f"{self.dealer.get_hand_value()}."
+            )
+
+        print()
+        print("=" * 50)
 
     def determine_winner(self):
         dealer_value = self.dealer.get_hand_value()
         dealer_busted = self.dealer.is_bust()
 
+        print()
+        print("=" * 50)
+        print("                 ROUND RESULTS")
+        print("=" * 50)
+        print()
+
         for blackjack_player in self.blackjack_players:
             player_value = blackjack_player.get_hand_value()
 
+            print(f"  {blackjack_player.name}")
+            print(f"    Hand:   {blackjack_player.hand}")
+            print(f"    Value:  {player_value}")
+            print(f"    Bet:    {blackjack_player.bet} chips")
+
             if blackjack_player.is_bust():
-                print(
-                    f"{blackjack_player.name} loses (busted)."
-                )
+                print("    Result: LOSS - Busted")
 
             elif blackjack_player.is_blackjack():
+                print("    Result: BLACKJACK!")
                 print(
-                    f"{blackjack_player.name} wins! (Blackjack)."
+                    f"    Payout: +{blackjack_player.bet * 1.5:.0f} chips"
                 )
                 blackjack_player.chips += blackjack_player.bet * 2.5
 
             elif dealer_busted:
+                print("    Result: WIN - Dealer busted")
                 print(
-                    f"{blackjack_player.name} wins! Dealer busted."
+                    f"    Payout: +{blackjack_player.bet} chips"
                 )
                 blackjack_player.chips += blackjack_player.bet * 2
 
             elif player_value > dealer_value:
                 print(
-                    f"{blackjack_player.name} wins! "
-                    f"{player_value} beats {dealer_value}."
+                    f"    Result: WIN - {player_value} beats {dealer_value}"
+                )
+                print(
+                    f"    Payout: +{blackjack_player.bet} chips"
                 )
                 blackjack_player.chips += blackjack_player.bet * 2
 
             elif player_value < dealer_value:
                 print(
-                    f"{blackjack_player.name} loses. "
-                    f"{dealer_value} beats {player_value}."
+                    f"    Result: LOSS - "
+                    f"{dealer_value} beats {player_value}"
                 )
 
             else:
+                print(f"    Result: PUSH - Tie at {player_value}")
                 print(
-                    f"{blackjack_player.name} pushes (tie) "
-                    f"at {player_value}."
+                    f"    Payout: {blackjack_player.bet} chips returned"
                 )
                 blackjack_player.chips += blackjack_player.bet
+
+            print()
+            print("  " + "-" * 46)
+
+        print("=" * 50)
 
     def players_info(self):
         for blackjack_player in self.blackjack_players:
             print(blackjack_player.get_player_info())
+            
+    def welcome(self):
+        self.clear_screen()
+        print()
+        print("=" * 45)
+        print("              BLACKJACK")
+        print("=" * 45)
+        print()
+        print("  Welcome to Blackjack!")
+        print()
+        print("  Goal:")
+        print("    Get as close to 21 as possible without")
+        print("    going over.")
+        print()
+        print("  How to Play:")
+        print("    • You and the dealer are dealt two cards.")
+        print("    • Choose to Hit or Stand.")
+        print("    • Hit  - Take another card.")
+        print("    • Stand - Keep your current hand.")
+        print("    • The dealer must hit until reaching 17.")
+        print("    • Go over 21 and you bust!")
+        print()
+        print("  Blackjack:")
+        print("    An Ace + a 10-value card on your first")
+        print("    two cards is a Blackjack.")
+        print()
+        print("=" * 45)
+        print()
 
     def sync_players(self):
         # Copy Blackjack chip balances back to Casino players
