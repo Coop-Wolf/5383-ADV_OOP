@@ -6,4 +6,6 @@ class Pot:
         self.amount += amount
 
     def collect(self):
-        return self.amount
+        amount = self.amount
+        self.amount = 0
+        return amount

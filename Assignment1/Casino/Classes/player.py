@@ -4,18 +4,24 @@ class Player:
     def __init__(self, name, chips=100):
         self.name = name
         self.chips = chips
+        self.total_bet = 0
         self.bet = 0
         self.starting_amount = chips
         
     def get_starting_amount(self):
         return self.starting_amount
     
+    # Understood to mean get a card (Used in both poker and blackjack)
+    def hit(self, deck):
+        card = deck.deal_card()
+        self.hand.add_card(card)
+        return card
+    
     def get_player_info(self):
         return f"{self.name:<20} {self.chips:>6} chips"
 
     def place_bet(self):
-        
-        # Continue until player places correct bet amount
+
         while True:
             print()
             print("=" * 45)
@@ -38,11 +44,11 @@ class Player:
                     print("  ERROR: You don't have enough chips.")
 
                 else:
+                    self.chips -= bet
+                    self.bet = bet
+                    self.total_bet += bet
                     break
 
             except ValueError:
                 print()
                 print("  ERROR: Please enter a valid number.")
-
-                self.chips -= bet
-                self.bet = bet

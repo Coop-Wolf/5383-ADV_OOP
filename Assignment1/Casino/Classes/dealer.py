@@ -15,10 +15,13 @@ class Dealer:
         self.hand.add_card(card)
         return card
 
-    def get_visible_hand(self):
-        # Only show the first card; hide the rest
+    def get_visible_hand(self, reveal=False):
         if not self.hand.cards:
             return ""
+
+        if reveal:
+            return str(self.hand)
+
         return f"{self.hand.cards[0]} and [hidden]"
 
     def is_bust(self):

@@ -1,15 +1,14 @@
 from .player import Player
 from .blackjack import Blackjack
 from .poker import Poker
-import os
+from .util import Util
+import time
+
 
 class Casino:
     def __init__(self):
         self.players = []
         self.current_game = None
-        
-    def clear_screen(self):
-        os.system("cls" if os.name == "nt" else "clear")
         
     def casino_lobby(self):
         print()
@@ -270,54 +269,39 @@ class Casino:
                 exit()
             else: print(" Invalid selection. Please choose 1 or 2.")
 
-
-
-    def ask_to_continue(self, player):
-        
-        # If player has no chips left, they cannot continue
-        if player.chips <= 0:
-            print(f"{player.name} has no chips left and cannot continue.")
-            return False
-        
-        # Ask player if they want to continue playing
-        while True:
-            choice = input(f"{player.name}, would you like to keep playing? (y/n): ").strip().lower()
-
-            if choice == "y":
-                return True
-            elif choice == "n":
-                return False
-
-            print("ERROR: please enter 'y' or 'n'.")
             
     # Casino loop
     def start(self):
         self.welcome()
-        self.clear_screen()
+        Util.clear_screen()
         self.get_players()
 
         while self.players:
-            self.clear_screen()
+            Util.clear_screen()
             self.casino_lobby()
 
             option = int(input("Select an option: "))
 
             if option == 1:
-                self.clear_screen()
+                Util.clear_screen()
                 self.current_game = Blackjack(self.players)
                 self.current_game.play()
-            elif option == 2:
-                self.clear_screen()
+            elif option == 2 and len(self.players) > 1:
+                Util.clear_screen()
                 self.current_game = Poker(self.players)
-                self.current_game.play_round()
+                self.current_game.play()
+            elif option == 2 and len(self.players) <= 1:
+                print()
+                print("Must have 2 or more players to play poker.")
+                time.sleep(3)
             elif option == 3:
-                self.clear_screen()
+                Util.clear_screen()
                 self.add_or_remove_player()
             elif option == 4:
-                self.clear_screen()
+                Util.clear_screen()
                 self.add_funds()
             elif option == 5:
-                self.clear_screen()
+                Util.clear_screen()
                 self.get_player_info()
             elif option == 6:
                 break
