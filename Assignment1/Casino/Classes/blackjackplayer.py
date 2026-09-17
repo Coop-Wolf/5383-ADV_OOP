@@ -18,6 +18,7 @@ class BlackjackPlayer(Player):
 
         # Track whether each hand has finished
         self.hand_stood = [False]
+        
 
     def reset_hands(self):
         self.hands = [BlackjackHand()]

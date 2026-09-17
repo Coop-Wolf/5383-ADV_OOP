@@ -8,6 +8,9 @@ class Player:
         self.bet = 0
         self.starting_amount = chips
         
+        # Track whether the player is activly playing
+        self.playing = True
+        
     def get_starting_amount(self):
         return self.starting_amount
     

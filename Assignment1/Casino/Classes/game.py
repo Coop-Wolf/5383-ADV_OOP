@@ -8,28 +8,40 @@ class Game():
         ):
             original_player.chips = game_player.chips
             
+                        
             
-    def play_again(self, players):
-
+    def whos_playing(self, players, first_round=False):
         for player in players:
 
-            # If player has no chips left, they cannot play again
             if player.chips <= 0:
-                print(f"{player.name} has no chips left and cannot continue.")
-                return False
+                print(f"{player.name} has no chips and cannot play.")
+                player.playing = False
+                continue
 
-        # Ask player if they want to play another round
-        while True:
-            try:
-                choice = input(
-                    f"{player.name}, would you like to keep playing? (y/n): "
-                ).strip().lower()
-                if choice == "y":
-                    return True
-                elif choice == "n":
+            while True:
+                try:
+                    if first_round:
+                        choice = input(
+                            f"{player.name}, do you want to play? (y/n): "
+                        ).strip().lower()
+                    else:
+                        choice = input(
+                            f"{player.name}, do you want to play again? (y/n): "
+                        ).strip().lower()
+
+                    if choice == "y":
+                        player.playing = True
+                        break
+
+                    elif choice == "n":
+                        player.playing = False
+                        break
+
+                    else:
+                        print("ERROR: please enter 'y' or 'n'.")
+
+                except (EOFError, KeyboardInterrupt):
+                    print("\nInput interrupted. Exiting game.")
                     return False
 
-                print("ERROR: please enter 'y' or 'n'.")
-            except (EOFError, KeyboardInterrupt):
-                print("\nInput interrupted. Exiting game.")
-                return False
+        return True

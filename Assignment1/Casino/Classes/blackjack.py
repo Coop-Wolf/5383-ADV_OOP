@@ -1,3 +1,5 @@
+from Assignment1.Casino.Classes import player
+
 from .blackjackplayer import BlackjackPlayer
 from .dealer import Dealer
 from .deck import Deck
@@ -26,10 +28,13 @@ class Blackjack(Game):
 
         self.welcome()
 
+        if not self.whos_playing(self.blackjack_players, first_round=True):
+            return
+
         while True:
             self.play_round()
-            
-            if not self.play_again():
+
+            if not self.whos_playing(self.blackjack_players, first_round=False):
                 break
 
     # Play one round
@@ -40,6 +45,10 @@ class Blackjack(Game):
 
         # Reset hands and place bets
         for blackjack_player in self.blackjack_players:
+            
+            # Skip player if they are not playing
+            if not self.blackjack_players.playing:
+                continue
 
             blackjack_player.reset_hands()
 
@@ -78,7 +87,7 @@ class Blackjack(Game):
         for _ in range(2):
 
             for blackjack_player in self.blackjack_players:
-
+                
                 # Deal to every hand
                 for hand in blackjack_player.hands:
                     if len(hand.cards) < 2:

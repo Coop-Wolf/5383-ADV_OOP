@@ -26,19 +26,21 @@ class Poker(Game):
             for player in players
         ]
         
-
-
+        
     # Main Game loop
     def play(self):
-        
+
         self.welcome()
-        
+
+        if not self.whos_playing(self.poker_players, first_round=True):
+            return
+
         while True:
             self.play_round()
-            
-            if not self.play_again():
-                break
 
+            if not self.whos_playing(self.poker_players, first_round=False):
+                break
+            
 
     def play_round(self):
         self.deck = Deck()
@@ -51,6 +53,11 @@ class Poker(Game):
 
         # Reset players
         for poker_player in self.poker_players:
+            
+            # Skip player if they are not playing
+            if not self.poker_players.playing:
+                continue
+            
             poker_player.hand = PokerHand()
             poker_player.folded = False
             poker_player.bet = 0
