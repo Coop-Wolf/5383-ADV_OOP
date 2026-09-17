@@ -22,3 +22,16 @@ class Card:
         }
 
         return f"{self.rank} {suit_symbols[self.suit]}"
+    
+    def get_poker_value(self, rank):
+        values = {
+            "Jack": 11,
+            "Queen": 12,
+            "King": 13,
+            "Ace": 14
+        }
+
+        if rank in values:
+            return values[rank]
+
+        return int(rank)

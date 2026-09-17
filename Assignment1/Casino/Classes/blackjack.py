@@ -1,5 +1,3 @@
-from Assignment1.Casino.Classes import player
-
 from .blackjackplayer import BlackjackPlayer
 from .dealer import Dealer
 from .deck import Deck
@@ -35,7 +33,7 @@ class Blackjack(Game):
             self.play_round()
 
             if not self.whos_playing(self.blackjack_players, first_round=False):
-                break
+                return
 
     # Play one round
     def play_round(self):
@@ -47,11 +45,12 @@ class Blackjack(Game):
         for blackjack_player in self.blackjack_players:
             
             # Skip player if they are not playing
-            if not self.blackjack_players.playing:
+            if not blackjack_player.playing:
                 continue
 
             blackjack_player.reset_hands()
 
+            Util.clear_screen()
             blackjack_player.place_bet()
 
             # Store the initial bet for the first hand
@@ -69,6 +68,11 @@ class Blackjack(Game):
 
         # Player turns
         for blackjack_player in self.blackjack_players:
+            
+            # Skip player if they are not playing
+            if not blackjack_player.playing:
+                continue
+            
             self.take_player_turn(blackjack_player)
 
         # Dealer turn
@@ -87,6 +91,10 @@ class Blackjack(Game):
         for _ in range(2):
 
             for blackjack_player in self.blackjack_players:
+            
+                # Skip player if they are not playing
+                if not blackjack_player.playing:
+                    continue
                 
                 # Deal to every hand
                 for hand in blackjack_player.hands:
@@ -110,6 +118,10 @@ class Blackjack(Game):
         print("  " + "-" * 70)
 
         for blackjack_player in self.blackjack_players:
+            
+            # Skip player if they are not playing
+            if not blackjack_player.playing:
+                continue
 
             # Show every hand the player has
             for index, hand in enumerate(blackjack_player.hands):
@@ -153,14 +165,14 @@ class Blackjack(Game):
         if reveal_dealer:
 
             print(
-                f"  {str(self.dealer.hand):<48}"
+                f"  {str(self.dealer.hand):<53}"
                 f"Value: {self.dealer.get_hand_value()}"
             )
 
         else:
 
             print(
-                f"  {str(self.dealer.get_visible_hand()):<33}"
+                f"  {str(self.dealer.get_visible_hand()):<53}"
             )
 
         print()
@@ -378,6 +390,10 @@ class Blackjack(Game):
         print()
 
         for blackjack_player in self.blackjack_players:
+            
+            # Skip player if they are not playing
+            if not blackjack_player.playing:
+                continue
 
             # Evaluate every hand
             for index, hand in enumerate(blackjack_player.hands):
@@ -474,6 +490,11 @@ class Blackjack(Game):
     def players_info(self):
 
         for blackjack_player in self.blackjack_players:
+            
+            # Skip player if they are not playing
+            if not blackjack_player.playing:
+                continue
+            
             print(blackjack_player.get_player_info())
 
     def welcome(self):

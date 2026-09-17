@@ -4,7 +4,7 @@ from .deck        import Deck
 from .pokerhand   import PokerHand
 from .util        import Util
 from .pot         import Pot
-
+import time
 
 # Poker game
 class Poker(Game):
@@ -36,6 +36,17 @@ class Poker(Game):
             return
 
         while True:
+
+            # Make sure at least 2 players are playing
+            active_players = sum(player.playing for player in self.poker_players)
+
+            if active_players < 2:
+                print("\nYou need at least 2 players to play Poker.")
+                print("Returning to main menu...")
+                time.sleep(3)
+                return
+
+            # Play one round of poker
             self.play_round()
 
             if not self.whos_playing(self.poker_players, first_round=False):
@@ -53,11 +64,10 @@ class Poker(Game):
 
         # Reset players
         for poker_player in self.poker_players:
-            
-            # Skip player if they are not playing
-            if not self.poker_players.playing:
+
+            if not poker_player.playing:
                 continue
-            
+
             poker_player.hand = PokerHand()
             poker_player.folded = False
             poker_player.bet = 0
@@ -71,7 +81,10 @@ class Poker(Game):
         # -------------------------
 
         self.show_table()
-        self.player_turns()
+
+        if not self.player_turns():
+            self.determine_winner()
+            return
 
         # -------------------------
         # FLOP
@@ -81,7 +94,10 @@ class Poker(Game):
         self.reset_round_bets()
 
         self.show_table()
-        self.player_turns()
+
+        if not self.player_turns():
+            self.determine_winner()
+            return
 
         # -------------------------
         # TURN
@@ -91,7 +107,10 @@ class Poker(Game):
         self.reset_round_bets()
 
         self.show_table()
-        self.player_turns()
+
+        if not self.player_turns():
+            self.determine_winner()
+            return
 
         # -------------------------
         # RIVER
@@ -101,6 +120,7 @@ class Poker(Game):
         self.reset_round_bets()
 
         self.show_table()
+
         self.player_turns()
 
         # Determine winner
@@ -111,6 +131,8 @@ class Poker(Game):
     def deal_initial_cards(self):
         for _ in range(2):
             for poker_player in self.poker_players:
+                if not poker_player.playing:
+                    continue
                 poker_player.hit(self.deck)
                 
     def deal_community_cards(self, amount):
@@ -141,40 +163,24 @@ class Poker(Game):
     def player_turns(self):
         while True:
 
-            # Go around the table
-            for poker_player in self.poker_players:
-
-                # Skip folded players
-                if poker_player.folded:
-                    continue
-
-                # Skip players who are all-in
-                if poker_player.chips == 0:
-                    continue
-
+            # Players who can still make a decision
+            for poker_player in self.get_players_who_can_act():
                 self.player_turn(poker_player)
 
+            # If only one player remains, end the hand
+            if len(self.get_active_players()) <= 1:
+                return False
+
             # Check whether everyone has matched
-            # the current bet
             betting_complete = True
 
-            for poker_player in self.poker_players:
-
-                # Ignore folded players
-                if poker_player.folded:
-                    continue
-
-                # Ignore all-in players
-                if poker_player.chips == 0:
-                    continue
-
-                # Player still needs to match the bet
+            for poker_player in self.get_players_who_can_act():
                 if poker_player.bet < self.current_bet:
                     betting_complete = False
                     break
 
             if betting_complete:
-                break
+                return True
             
     def player_turn(self, poker_player):
         if poker_player.folded:
@@ -211,11 +217,42 @@ class Poker(Game):
         print("=" * 50)
         print()
 
-        active_players = []
+        # Get players who are still in the hand
+        active_players = self.get_active_players()
 
-        for poker_player in self.poker_players:
-            if poker_player.folded:
-                continue
+        if not active_players:
+            print("  No players remaining.")
+            return
+        
+        
+        # Only one player remains because everyone else folded
+        if len(active_players) == 1:
+            winner = active_players[0]
+
+            winnings = self.pot.collect()
+            winner.chips += winnings
+
+            print(f"  WINNER: {winner.name}")
+            print(f"  Winnings: {winnings} chips")
+
+            print()
+            print("=" * 50)
+            return
+
+
+        # Print community cards
+        print("community cards")
+        if self.community_cards:
+            print(f"  {' '.join(str(card) for card in self.community_cards)}")
+        else:
+            print("  No community cards.")
+        print()
+        
+
+        # Evaluate each active player's hand
+        players_with_hands = []
+
+        for poker_player in active_players:
 
             hand_rank, hand_name = poker_player.hand.evaluate(
                 self.community_cards
@@ -226,28 +263,26 @@ class Poker(Game):
             print(f"    Result: {hand_name}")
             print()
 
-            active_players.append(
+            players_with_hands.append(
                 (poker_player, hand_rank, hand_name)
             )
-
-        if not active_players:
-            print("  No players remaining.")
-            return
 
         # Find highest hand rank
         highest_rank = max(
             player[1]
-            for player in active_players
+            for player in players_with_hands
         )
 
+        # Find all players with the highest rank
         winners = [
             player
-            for player in active_players
+            for player in players_with_hands
             if player[1] == highest_rank
         ]
 
         print("  " + "-" * 46)
 
+        # One winner
         if len(winners) == 1:
             winner = winners[0][0]
 
@@ -260,6 +295,7 @@ class Poker(Game):
             print(f"  WINNER: {winner.name}")
             print(f"  Winnings: {winnings} chips")
 
+        # Multiple winners
         else:
             # Split pot between winners
             winnings = self.pot.collect()
@@ -269,7 +305,9 @@ class Poker(Game):
 
             for winner in winners:
                 winner[0].chips += share
-                print(f"    {winner[0].name} wins {share} chips")
+                print(
+                    f"    {winner[0].name} wins {share} chips"
+                )
 
         print()
         print("=" * 50)
@@ -341,9 +379,46 @@ class Poker(Game):
                 
     def reset_round_bets(self):
         for poker_player in self.poker_players:
+            
+            if not poker_player.playing:
+                continue
+            
             poker_player.bet = 0
 
         self.current_bet = 0
+        
+    # Check if only one player is remaining in the game
+    def one_player_remaining(self):
+        active_players = 0
+
+        for poker_player in self.poker_players:
+            if not poker_player.playing:
+                continue
+
+            if poker_player.folded:
+                continue
+
+            active_players += 1
+
+        return active_players <= 1
+    
+    # List of players active and have not folded
+    def get_active_players(self):
+        return [
+            player
+            for player in self.poker_players
+            if player.playing and not player.folded
+        ]
+        
+    # List of players who are active and able to place bets
+    def get_players_who_can_act(self):
+        return [
+            player
+            for player in self.poker_players
+            if player.playing
+            and not player.folded
+            and player.chips > 0
+        ]
         
     def welcome(self):
         Util.clear_screen()

@@ -44,4 +44,9 @@ class Game():
                     print("\nInput interrupted. Exiting game.")
                     return False
 
-        return True
+        # Check if anyone is still playing
+        for player in players:
+            if player.playing:
+                return True
+
+        return False
