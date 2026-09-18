@@ -27,12 +27,14 @@ class Blackjack(Game):
         self.welcome()
 
         if not self.whos_playing(self.blackjack_players, first_round=True):
+            self.sync_players(self.players, self.blackjack_players)
             return
 
         while True:
             self.play_round()
 
             if not self.whos_playing(self.blackjack_players, first_round=False):
+                self.sync_players(self.players, self.blackjack_players)
                 return
 
     # Play one round
@@ -204,21 +206,20 @@ class Blackjack(Game):
                 continue
 
             action = blackjack_player.decide_action(
-                dealer_visible_card=self.dealer.hand.cards[0]
-            )
+                dealer_visible_card=self.dealer.hand.cards[0])
 
             # HIT
             if action == "hit":
 
-                card = blackjack_player.hit(self.deck)
+                blackjack_player.hit(self.deck)
 
                 Util.clear_screen()
                 self.show_table()
 
-                # Check for bust
+                # Only move to next hand if busted
                 if blackjack_player.is_bust():
-
                     blackjack_player.hand_stood[hand_index] = True
+                    hand_index += 1
 
             # STAND
             elif action == "stand":
@@ -228,45 +229,39 @@ class Blackjack(Game):
                 Util.clear_screen()
                 self.show_table()
 
+                hand_index += 1
+
             # DOUBLE DOWN
             elif action == "double":
 
                 current_bet = blackjack_player.hand_bets[hand_index]
 
-                # Take the additional bet
                 blackjack_player.chips -= current_bet
-
-                # Double the hand's bet
                 blackjack_player.hand_bets[hand_index] *= 2
-
-                # Update player's total bet
                 blackjack_player.bet += current_bet
 
-                # Give exactly one more card
-                card = blackjack_player.hit(self.deck)
+                blackjack_player.hit(self.deck)
 
-                # Automatically stand
                 blackjack_player.hand_stood[hand_index] = True
 
                 Util.clear_screen()
                 self.show_table()
+
+                hand_index += 1
 
             # SPLIT
             elif action == "split":
 
                 self.split_hand(
                     blackjack_player,
-                    hand_index)
+                    hand_index
+                )
 
                 Util.clear_screen()
                 self.show_table()
 
-                # Don't move to the next hand yet.
-                # Continue playing the newly-created
-                # first hand.
+                # Stay on the current hand
                 continue
-
-            hand_index += 1
 
     def split_hand(self, blackjack_player, hand_index):
 
@@ -482,7 +477,7 @@ class Blackjack(Game):
 
                     blackjack_player.chips += bet
 
-                print()
+                print("    Chips: " + str(blackjack_player.chips))
                 print("  " + "-" * 46)
 
         print("=" * 50)

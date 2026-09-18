@@ -32,7 +32,13 @@ class Poker(Game):
 
         self.welcome()
 
+    # Main Game loop
+    def play(self):
+
+        self.welcome()
+
         if not self.whos_playing(self.poker_players, first_round=True):
+            self.sync_players(self.players, self.poker_players)
             return
 
         while True:
@@ -41,6 +47,10 @@ class Poker(Game):
             active_players = sum(player.playing for player in self.poker_players)
 
             if active_players < 2:
+                # Sync player chips counts
+                self.sync_players(self.players, self.poker_players)
+                
+                # Returning to main menu
                 print("\nYou need at least 2 players to play Poker.")
                 print("Returning to main menu...")
                 time.sleep(3)
@@ -50,6 +60,7 @@ class Poker(Game):
             self.play_round()
 
             if not self.whos_playing(self.poker_players, first_round=False):
+                self.sync_players(self.players, self.poker_players)
                 break
             
 
