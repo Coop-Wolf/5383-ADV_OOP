@@ -1,7 +1,7 @@
 from .blackjackhand import BlackjackHand
 
 
-class Dealer:
+class BlackjackDealer:
 
     def __init__(self):
         self.hand = BlackjackHand()

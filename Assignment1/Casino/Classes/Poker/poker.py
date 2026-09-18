@@ -1,8 +1,8 @@
-from .game        import Game
+from ..game        import Game
 from .pokerplayer import PokerPlayer
-from .deck        import Deck
+from ..deck        import Deck
 from .pokerhand   import PokerHand
-from .util        import Util
+from ..util        import Util
 from .pot         import Pot
 import time
 

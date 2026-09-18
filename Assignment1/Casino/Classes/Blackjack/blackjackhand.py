@@ -1,4 +1,4 @@
-from .hand import Hand
+from ..hand import Hand
 
 class BlackjackHand(Hand):
     def get_value(self):

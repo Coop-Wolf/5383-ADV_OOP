@@ -1,9 +1,9 @@
 from .blackjackplayer import BlackjackPlayer
-from .dealer import Dealer
-from .deck import Deck
+from .blackjackdealer import BlackjackDealer
+from ..deck import Deck
 from .blackjackhand import BlackjackHand
-from .util import Util
-from .game import Game
+from ..util import Util
+from ..game import Game
 import time
 
 
@@ -19,7 +19,7 @@ class Blackjack(Game):
             for player in players
         ]
 
-        self.dealer = Dealer()
+        self.dealer = BlackjackDealer()
 
     # Main Game loop
     def play(self):
@@ -343,7 +343,7 @@ class Blackjack(Game):
                     f"\n  Dealer draws {card}."
                 )
 
-                time.sleep(4)
+                time.sleep(2)
 
             else:
 
@@ -355,8 +355,7 @@ class Blackjack(Game):
                     f"{self.dealer.get_hand_value()}."
                 )
 
-                time.sleep(4)
-
+                time.sleep(2)
                 break
 
             if self.dealer.is_bust():
@@ -369,7 +368,7 @@ class Blackjack(Game):
                     f"{self.dealer.get_hand_value()}."
                 )
 
-                time.sleep(4)
+                time.sleep(2)
 
                 break
 

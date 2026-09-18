@@ -1,6 +1,6 @@
 from .player import Player
-from .blackjack import Blackjack
-from .poker import Poker
+from .Blackjack.blackjack import Blackjack
+from .Poker.poker import Poker
 from .util import Util
 import time
 
