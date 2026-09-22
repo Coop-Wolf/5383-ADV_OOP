@@ -1,6 +1,7 @@
 from .player import Player
 from .Blackjack.blackjack import Blackjack
 from .Poker.poker import Poker
+from .War.war import War
 from .util import Util
 import time
 
@@ -18,10 +19,11 @@ class Casino:
         print()
         print("  1.  Blackjack")
         print("  2.  Poker")
-        print("  3.  Add / Remove Player")
-        print("  4.  Add Funds")
-        print("  5.  Player Stats")
-        print("  6.  Exit")
+        print("  3.  War")
+        print("  4.  Add / Remove Player")
+        print("  5.  Add Funds")
+        print("  6.  Player Stats")
+        print("  7.  Exit")
         print()
         print("=" * 35)
     
@@ -227,7 +229,12 @@ class Casino:
                 break
             else: print(" Invalid selection. Please choose 1 to return.")
         
-            
+    def get_player(self, name):
+        for player in self.players:
+            if player.name == name:
+                return player
+            else:
+                return ""
 
     def welcome(self):
         print()
@@ -295,13 +302,22 @@ class Casino:
                 print("Must have 2 or more players to play poker.")
                 time.sleep(3)
             elif option == 3:
-                Util.clear_screen()
-                self.add_or_remove_player()
+                print("War is a single player game.")
+                player_name = input("Enter who is playing: ")
+                player = self.get_player(player_name)
+                if player:
+                    self.current_game = War(player)
+                    self.current_game.play()
+                else:
+                    print(f"{player_name} is not in valid player.")
             elif option == 4:
                 Util.clear_screen()
-                self.add_funds()
+                self.add_or_remove_player()
             elif option == 5:
                 Util.clear_screen()
-                self.get_player_info()
+                self.add_funds()
             elif option == 6:
+                Util.clear_screen()
+                self.get_player_info()
+            elif option == 7:
                 break

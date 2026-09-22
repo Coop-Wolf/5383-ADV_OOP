@@ -26,11 +26,7 @@ class Poker(Game):
             for player in players
         ]
         
-        
-    # Main Game loop
-    def play(self):
 
-        self.welcome()
 
     # Main Game loop
     def play(self):

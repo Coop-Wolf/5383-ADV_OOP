@@ -14,7 +14,7 @@ class Player:
     def get_starting_amount(self):
         return self.starting_amount
     
-    # Understood to mean get a card (Used in both poker and blackjack)
+    # Understood to mean get a card
     def hit(self, deck):
         card = deck.deal_card()
         self.hand.add_card(card)
