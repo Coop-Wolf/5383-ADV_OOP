@@ -9,6 +9,9 @@ import time
 # Poker game
 class Poker(Game):
     def __init__(self, players):
+        
+        self.name = "Poker"
+        
         # Original Casino players
         self.players = players
         
@@ -34,7 +37,7 @@ class Poker(Game):
         self.welcome()
 
         if not self.whos_playing(self.poker_players, first_round=True):
-            self.sync_players(self.players, self.poker_players)
+            self.sync_players(self.players, self.poker_players, self.name)
             return
 
         while True:
@@ -44,7 +47,7 @@ class Poker(Game):
 
             if active_players < 2:
                 # Sync player chips counts
-                self.sync_players(self.players, self.poker_players)
+                self.sync_players(self.players, self.poker_players, self.name)
                 
                 # Returning to main menu
                 print("\nYou need at least 2 players to play Poker.")
@@ -230,31 +233,46 @@ class Poker(Game):
         if not active_players:
             print("  No players remaining.")
             return
-        
-        
+
         # Only one player remains because everyone else folded
         if len(active_players) == 1:
             winner = active_players[0]
 
             winnings = self.pot.collect()
+
+            # Give pot to winner
             winner.chips += winnings
+
+            # Record winner's net earnings
+            winner.earnings += winnings - winner.total_bet
+
+            # Record losses for players who folded
+            for poker_player in self.poker_players:
+                if poker_player.folded:
+                    poker_player.earnings -= poker_player.total_bet
 
             print(f"  WINNER: {winner.name}")
             print(f"  Winnings: {winnings} chips")
+            print(
+                f"  Earnings: "
+                f"{winnings - winner.total_bet:+} chips"
+            )
 
             print()
             print("=" * 50)
             return
 
-
         # Print community cards
         print("community cards")
+
         if self.community_cards:
-            print(f"  {' '.join(str(card) for card in self.community_cards)}")
+            print(
+                f"  {' '.join(str(card) for card in self.community_cards)}"
+            )
         else:
             print("  No community cards.")
+
         print()
-        
 
         # Evaluate each active player's hand
         players_with_hands = []
@@ -299,8 +317,15 @@ class Poker(Game):
             # Give pot to winner
             winner.chips += winnings
 
+            # Record winner's net earnings
+            winner.earnings += winnings - winner.total_bet
+
             print(f"  WINNER: {winner.name}")
             print(f"  Winnings: {winnings} chips")
+            print(
+                f"  Earnings: "
+                f"{winnings - winner.total_bet:+} chips"
+            )
 
         # Multiple winners
         else:
@@ -308,13 +333,33 @@ class Poker(Game):
             winnings = self.pot.collect()
             share = winnings // len(winners)
 
+            # Leftover chips go to the casino
+            casino_tip = winnings % len(winners)
+
             print("  TIE!")
 
             for winner in winners:
-                winner[0].chips += share
+                player = winner[0]
+
+                player.chips += share
+
+                # Record net earnings
+                player.earnings += share - player.total_bet
+
                 print(
-                    f"    {winner[0].name} wins {share} chips"
+                    f"    {player.name} wins {share} chips "
+                    f"({share - player.total_bet:+} earnings)"
                 )
+
+            if casino_tip > 0:
+                print(
+                    f"    Casino tip: {casino_tip} chips"
+                )
+
+        # Record losses for players who folded
+        for poker_player in self.poker_players:
+            if poker_player.folded:
+                poker_player.earnings -= poker_player.total_bet
 
         print()
         print("=" * 50)

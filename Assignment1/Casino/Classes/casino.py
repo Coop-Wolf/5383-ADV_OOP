@@ -93,6 +93,7 @@ class Casino:
 
         # Add funds
         player.chips += amount
+        player.funds_added += amount
 
         print()
         print("  " + "-" * 46)
@@ -104,6 +105,7 @@ class Casino:
         print(f"  New Balance:    {player.chips} chips")
         print()
         print("=" * 50)
+        time.sleep(3)
         
     def add_or_remove_player(self):
         print()
@@ -205,29 +207,29 @@ class Casino:
         print("=" * 40)
         print()
 
+
     def get_player_info(self):
         print()
-        print("=" * 35)
-        print("          PLAYER STATS")
-        print("=" * 35)
+        print("=" * 50)
+        print("                    PLAYER STATS")
+        print("=" * 50)
         print()
-        print(f"{'PLAYER':<20} {'CHIPS':>10}")
-        print("-" * 35)
 
         for player in self.players:
             print(player.get_player_info())
+            print()
 
+        print("=" * 50)
         print()
-        print("=" * 35)
-        print()
-        print()
-        
+
         while True:
-            choice = input("Enter \"1\" to return: ").strip()
-            
+            choice = input('Enter "1" to return: ').strip()
+
             if choice == "1":
                 break
-            else: print(" Invalid selection. Please choose 1 to return.")
+            else:
+                print(" Invalid selection. Please choose 1 to return.")
+        
         
     def get_player(self, name):
         for player in self.players:
@@ -235,6 +237,7 @@ class Casino:
                 return player
             else:
                 return ""
+
 
     def welcome(self):
         print()

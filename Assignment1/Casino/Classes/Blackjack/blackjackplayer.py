@@ -9,6 +9,8 @@ class BlackjackPlayer(Player):
 
         # Player can have multiple hands after splitting
         self.hands = [BlackjackHand()]
+        
+        self.earnings = 0
 
         # Keep self.hand as the currently active hand
         self.hand = self.hands[0]

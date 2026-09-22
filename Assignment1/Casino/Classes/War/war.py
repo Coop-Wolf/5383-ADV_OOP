@@ -9,6 +9,9 @@ import time
 class War(Game):
 
     def __init__(self, player):
+        
+        self.name = "War"
+        
         # Original Casino players
         self.player = player
 
@@ -27,7 +30,7 @@ class War(Game):
             self.play_round()
 
             if not self.whos_playing(self.war_player):
-                self.sync_players(self.player, self.war_player)
+                self.sync_players(self.player, self.war_player, self.name)
                 break
             
             
@@ -118,6 +121,9 @@ class War(Game):
 
             self.war_player.chips += bet * 2
 
+            # Record net profit
+            self.war_player.earnings += bet
+
         # Dealer wins
         elif player_hand_value < dealer_hand_value:
 
@@ -126,6 +132,9 @@ class War(Game):
                 f"{dealer_hand_value} beats "
                 f"{player_hand_value}"
             )
+
+            # Record net loss
+            self.war_player.earnings -= bet
 
         # Tie
         else:
@@ -141,6 +150,9 @@ class War(Game):
             )
 
             self.war_player.chips += bet
+
+            # No profit or loss
+            # earnings stays the same
 
         print(
             f"    Chips: {self.war_player.chips}"

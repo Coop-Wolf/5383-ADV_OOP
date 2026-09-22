@@ -10,6 +10,9 @@ import time
 class Blackjack(Game):
 
     def __init__(self, players):
+        
+        self.name = "Blackjack"
+        
         # Original Casino players
         self.players = players
 
@@ -27,14 +30,14 @@ class Blackjack(Game):
         self.welcome()
 
         if not self.whos_playing(self.blackjack_players, first_round=True):
-            self.sync_players(self.players, self.blackjack_players)
+            self.sync_players(self.players, self.blackjack_players, self.name)
             return
 
         while True:
             self.play_round()
 
             if not self.whos_playing(self.blackjack_players, first_round=False):
-                self.sync_players(self.players, self.blackjack_players)
+                self.sync_players(self.players, self.blackjack_players, self.name)
                 return
 
     # Play one round
@@ -384,7 +387,7 @@ class Blackjack(Game):
         print()
 
         for blackjack_player in self.blackjack_players:
-            
+
             # Skip player if they are not playing
             if not blackjack_player.playing:
                 continue
@@ -413,6 +416,8 @@ class Blackjack(Game):
 
                     print("    Result: LOSS - Busted")
 
+                    blackjack_player.earnings -= bet
+
                 # Blackjack
                 elif hand.is_blackjack():
 
@@ -425,6 +430,7 @@ class Blackjack(Game):
                     )
 
                     blackjack_player.chips += bet * 2.5
+                    blackjack_player.earnings += bet * 1.5
 
                 # Dealer bust
                 elif dealer_busted:
@@ -436,6 +442,7 @@ class Blackjack(Game):
                     )
 
                     blackjack_player.chips += bet * 2
+                    blackjack_player.earnings += bet
 
                 # Player beats dealer
                 elif player_value > dealer_value:
@@ -451,6 +458,7 @@ class Blackjack(Game):
                     )
 
                     blackjack_player.chips += bet * 2
+                    blackjack_player.earnings += bet
 
                 # Dealer beats player
                 elif player_value < dealer_value:
@@ -460,6 +468,8 @@ class Blackjack(Game):
                         f"{dealer_value} beats "
                         f"{player_value}"
                     )
+
+                    blackjack_player.earnings -= bet
 
                 # Push
                 else:
@@ -475,6 +485,9 @@ class Blackjack(Game):
                     )
 
                     blackjack_player.chips += bet
+
+                    # No profit or loss on a push
+                    blackjack_player.earnings += 0
 
                 print("    Chips: " + str(blackjack_player.chips))
                 print("  " + "-" * 46)

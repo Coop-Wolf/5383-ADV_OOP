@@ -2,19 +2,52 @@ import time
 
 class Game():
 
-    # Sync player chip count from game
-    def sync_players(self, original_players, game_players):
-        
+
+    # Sync player information from game
+    def sync_players(self, original_players, game_players, game_name):
+
+        earnings_attribute = f"{game_name.lower()}_earnings"
+
         if isinstance(game_players, list):
+
             for original_player, game_player in zip(
                 original_players,
                 game_players
             ):
-                
+
                 original_player.chips = game_player.chips
-        
+
+                current_earnings = getattr(
+                    original_player,
+                    earnings_attribute
+                )
+
+                setattr(
+                    original_player,
+                    earnings_attribute,
+                    current_earnings + game_player.earnings
+                )
+                
+                # Reset players earnings on the game
+                game_player.earnings = 0
+
         else:
+
             original_players.chips = game_players.chips
+
+            current_earnings = getattr(
+                original_players,
+                earnings_attribute
+            )
+
+            setattr(
+                original_players,
+                earnings_attribute,
+                current_earnings + game_players.earnings
+            )
+            
+            # Reset players earnings on the game
+            game_players.earnings = 0
             
                         
             
