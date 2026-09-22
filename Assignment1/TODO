@@ -1,3 +1,13 @@
 Add try catch when entering single player for war game.
     may even print table of players and allow user to enter number for user thats going to play war
-Add earnings from each game to player info
+
+Welcome message for war player
+
+Think abt adding fourth game???
+
+Find ways to clean up code. Better functions, better code reuse.
+
+
+
+LATER (Mid October?):
+    turn into web app with interface and endpoints.
