@@ -39,8 +39,9 @@ Build a full-stack online casino application with:
 
 ---
 
-
-# Milstone 1.5 - Video Poker
+# Milestone 1.5 - Video Poker
+- Add Video Poker as a game
+- Will keep poker for now, but will not use
 
 # Milestone 2 — Separate Game Logic from the Terminal
 
