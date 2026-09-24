@@ -10,6 +10,7 @@ class Deck:
     # Put every possible card in the "cards" list
     def __init__(self):
         self.cards = [Card(suit, rank) for suit in self.SUITS for rank in self.RANKS]
+        self.shuffle()
 
     def shuffle(self):
         random.shuffle(self.cards)

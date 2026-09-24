@@ -28,9 +28,6 @@ class Util():
             except ValueError:
                 print("  ERROR: Please enter a valid number.")
                 continue
-            except (EOFError, KeyboardInterrupt):
-                print("\nInput interrupted.")
-                return None
 
             if minimum is not None and value < minimum:
                 print(f"  ERROR: Must be at least {minimum}.")

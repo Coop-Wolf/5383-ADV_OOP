@@ -1,20 +1,7 @@
 from ..hand import Hand
 
 
-class PokerHand(Hand):
-
-    def get_poker_value(self, rank):
-        values = {
-            "Jack": 11,
-            "Queen": 12,
-            "King": 13,
-            "Ace": 14
-        }
-
-        if rank in values:
-            return values[rank]
-
-        return int(rank)
+class VideoPokerHand(Hand):
 
     # High card of the best straight in these ranks, or None.
     # An ace can also play low (A-2-3-4-5).
@@ -35,9 +22,7 @@ class PokerHand(Hand):
         by_suit = {}
 
         for card in cards:
-            by_suit.setdefault(card.suit, []).append(
-                self.get_poker_value(card.rank)
-            )
+            by_suit.setdefault(card.suit, []).append(card.get_poker_value())
 
         for suit_ranks in by_suit.values():
             if len(suit_ranks) >= 5:
@@ -45,16 +30,26 @@ class PokerHand(Hand):
 
         return None
 
-    def evaluate(self, community_cards):
-        all_cards = self.cards + community_cards
+    # True if the hand has a pair of jacks or better
+    def is_jacks_or_better(self):
+        counts = {}
+
+        for card in self.cards:
+            value = card.get_poker_value()
+            counts[value] = counts.get(value, 0) + 1
+
+        return any(
+            value >= 11 and count >= 2
+            for value, count in counts.items()
+        )
+
+    def evaluate(self):
+        all_cards = self.cards
 
         if len(all_cards) < 5:
             return (0,), "Incomplete"
 
-        ranks = [
-            self.get_poker_value(card.rank)
-            for card in all_cards
-        ]
+        ranks = [card.get_poker_value() for card in all_cards]
 
         rank_counts = {}
 

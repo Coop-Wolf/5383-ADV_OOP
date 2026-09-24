@@ -7,29 +7,25 @@ class BlackjackPlayer(Player):
     def __init__(self, name, chips=100):
         super().__init__(name, chips)
 
-        # Player can have multiple hands after splitting
-        self.hands = [BlackjackHand()]
-        
-        self.earnings = 0
-
-        # Keep self.hand as the currently active hand
-        self.hand = self.hands[0]
-
-        # Bet for each hand
-        self.hand_bets = [0]
-
-        # Track whether each hand has finished
-        self.hand_stood = [False]
-        
+        # A player can have several hands after splitting.
+        # Each hand tracks its own bet and whether it has finished.
+        self.hands = []
+        self.reset_hands()
 
     def reset_hands(self):
         self.hands = [BlackjackHand()]
-        self.hand = self.hands[0]
-        self.hand_bets = [0]
-        self.hand_stood = [False]
+        self.set_active_hand(0)
 
+    # self.hand is always the hand currently being played
     def set_active_hand(self, index):
+        self.active_index = index
         self.hand = self.hands[index]
+
+    def hand_label(self, index):
+        if len(self.hands) == 1:
+            return self.name
+
+        return f"{self.name} Hand {index + 1}"
 
     def decide_action(self, dealer_visible_card=None):
         while True:
@@ -40,7 +36,7 @@ class BlackjackPlayer(Player):
             print(f"Hand:  {self.hand}")
             print(f"Value: {self.get_hand_value()}")
             print(f"Chips: {self.chips}")
-            print(f"Bet:   {self.hand_bets[self.hands.index(self.hand)]}")
+            print(f"Bet:   {self.hand.bet}")
             print()
 
             print("1. Hit")
@@ -78,42 +74,46 @@ class BlackjackPlayer(Player):
                 print("ERROR: Invalid choice.")
 
     def can_double_down(self):
-        # Must have exactly two cards
-        if len(self.hand.cards) != 2:
-            return False
-
-        # Must have enough chips to match the current bet
-        current_index = self.hands.index(self.hand)
-        current_bet = self.hand_bets[current_index]
-
-        return self.chips >= current_bet
+        # Must have exactly two cards and enough chips to match the bet
+        return len(self.hand.cards) == 2 and self.chips >= self.hand.bet
 
     def can_split(self):
-        # Must have exactly two cards
-        if len(self.hand.cards) != 2:
+        # Must have exactly two cards and enough chips for a second bet
+        if len(self.hand.cards) != 2 or self.chips < self.hand.bet:
             return False
-
-        # Need enough chips to place the second bet
-        current_index = self.hands.index(self.hand)
-        current_bet = self.hand_bets[current_index]
-
-        if self.chips < current_bet:
-            return False
-
-        card1 = self.hand.cards[0]
-        card2 = self.hand.cards[1]
 
         # Same rank = can split
-        return card1.rank == card2.rank
+        return self.hand.cards[0].rank == self.hand.cards[1].rank
+
+    # Double the bet, take exactly one more card, then finish the hand
+    def double_down(self, deck):
+        self.wager(self.hand.bet)
+        self.hand.bet *= 2
+        self.hit(deck)
+        self.hand.stood = True
+
+    # Split the active hand into two, each with the original bet
+    def split(self, deck):
+        original = self.hand
+        bet = original.bet
+
+        # Pay the additional bet
+        self.wager(bet)
+
+        # The second card moves to a new hand next to the original
+        second = BlackjackHand(bet)
+        second.add_card(original.cards.pop())
+        self.hands.insert(self.active_index + 1, second)
+
+        # Each split hand gets one more card
+        original.add_card(deck.deal_card())
+        second.add_card(deck.deal_card())
 
     def is_bust(self):
         return self.hand.is_bust()
 
     def is_blackjack(self):
         return self.hand.is_blackjack()
-
-    def stand(self):
-        pass
 
     def get_hand_value(self):
         return self.hand.get_value()

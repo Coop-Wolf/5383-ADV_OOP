@@ -4,7 +4,6 @@ from ..deck        import Deck
 from .pokerhand   import PokerHand
 from ..util        import Util
 from .pot         import Pot
-import time
 
 # Poker game
 class Poker(Game):
@@ -12,6 +11,24 @@ class Poker(Game):
     name = "Poker"
     player_class = PokerPlayer
     min_players = 2
+    
+    welcome_sections = [
+        ("Goal", "Make the best five-card poker hand using your two cards and the community cards."),
+        ("How to Play", [
+            "Each player is dealt two cards.",
+            "Five community cards are dealt.",
+            "The community cards are revealed in three stages: Flop, Turn, River.",
+            "Players bet after each stage.",
+        ]),
+        ("Actions", [
+            "Check - Stay in without adding chips.",
+            "Call - Match the current table bet.",
+            "Raise - Increase the current table bet.",
+            "Fold - Leave the current hand.",
+        ]),
+        ("Winning", "The player with the highest-ranking five-card hand wins the pot."),
+    ]
+
 
     def __init__(self, players):
         super().__init__(players)
@@ -325,21 +342,14 @@ class Poker(Game):
         print("=" * 50)
         
     def call(self, poker_player):
-        amount = self.current_bet - poker_player.bet
+        amount = min(self.current_bet - poker_player.bet, poker_player.chips)
 
-        if amount > poker_player.chips:
-            amount = poker_player.chips
-
-        poker_player.chips -= amount
-        poker_player.bet += amount
-        poker_player.total_bet += amount
-
+        poker_player.wager(amount)
         self.pot.add(amount)
 
         print(
             f"\n{poker_player.name} calls "
-            f"{amount} chips."
-        )
+            f"{amount} chips.")
         
     def raise_bet(self, poker_player):
         while True:
@@ -371,9 +381,7 @@ class Poker(Game):
                         )
                         continue
 
-                    poker_player.chips -= amount
-                    poker_player.bet = new_bet
-                    poker_player.total_bet += amount
+                    poker_player.wager(amount)
 
                     self.pot.add(amount)
 
@@ -431,39 +439,3 @@ class Poker(Game):
             and not player.folded
             and player.chips > 0
         ]
-        
-    def welcome(self):
-        Util.clear_screen()
-        
-        print()
-        print("=" * 45)
-        print("                  POKER")
-        print("=" * 45)
-        print()
-        print("  Welcome to Poker!")
-        print()
-        print("  Goal:")
-        print("    Make the best five-card poker hand")
-        print("    using your two cards and the")
-        print("    community cards.")
-        print()
-        print("  How to Play:")
-        print("    • Each player is dealt two cards.")
-        print("    • Five community cards are dealt.")
-        print("    • The community cards are revealed")
-        print("      in three stages: Flop, Turn, River.")
-        print("    • Players bet after each stage.")
-        print()
-        print("  Actions:")
-        print("    • Check - Stay in without adding chips.")
-        print("    • Call  - Match the current table bet.")
-        print("    • Raise - Increase the current table bet.")
-        print("    • Fold  - Leave the current hand.")
-        print()
-        print("  Winning:")
-        print("    The player with the highest-ranking")
-        print("    five-card hand wins the pot.")
-        print()
-        print("=" * 45)
-        print()
-        

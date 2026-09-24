@@ -1,7 +1,7 @@
 import time
 from abc import ABC, abstractmethod
 from .util import Util
-
+import textwrap
 
 class Game(ABC):
 
@@ -9,6 +9,7 @@ class Game(ABC):
     name = "Game"
     player_class = None
     min_players = 1
+    welcome_sections = []
 
     def __init__(self, players):
 
@@ -94,10 +95,64 @@ class Game(ABC):
 
         return any(player.playing for player in self.game_players)
 
-    # Each game must implement these
-    @abstractmethod
-    def welcome(self): ...
+    # Print a hand's result and update the player's chips and earnings
+    def settle(self, player, bet, outcome, detail, multiplier=1):
 
+        if outcome == "win":
+            profit = player.win(bet, multiplier)
+            print(f"    Result: WIN - {detail}")
+            print(f"    Payout: +{profit} chips")
+
+        elif outcome == "loss":
+            player.lose(bet)
+            print(f"    Result: LOSS - {detail}")
+
+        else:
+            player.push(bet)
+            print(f"    Result: PUSH - {detail}")
+            print(f"    Payout: {bet} chips returned")
+
+        print(f"    Chips:  {player.chips}")
+        
+        
+    def redraw(self, **kwargs):
+        Util.clear_screen()
+        self.show_table(**kwargs)
+
+    def pause(self, seconds=2):
+        time.sleep(seconds)
+
+    def welcome(self):
+
+        Util.clear_screen()
+        Util.banner(self.name.upper(), 45)
+
+        print(f"  Welcome to {self.name}!")
+        print()
+
+        for title, content in self.welcome_sections:
+
+            print(f"  {title}:")
+
+            if isinstance(content, str):
+                print(textwrap.fill(
+                    content, width=45,
+                    initial_indent="    ", subsequent_indent="    "
+                ))
+            else:
+                for item in content:
+                    print(textwrap.fill(
+                        item, width=45,
+                        initial_indent="    • ", subsequent_indent="      "
+                    ))
+
+            print()
+
+        print("=" * 45)
+        print()
+        
+
+    # Each game must implement these
     @abstractmethod
     def play_round(self): ...
 

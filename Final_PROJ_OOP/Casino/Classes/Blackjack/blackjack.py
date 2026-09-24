@@ -1,16 +1,28 @@
 from .blackjackplayer import BlackjackPlayer
 from .blackjackdealer import BlackjackDealer
 from ..deck import Deck
-from .blackjackhand import BlackjackHand
 from ..util import Util
 from ..game import Game
-import time
 
 
 class Blackjack(Game):
 
     name = "Blackjack"
     player_class = BlackjackPlayer
+
+    welcome_sections = [
+        ("Goal", "Get as close to 21 as possible without going over."),
+        ("How to Play", [
+            "You and the dealer are dealt two cards.",
+            "Hit - Take another card.",
+            "Stand - Keep your current hand.",
+            "Double Down - Double your bet and receive exactly one more card.",
+            "Split - Split a pair into two hands.",
+            "The dealer must hit until reaching 17.",
+            "Go over 21 and you bust!",
+        ]),
+        ("Blackjack", "An Ace + a 10-value card on your first two cards is a Blackjack."),
+    ]
 
     def __init__(self, players):
         super().__init__(players)
@@ -20,11 +32,10 @@ class Blackjack(Game):
     def play_round(self):
 
         self.deck = Deck()
-        self.deck.shuffle()
 
         # Reset hands and place bets
         for blackjack_player in self.game_players:
-            
+
             # Skip player if they are not playing
             if not blackjack_player.playing:
                 continue
@@ -34,34 +45,32 @@ class Blackjack(Game):
             Util.clear_screen()
             blackjack_player.place_bet()
 
-            # Store the initial bet for the first hand
-            blackjack_player.hand_bets[0] = blackjack_player.bet
+            # Store the initial bet on the first hand
+            blackjack_player.hand.bet = blackjack_player.bet
 
-        self.dealer.hand = BlackjackHand()
+            self.dealer.reset_hand()
 
         # Deal initial cards
         Util.clear_screen()
         self.deal_initial_cards()
 
         # Show completed initial deal
-        Util.clear_screen()
-        self.show_table()
+        self.redraw()
 
         # Player turns
         for blackjack_player in self.game_players:
-            
+
             # Skip player if they are not playing
             if not blackjack_player.playing:
                 continue
-            
+
             self.take_player_turn(blackjack_player)
 
         # Dealer turn
         self.take_dealer_turn()
 
         # Show final table
-        Util.clear_screen()
-        self.show_table(reveal_dealer=True)
+        self.redraw(reveal_dealer=True)
 
         # Determine winners
         self.determine_winner()
@@ -72,11 +81,11 @@ class Blackjack(Game):
         for _ in range(2):
 
             for blackjack_player in self.game_players:
-            
+
                 # Skip player if they are not playing
                 if not blackjack_player.playing:
                     continue
-                
+
                 # Deal to every hand
                 for hand in blackjack_player.hands:
                     if len(hand.cards) < 2:
@@ -99,7 +108,7 @@ class Blackjack(Game):
         print("  " + "-" * 70)
 
         for blackjack_player in self.game_players:
-            
+
             # Skip player if they are not playing
             if not blackjack_player.playing:
                 continue
@@ -113,28 +122,18 @@ class Blackjack(Game):
                     status = "(Busted)"
                 elif hand.is_blackjack():
                     status = "(Blackjack)"
-                elif blackjack_player.hand_stood[index]:
+                elif hand.stood:
                     status = "(Stand)"
                 else:
                     status = ""
 
-                # Label first hand normally
-                if len(blackjack_player.hands) == 1:
-                    hand_name = blackjack_player.name
-
-                else:
-                    hand_name = (
-                        f"{blackjack_player.name} "
-                        f"Hand {index + 1}"
-                    )
-
-                bet = blackjack_player.hand_bets[index]
+                hand_name = blackjack_player.hand_label(index)
 
                 print(
                     f"  {hand_name:<20}"
                     f"{str(hand):<33}"
                     f"Value: {value:<3} "
-                    f"Bet: {bet:<3} "
+                    f"Bet: {hand.bet:<3} "
                     f"{status}"
                 )
 
@@ -166,21 +165,16 @@ class Blackjack(Game):
         while hand_index < len(blackjack_player.hands):
 
             blackjack_player.set_active_hand(hand_index)
+            hand = blackjack_player.hand
 
             # Skip hands that are already finished
-            if blackjack_player.hand_stood[hand_index]:
+            if hand.stood:
                 hand_index += 1
                 continue
 
-            # Automatically finish busted hands
-            if blackjack_player.is_bust():
-                blackjack_player.hand_stood[hand_index] = True
-                hand_index += 1
-                continue
-
-            # Automatically finish blackjack
-            if blackjack_player.is_blackjack():
-                blackjack_player.hand_stood[hand_index] = True
+            # Automatically finish busted hands and blackjacks
+            if hand.is_bust() or hand.is_blackjack():
+                hand.stood = True
                 hand_index += 1
                 continue
 
@@ -192,119 +186,45 @@ class Blackjack(Game):
 
                 blackjack_player.hit(self.deck)
 
-                Util.clear_screen()
-                self.show_table()
+                self.redraw()
 
-                # Only move to next hand if busted
-                if blackjack_player.is_bust():
-                    blackjack_player.hand_stood[hand_index] = True
+                # Only move to the next hand if busted
+                if hand.is_bust():
+                    hand.stood = True
                     hand_index += 1
 
             # STAND
             elif action == "stand":
 
-                blackjack_player.hand_stood[hand_index] = True
+                hand.stood = True
 
-                Util.clear_screen()
-                self.show_table()
+                self.redraw()
 
                 hand_index += 1
 
             # DOUBLE DOWN
             elif action == "double":
 
-                current_bet = blackjack_player.hand_bets[hand_index]
+                blackjack_player.double_down(self.deck)
 
-                blackjack_player.chips -= current_bet
-                blackjack_player.hand_bets[hand_index] *= 2
-                blackjack_player.bet += current_bet
-
-                blackjack_player.hit(self.deck)
-
-                blackjack_player.hand_stood[hand_index] = True
-
-                Util.clear_screen()
-                self.show_table()
+                self.redraw()
 
                 hand_index += 1
 
             # SPLIT
             elif action == "split":
 
-                self.split_hand(
-                    blackjack_player,
-                    hand_index
-                )
+                blackjack_player.split(self.deck)
 
-                Util.clear_screen()
-                self.show_table()
+                self.redraw()
 
                 # Stay on the current hand
-                continue
-
-    def split_hand(self, blackjack_player, hand_index):
-
-        original_hand = blackjack_player.hands[hand_index]
-
-        # Get the two original cards
-        card1 = original_hand.cards[0]
-        card2 = original_hand.cards[1]
-
-        # Get the original bet
-        original_bet = blackjack_player.hand_bets[hand_index]
-
-        # Pay the additional bet
-        blackjack_player.chips -= original_bet
-
-        # Update player's total bet
-        blackjack_player.bet += original_bet
-
-        # Create two new hands
-        hand1 = BlackjackHand()
-        hand2 = BlackjackHand()
-
-        # Give each hand one card
-        hand1.add_card(card1)
-        hand2.add_card(card2)
-
-        # Replace original hand with first hand
-        blackjack_player.hands[hand_index] = hand1
-
-        # Add second hand
-        blackjack_player.hands.insert(
-            hand_index + 1,
-            hand2
-        )
-
-        # Give both hands the same bet
-        blackjack_player.hand_bets[hand_index] = original_bet
-
-        blackjack_player.hand_bets.insert(
-            hand_index + 1,
-            original_bet
-        )
-
-        # Both hands are active
-        blackjack_player.hand_stood[hand_index] = False
-
-        blackjack_player.hand_stood.insert(
-            hand_index + 1,
-            False
-        )
-
-        # Deal one additional card to each split hand
-        hand1.add_card(self.deck.deal_card())
-        hand2.add_card(self.deck.deal_card())
-
-        # Set active hand back to the first hand
-        blackjack_player.set_active_hand(hand_index)
 
     def take_dealer_turn(self):
 
         # Reveal dealer's hand
-        Util.clear_screen()
-        self.show_table(reveal_dealer=True)
-        time.sleep(2)
+        self.redraw(reveal_dealer=True)
+        self.pause()
 
         while True:
 
@@ -315,39 +235,36 @@ class Blackjack(Game):
                 card = self.dealer.hit(self.deck)
 
                 # Show what dealer drew
-                Util.clear_screen()
-                self.show_table(reveal_dealer=True)
+                self.redraw(reveal_dealer=True)
 
                 print(
                     f"\n  Dealer draws {card}."
                 )
 
-                time.sleep(2)
+                self.pause()
 
             else:
 
-                Util.clear_screen()
-                self.show_table(reveal_dealer=True)
+                self.redraw(reveal_dealer=True)
 
                 print(
                     f"\n  Dealer stands at "
                     f"{self.dealer.get_hand_value()}."
                 )
 
-                time.sleep(2)
+                self.pause()
                 break
 
             if self.dealer.is_bust():
 
-                Util.clear_screen()
-                self.show_table(reveal_dealer=True)
+                self.redraw(reveal_dealer=True)
 
                 print(
                     f"\n  Dealer busts at "
                     f"{self.dealer.get_hand_value()}."
                 )
 
-                time.sleep(2)
+                self.pause()
 
                 break
 
@@ -355,6 +272,7 @@ class Blackjack(Game):
 
         dealer_value = self.dealer.get_hand_value()
         dealer_busted = self.dealer.is_bust()
+        dealer_blackjack = self.dealer.hand.is_blackjack()
 
         print()
         print("=" * 50)
@@ -372,147 +290,56 @@ class Blackjack(Game):
             for index, hand in enumerate(blackjack_player.hands):
 
                 player_value = hand.get_value()
-                bet = blackjack_player.hand_bets[index]
-
-                if len(blackjack_player.hands) == 1:
-                    hand_name = blackjack_player.name
-                else:
-                    hand_name = (
-                        f"{blackjack_player.name} "
-                        f"Hand {index + 1}"
-                    )
+                bet = hand.bet
+                hand_name = blackjack_player.hand_label(index)
 
                 print(f"  {hand_name}")
                 print(f"    Hand:   {hand}")
                 print(f"    Value:  {player_value}")
                 print(f"    Bet:    {bet} chips")
 
-                # Bust
                 if hand.is_bust():
+                    self.settle(blackjack_player, bet, "loss", "Busted")
 
-                    print("    Result: LOSS - Busted")
+                elif hand.is_blackjack() and dealer_blackjack:
+                    self.settle(
+                        blackjack_player, bet, "push",
+                        "Both have blackjack"
+                    )
 
-                    blackjack_player.earnings -= bet
-
-                # Blackjack
                 elif hand.is_blackjack():
-
-                    print("    Result: BLACKJACK!")
-
-                    payout = bet * 1.5
-
-                    print(
-                        f"    Payout: +{payout:.0f} chips"
+                    self.settle(
+                        blackjack_player, bet, "win",
+                        "Blackjack!", multiplier=1.5
                     )
 
-                    blackjack_player.chips += bet * 2.5
-                    blackjack_player.earnings += bet * 1.5
+                elif dealer_blackjack:
+                    self.settle(
+                        blackjack_player, bet, "loss",
+                        "Dealer has blackjack"
+                    )
 
-                # Dealer bust
                 elif dealer_busted:
+                    self.settle(blackjack_player, bet, "win", "Dealer busted")
 
-                    print("    Result: WIN - Dealer busted")
-
-                    print(
-                        f"    Payout: +{bet} chips"
-                    )
-
-                    blackjack_player.chips += bet * 2
-                    blackjack_player.earnings += bet
-
-                # Player beats dealer
                 elif player_value > dealer_value:
-
-                    print(
-                        f"    Result: WIN - "
-                        f"{player_value} beats "
-                        f"{dealer_value}"
+                    self.settle(
+                        blackjack_player, bet, "win",
+                        f"{player_value} beats {dealer_value}"
                     )
 
-                    print(
-                        f"    Payout: +{bet} chips"
-                    )
-
-                    blackjack_player.chips += bet * 2
-                    blackjack_player.earnings += bet
-
-                # Dealer beats player
                 elif player_value < dealer_value:
-
-                    print(
-                        f"    Result: LOSS - "
-                        f"{dealer_value} beats "
-                        f"{player_value}"
+                    self.settle(
+                        blackjack_player, bet, "loss",
+                        f"{dealer_value} beats {player_value}"
                     )
 
-                    blackjack_player.earnings -= bet
-
-                # Push
                 else:
-
-                    print(
-                        f"    Result: PUSH - "
+                    self.settle(
+                        blackjack_player, bet, "push",
                         f"Tie at {player_value}"
                     )
 
-                    print(
-                        f"    Payout: "
-                        f"{bet} chips returned"
-                    )
-
-                    blackjack_player.chips += bet
-
-                    # No profit or loss on a push
-                    blackjack_player.earnings += 0
-
-                print("    Chips: " + str(blackjack_player.chips))
                 print("  " + "-" * 46)
 
         print("=" * 50)
-
-    def players_info(self):
-
-        for blackjack_player in self.game_players:
-            
-            # Skip player if they are not playing
-            if not blackjack_player.playing:
-                continue
-            
-            print(blackjack_player.get_player_info())
-
-    def welcome(self):
-
-        Util.clear_screen()
-
-        print()
-        print("=" * 45)
-        print("              BLACKJACK")
-        print("=" * 45)
-        print()
-
-        print("  Welcome to Blackjack!")
-        print()
-
-        print("  Goal:")
-        print("    Get as close to 21 as possible without")
-        print("    going over.")
-        print()
-
-        print("  How to Play:")
-        print("    • You and the dealer are dealt two cards.")
-        print("    • Hit - Take another card.")
-        print("    • Stand - Keep your current hand.")
-        print("    • Double Down - Double your bet and")
-        print("      receive exactly one more card.")
-        print("    • Split - Split a pair into two hands.")
-        print("    • The dealer must hit until reaching 17.")
-        print("    • Go over 21 and you bust!")
-        print()
-
-        print("  Blackjack:")
-        print("    An Ace + a 10-value card on your first")
-        print("    two cards is a Blackjack.")
-        print()
-
-        print("=" * 45)
-        print()

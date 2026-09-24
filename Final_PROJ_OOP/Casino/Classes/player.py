@@ -1,3 +1,5 @@
+from .util import Util
+
 # Player
 class Player:
 
@@ -8,16 +10,38 @@ class Player:
         self.bet = 0
         self.starting_amount = chips
         self.funds_added = 0
-        self.poker_earnings = 0
+        #self.poker_earnings = 0
+        self.videopoker_earnings = 0
         self.blackjack_earnings = 0
         self.war_earnings = 0
-        
-        # Track whether the player is activly playing
+        self.earnings = 0
         self.playing = True
-        
-        
-    def get_starting_amount(self):
-        return self.starting_amount
+    
+    
+        # Move chips from the player into a bet
+    def wager(self, amount):
+        self.chips -= amount
+        self.bet += amount
+        self.total_bet += amount
+
+
+    # Bet was already deducted, so return it plus the profit
+    def win(self, bet, multiplier=1):
+        profit = int(bet * multiplier)
+        self.chips += bet + profit
+        self.earnings += profit
+        return profit
+
+
+    # Bet was already deducted, so only record the loss
+    def lose(self, bet):
+        self.earnings -= bet
+
+
+    # Bet is returned, with no profit or loss
+    def push(self, bet):
+        self.chips += bet
+    
     
     # Understood to mean get a card
     def hit(self, deck):
@@ -29,8 +53,8 @@ class Player:
         total_earnings = (
             self.blackjack_earnings
             + self.poker_earnings
-            + self.war_earnings
-        )
+            + self.videopoker_earnings
+            + self.war_earnings)
 
         return (
             f"  {self.name.upper()}\n"
@@ -42,41 +66,25 @@ class Player:
             f"  Earnings\n"
             f"    {'Blackjack:':<28} {self.blackjack_earnings:>+10,} chips\n"
             f"    {'Poker:':<28} {self.poker_earnings:>+10,} chips\n"
+            f"    {'Video Poker:':<28} {self.videopoker_earnings:>+10,} chips\n"
             f"    {'War:':<28} {self.war_earnings:>+10,} chips\n"
             f"    {'-' * 42}\n"
-            f"    {'Total Earnings:':<28} {total_earnings:>+10,} chips"
-        )
+            f"    {'Total Earnings:':<28} {total_earnings:>+10,} chips")
 
 
     def place_bet(self):
 
-        while True:
-            print()
-            print("=" * 45)
-            print("            PLACE BET")
-            print("=" * 45)
-            print()
-            print(f"  Player:          {self.name}")
-            print(f"  Available Chips: {self.chips}")
-            print()
+        Util.banner("PLACE BET", 45)
 
-            try:
-                bet = int(input("  Enter your bet: "))
+        print(f"  Player:          {self.name}")
+        print(f"  Available Chips: {self.chips}")
+        print()
 
-                if bet <= 0:
-                    print()
-                    print("  ERROR: Bet must be greater than 0.")
+        bet = Util.ask_int(
+            "  Enter your bet: ",
+            minimum=1,
+            maximum=self.chips)
 
-                elif bet > self.chips:
-                    print()
-                    print("  ERROR: You don't have enough chips.")
-
-                else:
-                    self.chips -= bet
-                    self.bet = bet
-                    self.total_bet += bet
-                    break
-
-            except ValueError:
-                print()
-                print("  ERROR: Please enter a valid number.")
+        # Reset first: wager() adds to bet, and last round's bet is still there
+        self.bet = 0
+        self.wager(bet)

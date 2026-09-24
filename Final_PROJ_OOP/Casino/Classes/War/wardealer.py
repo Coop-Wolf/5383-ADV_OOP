@@ -1,7 +1,4 @@
-from ..player import Player
-from ..hand import Hand
+from ..dealer import Dealer
 
-class Wardealer(Player):
-    
-    def __init__(self):
-        self.hand = Hand()
+class WarDealer(Dealer):
+    pass

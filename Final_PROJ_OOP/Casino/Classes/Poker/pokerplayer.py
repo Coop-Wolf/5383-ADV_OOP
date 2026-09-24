@@ -6,7 +6,6 @@ class PokerPlayer(Player):
 
     def __init__(self, name, chips=100):
         super().__init__(name, chips)
-        self.earnings = 0
         self.hand = PokerHand()
         self.folded = False
 
