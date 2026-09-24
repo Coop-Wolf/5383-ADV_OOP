@@ -3,10 +3,13 @@ from ..hand import Hand
 
 class BlackjackHand(Hand):
 
-    def __init__(self, bet=0):
+    def __init__(self, bet=0, from_split=False):
         super().__init__()
         self.bet = bet
         self.stood = False
+
+        # A 21 on a split hand is just 21, not a blackjack
+        self.from_split = from_split
 
     def get_value(self):
         total = sum(card.get_value() for card in self.cards)
@@ -22,4 +25,8 @@ class BlackjackHand(Hand):
         return self.get_value() > 21
 
     def is_blackjack(self):
-        return len(self.cards) == 2 and self.get_value() == 21
+        return (
+            not self.from_split
+            and len(self.cards) == 2
+            and self.get_value() == 21
+        )

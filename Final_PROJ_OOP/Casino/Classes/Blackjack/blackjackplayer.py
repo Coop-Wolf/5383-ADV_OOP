@@ -100,8 +100,11 @@ class BlackjackPlayer(Player):
         # Pay the additional bet
         self.wager(bet)
 
+        # Neither split hand can count as a blackjack
+        original.from_split = True
+
         # The second card moves to a new hand next to the original
-        second = BlackjackHand(bet)
+        second = BlackjackHand(bet, from_split=True)
         second.add_card(original.cards.pop())
         self.hands.insert(self.active_index + 1, second)
 

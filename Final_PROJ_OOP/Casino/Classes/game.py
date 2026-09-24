@@ -38,7 +38,7 @@ class Game(ABC):
 
         self.sync_players()
 
-    # Players who chose to play (not the same as "hasn't folded")
+    # Players who chose to play this round
     def playing_players(self):
         return [player for player in self.game_players if player.playing]
 

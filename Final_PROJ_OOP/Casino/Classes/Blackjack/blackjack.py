@@ -172,8 +172,8 @@ class Blackjack(Game):
                 hand_index += 1
                 continue
 
-            # Automatically finish busted hands and blackjacks
-            if hand.is_bust() or hand.is_blackjack():
+            # Automatically finish busted hands and any 21
+            if hand.is_bust() or hand.get_value() == 21:
                 hand.stood = True
                 hand_index += 1
                 continue
