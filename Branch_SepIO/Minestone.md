@@ -44,7 +44,7 @@ Build a full-stack online casino application with:
 - Will keep poker for now, but will not use
 - Test gameplay
 
-# Milestone 2 — Separate Game Logic from the Terminal
+# Milestone 2 — Separate Game Logic from the Terminal [CHECK]
 
 **Goal:** Make the casino engine independent of `input()` and `print()`.
 
@@ -179,7 +179,7 @@ Game Logic ──┤
 
 ---
 
-# Milestone 8 — Deployment
+# Milestone 8 — Deployment (Don't think im going to do)
 
 **Goal:** Run the casino on a real server and make it accessible online.
 
