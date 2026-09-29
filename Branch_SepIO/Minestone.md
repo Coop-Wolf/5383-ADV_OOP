@@ -5,7 +5,7 @@
 Build a full-stack online casino application with:
 
 - Blackjack
-- Poker
+- Video Poker
 - War
 - Persistent player accounts and statistics
 - Database storage
@@ -23,7 +23,7 @@ Build a full-stack online casino application with:
 ### Tasks
 
 - [ ] Finish Blackjack
-- [ ] Finish Poker
+- [ ] Finish Video Poker
 - [ ] Finish War
 - [ ] Finish player management
 - [ ] Finish betting/chip management
@@ -35,7 +35,7 @@ Build a full-stack online casino application with:
 
 ### Checkpoint
 
-> Blackjack, Poker, and War can be played reliably through the terminal.
+> Blackjack, Video Poker, and War can be played reliably through the terminal.
 
 ---
 
@@ -124,7 +124,7 @@ Game Logic ──┤
 - [ ] Create casino lobby
 - [ ] Create player information display
 - [ ] Create Blackjack interface
-- [ ] Create Poker interface
+- [ ] Create Video Poker interface
 - [ ] Create War interface
 - [ ] Create betting controls
 - [ ] Create game action buttons
@@ -150,7 +150,7 @@ Game Logic ──┤
 - [ ] Update chips and statistics
 - [ ] Handle errors in the UI
 - [ ] Make Blackjack fully playable
-- [ ] Make Poker fully playable
+- [ ] Make Video Poker fully playable
 - [ ] Make War fully playable
 - [ ] Test the complete player lifecycle
 
@@ -219,7 +219,7 @@ Game Logic ──┤
       │Casino Engine│  │   Database   │
       │             │  │              │
       │ Blackjack   │  │ Players      │
-      │ Poker       │  │ Chips        │
+      │ Video Poker │  │ Chips        │
       │ War         │  │ Statistics   │
       └─────────────┘  │ Game History │
                        └──────────────┘
@@ -227,4 +227,4 @@ Game Logic ──┤
 
 ### Final Checkpoint
 
-> The casino is accessible through a website, users can create/login to accounts, play Blackjack, Poker, and War, their information persists in the database, and multiple users can use the application through the server.
+> The casino is accessible through a website, users can create/login to accounts, play Blackjack, VideoPoker, and War, their information persists in the database, and multiple users can use the application through the server.
