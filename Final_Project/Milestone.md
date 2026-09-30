@@ -73,7 +73,7 @@ Game Logic ──┤
 
 - [ ] Design the database structure (players, chips, statistics)
 - [ ] Create the SQLite database and player table
-- [ ] Build a data access layer (create, read, update player records)
+- [ ] Build a data access layer (create, read, update player records, delete)
 - [ ] Store player accounts
 - [ ] Store chips
 - [ ] Store player statistics
