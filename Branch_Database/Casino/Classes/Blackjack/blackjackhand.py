@@ -25,8 +25,4 @@ class BlackjackHand(Hand):
         return self.get_value() > 21
 
     def is_blackjack(self):
-        return (
-            not self.from_split
-            and len(self.cards) == 2
-            and self.get_value() == 21
-        )
+        return (not self.from_split and len(self.cards) == 2 and self.get_value() == 21)

@@ -9,27 +9,22 @@ import time
 
 class Casino:
 
-    # Games in the lobby: (menu label, game class, takes a single player?)
-    # Add a game here and it shows up in the lobby and welcome screen.
+    # Games in the lobby: (menu label, game class)
     GAMES = [
-        ("Blackjack", Blackjack, False),
-        ("Video Poker", VideoPoker, True),
-        ("War", War, True),
+        ("Blackjack", Blackjack),
+        ("Video Poker", VideoPoker),
+        ("War", War),
     ]
 
     def __init__(self):
-        self.players = []
+        self.player = None
         self.current_game = None
 
     # ----------------
-    # Helper Functions
+    # Helper Function
     # ----------------
-    def _name_taken(self, name):
-        """Case-insensitive check so two players can't share a name."""
-        return any(p.name.lower() == name.lower() for p in self.players)
-
-    def _prompt_name(self, prompt, pending=()):
-        """Ask for a non-empty, unique player name made of letters, spaces, hyphens, or apostrophes."""
+    def _prompt_name(self, prompt):
+        """Ask for a non-empty name made of letters, spaces, hyphens, or apostrophes."""
         while True:
             name = input(prompt).strip()
 
@@ -41,8 +36,6 @@ class Casino:
                 print("  ERROR: Names can only contain letters, spaces, hyphens, and apostrophes.")
             elif len(name) > 20:
                 print("  ERROR: Name must be 20 characters or fewer.")
-            elif self._name_taken(name) or name.lower() in (n.lower() for n in pending):
-                print(f"  ERROR: A player named '{name}' already exists.")
             else:
                 return name
 
@@ -52,14 +45,12 @@ class Casino:
     def lobby_options(self):
         """Every lobby option in menu order as (label, action). Exit's action is None."""
 
-        # cls=cls, single=single binds each game's own values to its lambda
         options = [
-            (label, lambda cls=cls, single=single: self.play_game(cls, single))
-            for label, cls, single in self.GAMES
+            (label, lambda cls=cls: self.play_game(cls))
+            for label, cls in self.GAMES
         ]
 
         options += [
-            ("Add / Remove Player", self.add_or_remove_player),
             ("Add Funds", self.add_funds),
             ("Player Stats", self.get_player_info),
             ("Exit", None),
@@ -76,185 +67,65 @@ class Casino:
         print()
         print("=" * 35)
 
-    def play_game(self, game_class, single_player):
-        """Create and run a game. Single-player games ask who is playing."""
+    def play_game(self, game_class):
 
-        if single_player:
-            player = self.get_single_player()
+        if self.player.chips <= 0:
+            print(f"\n{self.player.name} has no chips. Add funds to keep playing.")
+            time.sleep(3)
+            return
 
-            if player is None:
-                return
-
-            self.current_game = game_class(player)
-
-        else:
-            self.current_game = game_class(self.players)
-
+        self.current_game = game_class(self.player)
         self.current_game.play()
 
     def add_funds(self):
         Util.banner("ADD FUNDS", 50)
 
-        if not self.players:
-            print("  No players available.")
-            print()
-            print("=" * 50)
-            time.sleep(3)
-            return
-
-        print("  CURRENT PLAYERS")
-        print("  " + "-" * 46)
-
-        for i, player in enumerate(self.players):
-            print(
-                f"  {i + 1:<4}"
-                f"{player.name:<20}"
-                f"{player.chips:>10} chips"
-            )
-
-        print()
-        print("  " + "-" * 46)
-
-        # Select player
-        player_number = Util.ask_int(
-            "  Select a player's number: ", 1, len(self.players)
-        )
-        player = self.players[player_number - 1]
-
-        print()
-        print(f"  Selected Player: {player.name}")
-        print(f"  Current Balance: {player.chips} chips")
+        print(f"  Player:          {self.player.name}")
+        print(f"  Current Balance: {self.player.chips} chips")
         print()
 
-        # Enter amount
         amount = Util.ask_int("  Amount to add: ", 1)
 
-        # Add funds
-        player.chips += amount
-        player.funds_added += amount
+        self.player.chips += amount
+        self.player.funds_added += amount
 
         print()
         print("  " + "-" * 46)
         print("               FUNDS ADDED")
         print("  " + "-" * 46)
         print()
-        print(f"  Player:         {player.name}")
+        print(f"  Player:         {self.player.name}")
         print(f"  Amount Added:   +{amount} chips")
-        print(f"  New Balance:    {player.chips} chips")
+        print(f"  New Balance:    {self.player.chips} chips")
         print()
         print("=" * 50)
         time.sleep(3)
 
-    def add_or_remove_player(self):
-        Util.banner("PLAYER MANAGEMENT", 35)
-
-        print("  1.  Add Player")
-        print("  2.  Remove Player")
-        print("  3.  Back to Casino Lobby")
-        print()
-        print("=" * 35)
-
-        option = Util.ask_int("Select an option: ", 1, 3)
-
-        if option == 1:
-            name = self._prompt_name("Enter player name: ")
-            money = Util.ask_int(f"Enter starting chips for {name}: ", 0)
-
-            self.players.append(Player(name, chips=money))
-            print(f"{name} has been added with {money} chips.")
-            time.sleep(2)
-
-        elif option == 2:
-            if not self.players:
-                print("No players to remove.")
-                time.sleep(2)
-                return
-
-            print("Current Players:")
-            for i, player in enumerate(self.players):
-                print(f"{i + 1}. {player.name} - {player.chips} chips")
-
-            player_number = Util.ask_int(
-                "Enter the number of the player to remove: ",
-                1,
-                len(self.players),
-            )
-            removed_player = self.players.pop(player_number - 1)
-            print(f"{removed_player.name} has been removed from the game.")
-            time.sleep(2)
-
-        elif option == 3:
-            return
-
-    # Get number of players and chip amount
-    def get_players(self):
+    # Get the player's name and starting chip amount
+    def create_player(self):
         Util.banner("PLAYER SETUP", 40)
 
-        num_players = Util.ask_int("  Number of players: ", 1, 5)
+        name = self._prompt_name("  Name: ")
+        money = Util.ask_int("  Starting chips: ", 0)
+
+        self.player = Player(name, chips=money)
+
         print()
-
-        new_names = []
-
-        for i in range(num_players):
-            print(f"  --- Player {i + 1} ---")
-
-            name = self._prompt_name("  Name: ", pending=new_names)
-            money = Util.ask_int("  Starting chips: ", 0)
-
-            new_names.append(name)
-            self.players.append(Player(name, chips=money))
-            print()
-
         print("=" * 40)
-        print("          PLAYERS READY!")
+        print("          PLAYER READY!")
         print("=" * 40)
         print()
 
     def get_player_info(self):
         Util.banner("PLAYER STATS", 50)
 
-        for player in self.players:
-            print(player.get_player_info())
-            print()
+        print(self.player.get_player_info())
+        print()
 
         print("=" * 50)
         print()
 
         Util.ask_int('Enter "1" to return: ', 1, 1)
-
-    def get_single_player(self):
-        """Return the chosen Player, or None if the user backs out / can't play."""
-        if not self.players:
-            print()
-            print("  No players available. Add a player first.")
-            print()
-            time.sleep(3)
-            return None
-
-        Util.banner("PLAYERS", 50)
-
-        print("  0.  Back to lobby")
-
-        for number, player in enumerate(self.players, start=1):
-            print(f"  {number}.  {player.name:<10} {player.chips:>5} chips")
-
-        print("=" * 50)
-        print()
-
-        choice = Util.ask_int("Select a player: ", 0, len(self.players))
-
-        if choice == 0:
-            return None
-
-        player = self.players[choice - 1]
-
-        if player.chips <= 0:
-            print(f"{player.name} has no chips and cannot play.")
-            time.sleep(3)
-            return None
-
-        return player
-
 
     def welcome(self):
         Util.banner("WELCOME TO COOP'S CASINO", 45)
@@ -264,12 +135,12 @@ class Casino:
         print()
         print("  Available games include:")
 
-        for label, _, _ in self.GAMES:
+        for label, _ in self.GAMES:
             print(f"    • {label}")
 
         print()
-        print("  Manage your players, add funds,")
-        print("  and keep track of your stats.")
+        print("  Manage your funds and keep track")
+        print("  of your stats along the way.")
         print()
         print("                 WARNING")
         print("-" * 41)
@@ -296,9 +167,9 @@ class Casino:
         try:
             self.welcome()
             Util.clear_screen()
-            self.get_players()
+            self.create_player()
 
-            while self.players:
+            while True:
                 Util.clear_screen()
 
                 options = self.lobby_options()
@@ -314,9 +185,6 @@ class Casino:
                     break
 
                 action()
-
-            if not self.players:
-                print("\nNo players left at the table.")
 
         except (KeyboardInterrupt, EOFError):
             pass

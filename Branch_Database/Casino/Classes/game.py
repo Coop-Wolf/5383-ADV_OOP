@@ -8,96 +8,60 @@ class Game(ABC):
     # Subclasses override these
     name = "Game"
     player_class = None
-    min_players = 1
     welcome_sections = []
 
-    def __init__(self, players, ui=None):
+    def __init__(self, player, ui=None):
 
-        # Original casino players
-        self.players = players
+        # Original casino player
+        self.player = player
 
         # Whatever UI this game talks through. Defaults to the terminal,
-        # but a future UI (pygame, web) could be passed in instead.
+        # but a future UI pygame will be passed in instead.
         self.ui = ui or TerminalUI()
 
-        # Game-specific players, in the same order
-        self.game_players = [
-            self.player_class(player.name, player.chips)
-            for player in players
-        ]
+        # Game-specific player
+        self.game_player = self.player_class(player.name, player.chips)
 
     # Main game loop, the same flow for every game
     def play(self):
 
         self.welcome()
 
-        if self.whos_playing(first_round=True):
+        while True:
 
-            while self.enough_players():
+            self.play_round()
 
-                self.play_round()
+            if self.game_player.chips <= 0:
+                self.ui.show_message(f"\n{self.game_player.name} is out of chips.")
+                self.ui.pause(3)
+                break
 
-                if not self.whos_playing():
-                    break
+            answer = self.ui.ask_yes_no(
+                f"\n{self.game_player.name}, do you want to play again? (y/n): "
+            )
 
-        self.sync_players()
+            # "no", or the question was interrupted
+            if not answer:
+                break
 
-    # Players who chose to play this round
-    def playing_players(self):
-        return [player for player in self.game_players if player.playing]
+        self.sync_player()
 
-    def enough_players(self):
-
-        if len(self.playing_players()) >= self.min_players:
-            return True
-
-        self.ui.show_message(f"\nYou need at least {self.min_players} players to play {self.name}.")
-        self.ui.show_message("Returning to main menu...")
-        self.ui.pause(3)
-        return False
-
-    # Sync chips and earnings back to the original casino players
-    def sync_players(self):
+    # Sync chips and earnings back to the original casino player
+    def sync_player(self):
 
         earnings_attribute = f"{self.name.lower()}_earnings"
 
-        for original_player, game_player in zip(self.players, self.game_players):
+        self.player.chips = self.game_player.chips
 
-            original_player.chips = game_player.chips
+        current_earnings = getattr(self.player, earnings_attribute)
+        setattr(
+            self.player,
+            earnings_attribute,
+            current_earnings + self.game_player.earnings
+        )
 
-            current_earnings = getattr(original_player, earnings_attribute)
-            setattr(
-                original_player,
-                earnings_attribute,
-                current_earnings + game_player.earnings
-            )
-
-            # Reset the game player's earnings
-            game_player.earnings = 0
-
-    def whos_playing(self, first_round=False):
-
-        verb = "play" if first_round else "play again"
-
-        for player in self.game_players:
-
-            if player.chips <= 0:
-                self.ui.show_message(f"{player.name} has no chips and cannot play.")
-                player.playing = False
-                self.ui.pause(3)
-                continue
-
-            answer = self.ui.ask_yes_no(
-                f"{player.name}, do you want to {verb}? (y/n): "
-            )
-
-            # Input was interrupted
-            if answer is None:
-                return False
-
-            player.playing = answer
-
-        return any(player.playing for player in self.game_players)
+        # Reset the game player's earnings
+        self.game_player.earnings = 0
 
     # Print a hand's result and update the player's chips and earnings
     def settle(self, player, bet, outcome, detail, multiplier=1):
@@ -124,8 +88,8 @@ class Game(ABC):
 
     def pause(self, seconds=2):
         self.ui.pause(seconds)
-        
-        # Ask a player for their bet through the UI, then apply it
+
+    # Ask a player for their bet through the UI, then apply it
     def collect_bet(self, player):
         bet = self.ui.ask_bet(player.name, player.chips)
 
@@ -162,7 +126,9 @@ class Game(ABC):
         self.ui.show_message("=" * 45)
         self.ui.show_message("")
 
-    # Each game must implement these
+
+
+    # Each game implements these
     @abstractmethod
     def play_round(self): ...
 

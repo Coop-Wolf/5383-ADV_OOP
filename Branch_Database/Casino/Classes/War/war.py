@@ -23,11 +23,10 @@ class War(Game):
 
     def __init__(self, player, ui=None):
 
-        # Game expects a list, so wrap the single player
-        super().__init__([player], ui=ui)
+        super().__init__(player, ui=ui)
 
         self.war_dealer = WarDealer()
-        self.war_player = self.game_players[0]
+        self.war_player = self.game_player
 
     def play_round(self):
 

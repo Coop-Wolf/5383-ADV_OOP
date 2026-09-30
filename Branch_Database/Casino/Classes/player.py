@@ -15,7 +15,6 @@ class Player:
         # Per-game earnings. Game players use this, and
         # Game.sync_players adds it to the totals above.
         self.earnings = 0
-        self.playing = True
 
     # Move chips from the player into a bet
     def wager(self, amount):

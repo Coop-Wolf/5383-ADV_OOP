@@ -8,7 +8,6 @@ class VideoPoker(Game):
 
     name = "VideoPoker"
     player_class = VideoPokerPlayer
-    min_players = 1
 
     # Jacks or Better. Values are "X for 1": total chips returned per chip bet.
     # Keys must match the hand names VideoPokerHand.evaluate() returns.
@@ -39,10 +38,8 @@ class VideoPoker(Game):
     ]
 
     def __init__(self, player, ui=None):
-
-        # Game expects a list, so wrap the single player
-        super().__init__([player], ui=ui)
-        self.video_player = self.game_players[0]
+        super().__init__(player, ui=ui)
+        self.video_player = self.game_player
 
     def play_round(self):
 

@@ -69,6 +69,13 @@ Game Logic ──┤
 > The casino games can run without depending on the terminal
 
 
+# Milestone 2.5 - Make game singleplayer
+
+### Tasks
+
+- Remove all for loops through players
+- Remove instaces where asking to enter players
+
 # Milestone 3 — Add the Database
 
 **Goal:** Persist player information so it survives when the application stops.
