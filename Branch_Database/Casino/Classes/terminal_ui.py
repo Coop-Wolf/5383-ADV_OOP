@@ -1,6 +1,6 @@
 import os
 import time
-
+from util import Util
 
 class TerminalUI:
 
@@ -107,3 +107,21 @@ class TerminalUI:
 
     def ask_continue(self):
         input("\n  Press Enter to continue...")
+
+    def ask_username(self, prompt="Enter your username: "):
+        """Keeps asking until the username is valid.
+
+        Returns the cleaned username, or None if input was interrupted.
+        """
+        while True:
+            try:
+                raw = input(prompt)
+            except (EOFError, KeyboardInterrupt):
+                self.show_message("\nInput interrupted. Exiting game.")
+                return None
+
+            name, error = Util.validate_username(raw)
+            if error:
+                self.show_message(f"  ERROR: {error}")
+                continue
+            return name
