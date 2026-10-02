@@ -1,4 +1,3 @@
-# Base hand for games
 class Hand:
     def __init__(self):
         # List of cards

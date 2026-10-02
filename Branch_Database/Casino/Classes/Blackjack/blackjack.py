@@ -23,8 +23,8 @@ class Blackjack(Game):
         ("Blackjack", "An Ace + a 10-value card on your first two cards is a Blackjack."),
     ]
 
-    def __init__(self, player, ui=None):
-        super().__init__(player, ui=ui)
+    def __init__(self, player, ui=None, db=None):
+        super().__init__(player, ui=ui, db=db)
         self.blackjack_player = self.game_player
         self.dealer = BlackjackDealer()
 
@@ -35,7 +35,7 @@ class Blackjack(Game):
 
         self.blackjack_player.reset_hands()
 
-        self.ui.clear()
+        self.ui.clear_screen()
         self.collect_bet(self.blackjack_player)
 
         # Store the initial bet on the first hand
@@ -44,7 +44,7 @@ class Blackjack(Game):
         self.dealer.reset_hand()
 
         # Deal initial cards
-        self.ui.clear()
+        self.ui.clear_screen()
         self.deal_initial_cards()
 
         # Show completed initial deal

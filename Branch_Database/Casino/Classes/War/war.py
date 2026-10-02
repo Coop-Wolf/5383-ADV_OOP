@@ -21,9 +21,8 @@ class War(Game):
         ]),
     ]
 
-    def __init__(self, player, ui=None):
-
-        super().__init__(player, ui=ui)
+    def __init__(self, player, ui=None, db=None):
+        super().__init__(player, ui=ui, db=db)
 
         self.war_dealer = WarDealer()
         self.war_player = self.game_player
@@ -38,9 +37,9 @@ class War(Game):
         self.war_dealer.reset_hand()
 
         # Player place bet
-        self.ui.clear()
+        self.ui.clear_screen()
         self.collect_bet(self.war_player)
-        self.ui.clear()
+        self.ui.clear_screen()
 
         # Deal player card
         self.war_player.hit(self.deck)
@@ -48,7 +47,7 @@ class War(Game):
         # Show table
         self.show_table()
         self.pause()
-        self.ui.clear()
+        self.ui.clear_screen()
 
         # Deal dealer card
         self.war_dealer.hit(self.deck)
@@ -56,7 +55,7 @@ class War(Game):
         # Show table
         self.show_table(reveal_dealer=True)
         self.pause()
-        self.ui.clear()
+        self.ui.clear_screen()
 
         # Determine winner
         self.determine_winner()

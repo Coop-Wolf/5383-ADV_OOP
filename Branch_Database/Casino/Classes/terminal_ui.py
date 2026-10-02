@@ -1,10 +1,10 @@
 import os
 import time
-from util import Util
+from .util import Util
 
 class TerminalUI:
 
-    def clear(self):
+    def clear_screen(self):
         os.system("cls" if os.name == "nt" else "clear")
 
     def pause(self, seconds=2):

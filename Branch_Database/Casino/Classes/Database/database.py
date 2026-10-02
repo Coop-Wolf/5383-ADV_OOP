@@ -1,6 +1,6 @@
 import sqlite3
 
-from createDB import DB_PATH, create_database
+from .createDB import DB_PATH, create_database
 
 STARTING_CHIPS = 100
 GAMES = ("VideoPoker", "Blackjack", "War")
@@ -129,3 +129,10 @@ class Database:
         # Get chip count for player
         row = self.conn.execute("SELECT chips FROM players WHERE id = ?", (player_id,)).fetchone()
         return row["chips"]
+    
+    def delete_player(self, player_id):
+        """
+        Delete a player. Their stats are removed too (ON DELETE CASCADE).
+        """
+        with self.conn:
+            self.conn.execute("DELETE FROM players WHERE id = ?", (player_id,))

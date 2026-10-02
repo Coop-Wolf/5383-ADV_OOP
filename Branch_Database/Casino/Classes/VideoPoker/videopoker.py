@@ -37,8 +37,8 @@ class VideoPoker(Game):
         ),
     ]
 
-    def __init__(self, player, ui=None):
-        super().__init__(player, ui=ui)
+    def __init__(self, player, ui=None, db=None):
+        super().__init__(player, ui=ui, db=db)
         self.video_player = self.game_player
 
     def play_round(self):
@@ -47,7 +47,7 @@ class VideoPoker(Game):
 
         self.deck = Deck()
 
-        self.ui.clear()
+        self.ui.clear_screen()
         self.collect_bet(player)
 
         # Deal five cards

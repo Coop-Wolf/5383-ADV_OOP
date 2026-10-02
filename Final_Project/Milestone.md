@@ -71,15 +71,15 @@ Game Logic ──┤
 
 ### Tasks
 
-- [ ] Design the database structure (players, chips, statistics)
-- [ ] Create the SQLite database and player table
-- [ ] Build a data access layer (create, read, update player records, delete)
-- [ ] Store player accounts
-- [ ] Store chips
-- [ ] Store player statistics
-- [ ] Load player information when logging in
-- [ ] Save updated information when leaving
-- [ ] Decide when additional saves should occur during gameplay (e.g., after each round)
+- [x] Design the database structure (players, chips, statistics)
+- [x] Create the SQLite database and player table
+- [x] Build a data access layer (create, read, update player records, delete)
+- [x] Store player accounts
+- [x] Store chips
+- [x] Store player statistics
+- [x] Load player information when logging in
+- [x] Save updated information when leaving
+- [x] Decide when additional saves should occur during gameplay (e.g., after each round)
 
 ### Checkpoint
 
