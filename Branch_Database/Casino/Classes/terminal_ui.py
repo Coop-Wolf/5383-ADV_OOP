@@ -23,7 +23,10 @@ class TerminalUI:
         print(text)
 
     def ask_yes_no(self, prompt):
-        """Returns True for 'y', False for 'n', None if input was interrupted."""
+        """
+        Returns True for 'y', False for 'n', None if input was interrupted.
+        """
+        
         while True:
             try:
                 choice = input(prompt).strip().lower()
@@ -36,7 +39,10 @@ class TerminalUI:
             print("ERROR: please enter 'y' or 'n'.")
 
     def ask_int(self, prompt, minimum=None, maximum=None):
-        """Keeps asking until the user enters a whole number in range."""
+        """
+        Keeps asking until the user enters a whole number in range.
+        """
+        
         while True:
             try:
                 value = int(input(prompt))
@@ -109,10 +115,10 @@ class TerminalUI:
         input("\n  Press Enter to continue...")
 
     def ask_username(self, prompt="Enter your username: "):
-        """Keeps asking until the username is valid.
-
-        Returns the cleaned username, or None if input was interrupted.
         """
+        Keeps asking until the username is valid.
+        """
+        
         while True:
             try:
                 raw = input(prompt)

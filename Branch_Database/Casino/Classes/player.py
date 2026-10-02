@@ -11,15 +11,12 @@ class Player:
         self.id = player_id
         self.name = name
         self.chips = chips
-        self.bet = 0
         self.starting_amount = chips
+        self.bet = 0
         self.funds_added = 0
         self.blackjack_earnings = 0
         self.videopoker_earnings = 0
         self.war_earnings = 0
- 
-        # Per-game earnings. Game players use this, and
-        # Game.sync_players adds it to the totals above.
         self.earnings = 0
  
     # Move chips from the player into a bet
@@ -48,7 +45,7 @@ class Player:
         self.hand.add_card(card)
         return card
  
-    # stats comes from Database.get_stats(): {game: {rounds_played, wins, ...}}
+    # stats comes from Database.get_stats()
     def get_player_info(self, stats):
         rows = ""
         for game, label in self.GAME_LABELS.items():

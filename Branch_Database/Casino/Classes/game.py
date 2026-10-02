@@ -6,7 +6,6 @@ from .terminal_ui import TerminalUI
 class Game(ABC):
  
     # Subclasses override these
-    # name must match the database game names: "VideoPoker", "Blackjack", "War"
     name = "Game"
     player_class = None
     welcome_sections = []
@@ -15,12 +14,7 @@ class Game(ABC):
  
         # Original casino player
         self.player = player
- 
-        # Whatever UI this game talks through. Defaults to the terminal,
-        # but a future UI pygame will be passed in instead.
         self.ui = ui or TerminalUI()
- 
-        # Database that saves each finished hand. None means nothing is saved.
         self.db = db
  
         # Game-specific player
@@ -40,11 +34,8 @@ class Game(ABC):
                 self.ui.pause(3)
                 break
  
-            answer = self.ui.ask_yes_no(
-                f"\n{self.game_player.name}, do you want to play again? (y/n): "
-            )
+            answer = self.ui.ask_yes_no(f"\n{self.game_player.name}, do you want to play again? (y/n): ")
  
-            # "no", or the question was interrupted
             if not answer:
                 break
  
@@ -58,11 +49,7 @@ class Game(ABC):
         self.player.chips = self.game_player.chips
  
         current_earnings = getattr(self.player, earnings_attribute)
-        setattr(
-            self.player,
-            earnings_attribute,
-            current_earnings + self.game_player.earnings
-        )
+        setattr(self.player, earnings_attribute, current_earnings + self.game_player.earnings)
  
         # Reset the game player's earnings
         self.game_player.earnings = 0
@@ -71,7 +58,7 @@ class Game(ABC):
         if self.db is not None:
             self.db.save_chips(self.player.id, self.player.chips)
  
-    # Save one finished hand to the database (if there is one)
+    # Save one finished hand to the database
     def record_result(self, outcome, net_change):
         if self.db is not None:
             self.db.record_result(self.player.id, self.name, outcome, net_change)
@@ -126,16 +113,10 @@ class Game(ABC):
             self.ui.show_message(f"  {title}:")
  
             if isinstance(content, str):
-                self.ui.show_message(textwrap.fill(
-                    content, width=45,
-                    initial_indent="    ", subsequent_indent="    "
-                ))
+                self.ui.show_message(textwrap.fill(content, width=45,initial_indent="    ", subsequent_indent="    "))
             else:
                 for item in content:
-                    self.ui.show_message(textwrap.fill(
-                        item, width=45,
-                        initial_indent="    • ", subsequent_indent="      "
-                    ))
+                    self.ui.show_message(textwrap.fill(item, width=45,initial_indent="    • ", subsequent_indent="      "))
  
             self.ui.show_message("")
  

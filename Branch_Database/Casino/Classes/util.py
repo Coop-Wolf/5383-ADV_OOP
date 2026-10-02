@@ -1,14 +1,11 @@
 import re
 
-
 # Letter first, then letters/digits/underscores, with at most one space
 # in the middle (the space must be followed by at least one more character).
 USERNAME_PATTERN = re.compile(r"[A-Za-z][A-Za-z0-9_]*(?: [A-Za-z0-9_]+)?")
 USERNAME_MIN_LENGTH = 2
 USERNAME_MAX_LENGTH = 10
 RESERVED_NAMES = {"dealer", "house", "casino", "admin", "guest", "player", "players"}
- 
-
 
 class Util():
         

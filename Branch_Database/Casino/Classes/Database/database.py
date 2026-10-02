@@ -1,11 +1,9 @@
 import sqlite3
-
 from .createDB import DB_PATH, create_database
 
 STARTING_CHIPS = 100
 GAMES = ("VideoPoker", "Blackjack", "War")
 OUTCOMES = ("win", "loss", "push")
-
 
 class Database:
     def __init__(self, path=DB_PATH):
@@ -29,7 +27,7 @@ class Database:
     # Players
     def get_or_create_player(self, username):
         """
-        Look up a player by username (case-insensitive), creating one if needed.
+        Look up a player by username, creating one if needed.
         Returns (player, is_new) where player is a dict with id, username, chips.
         """
         
@@ -48,7 +46,7 @@ class Database:
  
     def save_chips(self, player_id, chips):
         """
-        Set a player's chip balance outright (used for the save-on-exit safety net).
+        Set a player's chip balance outright.
         """
         
         with self.conn:
@@ -132,7 +130,7 @@ class Database:
     
     def delete_player(self, player_id):
         """
-        Delete a player. Their stats are removed too (ON DELETE CASCADE).
+        Delete a player and their stats
         """
         with self.conn:
             self.conn.execute("DELETE FROM players WHERE id = ?", (player_id,))

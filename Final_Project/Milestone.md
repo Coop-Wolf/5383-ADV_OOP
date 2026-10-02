@@ -88,7 +88,7 @@ Game Logic ──┤
 ---
 
 # Milestone 4 — Build the Pygame Foundation
-*Week 7*
+*Week 2-6*
 
 **Goal:** Create the core structure of the desktop application.
 
@@ -109,7 +109,7 @@ Game Logic ──┤
 ---
 
 # Milestone 5 — Build the Game Screens
-*Weeks 8–9*
+*Weeks 7–9*
 
 **Goal:** Create the visual interface for each casino game.
 

@@ -30,8 +30,8 @@ CREATE TABLE IF NOT EXISTS player_stats (
 DB_PATH = "casino.db"
 
 def create_database(path=DB_PATH):
-    conn = sqlite3.connect(path)   # creates casino.db if it doesn't exist
-    conn.executescript(SCHEMA)     # creates the tables if they don't exist
+    conn = sqlite3.connect(path)
+    conn.executescript(SCHEMA)
     conn.close()
 
 

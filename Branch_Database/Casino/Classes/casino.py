@@ -5,12 +5,11 @@ from .War.war import War
 from .terminal_ui import TerminalUI
 from .Database.database import Database
 import sys
-import time
  
  
 class Casino:
  
-    # Games in the lobby: (menu label, game class)
+    # Games in the lobby
     GAMES = [
         ("Blackjack", Blackjack),
         ("Video Poker", VideoPoker),
@@ -23,9 +22,6 @@ class Casino:
         self.db = Database()
         self.ui = TerminalUI()
  
-    # ----------------
-    # Helper Function
-    # ----------------
     def shutdown(self):
         """Close the database. Chips are already saved after every hand."""
         self.db.close()
@@ -36,10 +32,7 @@ class Casino:
     def lobby_options(self):
         """Every lobby option in menu order as (label, action). Exit's action is None."""
  
-        options = [
-            (label, lambda cls=cls: self.play_game(cls))
-            for label, cls in self.GAMES
-        ]
+        options = [(label, lambda cls=cls: self.play_game(cls)) for label, cls in self.GAMES]
  
         options += [
             ("Add Funds", self.add_funds),
@@ -53,16 +46,16 @@ class Casino:
         self.ui.banner("CASINO LOBBY", 35)
  
         for number, (label, _) in enumerate(options, start=1):
-            print(f"  {number}.  {label}")
+            self.ui.show_message(f"  {number}.  {label}")
  
-        print()
-        print("=" * 35)
+        self.ui.show_message()
+        self.ui.show_message("=" * 35)
  
     def play_game(self, game_class):
  
         if self.player.chips <= 0:
-            print(f"\n{self.player.name} has no chips. Add funds to keep playing.")
-            time.sleep(3)
+            self.ui.show_message(f"\n{self.player.name} has no chips. Add funds to keep playing.")
+            self.ui.pause(3)
             return
  
         self.current_game = game_class(self.player, db=self.db)
@@ -71,9 +64,9 @@ class Casino:
     def add_funds(self):
         self.ui.banner("ADD FUNDS", 50)
  
-        print(f"  Player:          {self.player.name}")
-        print(f"  Current Balance: {self.player.chips} chips")
-        print()
+        self.ui.show_message(f"  Player:          {self.player.name}")
+        self.ui.show_message(f"  Current Balance: {self.player.chips} chips")
+        self.ui.show_message()
  
         amount = self.ui.ask_int("  Amount to add: ", 1)
  
@@ -81,17 +74,17 @@ class Casino:
         self.player.funds_added += amount
         self.db.save_chips(self.player.id, self.player.chips)
  
-        print()
-        print("  " + "-" * 46)
-        print("               FUNDS ADDED")
-        print("  " + "-" * 46)
-        print()
-        print(f"  Player:         {self.player.name}")
-        print(f"  Amount Added:   +{amount} chips")
-        print(f"  New Balance:    {self.player.chips} chips")
-        print()
-        print("=" * 50)
-        time.sleep(3)
+        self.ui.show_message()
+        self.ui.show_message("  " + "-" * 46)
+        self.ui.show_message("               FUNDS ADDED")
+        self.ui.show_message("  " + "-" * 46)
+        self.ui.show_message()
+        self.ui.show_message(f"  Player:         {self.player.name}")
+        self.ui.show_message(f"  Amount Added:   +{amount} chips")
+        self.ui.show_message(f"  New Balance:    {self.player.chips} chips")
+        self.ui.show_message()
+        self.ui.show_message("=" * 50)
+        self.ui.ask_continue()
  
     # Ask for a username, then load that player from the database (or create them)
     def login(self):
@@ -108,63 +101,63 @@ class Casino:
             record["username"], chips=record["chips"], player_id=record["id"]
         )
  
-        print()
-        print("=" * 40)
+        self.ui.show_message()
+        self.ui.show_message("=" * 40)
         if is_new:
-            print(f"  Welcome, {self.player.name}!")
-            print(f"  You start with {self.player.chips} chips.")
+            self.ui.show_message(f"  Welcome, {self.player.name}!")
+            self.ui.show_message(f"  You start with {self.player.chips} chips.")
         else:
-            print(f"  Welcome back, {self.player.name}!")
-            print(f"  You have {self.player.chips} chips.")
-        print("=" * 40)
-        print()
-        time.sleep(2)
+            self.ui.show_message(f"  Welcome back, {self.player.name}!")
+            self.ui.show_message(f"  You have {self.player.chips} chips.")
+        self.ui.show_message("=" * 40)
+        self.ui.show_message()
+        self.ui.pause(2)
         return True
  
     def get_player_info(self):
         self.ui.banner("PLAYER STATS", 50)
  
-        print(self.player.get_player_info(self.db.get_stats(self.player.id)))
-        print()
+        self.ui.show_message(self.player.get_player_info(self.db.get_stats(self.player.id)))
+        self.ui.show_message()
  
-        print("=" * 50)
-        print()
+        self.ui.show_message("=" * 50)
+        self.ui.show_message()
  
-        self.ui.ask_int('Enter "1" to return: ', 1, 1)
+        self.ui.ask_continue()
  
     def welcome(self):
         self.ui.banner("WELCOME TO COOP'S CASINO", 45)
  
-        print("  Choose your game, place your bets,")
-        print("  and see if you can come out ahead.")
-        print()
-        print("  Available games include:")
+        self.ui.show_message("  Choose your game, place your bets,")
+        self.ui.show_message("  and see if you can come out ahead.")
+        self.ui.show_message()
+        self.ui.show_message("  Available games include:")
  
         for label, _ in self.GAMES:
-            print(f"    • {label}")
+            self.ui.show_message(f"    • {label}")
  
-        print()
-        print("  Manage your funds and keep track")
-        print("  of your stats along the way.")
-        print()
-        print("                 WARNING")
-        print("-" * 41)
-        print("  If you or someone you know has a")
-        print("  gambling problem, help is available.")
-        print()
-        print("  National Problem Gambling Helpline")
-        print("             1-800-426-2537")
-        print("-" * 41)
-        print()
-        print("=" * 45)
-        print(" 1. Continue")
-        print(" 2. Exit")
-        print()
+        self.ui.show_message()
+        self.ui.show_message("  Manage your funds and keep track")
+        self.ui.show_message("  of your stats along the way.")
+        self.ui.show_message()
+        self.ui.show_message("                 WARNING")
+        self.ui.show_message("-" * 41)
+        self.ui.show_message("  If you or someone you know has a")
+        self.ui.show_message("  gambling problem, help is available.")
+        self.ui.show_message()
+        self.ui.show_message("  National Problem Gambling Helpline")
+        self.ui.show_message("             1-800-426-2537")
+        self.ui.show_message("-" * 41)
+        self.ui.show_message()
+        self.ui.show_message("=" * 45)
+        self.ui.show_message(" 1. Continue")
+        self.ui.show_message(" 2. Exit")
+        self.ui.show_message()
  
         choice = self.ui.ask_int(" Select an option: ", 1, 2)
  
         if choice == 2:
-            print("\n Exiting casino...")
+            self.ui.show_message("\n Exiting casino...")
             sys.exit()
  
     # Casino loop
@@ -197,4 +190,4 @@ class Casino:
         finally:
             self.shutdown()
  
-        print("\nLeaving the casino. Goodbye!")
+        self.ui.show_message("\nLeaving the casino. Goodbye!")
