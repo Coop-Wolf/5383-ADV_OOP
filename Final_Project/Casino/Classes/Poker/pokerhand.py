@@ -16,6 +16,35 @@ class PokerHand(Hand):
 
         return int(rank)
 
+    # High card of the best straight in these ranks, or None.
+    # An ace can also play low (A-2-3-4-5).
+    def find_straight(self, ranks):
+        unique = set(ranks)
+
+        if 14 in unique:
+            unique.add(1)
+
+        for high in range(14, 4, -1):
+            if all(value in unique for value in range(high - 4, high + 1)):
+                return high
+
+        return None
+
+    # Ranks of the cards in a flush (five or more of one suit), or None
+    def find_flush(self, cards):
+        by_suit = {}
+
+        for card in cards:
+            by_suit.setdefault(card.suit, []).append(
+                self.get_poker_value(card.rank)
+            )
+
+        for suit_ranks in by_suit.values():
+            if len(suit_ranks) >= 5:
+                return suit_ranks
+
+        return None
+
     def evaluate(self, community_cards):
         all_cards = self.cards + community_cards
 
@@ -27,8 +56,6 @@ class PokerHand(Hand):
             for card in all_cards
         ]
 
-        suits = [card.suit for card in all_cards]
-
         rank_counts = {}
 
         for rank in ranks:
@@ -36,7 +63,18 @@ class PokerHand(Hand):
 
         counts = sorted(rank_counts.values(), reverse=True)
 
-        is_flush = len(set(suits)) == 1
+        flush_ranks = self.find_flush(all_cards)
+        straight_high = self.find_straight(ranks)
+
+        # Straight flush: a straight made only of the flush suit's cards
+        if flush_ranks:
+            straight_flush_high = self.find_straight(flush_ranks)
+
+            if straight_flush_high == 14:
+                return (10,), "Royal Flush"
+
+            if straight_flush_high:
+                return (9, straight_flush_high), "Straight Flush"
 
         # Four of a Kind
         if counts[0] >= 4:
@@ -45,7 +83,9 @@ class PokerHand(Hand):
                 if rank_counts[rank] >= 4
             )
 
-            return (8, four_rank), "Four of a Kind"
+            kicker = max(rank for rank in ranks if rank != four_rank)
+
+            return (8, four_rank, kicker), "Four of a Kind"
 
         # Full House
         if counts[0] >= 3 and counts[1] >= 2:
@@ -63,8 +103,12 @@ class PokerHand(Hand):
             return (7, three_rank, pair_rank), "Full House"
 
         # Flush
-        if is_flush:
-            return (6, *sorted(ranks, reverse=True)), "Flush"
+        if flush_ranks:
+            return (6, *sorted(flush_ranks, reverse=True)[:5]), "Flush"
+
+        # Straight
+        if straight_high:
+            return (5, straight_high), "Straight"
 
         # Three of a Kind
         if counts[0] >= 3:
@@ -92,7 +136,7 @@ class PokerHand(Hand):
 
             kicker = max(
                 rank for rank in ranks
-                if rank not in pairs
+                if rank not in pairs[:2]
             )
 
             return (3, pairs[0], pairs[1], kicker), "Two Pair"

@@ -1,4 +1,4 @@
-Week one procress report
+Week 1: Databsae
 
 This week I created the database folder that stores files for:
     - Database creation

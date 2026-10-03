@@ -4,63 +4,40 @@ from ..deck        import Deck
 from .pokerhand   import PokerHand
 from ..util        import Util
 from .pot         import Pot
-import time
 
 # Poker game
 class Poker(Game):
+
+    name = "Poker"
+    player_class = PokerPlayer
+    min_players = 2
+    
+    welcome_sections = [
+        ("Goal", "Make the best five-card poker hand using your two cards and the community cards."),
+        ("How to Play", [
+            "Each player is dealt two cards.",
+            "Five community cards are dealt.",
+            "The community cards are revealed in three stages: Flop, Turn, River.",
+            "Players bet after each stage.",
+        ]),
+        ("Actions", [
+            "Check - Stay in without adding chips.",
+            "Call - Match the current table bet.",
+            "Raise - Increase the current table bet.",
+            "Fold - Leave the current hand.",
+        ]),
+        ("Winning", "The player with the highest-ranking five-card hand wins the pot."),
+    ]
+
+
     def __init__(self, players):
-        
-        self.name = "Poker"
-        
-        # Original Casino players
-        self.players = players
-        
-        # Create pot
+        super().__init__(players)
+
         self.pot = Pot()
-        
         self.current_bet = 0
-        
+
         # Cards on the table
         self.community_cards = []
-
-        # Blackjack-specific players
-        self.poker_players = [
-            PokerPlayer(player.name, player.chips)
-            for player in players
-        ]
-        
-
-
-    # Main Game loop
-    def play(self):
-
-        self.welcome()
-
-        if not self.whos_playing(self.poker_players, first_round=True):
-            self.sync_players(self.players, self.poker_players, self.name)
-            return
-
-        while True:
-
-            # Make sure at least 2 players are playing
-            active_players = sum(player.playing for player in self.poker_players)
-
-            if active_players < 2:
-                # Sync player chips counts
-                self.sync_players(self.players, self.poker_players, self.name)
-                
-                # Returning to main menu
-                print("\nYou need at least 2 players to play Poker.")
-                print("Returning to main menu...")
-                time.sleep(3)
-                return
-
-            # Play one round of poker
-            self.play_round()
-
-            if not self.whos_playing(self.poker_players, first_round=False):
-                self.sync_players(self.players, self.poker_players)
-                break
             
 
     def play_round(self):
@@ -73,7 +50,7 @@ class Poker(Game):
         self.current_bet = 0
 
         # Reset players
-        for poker_player in self.poker_players:
+        for poker_player in self.game_players:
 
             if not poker_player.playing:
                 continue
@@ -140,7 +117,7 @@ class Poker(Game):
         
     def deal_initial_cards(self):
         for _ in range(2):
-            for poker_player in self.poker_players:
+            for poker_player in self.game_players:
                 if not poker_player.playing:
                     continue
                 poker_player.hit(self.deck)
@@ -247,7 +224,7 @@ class Poker(Game):
             winner.earnings += winnings - winner.total_bet
 
             # Record losses for players who folded
-            for poker_player in self.poker_players:
+            for poker_player in self.game_players:
                 if poker_player.folded:
                     poker_player.earnings -= poker_player.total_bet
 
@@ -357,7 +334,7 @@ class Poker(Game):
                 )
 
         # Record losses for players who folded
-        for poker_player in self.poker_players:
+        for poker_player in self.game_players:
             if poker_player.folded:
                 poker_player.earnings -= poker_player.total_bet
 
@@ -365,21 +342,14 @@ class Poker(Game):
         print("=" * 50)
         
     def call(self, poker_player):
-        amount = self.current_bet - poker_player.bet
+        amount = min(self.current_bet - poker_player.bet, poker_player.chips)
 
-        if amount > poker_player.chips:
-            amount = poker_player.chips
-
-        poker_player.chips -= amount
-        poker_player.bet += amount
-        poker_player.total_bet += amount
-
+        poker_player.wager(amount)
         self.pot.add(amount)
 
         print(
             f"\n{poker_player.name} calls "
-            f"{amount} chips."
-        )
+            f"{amount} chips.")
         
     def raise_bet(self, poker_player):
         while True:
@@ -411,9 +381,7 @@ class Poker(Game):
                         )
                         continue
 
-                    poker_player.chips -= amount
-                    poker_player.bet = new_bet
-                    poker_player.total_bet += amount
+                    poker_player.wager(amount)
 
                     self.pot.add(amount)
 
@@ -430,7 +398,7 @@ class Poker(Game):
                 print("  ERROR: Please enter a valid number.")
                 
     def reset_round_bets(self):
-        for poker_player in self.poker_players:
+        for poker_player in self.game_players:
             
             if not poker_player.playing:
                 continue
@@ -443,7 +411,7 @@ class Poker(Game):
     def one_player_remaining(self):
         active_players = 0
 
-        for poker_player in self.poker_players:
+        for poker_player in self.game_players:
             if not poker_player.playing:
                 continue
 
@@ -458,7 +426,7 @@ class Poker(Game):
     def get_active_players(self):
         return [
             player
-            for player in self.poker_players
+            for player in self.game_players
             if player.playing and not player.folded
         ]
         
@@ -466,44 +434,8 @@ class Poker(Game):
     def get_players_who_can_act(self):
         return [
             player
-            for player in self.poker_players
+            for player in self.game_players
             if player.playing
             and not player.folded
             and player.chips > 0
         ]
-        
-    def welcome(self):
-        Util.clear_screen()
-        
-        print()
-        print("=" * 45)
-        print("                  POKER")
-        print("=" * 45)
-        print()
-        print("  Welcome to Poker!")
-        print()
-        print("  Goal:")
-        print("    Make the best five-card poker hand")
-        print("    using your two cards and the")
-        print("    community cards.")
-        print()
-        print("  How to Play:")
-        print("    • Each player is dealt two cards.")
-        print("    • Five community cards are dealt.")
-        print("    • The community cards are revealed")
-        print("      in three stages: Flop, Turn, River.")
-        print("    • Players bet after each stage.")
-        print()
-        print("  Actions:")
-        print("    • Check - Stay in without adding chips.")
-        print("    • Call  - Match the current table bet.")
-        print("    • Raise - Increase the current table bet.")
-        print("    • Fold  - Leave the current hand.")
-        print()
-        print("  Winning:")
-        print("    The player with the highest-ranking")
-        print("    five-card hand wins the pot.")
-        print()
-        print("=" * 45)
-        print()
-        

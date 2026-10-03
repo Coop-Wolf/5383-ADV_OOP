@@ -1,7 +1,5 @@
-# Base hand for games
 class Hand:
     def __init__(self):
-        # List of cards
         self.cards = []
 
     # Add a card to hand

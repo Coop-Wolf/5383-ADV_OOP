@@ -1,99 +1,136 @@
-from multiprocessing import util
-import time
-from .util import Util
-
-class Game():
-
-
-    # Sync player information from game
-    def sync_players(self, original_players, game_players, game_name):
-
-        earnings_attribute = f"{game_name.lower()}_earnings"
-
-        if isinstance(game_players, list):
-
-            for original_player, game_player in zip(
-                original_players,
-                game_players
-            ):
-
-                original_player.chips = game_player.chips
-
-                current_earnings = getattr(
-                    original_player,
-                    earnings_attribute
-                )
-
-                setattr(
-                    original_player,
-                    earnings_attribute,
-                    current_earnings + game_player.earnings
-                )
-                
-                # Reset players earnings on the game
-                game_player.earnings = 0
-
+import textwrap
+from abc import ABC, abstractmethod
+from .terminal_ui import TerminalUI
+ 
+ 
+class Game(ABC):
+ 
+    # Subclasses override these
+    name = "Game"
+    player_class = None
+    welcome_sections = []
+ 
+    def __init__(self, player, ui=None, db=None):
+ 
+        # Original casino player
+        self.player = player
+        self.ui = ui or TerminalUI()
+        self.db = db
+ 
+        # Game-specific player
+        self.game_player = self.player_class(player.name, player.chips)
+ 
+    # Main game loop, the same flow for every game
+    def play(self):
+ 
+        self.welcome()
+ 
+        while True:
+ 
+            self.play_round()
+ 
+            if self.game_player.chips <= 0:
+                self.ui.show_message(f"\n{self.game_player.name} is out of chips.")
+                self.ui.pause(3)
+                break
+ 
+            answer = self.ui.ask_yes_no(f"\n{self.game_player.name}, do you want to play again? (y/n): ")
+ 
+            if not answer:
+                break
+ 
+        self.sync_player()
+ 
+    # Sync chips and earnings back to the original casino player
+    def sync_player(self):
+ 
+        earnings_attribute = f"{self.name.lower()}_earnings"
+ 
+        self.player.chips = self.game_player.chips
+ 
+        current_earnings = getattr(self.player, earnings_attribute)
+        setattr(self.player, earnings_attribute, current_earnings + self.game_player.earnings)
+ 
+        # Reset the game player's earnings
+        self.game_player.earnings = 0
+ 
+        # Safety net: save the final chip count for this session
+        if self.db is not None:
+            self.db.save_chips(self.player.id, self.player.chips)
+ 
+    # Save one finished hand to the database
+    def record_result(self, outcome, net_change):
+        if self.db is not None:
+            self.db.record_result(self.player.id, self.name, outcome, net_change)
+ 
+    # Print a hand's result and update the player's chips and earnings
+    def settle(self, player, bet, outcome, detail, multiplier=1):
+ 
+        if outcome == "win":
+            profit = player.win(bet, multiplier)
+            self.ui.show_message(f"    Result: WIN - {detail}")
+            self.ui.show_message(f"    Payout: +{profit} chips")
+            self.record_result("win", profit)
+ 
+        elif outcome == "loss":
+            player.lose(bet)
+            self.ui.show_message(f"    Result: LOSS - {detail}")
+            self.record_result("loss", -bet)
+ 
         else:
-
-            original_players.chips = game_players.chips
-
-            current_earnings = getattr(
-                original_players,
-                earnings_attribute
-            )
-
-            setattr(
-                original_players,
-                earnings_attribute,
-                current_earnings + game_players.earnings
-            )
-            
-            # Reset players earnings on the game
-            game_players.earnings = 0
-            
-                        
-            
-    def whos_playing(self, players, first_round=False):
-
-        verb = "play" if first_round else "play again"
-
-        if isinstance(players, list):
-            for player in players:
-
-                if player.chips <= 0:
-                    print(f"{player.name} has no chips and cannot play.")
-                    player.playing = False
-                    time.sleep(3)
-                    continue
-
-                answer = Util.ask_yes_no(
-                    f"{player.name}, do you want to {verb}? (y/n): "
-                )
-
-                # Input was interrupted
-                if answer is None:
-                    return False
-
-                player.playing = answer
-
-            # Check if anyone is still playing
-            return any(player.playing for player in players)
-
-        # If there is only one player (war game)
-        player = players
-
-        if player.chips <= 0:
-            print(f"{player.name} has no chips and cannot play.")
-            time.sleep(2)
-            return False
-
-        answer = Util.ask_yes_no(
-            f"{player.name}, do you want to {verb}? (y/n): "
-        )
-
-        # Input was interrupted
-        if answer is None:
-            return False
-
-        player.playing = answer
-        return answer
+            player.push(bet)
+            self.ui.show_message(f"    Result: PUSH - {detail}")
+            self.ui.show_message(f"    Payout: {bet} chips returned")
+            self.record_result("push", 0)
+ 
+        self.ui.show_message(f"    Chips:  {player.chips}")
+ 
+    def redraw(self, **kwargs):
+        self.ui.clear_screen()
+        self.show_table(**kwargs)
+ 
+    def pause(self, seconds=2):
+        self.ui.pause(seconds)
+ 
+    # Ask a player for their bet through the UI, then apply it
+    def collect_bet(self, player):
+        bet = self.ui.ask_bet(player.name, player.chips)
+ 
+        # Reset first: wager() adds to bet, and last round's bet is still there
+        player.bet = 0
+        player.wager(bet)
+ 
+    def welcome(self):
+ 
+        self.ui.clear_screen()
+        self.ui.banner(self.name.upper(), 45)
+ 
+        self.ui.show_message(f"  Welcome to {self.name}!")
+        self.ui.show_message("")
+ 
+        for title, content in self.welcome_sections:
+ 
+            self.ui.show_message(f"  {title}:")
+ 
+            if isinstance(content, str):
+                self.ui.show_message(textwrap.fill(content, width=45,initial_indent="    ", subsequent_indent="    "))
+            else:
+                for item in content:
+                    self.ui.show_message(textwrap.fill(item, width=45,initial_indent="    • ", subsequent_indent="      "))
+ 
+            self.ui.show_message("")
+ 
+        self.ui.show_message("=" * 45)
+        self.ui.show_message("")
+ 
+ 
+ 
+    # Each game implements these
+    @abstractmethod
+    def play_round(self): ...
+ 
+    @abstractmethod
+    def show_table(self): ...
+ 
+    @abstractmethod
+    def determine_winner(self): ...
