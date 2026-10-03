@@ -1,0 +1,12 @@
+Week 1: Databsae
+
+This week I created the database folder that stores files for:
+    - Database creation
+    - Database class
+    - Database test
+    - Database info
+
+I tested the database with the database test script.
+After successful testing, I plugged the database class into the casino project.
+I then created a user and played a couple rounds of each game to test the integrity of the database.
+Testing passes

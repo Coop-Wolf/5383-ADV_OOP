@@ -3,7 +3,7 @@ from .Blackjack.blackjack import Blackjack
 from .VideoPoker.videopoker import VideoPoker
 from .War.war import War
 from .terminal_ui import TerminalUI
-from ..Database.database import Database
+from .Database.database import Database
 import sys
  
  
