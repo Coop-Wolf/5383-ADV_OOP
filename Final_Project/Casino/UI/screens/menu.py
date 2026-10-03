@@ -1,12 +1,12 @@
 import pygame
 from UI.widgets import Button
-from Final_Project.Casino.UI.screens.screen import Screen
+from UI.screens.screen import Screen
 from UI.screens.placeholder import PlaceholderScreen
 from UI.screens.stats import StatsScreen
-
+from UI.screens.war import WarScreen
 from UI.constants import (WIDTH, FELT_GREEN, WHITE, GOLD,
     FONT_NAME, FONT_SIZE_TITLE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL,)
-
+    
 
 class MenuScreen(Screen):
     def __init__(self, app, is_new=False):
@@ -42,6 +42,8 @@ class MenuScreen(Screen):
             self.app.change_screen(LoginScreen(self.app))
         elif label == "Stats":
             self.app.change_screen(StatsScreen(self.app, self))
+        elif label == "War":
+            self.app.change_screen(WarScreen(self.app, self))
         else:
             self.app.change_screen(PlaceholderScreen(self.app, label, self))
 

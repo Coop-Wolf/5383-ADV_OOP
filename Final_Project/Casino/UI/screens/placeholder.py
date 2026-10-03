@@ -4,7 +4,7 @@ from UI.constants import (
     FONT_NAME, FONT_SIZE_LARGE, FONT_SIZE_MEDIUM,
 )
 from UI.widgets import Button
-from Final_Project.Casino.UI.screens.screen import Screen
+from UI.screens.screen import Screen
 
 
 class PlaceholderScreen(Screen):

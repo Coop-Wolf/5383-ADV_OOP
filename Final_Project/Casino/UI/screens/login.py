@@ -6,7 +6,7 @@ from UI.constants import (
     FONT_NAME, FONT_SIZE_TITLE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL,
 )
 from UI.widgets import Button, TextBox
-from Final_Project.Casino.UI.screens.screen import Screen
+from UI.screens.screen import Screen
 from UI.screens.menu import MenuScreen
 
 

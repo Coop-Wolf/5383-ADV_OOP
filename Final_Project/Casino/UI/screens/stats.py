@@ -4,7 +4,7 @@ from UI.constants import (
     FONT_NAME, FONT_SIZE_LARGE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL,
 )
 from UI.widgets import Button
-from Final_Project.Casino.UI.screens.screen import Screen
+from UI.screens.screen import Screen
 
 GAME_LABELS = {"VideoPoker": "Video Poker", "Blackjack": "Blackjack", "War": "War"}
 
