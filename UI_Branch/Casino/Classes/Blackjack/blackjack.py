@@ -12,12 +12,13 @@ class Blackjack(Game):
  
     def __init__(self, player, db=None):
         super().__init__(player, db=db)
- 
+
         self.blackjack_player = self.game_player
         self.dealer = BlackjackDealer()
- 
+
         self.deck = None
         self.results = []
+        self.net_change = 0
  
     # ------------------------------------------------------------------
     # Round setup
@@ -27,6 +28,7 @@ class Blackjack(Game):
  
         self.deck = Deck()
         self.results = []
+        self.net_change = 0
  
         self.blackjack_player.reset_hands()
         self.collect_bet(self.blackjack_player, bet)
@@ -169,6 +171,8 @@ class Blackjack(Game):
                 "detail": detail,
                 "net_change": net_change,
             })
+            
+            self.net_change = sum(result["net_change"] for result in self.results)
  
         return self.results
  

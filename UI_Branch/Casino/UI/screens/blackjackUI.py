@@ -272,9 +272,8 @@ class BlackjackScreen(Screen):
                 _draw_disabled(surface, button)
  
     def _draw_result(self, surface):
-        net = sum(r["net_change"] if r["outcome"] == "win" else
-                  (-hand.bet if r["outcome"] == "loss" else 0)
-                  for r, hand in zip(self.game.results, self.game.blackjack_player.hands))
+        
+        net = self.game.net_change
  
         if net > 0:
             text, color = f"You win!  +${net}", GOLD

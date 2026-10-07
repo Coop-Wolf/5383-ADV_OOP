@@ -20,7 +20,14 @@ class Game(ABC):
     # Save one finished hand to the database (updates chips and stats)
     def record_result(self, outcome, net_change):
         if self.db is not None:
-            self.db.record_result(self.player.id, self.name, outcome, net_change)
+            new_balance = self.db.record_result(
+                self.player.id,
+                self.name,
+                outcome,
+                net_change
+            )
+            self.player.chips = new_balance
+            return new_balance
  
     # Apply a hand's result to the player's chips and earnings, and save it.
     # Returns the net change (profit for a win, -bet for a loss, 0 for a push)
@@ -56,4 +63,3 @@ class Game(ABC):
  
     @abstractmethod
     def determine_winner(self): ...
- 

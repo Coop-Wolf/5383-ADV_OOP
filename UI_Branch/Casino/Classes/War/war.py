@@ -1,6 +1,6 @@
 
 from ..game import Game
-from .wardealer import WarDealer
+from ..dealer import Dealer
 from .warplayer import WarPlayer
 from ..deck import Deck
 from ..hand import Hand
@@ -14,7 +14,7 @@ class War(Game):
     def __init__(self, player, db=None):
         super().__init__(player, db=db)
  
-        self.war_dealer = WarDealer()
+        self.war_dealer = Dealer()
         self.war_player = self.game_player
  
         self.deck = None
@@ -67,4 +67,3 @@ class War(Game):
         self.outcome = outcome
  
         return self.outcome, self.net_change
- 

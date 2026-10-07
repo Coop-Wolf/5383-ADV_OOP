@@ -19,9 +19,7 @@ class Util():
         name = raw.strip()
     
         if not USERNAME_MIN_LENGTH <= len(name) <= USERNAME_MAX_LENGTH:
-            return None, (
-                f"Username must be {USERNAME_MIN_LENGTH} to {USERNAME_MAX_LENGTH} characters."
-            )
+            return None, (f"Username must be {USERNAME_MIN_LENGTH} to {USERNAME_MAX_LENGTH} characters.")
         if not USERNAME_PATTERN.fullmatch(name):
             return None, (
                 "Use letters, numbers, and underscores only, start with a letter, "
