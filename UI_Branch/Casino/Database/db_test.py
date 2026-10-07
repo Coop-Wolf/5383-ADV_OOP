@@ -1,5 +1,5 @@
 """
-Checkpoint test for Milestone 3
+Checkpoint test for Milestone 1
 ===============================
 
 Goal: a player can leave the application, restart it, log back in, and

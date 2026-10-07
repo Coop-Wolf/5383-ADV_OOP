@@ -1,1 +1,7 @@
 Week 2: PyGame
+
+This week I began working on my frontend design by first implementing the reuseable components like:
+    Constants (Height, Width, Colors, Text Size)
+    Widgets (Button and Textbox classes)
+    Chips
+    Cards

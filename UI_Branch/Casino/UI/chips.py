@@ -208,26 +208,3 @@ class BetPanel:
             if affordable and self._in_circle(mouse, center, self.CHIP_RADIUS):
                 pygame.draw.circle(surface, GOLD, center, self.CHIP_RADIUS + 4, width=3)
             draw_chip(surface, center, self.CHIP_RADIUS, chip, self.font, dimmed=not affordable)
- 
- 
-# Quick visual check: run from the project root with  python -m UI.chips
-if __name__ == "__main__":
-    pygame.init()
-    window = pygame.display.set_mode((WIDTH, HEIGHT))
-    clock = pygame.time.Clock()
-    panel = BetPanel(balance=1250)
- 
-    running = True
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-            elif panel.handle_event(event):
-                print(f"Deal clicked with a bet of ${panel.bet}")
- 
-        window.fill(FELT_GREEN)
-        panel.draw(window)
-        pygame.display.flip()
-        clock.tick(60)
- 
-    pygame.quit()

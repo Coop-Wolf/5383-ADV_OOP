@@ -2,13 +2,12 @@ from Classes.util import Util
 
 import pygame
 from UI.constants import (
-    WIDTH, FELT_GREEN, WHITE, GOLD, RED,
+    WIDTH, FELT_GREEN, WHITE, GOLD, RED, TITLE,
     FONT_NAME, FONT_SIZE_TITLE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL,
 )
 from UI.widgets import Button, TextBox
 from .screenUI import Screen
 from .menuUI import MenuScreen
-
 
 
 
@@ -43,7 +42,7 @@ class LoginScreen(Screen):
     def draw(self, surface):
         surface.fill(FELT_GREEN)
 
-        title = self.title_font.render("Coop's Casino", True, GOLD)
+        title = self.title_font.render(TITLE, True, GOLD)
         surface.blit(title, title.get_rect(center=(WIDTH // 2, 170)))
 
         prompt = self.label_font.render("Enter your username", True, WHITE)

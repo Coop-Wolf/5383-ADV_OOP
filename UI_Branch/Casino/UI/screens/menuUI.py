@@ -7,11 +7,11 @@ from .statsUI import StatsScreen
 from .warUI import WarScreen
 from .blackjackUI import BlackjackScreen
 from .add_fundsUI import AddFundsScreen
- 
+
 from UI.constants import (WIDTH, FELT_GREEN, WHITE, GOLD,
     FONT_NAME, FONT_SIZE_TITLE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL,)
- 
- 
+
+
 class MenuScreen(Screen):
     def __init__(self, app, is_new=False):
         super().__init__(app)
@@ -30,7 +30,7 @@ class MenuScreen(Screen):
         for i, label in enumerate(["Video Poker", "Blackjack", "War"]):
             self.buttons.append(Button(x, y + i * (bh + gap), bw, bh, label))
  
-        # Everything else: two per row
+        # Stats, Add Funds, Logout, Quit buttons: two per row
         half_w = (bw - 10) // 2
         row_y = y + 3 * (bh + gap) + 10
         rows = [("Stats", "Add Funds"), ("Logout", "Quit")]
