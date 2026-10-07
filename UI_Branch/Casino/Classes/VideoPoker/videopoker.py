@@ -9,8 +9,9 @@ class VideoPoker(Game):
     name = "VideoPoker"
     player_class = VideoPokerPlayer
 
-    # Jacks or Better. Values are "X for 1": total chips returned per chip bet.
-    # Keys must match the hand names VideoPokerHand.evaluate() returns.
+    # Jacks or Better.
+    # Values are "X for 1":
+    # total chips returned per chip bet.
     PAYTABLE = {
         "Royal Flush": 250,
         "Straight Flush": 50,
@@ -20,63 +21,94 @@ class VideoPoker(Game):
         "Straight": 4,
         "Three of a Kind": 3,
         "Two Pair": 2,
-        "Pair": 1,          # only pays for jacks or better (see score_hand)
+        "Pair": 1,
     }
 
     def __init__(self, player, db=None):
         super().__init__(player, db=db)
         self.video_player = self.game_player
+        self.deck = None
+        self.hand_name = None
+        self.payout = 0
+        self.net_change = 0
 
-    def play_round(self):
-
-        player = self.video_player
+    def deal(self, bet):
+        """Start a Video Poker round and deal five cards."""
 
         self.deck = Deck()
 
-        self.collect_bet(player)
+        player = self.video_player
 
-        # Deal five cards
+        self.collect_bet(player, bet)
+
         player.hand = VideoPokerHand()
+
         for _ in range(5):
             player.hit(self.deck)
 
-        # Hold, then draw once
-        self.redraw(player=player)
-        held = self.ui.ask_holds()
-        player.draw_replacements(self.deck, held)
+    def draw(self, held):
+        """
+        Replace all cards that were not held.
 
-        # Show the final hand and pay it
-        self.redraw(player=player)
-        self.determine_winner(player)
+        held is a collection of card indexes.
+        """
 
+        if self.deck is None:
+            raise RuntimeError("A hand must be dealt before drawing.")
 
-    def determine_winner(self, player):
+        self.video_player.draw_replacements(
+            self.deck,
+            held
+        )
+
+    def determine_winner(self):
+        """Evaluate the final hand and settle the player's bet."""
+
+        player = self.video_player
 
         hand_name, pays = self.score_hand(player.hand)
+
+        self.hand_name = hand_name
+        self.payout = pays
+
         bet = player.bet
 
         if pays == 0:
-            self.settle(player, bet, "loss", f"{hand_name} does not pay")
+            self.net_change = self.settle(
+                player,
+                bet,
+                "loss"
+            )
 
         elif pays == 1:
-            self.settle(player, bet, "push", "Jacks or better")
+            self.net_change = self.settle(
+                player,
+                bet,
+                "push"
+            )
 
         else:
-            self.settle(
-                player, bet, "win",
-                f"{hand_name} pays {pays} for 1",
+            self.net_change = self.settle(
+                player,
+                bet,
+                "win",
                 multiplier=pays - 1
             )
 
+        return hand_name, pays
 
-    # Returns (hand_name, pays); pays == 0 means the hand doesn't pay
     def score_hand(self, hand):
+        """
+        Return (hand_name, payout).
+
+        A normal pair does not pay.
+        Only Jacks or Better pays for a pair.
+        """
 
         hand_rank, hand_name = hand.evaluate()
 
         pays = self.PAYTABLE.get(hand_name, 0)
 
-        # Only a pair of jacks or better pays
         if hand_name == "Pair" and not hand.is_jacks_or_better():
             pays = 0
 

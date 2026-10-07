@@ -6,6 +6,7 @@ from .placeholderUI import PlaceholderScreen
 from .statsUI import StatsScreen
 from .warUI import WarScreen
 from .blackjackUI import BlackjackScreen
+from .videoPokerUI import VideoPokerScreen
 from .add_fundsUI import AddFundsScreen
 
 from UI.constants import (WIDTH, FELT_GREEN, WHITE, GOLD,
@@ -65,6 +66,8 @@ class MenuScreen(Screen):
             self.app.change_screen(WarScreen(self.app, self))
         elif label == "Blackjack":
             self.app.change_screen(BlackjackScreen(self.app, self))
+        elif label == "Video Poker":
+            self.app.change_screen(VideoPokerScreen(self.app, self))
         else:
             self.app.change_screen(PlaceholderScreen(self.app, label, self))
  
