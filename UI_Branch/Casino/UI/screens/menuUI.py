@@ -1,25 +1,22 @@
-
 import pygame
 from UI.widgets import Button
 from .screenUI import Screen
-from .placeholderUI import PlaceholderScreen
 from .statsUI import StatsScreen
 from .warUI import WarScreen
 from .blackjackUI import BlackjackScreen
 from .videoPokerUI import VideoPokerScreen
 from .add_fundsUI import AddFundsScreen
-
-from UI.constants import (WIDTH, FELT_GREEN, WHITE, GOLD,
-    FONT_NAME, FONT_SIZE_TITLE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL,)
+from UI.constants import (WIDTH, FELT_GREEN, WHITE, GOLD,FONT_NAME, FONT_SIZE_TITLE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL,)
 
 
 class MenuScreen(Screen):
     def __init__(self, app, is_new=False):
         super().__init__(app)
         self.is_new = is_new
+        
         self.title_font = pygame.font.Font(FONT_NAME, FONT_SIZE_TITLE)
-        self.med = pygame.font.Font(FONT_NAME, FONT_SIZE_MEDIUM)
-        self.small = pygame.font.Font(FONT_NAME, FONT_SIZE_SMALL)
+        self.med        = pygame.font.Font(FONT_NAME, FONT_SIZE_MEDIUM)
+        self.small      = pygame.font.Font(FONT_NAME, FONT_SIZE_SMALL)
  
         bw, bh, gap = 300, 55, 15
         x = WIDTH // 2 - bw // 2
@@ -68,8 +65,6 @@ class MenuScreen(Screen):
             self.app.change_screen(BlackjackScreen(self.app, self))
         elif label == "Video Poker":
             self.app.change_screen(VideoPokerScreen(self.app, self))
-        else:
-            self.app.change_screen(PlaceholderScreen(self.app, label, self))
  
     def draw(self, surface):
         surface.fill(FELT_GREEN)
@@ -93,4 +88,3 @@ class MenuScreen(Screen):
         # Render buttons to screen
         for button in self.buttons:
             button.draw(surface)
- 

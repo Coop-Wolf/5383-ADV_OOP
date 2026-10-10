@@ -1,10 +1,7 @@
 import math
 import pygame
 from UI.widgets import Button
-from UI.constants import (
-    WIDTH, HEIGHT, FELT_GREEN, WHITE, BLACK, GOLD, GRAY, LIGHT_GRAY, DARK_GREEN,
-    FONT_NAME, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL,)
- 
+from UI.constants import (WIDTH, HEIGHT, FELT_GREEN, WHITE, BLACK, GOLD, GRAY, LIGHT_GRAY, DARK_GREEN, FONT_NAME, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL,)
  
 # (value, chip color, edge stripe color, label color)
 CHIP_TYPES = [
@@ -14,7 +11,6 @@ CHIP_TYPES = [
     (100, (35, 85, 200),   WHITE,           WHITE),   # blue
     (500, (30, 30, 30),    WHITE,           WHITE),   # black
 ]
- 
  
 def draw_chip(surface, center, radius, chip, font, dimmed=False):
     """
@@ -34,6 +30,7 @@ def draw_chip(surface, center, radius, chip, font, dimmed=False):
     # Edge stripes: 8 small blocks around the rim
     inner_edge = radius * 0.78
     half_width = math.radians(11)
+    
     for i in range(8):
         angle = math.radians(i * 45)
         a1, a2 = angle - half_width, angle + half_width
@@ -89,24 +86,26 @@ class BetPanel:
  
     def __init__(self, balance, min_bet=1):
         self.min_bet = min_bet
-        self.font = pygame.font.Font(FONT_NAME, FONT_SIZE_SMALL)
+        self.font     = pygame.font.Font(FONT_NAME, FONT_SIZE_SMALL)
         self.big_font = pygame.font.Font(FONT_NAME, FONT_SIZE_MEDIUM)
  
         # Chip tray along the bottom
         self.tray = []
         middle = (len(CHIP_TYPES) - 1) / 2
+        
         for i, chip in enumerate(CHIP_TYPES):
             x = int(WIDTH // 2 + (i - middle) * 110)
             self.tray.append((chip, (x, self.TRAY_Y)))
  
         self.clear_button = Button(WIDTH // 2 - 170, 515, 150, 50, "Clear")
-        self.deal_button = Button(WIDTH // 2 + 20, 515, 150, 50, "Deal")
+        self.deal_button  = Button(WIDTH // 2 + 20, 515, 150, 50, "Deal")
  
         self.reset(balance)
  
     # State
     def reset(self, balance):
         """Start a fresh bet. Call this at the start of every round."""
+        
         self.balance = balance
         self.counts = {chip[0]: 0 for chip in CHIP_TYPES}
  
@@ -125,8 +124,10 @@ class BetPanel:
     # Layout helpers
     def _stack_layout(self):
         """Return [(chip, center_x, count)] for each denomination in the bet."""
+        
         active = [(chip, self.counts[chip[0]]) for chip in CHIP_TYPES if self.counts[chip[0]] > 0]
         layout = []
+        
         for i, (chip, count) in enumerate(active):
             x = int(WIDTH // 2 + (i - (len(active) - 1) / 2) * self.STACK_SPACING)
             layout.append((chip, x, count))
@@ -203,6 +204,7 @@ class BetPanel:
  
         # Chip tray
         mouse = pygame.mouse.get_pos()
+        
         for chip, center in self.tray:
             affordable = chip[0] <= self.remaining
             if affordable and self._in_circle(mouse, center, self.CHIP_RADIUS):

@@ -1,18 +1,7 @@
 class Card:
 
-    SUIT_SYMBOLS = {
-        "Spades": "♠",
-        "Hearts": "♥",
-        "Diamonds": "♦",
-        "Clubs": "♣"
-    }
-
-    POKER_VALUES = {
-        "Jack": 11,
-        "Queen": 12,
-        "King": 13,
-        "Ace": 14
-    }
+    SUIT_SYMBOLS = {"Spades": "♠", "Hearts": "♥", "Diamonds": "♦", "Clubs": "♣"}
+    POKER_VALUES = {"Jack": 11, "Queen": 12, "King": 13, "Ace": 14}
 
     def __init__(self, suit, rank):
         self.suit = suit
@@ -22,7 +11,9 @@ class Card:
     def get_value(self):
         if self.rank in ["Jack", "Queen", "King"]:
             return 10
+        
         if self.rank == "Ace":
+            
             # Hand class will adjust this down if needed
             return 11
         return int(self.rank)

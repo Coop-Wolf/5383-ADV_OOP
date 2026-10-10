@@ -1,24 +1,11 @@
 import pygame
-
 from .screenUI import Screen
 from UI.widgets import Button
 from UI.chips import BetPanel
 from UI.cards import draw_hand, CARD_W, CARD_H
 from Classes.player import Player
 from Classes.VideoPoker.videopoker import VideoPoker
-
-from UI.constants import (
-    WIDTH,
-    FELT_GREEN,
-    WHITE,
-    GOLD,
-    LIGHT_RED,
-    FONT_NAME,
-    FONT_SIZE_TITLE,
-    FONT_SIZE_LARGE,
-    FONT_SIZE_MEDIUM,
-    FONT_SIZE_SMALL,
-)
+from UI.constants import (WIDTH,FELT_GREEN,WHITE,GOLD,LIGHT_RED,FONT_NAME,FONT_SIZE_TITLE,FONT_SIZE_LARGE,FONT_SIZE_MEDIUM,FONT_SIZE_SMALL,)
 
 
 class VideoPokerScreen(Screen):
@@ -27,97 +14,41 @@ class VideoPokerScreen(Screen):
         super().__init__(app)
         self.menu = menu
 
-        self.title_font = pygame.font.Font(
-            FONT_NAME, FONT_SIZE_TITLE
-        )
-        self.large = pygame.font.Font(
-            FONT_NAME, FONT_SIZE_LARGE
-        )
-        self.med = pygame.font.Font(
-            FONT_NAME, FONT_SIZE_MEDIUM
-        )
-        self.small = pygame.font.Font(
-            FONT_NAME, FONT_SIZE_SMALL
-        )
+        self.title_font = pygame.font.Font(FONT_NAME, FONT_SIZE_TITLE)
+        self.large      = pygame.font.Font(FONT_NAME, FONT_SIZE_LARGE)
+        self.med        = pygame.font.Font(FONT_NAME, FONT_SIZE_MEDIUM)
+        self.small      = pygame.font.Font(FONT_NAME, FONT_SIZE_SMALL)
 
         # ----------------------------------------------------------
         # Backend game
         # ----------------------------------------------------------
 
-        casino_player = Player(
-            app.player["username"],
-            app.player["chips"],
-            app.player["id"],
-        )
-
-        self.game = VideoPoker(
-            casino_player,
-            db=app.db,
-        )
+        casino_player = Player(app.player["username"],app.player["chips"],app.player["id"],)
+        self.game     = VideoPoker(casino_player,db=app.db,)
 
         # ----------------------------------------------------------
         # Betting / buttons
         # ----------------------------------------------------------
 
-        self.panel = BetPanel(
-            balance=app.player["chips"]
-        )
+        self.panel = BetPanel(balance=app.player["chips"])
 
         # Same menu position as Blackjack and War
-        self.menu_button = Button(
-            30,
-            630,
-            120,
-            45,
-            "Menu",
-            font_size=FONT_SIZE_SMALL,
-        )
-
-        self.draw_button = Button(
-            WIDTH // 2 - 85,
-            600,
-            170,
-            50,
-            "Draw",
-        )
-
-        self.again_button = Button(
-            WIDTH // 2 - 180,
-            600,
-            170,
-            50,
-            "Play Again",
-        )
-
-        self.result_menu_button = Button(
-            WIDTH // 2 + 10,
-            600,
-            170,
-            50,
-            "Menu",
-        )
-
-        self.out_menu_button = Button(
-            WIDTH // 2 - 85,
-            600,
-            170,
-            50,
-            "Menu",
-        )
+        self.menu_button        = Button(30, 630, 120, 45, "Menu", font_size=FONT_SIZE_SMALL,)
+        self.draw_button        = Button(WIDTH // 2 - 85, 600, 170, 50, "Draw",)
+        self.again_button       = Button(WIDTH // 2 - 180, 600, 170, 50, "Play Again",)
+        self.result_menu_button = Button(WIDTH // 2 + 10, 600, 170, 50, "Menu",)
+        self.out_menu_button    = Button(WIDTH // 2 - 85, 600, 170, 50, "Menu",)
 
         # ----------------------------------------------------------
         # Game state
         # ----------------------------------------------------------
 
         self.state = "BET"
-
         self.bet = 0
         self.held = set()
-
         self.hand_name = None
         self.payout = 0
         self.net_change = 0
-
         self.shown_chips = app.player["chips"]
 
     # ------------------------------------------------------------------
@@ -139,7 +70,6 @@ class VideoPokerScreen(Screen):
 
         # Backend handles the bet and deals five cards.
         self.game.deal(self.bet)
-
         self.held.clear()
         self.hand_name = None
         self.payout = 0
@@ -147,7 +77,6 @@ class VideoPokerScreen(Screen):
 
         # Bet has now been removed from the player's balance.
         self.shown_chips = self.app.player["chips"] - self.bet
-
         self._set_state("DRAW")
 
     def _draw(self):
@@ -156,16 +85,12 @@ class VideoPokerScreen(Screen):
 
         # Evaluate and settle the hand.
         self.hand_name, self.payout = self.game.determine_winner()
-
         self.net_change = self.game.net_change
 
         # Update the main casino player's balance.
         self.app.player["chips"] = self.game.player.chips
-
         self.shown_chips = self.app.player["chips"]
-
         self.held.clear()
-
         self._set_state("RESULT")
 
     # ------------------------------------------------------------------
@@ -188,17 +113,8 @@ class VideoPokerScreen(Screen):
 
             x = left + CARD_W // 2 + index * offset
 
-            rect = pygame.Rect(
-                0,
-                0,
-                CARD_W,
-                CARD_H,
-            )
-
-            rect.center = (
-                x,
-                360,
-            )
+            rect = pygame.Rect(0, 0, CARD_W,CARD_H,)
+            rect.center = (x, 360,)
 
             if rect.collidepoint(position):
 
@@ -255,19 +171,12 @@ class VideoPokerScreen(Screen):
 
                 if self.again_button.handle_event(event):
 
-                    self.panel.reset(
-                        self.app.player["chips"]
-                    )
-
-                    self.shown_chips = (
-                        self.app.player["chips"]
-                    )
-
+                    self.panel.reset(self.app.player["chips"])
+                    self.shown_chips = (self.app.player["chips"])
                     self.held.clear()
                     self.hand_name = None
                     self.payout = 0
                     self.net_change = 0
-
                     self._set_state("BET")
 
                 elif self.result_menu_button.handle_event(event):
@@ -289,16 +198,8 @@ class VideoPokerScreen(Screen):
         # --------------------------------------------------------------
 
         # Player name — same location as Blackjack/War
-        name = self.med.render(
-            self.app.player["username"],
-            True,
-            WHITE,
-        )
-
-        surface.blit(
-            name,
-            (30, 25),
-        )
+        name = self.med.render(self.app.player["username"], True, WHITE,)
+        surface.blit(name, (30, 25),)
 
         # Chips — same location as Blackjack/War
         if self.state == "BET":
@@ -306,35 +207,15 @@ class VideoPokerScreen(Screen):
         else:
             chips_now = self.shown_chips
 
-        chips = self.med.render(
-            f"Chips: {chips_now}",
-            True,
-            GOLD,
-        )
-
-        surface.blit(
-            chips,
-            chips.get_rect(
-                topright=(WIDTH - 30, 25)
-            ),
-        )
+        chips = self.med.render(f"Chips: {chips_now}", True, GOLD,)
+        surface.blit(chips, chips.get_rect(topright=(WIDTH - 30, 25)),)
 
         # --------------------------------------------------------------
         # Title
         # --------------------------------------------------------------
 
-        title = self.title_font.render(
-            "VIDEO POKER",
-            True,
-            GOLD,
-        )
-
-        surface.blit(
-            title,
-            title.get_rect(
-                center=(WIDTH // 2, 110)
-            ),
-        )
+        title = self.title_font.render("VIDEO POKER", True, GOLD,)
+        surface.blit(title, title.get_rect(center=(WIDTH // 2, 110)),)
 
         # --------------------------------------------------------------
         # Betting screen
@@ -344,21 +225,12 @@ class VideoPokerScreen(Screen):
 
             rules = self.small.render(
                 "Get the best five-card poker hand. "
-                "Jacks or Better pays 1 to 1.",
-                True,
-                WHITE,
-            )
+                "Jacks or Better pays 1 to 1.", True, WHITE,)
 
-            surface.blit(
-                rules,
-                rules.get_rect(
-                    center=(WIDTH // 2, 165)
-                ),
-            )
+            surface.blit(rules, rules.get_rect(center=(WIDTH // 2, 165)),)
 
             # BetPanel contains the chips, Clear button, and Deal button.
             self.panel.draw(surface)
-
             self.menu_button.draw(surface)
 
             return
@@ -367,19 +239,8 @@ class VideoPokerScreen(Screen):
         # Game / result screen
         # --------------------------------------------------------------
 
-        rules = self.small.render(
-            "Click cards to hold them, then click Draw.",
-            True,
-            WHITE,
-        )
-
-        surface.blit(
-            rules,
-            rules.get_rect(
-                center=(WIDTH // 2, 165)
-            ),
-        )
-
+        rules = self.small.render("Click cards to hold them, then click Draw.", True, WHITE,)
+        surface.blit(rules, rules.get_rect(center=(WIDTH // 2, 165)),)
         self._draw_hand(surface)
 
         # --------------------------------------------------------------
@@ -388,19 +249,8 @@ class VideoPokerScreen(Screen):
 
         if self.state == "DRAW":
 
-            bet = self.med.render(
-                f"Bet: ${self.bet}",
-                True,
-                GOLD,
-            )
-
-            surface.blit(
-                bet,
-                bet.get_rect(
-                    center=(WIDTH // 2, 500)
-                ),
-            )
-
+            bet = self.med.render(f"Bet: ${self.bet}", True, GOLD,)
+            surface.blit(bet, bet.get_rect(center=(WIDTH // 2, 500)),)
             self.draw_button.draw(surface)
             self.menu_button.draw(surface)
 
@@ -409,7 +259,6 @@ class VideoPokerScreen(Screen):
         # --------------------------------------------------------------
 
         elif self.state == "RESULT":
-
             self._draw_result(surface)
 
     # ------------------------------------------------------------------
@@ -419,15 +268,7 @@ class VideoPokerScreen(Screen):
     def _draw_hand(self, surface):
 
         cards = self.game.video_player.hand.cards
-
-        draw_hand(
-            surface,
-            cards,
-            (WIDTH // 2, 340),
-            self.med,
-            offset=130,
-            selected=self.held,
-        )
+        draw_hand(surface, cards, (WIDTH // 2, 340), self.med, offset=130, selected=self.held,)
 
         # Labels underneath the cards.
         if self.state == "DRAW":
@@ -441,18 +282,8 @@ class VideoPokerScreen(Screen):
             else:
                 text = f"{held_count} card(s) held"
 
-            label = self.small.render(
-                text,
-                True,
-                WHITE,
-            )
-
-            surface.blit(
-                label,
-                label.get_rect(
-                    center=(WIDTH // 2, 455)
-                ),
-            )
+            label = self.small.render(text, True, WHITE,)
+            surface.blit(label, label.get_rect(center=(WIDTH // 2, 455)),)
 
     # ------------------------------------------------------------------
     # Result
@@ -461,18 +292,8 @@ class VideoPokerScreen(Screen):
     def _draw_result(self, surface):
 
         # Hand name
-        result = self.large.render(
-            self.hand_name,
-            True,
-            GOLD,
-        )
-
-        surface.blit(
-            result,
-            result.get_rect(
-                center=(WIDTH // 2, 475)
-            ),
-        )
+        result = self.large.render(self.hand_name, True, GOLD,)
+        surface.blit(result, result.get_rect(center=(WIDTH // 2, 475)),)
 
         # Payout/result message
         if self.net_change > 0:
@@ -496,18 +317,8 @@ class VideoPokerScreen(Screen):
 
             color = WHITE
 
-        payout = self.med.render(
-            text,
-            True,
-            color,
-        )
-
-        surface.blit(
-            payout,
-            payout.get_rect(
-                center=(WIDTH // 2, 530)
-            ),
-        )
+        payout = self.med.render(text, True, color,)
+        surface.blit(payout, payout.get_rect(center=(WIDTH // 2, 530)),)
 
         # --------------------------------------------------------------
         # Buttons
@@ -520,17 +331,6 @@ class VideoPokerScreen(Screen):
 
         else:
 
-            out = self.med.render(
-                "You're out of chips!",
-                True,
-                LIGHT_RED,
-            )
-
-            surface.blit(
-                out,
-                out.get_rect(
-                    center=(WIDTH // 2, 565)
-                ),
-            )
-
+            out = self.med.render("You're out of chips!", True, LIGHT_RED,)
+            surface.blit(out, out.get_rect(center=(WIDTH // 2, 565)),)
             self.out_menu_button.draw(surface)

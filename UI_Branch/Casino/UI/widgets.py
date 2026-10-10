@@ -1,7 +1,17 @@
 import pygame
-from UI.constants import (
-    WHITE, BLACK, GOLD, GRAY, LIGHT_GRAY, DARK_GREEN,
-    FONT_NAME, FONT_SIZE_MEDIUM,)
+from UI.constants import (WHITE, BLACK, GOLD, GRAY, LIGHT_GRAY, DARK_GREEN,FONT_NAME, FONT_SIZE_MEDIUM,)
+
+"""
+    Classes for UI widgets: Button and TextBox.
+    
+    Button:
+        - Draws a rectangular button with a label.
+        - Changes color when hovered.
+        - Detects mouse clicks.
+        
+    TextBox:
+        - Draws a rectangular text input box.
+"""
 
 
 class Button:
@@ -13,6 +23,7 @@ class Button:
 
     def handle_event(self, event):
         """Returns True if the button was clicked."""
+        
         return (
             event.type == pygame.MOUSEBUTTONDOWN
             and event.button == 1

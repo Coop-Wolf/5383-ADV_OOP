@@ -1,17 +1,11 @@
-
 import pygame
 from .screenUI import Screen
 from UI.widgets import Button
 from Classes.player import Player
- 
-from UI.constants import (
-    WIDTH, FELT_GREEN, WHITE, GOLD,
-    FONT_NAME, FONT_SIZE_TITLE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL,)
- 
- 
+from UI.constants import (WIDTH, FELT_GREEN, WHITE, GOLD, FONT_NAME, FONT_SIZE_TITLE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL,)
+
 AMOUNTS = [50, 100, 500, 1000]
- 
- 
+
 class AddFundsScreen(Screen):
     def __init__(self, app, menu):
         super().__init__(app)
@@ -22,8 +16,7 @@ class AddFundsScreen(Screen):
         self.small = pygame.font.Font(FONT_NAME, FONT_SIZE_SMALL)
  
         # The rules for adding funds live in the Player class
-        self.player = Player(
-            app.player["username"], app.player["chips"], app.player["id"])
+        self.player = Player(app.player["username"], app.player["chips"], app.player["id"])
  
         bw, bh, gap = 300, 55, 15
         x = WIDTH // 2 - bw // 2
@@ -31,11 +24,9 @@ class AddFundsScreen(Screen):
  
         self.amount_buttons = []
         for i, amount in enumerate(AMOUNTS):
-            self.amount_buttons.append(
-                (amount, Button(x, y + i * (bh + gap), bw, bh, f"+ ${amount:,}")))
+            self.amount_buttons.append((amount, Button(x, y + i * (bh + gap), bw, bh, f"+ ${amount:,}")))
  
         self.back_button = Button(x, y + len(AMOUNTS) * (bh + gap), bw, bh, "Back")
- 
         self.message = ""
  
     def handle_event(self, event):

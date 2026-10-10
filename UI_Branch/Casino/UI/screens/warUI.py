@@ -5,17 +5,10 @@ from UI.chips import BetPanel
 from UI.cards import draw_card
 from Classes.player import Player
 from Classes.War.war import War
-
-from UI.constants import (
-    WIDTH, FELT_GREEN, WHITE, GOLD, LIGHT_RED,
-    FONT_NAME, FONT_SIZE_TITLE, FONT_SIZE_LARGE,
-    FONT_SIZE_MEDIUM, FONT_SIZE_SMALL,
-)
-
+from UI.constants import (WIDTH, FELT_GREEN, WHITE, GOLD, LIGHT_RED,FONT_NAME, FONT_SIZE_TITLE, FONT_SIZE_LARGE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL,)
 
 DEAL_MS = 900
 REVEAL_MS = 900
-
 
 class WarScreen(Screen):
 
@@ -28,29 +21,19 @@ class WarScreen(Screen):
         self.med = pygame.font.Font(FONT_NAME, FONT_SIZE_MEDIUM)
         self.small = pygame.font.Font(FONT_NAME, FONT_SIZE_SMALL)
 
-        casino_player = Player(
-            app.player["username"],
-            app.player["chips"],
-            app.player["id"]
-        )
+        casino_player = Player(app.player["username"], app.player["chips"], app.player["id"])
 
+        # GAME
         self.game = War(casino_player, db=app.db)
-
         self.panel = BetPanel(balance=app.player["chips"])
-        self.menu_button = Button(
-            30, 630, 120, 45, "Menu",
-            font_size=FONT_SIZE_SMALL
-        )
-        self.again_button = Button(
-            WIDTH // 2 - 180, 600, 170, 50, "Play Again"
-        )
-        self.result_menu_button = Button(
-            WIDTH // 2 + 10, 600, 170, 50, "Menu"
-        )
-        self.out_menu_button = Button(
-            WIDTH // 2 - 85, 600, 170, 50, "Menu"
-        )
+        
+        # BUTTONS
+        self.menu_button = Button(30, 630, 120, 45, "Menu",font_size=FONT_SIZE_SMALL)
+        self.again_button = Button(WIDTH // 2 - 180, 600, 170, 50, "Play Again")
+        self.result_menu_button = Button(WIDTH // 2 + 10, 600, 170, 50, "Menu")
+        self.out_menu_button = Button(WIDTH // 2 - 85, 600, 170, 50, "Menu")
 
+        # Variables
         self.state = "BET"
         self.state_start = 0
         self.bet = 0
@@ -111,41 +94,18 @@ class WarScreen(Screen):
     def draw(self, surface):
         surface.fill(FELT_GREEN)
 
-        name = self.med.render(
-            self.app.player["username"], True, WHITE
-        )
+        name = self.med.render(self.app.player["username"], True, WHITE)
         surface.blit(name, (30, 25))
 
-        chips_now = (
-            self.panel.remaining
-            if self.state == "BET"
-            else self.shown_chips
-        )
-
-        chips = self.med.render(
-            f"Chips: {chips_now}", True, GOLD
-        )
-        surface.blit(
-            chips,
-            chips.get_rect(topright=(WIDTH - 30, 25))
-        )
+        chips_now = (self.panel.remaining if self.state == "BET" else self.shown_chips)
+        chips = self.med.render(f"Chips: {chips_now}", True, GOLD)
+        surface.blit(chips,chips.get_rect(topright=(WIDTH - 30, 25)))
 
         title = self.title_font.render("WAR", True, GOLD)
-        surface.blit(
-            title,
-            title.get_rect(center=(WIDTH // 2, 110))
-        )
+        surface.blit(title,title.get_rect(center=(WIDTH // 2, 110)))
 
-        rules = self.small.render(
-            "Higher card wins and pays 1 to 1. Aces are high. "
-            "A tie returns your bet.",
-            True,
-            WHITE,
-        )
-        surface.blit(
-            rules,
-            rules.get_rect(center=(WIDTH // 2, 165))
-        )
+        rules = self.small.render("Higher card wins and pays 1 to 1. Aces are high. A tie returns your bet.",True,WHITE,)
+        surface.blit(rules,rules.get_rect(center=(WIDTH // 2, 165)))
 
         if self.state == "BET":
             self.panel.draw(surface)
@@ -158,36 +118,14 @@ class WarScreen(Screen):
 
         for text, x in (("YOU", you_x), ("DEALER", dealer_x)):
             label = self.med.render(text, True, WHITE)
-            surface.blit(
-                label,
-                label.get_rect(center=(x, 225))
-            )
+            surface.blit(label,label.get_rect(center=(x, 225)))
 
         dealer_up = self.state in ("REVEAL", "RESULT")
+        draw_card(surface,(you_x, card_y),self.game.player_card,True,self.med,)
+        draw_card(surface,(dealer_x, card_y),self.game.dealer_card,dealer_up,self.med,)
 
-        draw_card(
-            surface,
-            (you_x, card_y),
-            self.game.player_card,
-            True,
-            self.med,
-        )
-
-        draw_card(
-            surface,
-            (dealer_x, card_y),
-            self.game.dealer_card,
-            dealer_up,
-            self.med,
-        )
-
-        bet = self.med.render(
-            f"Bet: ${self.bet}", True, GOLD
-        )
-        surface.blit(
-            bet,
-            bet.get_rect(center=(WIDTH // 2, 465))
-        )
+        bet = self.med.render(f"Bet: ${self.bet}", True, GOLD)
+        surface.blit(bet, bet.get_rect(center=(WIDTH // 2, 465)))
 
         if self.state != "RESULT":
             return
@@ -200,20 +138,12 @@ class WarScreen(Screen):
             text, color = "Tie - your bet is returned", WHITE
 
         result = self.large.render(text, True, color)
-        surface.blit(
-            result,
-            result.get_rect(center=(WIDTH // 2, 520))
-        )
+        surface.blit(result, result.get_rect(center=(WIDTH // 2, 520)))
 
         if self.app.player["chips"] > 0:
             self.again_button.draw(surface)
             self.result_menu_button.draw(surface)
         else:
-            out = self.med.render(
-                "You're out of chips!", True, LIGHT_RED
-            )
-            surface.blit(
-                out,
-                out.get_rect(center=(WIDTH // 2, 565))
-            )
+            out = self.med.render("You're out of chips!", True, LIGHT_RED)
+            surface.blit(out,out.get_rect(center=(WIDTH // 2, 565)))
             self.out_menu_button.draw(surface)

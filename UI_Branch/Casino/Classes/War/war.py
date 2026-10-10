@@ -1,11 +1,22 @@
+"""
+
+War class for Casino App
+
+    Methods:
+        player_card:                 Returns the player's card in play.
+        dealer_card:                 Returns the dealer's card in play.
+        deal(bet):                   Starts a round: new shuffled deck, fresh hands, place the bet, one card each.
+        determine_winner():          Compares the cards (Ace is high), settles the bet, and saves the result.
+
+"""
 
 from ..game import Game
 from ..dealer import Dealer
 from .warplayer import WarPlayer
 from ..deck import Deck
 from ..hand import Hand
- 
- 
+
+
 class War(Game):
  
     name = "War"
@@ -16,7 +27,6 @@ class War(Game):
  
         self.war_dealer = Dealer()
         self.war_player = self.game_player
- 
         self.deck = None
         self.outcome = None
         self.net_change = 0
@@ -34,15 +44,11 @@ class War(Game):
         """Start a round: new shuffled deck, fresh hands, place the bet, one card each."""
  
         self.deck = Deck()
- 
         self.war_player.hand = Hand()
         self.war_dealer.reset_hand()
- 
         self.collect_bet(self.war_player, bet)
- 
         self.war_player.hit(self.deck)
         self.war_dealer.hit(self.deck)
- 
         self.outcome = None
         self.net_change = 0
  

@@ -1,3 +1,20 @@
+"""
+
+Hand class for Video Poker Game
+
+    Methods:
+        find_straight(ranks):         High card of the best straight in these ranks, or None.
+        find_flush(cards):            Ranks of the cards in a flush (five or more of one suit), or None
+        is_jacks_or_better():         True if the hand has a pair of jacks or better
+        evaluate():                   Returns a tuple of (rank, kicker(s)) and a string description of the hand's rank.
+        
+        The kickers are the highest cards in the hand that are not part of the main rank.
+        These are used to break ties between hands of the same rank.
+
+"""
+
+
+
 from ..hand import Hand
 
 
@@ -38,10 +55,7 @@ class VideoPokerHand(Hand):
             value = card.get_poker_value()
             counts[value] = counts.get(value, 0) + 1
 
-        return any(
-            value >= 11 and count >= 2
-            for value, count in counts.items()
-        )
+        return any(value >= 11 and count >= 2 for value, count in counts.items())
 
     def evaluate(self):
         all_cards = self.cards
@@ -50,7 +64,6 @@ class VideoPokerHand(Hand):
             return (0,), "Incomplete"
 
         ranks = [card.get_poker_value() for card in all_cards]
-
         rank_counts = {}
 
         for rank in ranks:
@@ -73,28 +86,14 @@ class VideoPokerHand(Hand):
 
         # Four of a Kind
         if counts[0] >= 4:
-            four_rank = max(
-                rank for rank in rank_counts
-                if rank_counts[rank] >= 4
-            )
-
-            kicker = max(rank for rank in ranks if rank != four_rank)
-
+            four_rank = max(rank for rank in rank_counts if rank_counts[rank] >= 4)
+            kicker    = max(rank for rank in ranks if rank != four_rank)
             return (8, four_rank, kicker), "Four of a Kind"
 
         # Full House
         if counts[0] >= 3 and counts[1] >= 2:
-            three_rank = max(
-                rank for rank in rank_counts
-                if rank_counts[rank] >= 3
-            )
-
-            pair_rank = max(
-                rank for rank in rank_counts
-                if rank_counts[rank] >= 2
-                and rank != three_rank
-            )
-
+            three_rank = max(rank for rank in rank_counts if rank_counts[rank] >= 3)
+            pair_rank  = max(rank for rank in rank_counts if rank_counts[rank] >= 2 and rank != three_rank)
             return (7, three_rank, pair_rank), "Full House"
 
         # Flush
@@ -107,53 +106,22 @@ class VideoPokerHand(Hand):
 
         # Three of a Kind
         if counts[0] >= 3:
-            three_rank = max(
-                rank for rank in rank_counts
-                if rank_counts[rank] >= 3
-            )
-
-            kickers = sorted(
-                [rank for rank in ranks if rank != three_rank],
-                reverse=True
-            )
-
+            three_rank = max(rank for rank in rank_counts if rank_counts[rank] >= 3)
+            kickers    = sorted([rank for rank in ranks if rank != three_rank], reverse=True)
             return (4, three_rank, *kickers[:2]), "Three of a Kind"
 
         # Two Pair
         if counts[0] >= 2 and counts[1] >= 2:
-            pairs = sorted(
-                [
-                    rank for rank in rank_counts
-                    if rank_counts[rank] >= 2
-                ],
-                reverse=True
-            )
-
-            kicker = max(
-                rank for rank in ranks
-                if rank not in pairs[:2]
-            )
-
+            pairs = sorted([rank for rank in rank_counts if rank_counts[rank] >= 2], reverse=True)
+            kicker = max(rank for rank in ranks if rank not in pairs[:2])
             return (3, pairs[0], pairs[1], kicker), "Two Pair"
 
         # Pair
         if counts[0] >= 2:
-            pair_rank = max(
-                rank for rank in rank_counts
-                if rank_counts[rank] >= 2
-            )
-
-            kickers = sorted(
-                [
-                    rank for rank in ranks
-                    if rank != pair_rank
-                ],
-                reverse=True
-            )
-
+            pair_rank = max(rank for rank in rank_counts if rank_counts[rank] >= 2)
+            kickers = sorted([rank for rank in ranks if rank != pair_rank], reverse=True)
             return (2, pair_rank, *kickers[:3]), "Pair"
 
         # High Card
         sorted_ranks = sorted(ranks, reverse=True)
-
         return (1, *sorted_ranks[:5]), "High Card"

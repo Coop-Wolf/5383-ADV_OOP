@@ -11,9 +11,7 @@ from UI.constants import (
     WIDTH, FELT_GREEN, WHITE, GOLD, GRAY, LIGHT_GRAY, LIGHT_RED,
     FONT_NAME, FONT_SIZE_TITLE, FONT_SIZE_LARGE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL,)
  
- 
 DEALER_STEP_MS = 800        # pause between dealer steps (reveal, each draw, result)
- 
 DEALER_CARDS_Y = 215
 PLAYER_CARDS_Y = 450
 RESULT_Y = 560
@@ -48,22 +46,22 @@ class BlackjackScreen(Screen):
         super().__init__(app)
         self.menu = menu
  
+        # Text
         self.title_font = pygame.font.Font(FONT_NAME, FONT_SIZE_TITLE)
-        self.large = pygame.font.Font(FONT_NAME, FONT_SIZE_LARGE)
-        self.med = pygame.font.Font(FONT_NAME, FONT_SIZE_MEDIUM)
-        self.small = pygame.font.Font(FONT_NAME, FONT_SIZE_SMALL)
+        self.large      = pygame.font.Font(FONT_NAME, FONT_SIZE_LARGE)
+        self.med        = pygame.font.Font(FONT_NAME, FONT_SIZE_MEDIUM)
+        self.small      = pygame.font.Font(FONT_NAME, FONT_SIZE_SMALL)
  
-        # The game itself: all the rules live in the Blackjack class
-        casino_player = Player(
-            app.player["username"], app.player["chips"], app.player["id"])
-        self.game = Blackjack(casino_player, db=app.db)
- 
-        self.panel = BetPanel(balance=app.player["chips"])
- 
-        self.menu_button = Button(30, 630, 120, 45, "Menu", font_size=FONT_SIZE_SMALL)
-        self.again_button = Button(WIDTH // 2 - 180, BUTTON_Y, 170, 50, "Play Again")
+        # Game, Player, Bet panel
+        casino_player = Player(app.player["username"], app.player["chips"], app.player["id"])
+        self.game     = Blackjack(casino_player, db=app.db)
+        self.panel    = BetPanel(balance=app.player["chips"])
+        
+        # Buttons
+        self.menu_button        = Button(30, 630, 120, 45, "Menu", font_size=FONT_SIZE_SMALL)
+        self.again_button       = Button(WIDTH // 2 - 180, BUTTON_Y, 170, 50, "Play Again")
         self.result_menu_button = Button(WIDTH // 2 + 10, BUTTON_Y, 170, 50, "Menu")
-        self.out_menu_button = Button(WIDTH // 2 - 85, BUTTON_Y, 170, 50, "Menu")
+        self.out_menu_button    = Button(WIDTH // 2 - 85, BUTTON_Y, 170, 50, "Menu")
  
         # Hit / Stand / Double / Split along the bottom
         bw, gap = 150, 15
@@ -198,8 +196,7 @@ class BlackjackScreen(Screen):
         dealer = self.game.dealer
         hidden = () if self.dealer_revealed else (1,)
  
-        draw_hand(surface, dealer.hand.cards, (WIDTH // 2, DEALER_CARDS_Y),
-                  self.med, hidden=hidden)
+        draw_hand(surface, dealer.hand.cards, (WIDTH // 2, DEALER_CARDS_Y), self.med, hidden=hidden)
  
         text = "DEALER"
         if self.dealer_revealed:
@@ -292,4 +289,3 @@ class BlackjackScreen(Screen):
             out = self.med.render("You're out of chips!", True, LIGHT_RED)
             surface.blit(out, out.get_rect(center=(WIDTH // 2, 598)))
             self.out_menu_button.draw(surface)
- 

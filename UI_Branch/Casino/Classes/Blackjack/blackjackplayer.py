@@ -1,3 +1,23 @@
+"""
+
+Blackjack Player for Blackjack game
+
+    Methods:
+        reset_hands():                Reset the player to a single hand with no cards.
+        set_active_hand(index):       Set the active hand to the hand at the given index.
+        hand_label(index):            Return a label for the hand at the given index.
+        available_actions():          Return a list of actions currently available for the active hand.
+        can_double_down():            True if the active hand can double down.
+        can_split():                  True if the active hand can be split.
+        double_down(deck):            Double the bet, take exactly one more card, then finish the hand.
+        split(deck):                  Split the active hand into two, each with the original bet.
+        is_bust():                    True if the active hand is bust.
+        is_blackjack():               True if the active hand is a blackjack.
+        get_hand_value():             Return the value of the active hand.
+
+"""
+
+
 from ..player import Player
 from .blackjackhand import BlackjackHand
 
@@ -33,7 +53,6 @@ class BlackjackPlayer(Player):
 
         if self.can_double_down():
             actions.append("double")
-
         if self.can_split():
             actions.append("split")
 

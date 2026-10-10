@@ -1,14 +1,10 @@
 import pygame
-from UI.constants import (
-    WIDTH, FELT_GREEN, DARK_GREEN, WHITE, GOLD, LIGHT_RED, LIGHT_GRAY,
-    FONT_NAME, FONT_SIZE_LARGE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL,
-)
 from UI.widgets import Button
 from .screenUI import Screen
-
+from UI.constants import (WIDTH, FELT_GREEN, DARK_GREEN, WHITE, GOLD, LIGHT_RED, LIGHT_GRAY,FONT_NAME, FONT_SIZE_LARGE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL,)
 GAME_LABELS = {"VideoPoker": "Video Poker", "Blackjack": "Blackjack", "War": "War"}
-
 HEADERS = ["Game", "Rounds", "Wins", "Losses", "Win Rate", "Biggest Win", "Net Profit"]
+
 # x position for each column (Game is left-aligned, the rest are centered)
 COLUMN_X = [65, 330, 420, 510, 620, 745, 865]
 
@@ -41,6 +37,7 @@ class StatsScreen(Screen):
     @staticmethod
     def make_row(label, s):
         """Returns a list of (text, color) cells, one per column."""
+        
         rounds = s["rounds_played"]
         win_rate = f"{s['wins'] / rounds:.0%}" if rounds else "-"
 

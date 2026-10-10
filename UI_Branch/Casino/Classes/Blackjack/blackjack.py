@@ -1,3 +1,17 @@
+"""
+
+Blackjack game class.
+
+    Methods:
+        deal(bet):                   Start a round: new deck, place the bet, deal two cards to each side.
+        available_actions():         Return a list of actions currently available for the active hand.
+        hit():                       Take one more card for the active hand.
+        stand():                     Finish the active hand.
+        double_down():               Double the bet, take exactly one more card, then finish the hand.
+        split():                     Split the active hand into two, each with the original bet.
+        determine_winner():          Settle every hand and save the results.
+
+"""
 
 from .blackjackplayer import BlackjackPlayer
 from .blackjackdealer import BlackjackDealer
@@ -15,7 +29,6 @@ class Blackjack(Game):
 
         self.blackjack_player = self.game_player
         self.dealer = BlackjackDealer()
-
         self.deck = None
         self.results = []
         self.net_change = 0
@@ -35,7 +48,6 @@ class Blackjack(Game):
  
         # Store the initial bet on the first hand
         self.blackjack_player.hand.bet = self.blackjack_player.bet
- 
         self.dealer.reset_hand()
  
         for _ in range(2):
@@ -132,7 +144,6 @@ class Blackjack(Game):
         dealer_value = self.dealer.get_hand_value()
         dealer_busted = self.dealer.is_bust()
         dealer_blackjack = self.dealer.hand.is_blackjack()
- 
         self.results = []
  
         for hand in self.blackjack_player.hands:
@@ -142,37 +153,23 @@ class Blackjack(Game):
  
             if hand.is_bust():
                 outcome, detail = "loss", "Busted"
- 
             elif hand.is_blackjack() and dealer_blackjack:
                 outcome, detail = "push", "Both have blackjack"
- 
             elif hand.is_blackjack():
                 outcome, detail, multiplier = "win", "Blackjack!", 1.5
- 
             elif dealer_blackjack:
                 outcome, detail = "loss", "Dealer has blackjack"
- 
             elif dealer_busted:
                 outcome, detail = "win", "Dealer busted"
- 
             elif player_value > dealer_value:
                 outcome, detail = "win", f"{player_value} beats {dealer_value}"
- 
             elif player_value < dealer_value:
                 outcome, detail = "loss", f"{dealer_value} beats {player_value}"
- 
             else:
                 outcome, detail = "push", f"Tie at {player_value}"
  
             net_change = self.settle(self.blackjack_player, hand.bet, outcome, multiplier)
- 
-            self.results.append({
-                "outcome": outcome,
-                "detail": detail,
-                "net_change": net_change,
-            })
-            
+            self.results.append({"outcome": outcome, "detail": detail, "net_change": net_change,})
             self.net_change = sum(result["net_change"] for result in self.results)
  
         return self.results
- 

@@ -93,11 +93,7 @@ class Database:
             raise ValueError(f"Unknown game: {game}")
         if outcome not in OUTCOMES:
             raise ValueError(f"Unknown outcome: {outcome}")
-        if (
-            (outcome == "win" and net_change <= 0)
-            or (outcome == "loss" and net_change >= 0)
-            or (outcome == "push" and net_change != 0)
-        ):
+        if ((outcome == "win" and net_change <= 0) or (outcome == "loss" and net_change >= 0) or (outcome == "push" and net_change != 0)):
             raise ValueError(f"net_change {net_change} does not match outcome '{outcome}'")
  
         wins = 1 if outcome == "win" else 0

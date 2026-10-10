@@ -1,3 +1,17 @@
+"""
+
+Player class for the Casino App.
+
+    Methods:
+    - add_funds(amount):        Add chips to the player's balance. Returns the new chip count.
+    - wager(amount):            Move chips from the player into a bet.
+    - win(bet, multiplier=1):   Bet was already deducted, so return it plus the profit.
+    - lose(bet):                Bet was already deducted, so only record the loss.
+    - push(bet):                Bet is returned, with no profit or loss.
+    - hit(deck):                Understood to mean get a card.
+    
+"""
+
 
 class Player:
  

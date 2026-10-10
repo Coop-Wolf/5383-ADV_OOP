@@ -1,3 +1,13 @@
+"""
+
+Main entry point for the Casino App.
+
+    Initializes the Pygame window, the database, and the first screen (LoginScreen).
+    Sets up the main loop.
+    Manages screen transitions.
+
+"""
+
 import pygame
 from UI.constants import WIDTH, HEIGHT, FPS, TITLE
 from UI.screens.loginUI import LoginScreen
