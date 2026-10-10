@@ -5,8 +5,9 @@ from .statsUI import StatsScreen
 from .warUI import WarScreen
 from .blackjackUI import BlackjackScreen
 from .videoPokerUI import VideoPokerScreen
+from .slotsUI import SlotsScreen
 from .add_fundsUI import AddFundsScreen
-from UI.constants import (WIDTH, FELT_GREEN, WHITE, GOLD,FONT_NAME, FONT_SIZE_TITLE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL,)
+from UI.constants import (WIDTH, FELT_GREEN, WHITE, GOLD,FONT_NAME, FONT_SIZE_TITLE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL, GAMES)
 
 
 class MenuScreen(Screen):
@@ -24,13 +25,14 @@ class MenuScreen(Screen):
  
         self.buttons = []
  
+
         # Games: full-width buttons
-        for i, label in enumerate(["Video Poker", "Blackjack", "War"]):
+        for i, label in enumerate(GAMES):
             self.buttons.append(Button(x, y + i * (bh + gap), bw, bh, label))
- 
+
         # Stats, Add Funds, Logout, Quit buttons: two per row
         half_w = (bw - 10) // 2
-        row_y = y + 3 * (bh + gap) + 10
+        row_y = y + len(GAMES) * (bh + gap) + 10
         rows = [("Stats", "Add Funds"), ("Logout", "Quit")]
  
         for r, (left, right) in enumerate(rows):
@@ -65,6 +67,8 @@ class MenuScreen(Screen):
             self.app.change_screen(BlackjackScreen(self.app, self))
         elif label == "Video Poker":
             self.app.change_screen(VideoPokerScreen(self.app, self))
+        elif label == "Slots":
+            self.app.change_screen(SlotsScreen(self.app, self))
  
     def draw(self, surface):
         surface.fill(FELT_GREEN)

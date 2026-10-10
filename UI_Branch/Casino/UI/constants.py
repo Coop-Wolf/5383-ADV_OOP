@@ -3,6 +3,8 @@ WIDTH = 1000
 HEIGHT = 700
 FPS = 60
 TITLE = "Coop's Casino"
+GAMES = ("VideoPoker", "Blackjack", "War", "Slots")
+
 
 # Colors (R, G, B)
 FELT_GREEN = (14, 94, 52)

@@ -2,11 +2,12 @@ import pygame
 from UI.widgets import Button
 from .screenUI import Screen
 from UI.constants import (WIDTH, FELT_GREEN, DARK_GREEN, WHITE, GOLD, LIGHT_RED, LIGHT_GRAY,FONT_NAME, FONT_SIZE_LARGE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL,)
-GAME_LABELS = {"VideoPoker": "Video Poker", "Blackjack": "Blackjack", "War": "War"}
+GAME_LABELS = {"VideoPoker": "Video Poker", "Blackjack": "Blackjack", "War": "War", "Slots": "Slots"}
 HEADERS = ["Game", "Rounds", "Wins", "Losses", "Win Rate", "Biggest Win", "Net Profit"]
 
 # x position for each column (Game is left-aligned, the rest are centered)
 COLUMN_X = [65, 330, 420, 510, 620, 745, 865]
+ROW_H = 50
 
 
 class StatsScreen(Screen):
@@ -88,13 +89,14 @@ class StatsScreen(Screen):
         pygame.draw.line(surface, LIGHT_GRAY, (60, 195), (WIDTH - 60, 195), 1)
 
         # Game rows
-        y = 235
+        y = 230
         for cells in self.rows:
             self.draw_row(surface, y, cells, self.row_font)
-            y += 65
+            y += ROW_H
 
-        # Totals row
-        pygame.draw.line(surface, LIGHT_GRAY, (60, 420), (WIDTH - 60, 420), 1)
-        self.draw_row(surface, 455, self.total_row, self.row_font)
+        # Totals row (the line sits just under the last game row)
+        line_y = y - ROW_H // 2
+        pygame.draw.line(surface, LIGHT_GRAY, (60, line_y), (WIDTH - 60, line_y), 1)
+        self.draw_row(surface, line_y + 32, self.total_row, self.row_font)
 
         self.back.draw(surface)

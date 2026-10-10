@@ -2,7 +2,7 @@ import sqlite3
 from .createDB import DB_PATH, create_database
 
 STARTING_CHIPS = 100
-GAMES = ("VideoPoker", "Blackjack", "War")
+GAMES = ("VideoPoker", "Blackjack", "War", "Slots")
 OUTCOMES = ("win", "loss", "push")
 
 class Database:

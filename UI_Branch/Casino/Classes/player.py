@@ -20,6 +20,7 @@ class Player:
         "Blackjack": "Blackjack",
         "VideoPoker": "Video Poker",
         "War": "War",
+        "Spots": "Slots",
     }
  
     def __init__(self, name, chips=100, player_id=None):
