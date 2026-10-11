@@ -21,8 +21,10 @@ from .screenUI import Screen
 from UI.widgets import Button
 from Classes.player import Player
 from Classes.Slots.fruits import Fruits
+from UI.reel import Reel
+from UI.symbols import draw_symbol
 from UI.constants import (WIDTH, FELT_GREEN, WHITE, GOLD, LIGHT_RED, FONT_NAME, FONT_SIZE_TITLE, FONT_SIZE_LARGE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL,)
- 
+
 BETS = [1, 5, 10, 50, 100]
 DARK = (15, 15, 15)
 GREY = (90, 90, 90)
@@ -34,122 +36,7 @@ def get_font(size, bold=False):
     font = pygame.font.Font(FONT_NAME, size)
     font.set_bold(bold)
     return font
- 
- 
-# --------------------------------------------------------------------------
-# Symbols (drawn with pygame shapes, no images)
-# --------------------------------------------------------------------------
- 
-def draw_symbol(surface, name, rect):
-    cx, cy = rect.center
-    s = min(rect.w, rect.h) * 0.35
- 
-    if name == "cherry":
-        pygame.draw.line(surface, (40, 120, 40), (cx - s * 0.45, cy + s * 0.2), (cx + s * 0.1, cy - s * 0.9), 4)
-        pygame.draw.line(surface, (40, 120, 40), (cx + s * 0.45, cy + s * 0.2), (cx + s * 0.1, cy - s * 0.9), 4)
-        pygame.draw.circle(surface, (200, 40, 40), (cx - s * 0.45, cy + s * 0.4), s * 0.5)
-        pygame.draw.circle(surface, (200, 40, 40), (cx + s * 0.45, cy + s * 0.4), s * 0.5)
-        pygame.draw.circle(surface, (255, 150, 150), (cx - s * 0.6, cy + s * 0.25), s * 0.12)
-        pygame.draw.circle(surface, (255, 150, 150), (cx + s * 0.3, cy + s * 0.25), s * 0.12)
- 
-    elif name == "lemon":
-        body = pygame.Rect(0, 0, int(s * 1.9), int(s * 1.25))
-        body.center = (cx, cy)
-        pygame.draw.ellipse(surface, (250, 225, 50), body)
-        pygame.draw.ellipse(surface, (200, 170, 20), body, 3)
- 
-    elif name == "bar":
-        body = pygame.Rect(0, 0, int(s * 1.95), int(s * 1.0))
-        body.center = (cx, cy)
-        pygame.draw.rect(surface, DARK, body, border_radius=8)
-        pygame.draw.rect(surface, GOLD, body, 3, border_radius=8)
-        label = get_font(int(s * 0.85), True).render("BAR", True, GOLD)
-        surface.blit(label, label.get_rect(center=body.center))
- 
-    elif name == "bell":
-        pygame.draw.circle(surface, GOLD, (cx, cy - s * 0.15), s * 0.65)
-        pygame.draw.polygon(surface, GOLD, [
-            (cx - s * 0.65, cy - s * 0.15), (cx + s * 0.65, cy - s * 0.15),
-            (cx + s * 0.95, cy + s * 0.5), (cx - s * 0.95, cy + s * 0.5)])
-        pygame.draw.circle(surface, (160, 120, 20), (cx, cy + s * 0.68), s * 0.18)
-        pygame.draw.polygon(surface, (160, 120, 20), [
-            (cx - s * 0.95, cy + s * 0.5), (cx + s * 0.95, cy + s * 0.5),
-            (cx + s * 0.95, cy + s * 0.55), (cx - s * 0.95, cy + s * 0.55)], 2)
- 
-    elif name == "seven":
-        text = get_font(int(s * 2.6), True).render("7", True, (200, 40, 40))
-        outline = get_font(int(s * 2.6), True).render("7", True, DARK)
-        r = text.get_rect(center=(cx, cy))
-        for dx, dy in ((-2, 0), (2, 0), (0, -2), (0, 2)):
-            surface.blit(outline, r.move(dx, dy))
-        surface.blit(text, r)
- 
-    elif name == "diamond":
-        pts = [(cx, cy - s), (cx + s * 0.85, cy), (cx, cy + s), (cx - s * 0.85, cy)]
-        pygame.draw.polygon(surface, (90, 210, 245), pts)
-        pygame.draw.polygon(surface, (30, 120, 170), pts, 3)
-        pygame.draw.line(surface, (200, 245, 255), (cx - s * 0.85, cy), (cx + s * 0.85, cy), 2)
-        pygame.draw.line(surface, (200, 245, 255), (cx, cy - s), (cx - s * 0.3, cy), 2)
-        pygame.draw.line(surface, (200, 245, 255), (cx, cy - s), (cx + s * 0.3, cy), 2)
- 
- 
-# --------------------------------------------------------------------------
-# One spinning reel (timed with pygame.time.get_ticks, like the other screens)
-# --------------------------------------------------------------------------
- 
-class Reel:
- 
-    CELL = 120   # height of one symbol cell
- 
-    def __init__(self, rect, rng):
-        self.rect = rect
-        self.rng = rng
-        self.strip = [self._random_symbol()]
-        self.pos = 0.0           # which strip index is currently centered
-        self.target = 0
-        self.start_ms = 0
-        self.duration = 1000
-        self.spinning = False
- 
-    def _random_symbol(self):
-        return self.rng.choices(list(Fruits.SYMBOLS), weights=list(Fruits.SYMBOLS.values()))[0]
- 
-    # Scroll from the symbol currently showing to the final one
-    def start(self, final, rows, duration_ms, now):
-        current = self.strip[int(round(self.pos))]
-        self.strip = [current] + [self._random_symbol() for _ in range(rows - 1)] + [final]
-        self.target = rows
-        self.pos = 0.0
-        self.start_ms = now
-        self.duration = duration_ms
-        self.spinning = True
- 
-    def update(self, now):
-        if not self.spinning:
-            return
-        p = min((now - self.start_ms) / self.duration, 1.0)
-        eased = 1 - (1 - p) ** 3          # ease-out: fast at first, settles gently
-        self.pos = self.target * eased
-        if p >= 1.0:
-            self.pos = float(self.target)
-            self.spinning = False
- 
-    def draw(self, surface):
-        pygame.draw.rect(surface, REEL_BG, self.rect, border_radius=10)
- 
-        old_clip = surface.get_clip()
-        surface.set_clip(self.rect)
-        first = int(self.pos) - 1
-        for i in range(first, first + 4):
-            if 0 <= i < len(self.strip):
-                cy = self.rect.centery + (self.pos - i) * self.CELL
-                cell = pygame.Rect(self.rect.x, 0, self.rect.w, self.CELL)
-                cell.centery = int(cy)
-                draw_symbol(surface, self.strip[i], cell)
-        surface.set_clip(old_clip)
- 
-        pygame.draw.rect(surface, DARK, self.rect, 3, border_radius=10)
- 
+
  
 # --------------------------------------------------------------------------
 # The screen
@@ -171,18 +58,19 @@ class FruitsUI(Screen):
         # GAME
         self.game = machine(casino_player, db=app.db)
         self.rng = random.Random()
- 
+
         # REELS
         reel_w, gap = 130, 16
         total = 3 * reel_w + 2 * gap
         left = (WIDTH - total) // 2
         top = 200
-        self.reels = [
-            Reel(pygame.Rect(left + i * (reel_w + gap), top, reel_w, Reel.CELL), self.rng)
-            for i in range(3)
-        ]
-        self.frame = pygame.Rect(left, top, total, Reel.CELL).inflate(28, 28)
- 
+        self.reels = [Reel(
+                rect=pygame.Rect(left + i * (reel_w + gap),top,reel_w,120,),
+                rng=self.rng,machine=self.game,rows=1,cell_height=120,
+                reel_bg=REEL_BG,cell_border=DARK,) for i in range(3)]
+
+        self.frame = pygame.Rect(left, top, total, 120).inflate(28, 28)
+
         # BUTTONS
         self.menu_button = Button(30, 630, 120, 45, "Menu", font_size=FONT_SIZE_SMALL)
  
@@ -191,8 +79,7 @@ class FruitsUI(Screen):
         row_x = (WIDTH - row_w) // 2
         self.bet_buttons = [
             (bet, Button(row_x + i * (btn_w + btn_gap), 500, btn_w, btn_h, f"${bet}"))
-            for i, bet in enumerate(BETS)
-        ]
+            for i, bet in enumerate(BETS)]
  
         # Variables
         self.state = "IDLE"            # IDLE <-> SPIN
@@ -284,7 +171,7 @@ class FruitsUI(Screen):
         # Reels and frame (the frame pulses gold after a win)
         pygame.draw.rect(surface, DARK, self.frame, border_radius=16)
         for reel in self.reels:
-            reel.draw(surface)
+            reel.draw(surface, draw_symbol)
  
         if self.state == "IDLE" and self.result and self.result["multiplier"] > 0:
             pulse = math.sin((pygame.time.get_ticks() - self.result_ms) / 1000 * 8)

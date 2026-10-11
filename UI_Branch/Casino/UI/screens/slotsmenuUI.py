@@ -13,7 +13,8 @@ Slots lobby for the Casino App.
 import pygame
 from UI.widgets import Button
 from .screenUI import Screen
-from .slotsUI import FruitsUI
+from .fruitsUI import FruitsUI
+from .wildwestUI import WildWestUI
 from Classes.Slots.fruits import Fruits
 from Classes.Slots.wildwest import WildWest
 from Classes.Slots.goldrush import GoldRush
@@ -61,9 +62,13 @@ class SlotsMenuScreen(Screen):
  
         if label == "Back":
             self.app.change_screen(self.menu)
-        elif label in self.machines:
+        elif label == SLOT_MACHINES[0].title:
             self.app.change_screen(FruitsUI(self.app, self, self.machines[label]))
- 
+        elif label == SLOT_MACHINES[1].title:
+            self.app.change_screen(WildWestUI(self.app, self, self.machines[label]))
+        #elif label == SLOT_MACHINES[2].title:
+        #    self.app.change_screen(GoldRushUI(self.app, self, self.machines[label]))
+
     def draw(self, surface):
         surface.fill(FELT_GREEN)
         player = self.app.player
