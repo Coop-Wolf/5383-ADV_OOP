@@ -5,8 +5,8 @@ from .statsUI import StatsScreen
 from .warUI import WarScreen
 from .blackjackUI import BlackjackScreen
 from .videoPokerUI import VideoPokerScreen
-from .slotsUI import SlotsScreen
 from .add_fundsUI import AddFundsScreen
+from .slotsmenuUI import SlotsMenuScreen
 from UI.constants import (WIDTH, FELT_GREEN, WHITE, GOLD,FONT_NAME, FONT_SIZE_TITLE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL, GAMES)
 
 
@@ -68,7 +68,7 @@ class MenuScreen(Screen):
         elif label == "Video Poker":
             self.app.change_screen(VideoPokerScreen(self.app, self))
         elif label == "Slots":
-            self.app.change_screen(SlotsScreen(self.app, self))
+            self.app.change_screen(SlotsMenuScreen(self.app, self))
  
     def draw(self, surface):
         surface.fill(FELT_GREEN)

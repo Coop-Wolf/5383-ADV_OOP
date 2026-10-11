@@ -25,6 +25,7 @@ class VideoPokerScreen(Screen):
 
         casino_player = Player(app.player["username"],app.player["chips"],app.player["id"],)
         self.game     = VideoPoker(casino_player,db=app.db,)
+        self.scoring = set()
 
         # ----------------------------------------------------------
         # Betting / buttons
@@ -71,6 +72,7 @@ class VideoPokerScreen(Screen):
         # Backend handles the bet and deals five cards.
         self.game.deal(self.bet)
         self.held.clear()
+        self.scoring = set()
         self.hand_name = None
         self.payout = 0
         self.net_change = 0
@@ -86,12 +88,29 @@ class VideoPokerScreen(Screen):
         # Evaluate and settle the hand.
         self.hand_name, self.payout = self.game.determine_winner()
         self.net_change = self.game.net_change
+        self.scoring = self._scoring_cards()
 
         # Update the main casino player's balance.
         self.app.player["chips"] = self.game.player.chips
         self.shown_chips = self.app.player["chips"]
         self.held.clear()
         self._set_state("RESULT")
+        
+    def _scoring_cards(self):
+        """Indices of the cards that make up a paying hand."""
+        if self.net_change < 0:
+            return set()          # losing hand: nothing to highlight
+
+        cards = self.game.video_player.hand.cards
+        name = self.hand_name or ""
+
+        # Straights and flushes use all five cards
+        if "Straight" in name or "Flush" in name:
+            return set(range(len(cards)))
+
+        # Pairs, two pair, three/four of a kind, full house: cards sharing a rank
+        ranks = [card.rank for card in cards]
+        return {i for i, r in enumerate(ranks) if ranks.count(r) >= 2}
 
     # ------------------------------------------------------------------
     # Card interaction
@@ -268,8 +287,9 @@ class VideoPokerScreen(Screen):
     def _draw_hand(self, surface):
 
         cards = self.game.video_player.hand.cards
-        draw_hand(surface, cards, (WIDTH // 2, 340), self.med, offset=130, selected=self.held,)
-
+        selected = self.held if self.state == "DRAW" else self.scoring
+        draw_hand(surface, cards, (WIDTH // 2, 340), self.med, offset=130, selected=selected,)
+        
         # Labels underneath the cards.
         if self.state == "DRAW":
 
@@ -293,13 +313,20 @@ class VideoPokerScreen(Screen):
 
         # Hand name
         result = self.large.render(self.hand_name, True, GOLD,)
-        surface.blit(result, result.get_rect(center=(WIDTH // 2, 475)),)
+        
+        # Only show the hand name if it's a winning hand or push
+        if self.hand_name != "High Card" and self.net_change > 0 and self.hand_name != "Pair":
+            surface.blit(result, result.get_rect(center=(WIDTH // 2, 475)),)
 
         # Payout/result message
         if self.net_change > 0:
 
             text = f"You win!  +${self.net_change}"
             color = GOLD
+            
+        elif self.net_change < 0 and self.hand_name == "Pair":
+            text = f"You lose  -${abs(self.net_change)}. Must have Jacks or Better to win."
+            color = LIGHT_RED
 
         elif self.net_change < 0:
 
@@ -309,8 +336,6 @@ class VideoPokerScreen(Screen):
         else:
 
             if self.hand_name == "Pair":
-                text = "No payout - Pair must be Jacks or Better"
-            elif self.payout == 1:
                 text = "Jacks or Better - Bet returned"
             else:
                 text = "No payout"

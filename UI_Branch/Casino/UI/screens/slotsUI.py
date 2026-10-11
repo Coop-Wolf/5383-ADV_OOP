@@ -20,7 +20,7 @@ import math
 from .screenUI import Screen
 from UI.widgets import Button
 from Classes.player import Player
-from Classes.Slots.slots import Slots
+from Classes.Slots.fruits import Fruits
 from UI.constants import (WIDTH, FELT_GREEN, WHITE, GOLD, LIGHT_RED, FONT_NAME, FONT_SIZE_TITLE, FONT_SIZE_LARGE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL,)
  
 BETS = [1, 5, 10, 50, 100]
@@ -112,7 +112,7 @@ class Reel:
         self.spinning = False
  
     def _random_symbol(self):
-        return self.rng.choices(list(Slots.SYMBOLS), weights=list(Slots.SYMBOLS.values()))[0]
+        return self.rng.choices(list(Fruits.SYMBOLS), weights=list(Fruits.SYMBOLS.values()))[0]
  
     # Scroll from the symbol currently showing to the final one
     def start(self, final, rows, duration_ms, now):
@@ -155,9 +155,9 @@ class Reel:
 # The screen
 # --------------------------------------------------------------------------
  
-class SlotsScreen(Screen):
+class FruitsUI(Screen):
  
-    def __init__(self, app, menu):
+    def __init__(self, app, menu, machine=Fruits):
         super().__init__(app)
         self.menu = menu
  
@@ -169,7 +169,7 @@ class SlotsScreen(Screen):
         casino_player = Player(app.player["username"], app.player["chips"], app.player["id"])
  
         # GAME
-        self.game = Slots(casino_player, db=app.db)
+        self.game = machine(casino_player, db=app.db)
         self.rng = random.Random()
  
         # REELS
@@ -325,11 +325,11 @@ class SlotsScreen(Screen):
         head = self.small.render("PAYS", True, GOLD)
         surface.blit(head, (x, y))
         y += 28
-        for symbol, mult in Slots.PAYTABLE.items():
+        for symbol, mult in Fruits.PAYTABLE.items():
             line = self.small.render(f"3x {symbol.title()}  {mult}:1", True, WHITE)
             surface.blit(line, (x, y))
             y += 24
-        line = self.small.render(f"2x Cherry  {Slots.TWO_CHERRY_PAYOUT}:1", True, WHITE)
+        line = self.small.render(f"2x Cherry  {Fruits.TWO_CHERRY_PAYOUT}:1", True, WHITE)
         surface.blit(line, (x, y))
  
     def _draw_disabled(self, surface, rect, label):

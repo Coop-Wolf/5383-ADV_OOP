@@ -3,7 +3,7 @@ WIDTH = 1000
 HEIGHT = 700
 FPS = 60
 TITLE = "Coop's Casino"
-GAMES = ("VideoPoker", "Blackjack", "War", "Slots")
+GAMES = ("Video Poker", "Blackjack", "War", "Slots")
 
 
 # Colors (R, G, B)

@@ -242,11 +242,11 @@ class BlackjackScreen(Screen):
             result = self.game.results[index]
             net = result["net_change"]
  
-            if result["outcome"] == "win":
-                return f"{result['detail']}  +${net}", GOLD
-            if result["outcome"] == "loss":
-                return f"{result['detail']}  -${hand.bet}", LIGHT_RED
-            return f"{result['detail']}  bet returned", WHITE
+            #if result["outcome"] == "win":
+            #    return f"{result['detail']}  +${net}", GOLD
+            #if result["outcome"] == "loss":
+            #    return f"{result['detail']}  -${hand.bet}", LIGHT_RED
+            #return f"{result['detail']}  bet returned", WHITE
  
         status = ""
         if hand.is_bust():
