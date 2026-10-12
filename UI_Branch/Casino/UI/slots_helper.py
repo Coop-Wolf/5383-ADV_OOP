@@ -1,6 +1,6 @@
 
 import pygame
-from constants import (GOLD, WHITE, FONT_NAME)
+from .constants import (GOLD, WHITE, FONT_NAME)
 
 
 class Reel:
@@ -28,7 +28,8 @@ class Reel:
         self.cell_border = cell_border
         self.border_radius = border_radius
 
-        self.strip = [self._random_symbol()]
+        # Populate initial strip with enough symbols to fill all visible rows
+        self.strip = [self._random_symbol() for _ in range(self.rows)]
         self.position = 0.0
         self.target_position = 0.0
         self.start_ms = 0
@@ -47,29 +48,17 @@ class Reel:
 
     def start(self, final_symbols, duration_ms, now, extra_spins=16):
             """Animate toward the supplied final symbol or symbols."""
-
             if not isinstance(final_symbols, (list, tuple)):
                 final_symbols = [final_symbols]
 
-            current_index = min(
-                int(round(self.position)),
-                len(self.strip) - 1,
-            )
+            current_index = min(int(round(self.position)), len(self.strip) - 1)
             current_symbol = self.strip[current_index]
 
-            # Generate filler symbols so the reel spins through many symbols before stopping
             spin_padding = [self._random_symbol() for _ in range(extra_spins)]
+            self.strip = [current_symbol] + spin_padding + list(final_symbols)
 
-            self.strip = (
-                [current_symbol]
-                + spin_padding
-                + list(final_symbols)
-            )
-
-            # Scroll all the way past the padding down to the final symbols
-            self.target_position = float(len(spin_padding) + len(final_symbols) - self.rows + (self.rows - 1))
-            # More simply: float(len(spin_padding) + 1) for rows=1
-            self.target_position = float(len(spin_padding) + (1 if self.rows == 1 else self.rows))
+            # The final symbols begin right after current_symbol + spin_padding
+            self.target_position = float(1 + len(spin_padding))
             self.position = 0.0
             self.start_ms = now
             self.duration_ms = max(1, duration_ms)
@@ -92,69 +81,38 @@ class Reel:
             self.spinning = False
 
     def draw(self, surface, draw_symbol):
-        """Draw symbols using the project's shared draw_symbol function."""
+            """Draw symbols using the project's shared draw_symbol function."""
+            pygame.draw.rect(surface, self.reel_bg, self.rect, border_radius=self.border_radius)
 
-        pygame.draw.rect(
-            surface,
-            self.reel_bg,
-            self.rect,
-            border_radius=self.border_radius,
-        )
+            old_clip = surface.get_clip()
+            surface.set_clip(self.rect)
 
-        old_clip = surface.get_clip()
-        surface.set_clip(self.rect)
+            first_index = max(0, int(self.position) - 1)
+            last_index = min(len(self.strip) - 1, int(self.position) + self.rows + 1)
 
-        first_index = max(0, int(self.position) - 1)
-        last_index = min(
-            len(self.strip) - 1,
-            int(self.position) + self.rows,
-        )
+            # Only single-row reels get rounded cells; multi-row columns stay square to avoid seams
+            cell_radius = self.border_radius if self.rows == 1 else 0
 
-        for index in range(first_index, last_index + 1):
-            y = self.rect.centery + (
-                self.position - index
-            ) * self.pitch
+            for index in range(first_index, last_index + 1):
+                if self.rows == 1:
+                    # Single-row machines center the single active cell in the reel rect
+                    y = self.rect.centery + (index - self.position) * self.pitch
+                    cell = pygame.Rect(self.rect.x, 0, self.rect.w, self.cell_height)
+                    cell.centery = int(y)
+                else:
+                    # Multi-row grids flow top-to-bottom starting at self.rect.y
+                    y = self.rect.y + (index - self.position) * self.pitch
+                    cell = pygame.Rect(self.rect.x, int(y), self.rect.w, self.cell_height)
 
-            cell = pygame.Rect(
-                self.rect.x,
-                0,
-                self.rect.w,
-                self.cell_height,
-            )
-            cell.centery = int(y)
+                if cell.bottom < self.rect.top or cell.top > self.rect.bottom:
+                    continue
 
-            if (
-                cell.bottom < self.rect.top
-                or cell.top > self.rect.bottom
-            ):
-                continue
+                pygame.draw.rect(surface, self.reel_bg, cell, border_radius=cell_radius)
+                draw_symbol(surface, self.strip[index], cell)
+                pygame.draw.rect(surface, self.cell_border, cell, 1, border_radius=cell_radius)
 
-            pygame.draw.rect(
-                surface,
-                self.reel_bg,
-                cell,
-                border_radius=self.border_radius,
-            )
-
-            draw_symbol(surface, self.strip[index], cell)
-
-            pygame.draw.rect(
-                surface,
-                self.cell_border,
-                cell,
-                1,
-                border_radius=self.border_radius,
-            )
-
-        surface.set_clip(old_clip)
-
-        pygame.draw.rect(
-            surface,
-            self.cell_border,
-            self.rect,
-            3,
-            border_radius=self.border_radius,
-        )
+            surface.set_clip(old_clip)
+            pygame.draw.rect(surface, self.cell_border, self.rect, 3, border_radius=self.border_radius)
 
 
 
@@ -179,8 +137,7 @@ def draw_slot_panel(surface, center_x, top_y, chips, bet, win, width=480, height
         t_surf = font_label.render(title, True, (160, 160, 160))
         surface.blit(t_surf, t_surf.get_rect(center=(cx, panel_rect.y + 16)))
 
-        v_color = GOLD if (i == 2 and win > 0) or i == 0 else WHITE
-        v_surf = font_val.render(val, True, v_color)
+        v_surf = font_val.render(val, True, WHITE)
         surface.blit(v_surf, v_surf.get_rect(center=(cx, panel_rect.y + 36)))
 
         if i < 2:
