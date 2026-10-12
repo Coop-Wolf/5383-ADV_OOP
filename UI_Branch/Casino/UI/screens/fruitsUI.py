@@ -21,7 +21,7 @@ from .screenUI import Screen
 from UI.widgets import Button
 from Classes.player import Player
 from Classes.Slots.fruits import Fruits
-from UI.reel import Reel
+from UI.slots_helper import Reel, draw_slot_panel
 from UI.symbols import draw_symbol
 from UI.constants import (WIDTH, FELT_GREEN, WHITE, GOLD, LIGHT_RED, FONT_NAME, FONT_SIZE_TITLE, FONT_SIZE_LARGE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL,)
 
@@ -89,32 +89,38 @@ class FruitsUI(Screen):
         self.message = ""
         self.message_color = WHITE
         self.result_ms = 0
+        self.last_win = 0
  
     def _go_to_menu(self):
         self.app.change_screen(self.menu)
  
     def _spin(self, bet):
-        chips_before = self.game.game_player.chips
- 
-        # Backend takes the bet and picks the reels
-        try:
-            self.game.deal(bet)
-        except ValueError:
-            return
- 
-        # Settle now; the animation only reveals the result
-        self.result = self.game.determine_winner()
-        self.app.player["chips"] = self.game.game_player.chips
- 
-        self.bet = bet
-        self.shown_chips = chips_before - bet
-        self.message = ""
- 
-        now = pygame.time.get_ticks()
-        for i, reel in enumerate(self.reels):
-            reel.start(self.result["reels"][i], rows=12 + 5 * i, duration_ms=1200 + 500 * i, now=now)
- 
-        self.state = "SPIN"
+            chips_before = self.game.game_player.chips
+            self.last_win = 0
+    
+            # Backend takes the bet and picks the reels
+            try:
+                self.game.deal(bet)
+            except ValueError:
+                return
+    
+            # Settle now; the animation only reveals the result
+            self.result = self.game.determine_winner()
+            self.app.player["chips"] = self.game.game_player.chips
+    
+            self.bet = bet
+            self.shown_chips = chips_before - bet
+            self.message = ""
+    
+            now = pygame.time.get_ticks()
+            for i, reel in enumerate(self.reels):
+                reel.start(
+                    self.result["reels"][i],
+                    duration_ms=1200 + 500 * i,
+                    now=now,
+                )
+    
+            self.state = "SPIN"
  
     def handle_event(self, event):
         if self.state == "SPIN":
@@ -143,6 +149,8 @@ class FruitsUI(Screen):
         self.state = "IDLE"
         self.result_ms = now
         self.shown_chips = self.app.player["chips"]
+        gross_win = self.result.get("net_change", 0) + self.bet if self.result.get("multiplier", 0) > 0 else 0
+        self.last_win = max(0, gross_win)
  
         if self.result["multiplier"] > 0:
             self.message = f"You win!  +${self.result['net_change']}"

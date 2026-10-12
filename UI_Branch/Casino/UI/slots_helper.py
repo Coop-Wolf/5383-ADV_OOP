@@ -1,5 +1,6 @@
 
 import pygame
+from constants import (GOLD, WHITE, FONT_NAME)
 
 
 class Reel:
@@ -44,31 +45,35 @@ class Reel:
 
         return self.rng.choices(names, weights=weights, k=1)[0]
 
-    def start(self, final_symbols, duration_ms, now):
-        """Animate toward the supplied final symbol or symbols."""
+    def start(self, final_symbols, duration_ms, now, extra_spins=16):
+            """Animate toward the supplied final symbol or symbols."""
 
-        if not isinstance(final_symbols, (list, tuple)):
-            final_symbols = [final_symbols]
+            if not isinstance(final_symbols, (list, tuple)):
+                final_symbols = [final_symbols]
 
-        current_index = min(
-            int(round(self.position)),
-            len(self.strip) - 1,
-        )
-        current_symbol = self.strip[current_index]
+            current_index = min(
+                int(round(self.position)),
+                len(self.strip) - 1,
+            )
+            current_symbol = self.strip[current_index]
 
-        extra_symbols = max(0, self.rows - 1)
+            # Generate filler symbols so the reel spins through many symbols before stopping
+            spin_padding = [self._random_symbol() for _ in range(extra_spins)]
 
-        self.strip = (
-            [current_symbol]
-            + [self._random_symbol() for _ in range(extra_symbols)]
-            + list(final_symbols)
-        )
+            self.strip = (
+                [current_symbol]
+                + spin_padding
+                + list(final_symbols)
+            )
 
-        self.target_position = float(self.rows)
-        self.position = 0.0
-        self.start_ms = now
-        self.duration_ms = max(1, duration_ms)
-        self.spinning = True
+            # Scroll all the way past the padding down to the final symbols
+            self.target_position = float(len(spin_padding) + len(final_symbols) - self.rows + (self.rows - 1))
+            # More simply: float(len(spin_padding) + 1) for rows=1
+            self.target_position = float(len(spin_padding) + (1 if self.rows == 1 else self.rows))
+            self.position = 0.0
+            self.start_ms = now
+            self.duration_ms = max(1, duration_ms)
+            self.spinning = True
 
     def update(self, now):
         if not self.spinning:
@@ -150,3 +155,34 @@ class Reel:
             3,
             border_radius=self.border_radius,
         )
+
+
+
+def draw_slot_panel(surface, center_x, top_y, chips, bet, win, width=480, height=52):
+    panel_rect = pygame.Rect(0, 0, width, height)
+    panel_rect.centerx = center_x
+    panel_rect.top = top_y
+
+    pygame.draw.rect(surface, (15, 15, 15), panel_rect, border_radius=8)
+    pygame.draw.rect(surface, (80, 80, 80), panel_rect, 2, border_radius=8)
+
+    col_w = width // 3
+    labels = [("CREDIT", f"${chips}"), ("BET", f"${bet}"), ("WIN", f"${max(0, win)}")]
+
+    font_label = pygame.font.Font(FONT_NAME, 14)
+    font_val = pygame.font.Font(FONT_NAME, 20)
+
+    for i, (title, val) in enumerate(labels):
+        cell_x = panel_rect.x + i * col_w
+        cx = cell_x + col_w // 2
+
+        t_surf = font_label.render(title, True, (160, 160, 160))
+        surface.blit(t_surf, t_surf.get_rect(center=(cx, panel_rect.y + 16)))
+
+        v_color = GOLD if (i == 2 and win > 0) or i == 0 else WHITE
+        v_surf = font_val.render(val, True, v_color)
+        surface.blit(v_surf, v_surf.get_rect(center=(cx, panel_rect.y + 36)))
+
+        if i < 2:
+            div_x = cell_x + col_w
+            pygame.draw.line(surface, (50, 50, 50), (div_x, panel_rect.y + 8), (div_x, panel_rect.bottom - 8), 1)

@@ -14,10 +14,11 @@ from .screenUI import Screen
 from UI.widgets import Button
 from Classes.player import Player
 from Classes.Slots.wildwest import WildWest
-from UI.reel import Reel
+from UI.slots_helper import Reel, draw_slot_panel
 from UI.symbols import draw_symbol
 from UI.constants import (
     WIDTH,
+    HEIGHT,
     FELT_GREEN,
     DARK_GREEN,
     WHITE,
@@ -30,8 +31,6 @@ from UI.constants import (
     FONT_SIZE_MEDIUM,
     FONT_SIZE_SMALL,
 )
-
-
 
 BETS = [1, 5, 10, 50, 100]
 
@@ -83,7 +82,6 @@ class ReelColumn:
         return self.rng.choices(names, weights=weights, k=1)[0]
 
     def start(self, final_symbols, duration_ms, now):
-        """Start the animation; final_symbols are ordered top to bottom."""
         self.strip = (
             [self._random_symbol() for _ in range(self.EXTRA_SYMBOLS)]
             + list(final_symbols)
@@ -199,7 +197,16 @@ class WildWestUI(Screen):
             for i, bet in enumerate(BETS)
         ]
 
-        self.state = "IDLE"  # IDLE, SPIN, FREE_SPIN
+        # Pop-up dialog buttons
+        self.start_bonus_btn = Button(
+            WIDTH // 2 - 80, 410, 160, 50, "Start Spins", font_size=FONT_SIZE_SMALL
+        )
+        self.collect_bonus_btn = Button(
+            WIDTH // 2 - 80, 410, 160, 50, "Continue", font_size=FONT_SIZE_SMALL
+        )
+
+        # States: IDLE, SPIN, BONUS_MODAL, FREE_SPIN, FREE_SPIN_RESULT, BONUS_SUMMARY_MODAL
+        self.state = "IDLE"
         self.bet = 0
         self.result = None
         self.current_grid = None
@@ -207,18 +214,17 @@ class WildWestUI(Screen):
         self.features = {}
         self.free_spins = []
         self.free_spin_index = -1
+        self.free_spin_accumulated_win = 0
         self.shown_chips = app.player["chips"]
         self.message = "Choose a bet to spin"
         self.message_color = WHITE
         self.result_ms = 0
-        self.round_payout = 0
         self.result_pause_until = 0
 
     def _go_to_menu(self):
         self.app.change_screen(self.menu)
 
     def _grid_column(self, grid, col):
-        """Convert the backend's row-major grid into a reel column."""
         return [grid[row][col] for row in range(GRID_ROWS)]
 
     def _start_grid_animation(self, grid, now, duration_base=1050):
@@ -234,8 +240,6 @@ class WildWestUI(Screen):
     def _spin(self, bet):
         chips_before = self.game.game_player.chips
 
-        # The backend takes the bet, resolves the main spin and all free spins,
-        # and settles the complete round exactly once.
         try:
             self.game.deal(bet)
         except ValueError:
@@ -247,11 +251,12 @@ class WildWestUI(Screen):
         self.app.player["chips"] = self.game.game_player.chips
 
         self.bet = bet
+        # Deduct bet visually right away, but hold back winnings until reels finish
         self.shown_chips = chips_before - bet
         self.features = self.result.get("features", {}) or {}
         self.free_spins = self.features.get("free_spins", []) or []
         self.free_spin_index = -1
-        self.round_payout = self.result.get("net_change", 0) + bet
+        self.free_spin_accumulated_win = 0
         self.message = "Spinning..."
         self.message_color = WHITE
 
@@ -260,6 +265,20 @@ class WildWestUI(Screen):
         self.state = "SPIN"
 
     def handle_event(self, event):
+        if self.state == "BONUS_MODAL":
+            if self.start_bonus_btn.handle_event(event):
+                now = pygame.time.get_ticks()
+                self.free_spin_index = 0
+                self.state = "FREE_SPIN"
+                self._start_free_spin(now)
+            return
+
+        if self.state == "BONUS_SUMMARY_MODAL":
+            if self.collect_bonus_btn.handle_event(event):
+                now = pygame.time.get_ticks()
+                self._finish_round(now)
+            return
+
         if self.state != "IDLE":
             return
 
@@ -267,7 +286,7 @@ class WildWestUI(Screen):
             self._go_to_menu()
             return
 
-        chips = self.game.game_player.chips
+        chips = self.shown_chips
         for bet, button in self.bet_buttons:
             if bet <= chips and button.handle_event(event):
                 self._spin(bet)
@@ -283,39 +302,39 @@ class WildWestUI(Screen):
         ):
             self._finish_grid_animation(now)
 
-        elif self.state == "BONUS_INTRO" and now >= self.result_pause_until:
-            self.free_spin_index = 0
-            self.state = "FREE_SPIN"
-            self._start_free_spin(now)
-
         elif self.state == "FREE_SPIN_RESULT" and now >= self.result_pause_until:
             self.free_spin_index += 1
             if self.free_spin_index < len(self.free_spins):
                 self.state = "FREE_SPIN"
                 self._start_free_spin(now)
             else:
-                self._finish_round(now)
+                # All free spins done: open summary popup
+                self.state = "BONUS_SUMMARY_MODAL"
 
     def _finish_grid_animation(self, now):
         if self.state == "SPIN":
             self.current_wins = self.result.get("wins", []) or []
 
+            # Add main spin payout to shown chips only now that reels stopped
+            main_payout = sum(w.get("payout", 0) for w in self.current_wins)
+            self.shown_chips += main_payout
+
             if self.free_spins:
-                self.state = "BONUS_INTRO"
-                self.message = "Saloon bonus! Free spins!"
-                self.message_color = WIN_GOLD
-                self.result_pause_until = now + 900
+                self.state = "BONUS_MODAL"
                 return
 
             self._finish_round(now)
             return
 
-        # Hold each completed free-spin result briefly so its winning row and
-        # payout are visible before the next already-resolved spin is revealed.
+        # Free spin settled
         free_spin = self.free_spins[self.free_spin_index]
         self.current_wins = free_spin.get("wins", []) or []
+        spin_win = sum(w.get("payout", 0) for w in self.current_wins)
+        self.free_spin_accumulated_win += spin_win
+        self.shown_chips += spin_win
+
         self.state = "FREE_SPIN_RESULT"
-        self.result_pause_until = now + 750
+        self.result_pause_until = now + 900
 
     def _start_free_spin(self, now):
         free_spin = self.free_spins[self.free_spin_index]
@@ -348,49 +367,38 @@ class WildWestUI(Screen):
             self.message += f"   ({len(self.free_spins)} free spins)"
 
     def draw(self, surface):
-        surface.fill(FELT_GREEN)
+            surface.fill(FELT_GREEN)
 
-        name = self.med.render(self.app.player["username"], True, WHITE)
-        surface.blit(name, (30, 24))
+            name = self.med.render(self.app.player["username"], True, WHITE)
+            surface.blit(name, (30, 24))
 
-        chips = self.med.render(f"Chips: {self.shown_chips}", True, GOLD)
-        surface.blit(chips, chips.get_rect(topright=(WIDTH - 30, 24)))
+            chips = self.med.render(f"Chips: {self.shown_chips}", True, GOLD)
+            surface.blit(chips, chips.get_rect(topright=(WIDTH - 30, 24)))
 
-        title = self.title_font.render("WILD WEST", True, GOLD)
-        surface.blit(title, title.get_rect(center=(WIDTH // 2, 100)))
+            title = self.title_font.render("WILD WEST", True, GOLD)
+            surface.blit(title, title.get_rect(center=(WIDTH // 2, 100)))
 
-        subtitle_text = "Match symbols across a row. Outlaw is wild; 3 Saloon symbols trigger 8 free spins."
-        subtitle = self.tiny.render(subtitle_text, True, WHITE)
-        surface.blit(subtitle, subtitle.get_rect(center=(WIDTH // 2, 145)))
+            subtitle_text = "Match symbols across a row. Outlaw is wild; 3 Saloon symbols trigger 8 free spins."
+            subtitle = self.tiny.render(subtitle_text, True, WHITE)
+            surface.blit(subtitle, subtitle.get_rect(center=(WIDTH // 2, 145)))
 
-        self._draw_paytable(surface)
+            self._draw_paytable(surface)
 
-        # Board backing and column reels.
-        pygame.draw.rect(
-            surface,
-            DARK_GREEN,
-            self.grid_rect.inflate(16, 16),
-            border_radius=14,
-        )
-        for reel in self.columns:
-            reel.draw(surface)
-
-        # Highlight winning rows after the current grid has stopped.
-        if self.state in ("IDLE", "BONUS_INTRO", "FREE_SPIN_RESULT") and self.current_grid is not None:
-            self._draw_winning_rows(surface)
-
-        # A gold frame pulses after a successful completed round.
-        if self.state == "IDLE" and self.result and self.result.get("multiplier", 0) > 0:
-            pulse = math.sin((pygame.time.get_ticks() - self.result_ms) / 1000 * 8)
-            border_width = 3 + int(2 * (1 + pulse) / 2)
+            # Board backing and column reels
             pygame.draw.rect(
                 surface,
-                GOLD,
+                DARK_GREEN,
                 self.grid_rect.inflate(16, 16),
-                border_width,
                 border_radius=14,
             )
-        else:
+            for reel in self.columns:
+                reel.draw(surface)
+
+            # Highlight only winning rows after the grid stops
+            if self.state in ("IDLE", "FREE_SPIN_RESULT") and self.current_grid is not None:
+                self._draw_winning_rows(surface)
+
+            # Static outer border around the grid (no pulsing full-grid highlight)
             pygame.draw.rect(
                 surface,
                 GRAY,
@@ -399,11 +407,52 @@ class WildWestUI(Screen):
                 border_radius=14,
             )
 
-        self._draw_status(surface)
-        self._draw_bet_controls(surface)
+            self._draw_status(surface)
+            self._draw_bet_controls(surface)
 
-        if self.state == "IDLE":
-            self.menu_button.draw(surface)
+            if self.state == "IDLE":
+                self.menu_button.draw(surface)
+
+            # Modal Popups
+            if self.state == "BONUS_MODAL":
+                self._draw_modal(
+                    surface,
+                    title="SALOON BONUS!",
+                    line1=f"You won {len(self.free_spins)} Free Spins!",
+                    line2="All line wins are active during bonus rounds.",
+                    button=self.start_bonus_btn,
+                )
+            elif self.state == "BONUS_SUMMARY_MODAL":
+                self._draw_modal(
+                    surface,
+                    title="BONUS COMPLETE!",
+                    line1=f"Total Free Spins: {len(self.free_spins)}",
+                    line2=f"Total Bonus Won: ${self.free_spin_accumulated_win}",
+                    button=self.collect_bonus_btn,
+                )
+
+    def _draw_modal(self, surface, title, line1, line2, button):
+        overlay = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
+        overlay.fill((0, 0, 0, 180))
+        surface.blit(overlay, (0, 0))
+
+        modal_rect = pygame.Rect(0, 0, 460, 260)
+        modal_rect.center = (WIDTH // 2, HEIGHT // 2)
+
+        pygame.draw.rect(surface, DARK, modal_rect, border_radius=16)
+        pygame.draw.rect(surface, GOLD, modal_rect, width=3, border_radius=16)
+
+        t_surf = self.large.render(title, True, WIN_GOLD)
+        surface.blit(t_surf, t_surf.get_rect(center=(WIDTH // 2, modal_rect.y + 45)))
+
+        l1_surf = self.med.render(line1, True, WHITE)
+        surface.blit(l1_surf, l1_surf.get_rect(center=(WIDTH // 2, modal_rect.y + 105)))
+
+        l2_surf = self.small.render(line2, True, GOLD)
+        surface.blit(l2_surf, l2_surf.get_rect(center=(WIDTH // 2, modal_rect.y + 145)))
+
+        button.rect.center = (WIDTH // 2, modal_rect.bottom - 45)
+        button.draw(surface)
 
     def _draw_winning_rows(self, surface):
         for win in self.current_wins:
@@ -448,16 +497,16 @@ class WildWestUI(Screen):
 
         if self.state in ("FREE_SPIN", "FREE_SPIN_RESULT") and self.free_spins:
             free_spin = self.free_spins[self.free_spin_index]
-            spin_payout = free_spin.get("multiplier", 0) * self.bet
+            spin_payout = sum(w.get("payout", 0) for w in free_spin.get("wins", []))
             status = (
                 f"Free spin {self.free_spin_index + 1}/{len(self.free_spins)}"
-                f"  |  This spin: ${spin_payout}"
+                f"  |  Spin Win: ${spin_payout}"
             )
             color = WIN_GOLD
         elif self.result is not None and self.state == "IDLE":
             status = f"Bet: ${self.bet}"
             color = GOLD
-        elif self.state in ("SPIN", "BONUS_INTRO"):
+        elif self.state in ("SPIN", "BONUS_MODAL"):
             status = f"Bet: ${self.bet}  |  Good luck, partner!"
             color = WHITE
         else:
@@ -478,7 +527,7 @@ class WildWestUI(Screen):
             )
 
     def _draw_bet_controls(self, surface):
-        chips = self.game.game_player.chips
+        chips = self.shown_chips
         can_bet = self.state == "IDLE" and chips > 0
 
         if self.state == "IDLE" and chips < 1:
