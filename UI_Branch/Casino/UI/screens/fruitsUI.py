@@ -19,9 +19,10 @@ from .screenUI import Screen
 from UI.widgets import Button
 from Classes.player import Player
 from Classes.Slots.fruits import Fruits
-from UI.slots_helper import Reel, draw_slot_panel
+from UI.slots_helper import Reel, draw_slot_panel, draw_paytable_panel
 from UI.symbols import draw_symbol
 from UI.constants import (
+    DARK_GREEN,
     WIDTH,
     FELT_GREEN,
     WHITE,
@@ -32,12 +33,13 @@ from UI.constants import (
     FONT_SIZE_LARGE,
     FONT_SIZE_MEDIUM,
     FONT_SIZE_SMALL,
+    CELL_BORDER,
+    BETS,
+    DARK,
+    GREY,
+    REEL_BG,
+    CELL_BORDER,
 )
-
-BETS = [1, 5, 10, 50, 100]
-DARK = (15, 15, 15)
-GREY = (90, 90, 90)
-REEL_BG = (245, 240, 225)
 
 
 @lru_cache(maxsize=None)
@@ -61,6 +63,7 @@ class FruitsUI(Screen):
         casino_player = Player(app.player["username"], app.player["chips"], app.player["id"])
 
         # GAME
+        self.machine = machine
         self.game = machine(casino_player, db=app.db)
         self.rng = random.Random()
 
@@ -174,7 +177,7 @@ class FruitsUI(Screen):
         chips = self.med.render(f"Chips: {self.shown_chips}", True, GOLD)
         surface.blit(chips, chips.get_rect(topright=(WIDTH - 30, 25)))
 
-        title = self.title_font.render("SLOTS", True, GOLD)
+        title = self.title_font.render("CLASSIC FRUITS", True, GOLD)
         surface.blit(title, title.get_rect(center=(WIDTH // 2, 110)))
 
         rules = self.small.render("Match three symbols to win. Two cherries on the left pay 1 to 1.", True, WHITE)
@@ -217,16 +220,20 @@ class FruitsUI(Screen):
             self.menu_button.draw(surface)
 
     def _draw_paytable(self, surface):
-        x, y = 30, 215
-        head = self.small.render("PAYS", True, GOLD)
-        surface.blit(head, (x, y))
-        y += 28
-        for symbol, mult in Fruits.PAYTABLE.items():
-            line = self.small.render(f"3x {symbol.title()}  {mult}:1", True, WHITE)
-            surface.blit(line, (x, y))
-            y += 24
-        line = self.small.render(f"2x Cherry  {Fruits.TWO_CHERRY_PAYOUT}:1", True, WHITE)
-        surface.blit(line, (x, y))
+        
+        lines = [f"2x Cherry  {self.machine.TWO_CHERRY_PAYOUT}:1"]
+        lines.extend(
+            f"3x {symbol.title()}  {mult}:1"
+            for symbol, mult in self.machine.PAYTABLE.items()
+        )
+
+        draw_paytable_panel(
+            surface,
+            rect=(20, 205, 225, 245),
+            title=" ROW PAYS",
+            lines=lines,
+            text_color=WHITE,
+        )
 
     def _draw_disabled(self, surface, rect, label):
         pygame.draw.rect(surface, GREY, rect, border_radius=10)

@@ -1,6 +1,6 @@
 
 import pygame
-from .constants import (GOLD, WHITE, FONT_NAME)
+from .constants import (GOLD, WHITE, FONT_NAME, CELL_BORDER, DARK_GREEN)
 
 
 class Reel:
@@ -143,3 +143,45 @@ def draw_slot_panel(surface, center_x, top_y, chips, bet, win, width=480, height
         if i < 2:
             div_x = cell_x + col_w
             pygame.draw.line(surface, (50, 50, 50), (div_x, panel_rect.y + 8), (div_x, panel_rect.bottom - 8), 1)
+            
+
+def draw_paytable_panel(
+    surface,
+    rect,
+    title,
+    lines,
+    bg_color=DARK_GREEN,
+    border_color=CELL_BORDER,
+    title_color=GOLD,
+    text_color=WHITE,
+    border_width=2,
+    border_radius=10,
+    title_size=24,
+    text_size=22,
+    padding=12,
+    line_gap=22,
+):
+    """Draw a framed container with a title and paytable line entries."""
+    panel_rect = pygame.Rect(rect)
+    pygame.draw.rect(surface, bg_color, panel_rect, border_radius=border_radius)
+    pygame.draw.rect(surface, border_color, panel_rect, width=border_width, border_radius=border_radius)
+
+    title_font = pygame.font.Font(FONT_NAME, title_size)
+    text_font = pygame.font.Font(FONT_NAME, text_size)
+
+    x = panel_rect.x + padding
+    y = panel_rect.y + padding
+
+    title_surf = title_font.render(title, True, title_color)
+    surface.blit(title_surf, (x, y))
+    y += title_surf.get_height() + 8
+
+    for line in lines:
+        if isinstance(line, tuple):
+            text, color = line
+        else:
+            text, color = line, text_color
+
+        line_surf = text_font.render(text, True, color)
+        surface.blit(line_surf, (x, y))
+        y += line_gap

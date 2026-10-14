@@ -13,7 +13,7 @@ from .screenUI import Screen
 from UI.widgets import Button
 from Classes.player import Player
 from Classes.Slots.wildwest import WildWest
-from UI.slots_helper import Reel, draw_slot_panel
+from UI.slots_helper import Reel, draw_slot_panel, draw_paytable_panel
 from UI.symbols import draw_symbol
 from UI.constants import (
     WIDTH,
@@ -29,13 +29,12 @@ from UI.constants import (
     FONT_SIZE_LARGE,
     FONT_SIZE_MEDIUM,
     FONT_SIZE_SMALL,
+    BETS,
+    DARK,
+    REEL_BG,
+    CELL_BORDER,
 )
 
-BETS = [1, 5, 10, 50, 100]
-
-DARK = (15, 15, 15)
-REEL_BG = (245, 240, 225)
-CELL_BORDER = (185, 170, 135)
 WIN_GOLD = (255, 210, 70)
 
 CELL_W = 118
@@ -112,8 +111,8 @@ class WildWestUI(Screen):
             for i, bet in enumerate(BETS)
         ]
 
-        self.start_bonus_btn = Button(WIDTH // 2 - 80, 410, 160, 50, "Start Spins", font_size=FONT_SIZE_SMALL)
-        self.collect_bonus_btn = Button(WIDTH // 2 - 80, 410, 160, 50, "Continue", font_size=FONT_SIZE_SMALL)
+        self.start_bonus_btn = Button(WIDTH // 2 - 80, 410, 160, 50, "Start Spins", font_size=24)
+        self.collect_bonus_btn = Button(WIDTH // 2 - 80, 410, 160, 50, "Continue", font_size=24)
 
         # States: IDLE, SPIN, BONUS_MODAL, FREE_SPIN, FREE_SPIN_RESULT, BONUS_SUMMARY_MODAL
         self.state = "IDLE"
@@ -307,7 +306,6 @@ class WildWestUI(Screen):
                 surface,
                 title="SALOON BONUS!",
                 line1=f"You won {len(self.free_spins)} Free Spins!",
-                line2="All line wins are active during bonus rounds.",
                 button=self.start_bonus_btn,
             )
         elif self.state == "BONUS_SUMMARY_MODAL":
@@ -353,21 +351,19 @@ class WildWestUI(Screen):
             pygame.draw.rect(surface, WIN_GOLD, row_rect, width=3, border_radius=8)
 
     def _draw_paytable(self, surface):
-        x, y = 24, 185
-        heading = self.small.render("ROW PAYS", True, GOLD)
-        surface.blit(heading, (x, y))
-        y += 28
+            lines = [
+                (f"{symbol.replace('_', ' ').title()}: {multiplier}x", WHITE)
+                for symbol, multiplier in self.machine.PAYTABLE.items()
+            ]
+            lines.append(("Outlaw = Wild", WHITE))
+            lines.append(("3 Saloon = 8 free spins", WHITE))
 
-        for symbol, multiplier in self.machine.PAYTABLE.items():
-            label = f"{symbol.replace('_', ' ').title()}: {multiplier}x"
-            line = self.tiny.render(label, True, WHITE)
-            surface.blit(line, (x, y))
-            y += 22
-
-        scatter = self.tiny.render("3 Saloon = 8 free spins", True, WIN_GOLD)
-        surface.blit(scatter, (x, y + 4))
-        wild = self.tiny.render("Outlaw = Wild", True, WHITE)
-        surface.blit(wild, (x, y + 26))
+            draw_paytable_panel(
+                surface,
+                rect=(18, 175, 235, 260),
+                title="ROW PAYS",
+                lines=lines,
+            )
 
     def _draw_status(self, surface):
             status_y = self.grid_rect.bottom + 72
