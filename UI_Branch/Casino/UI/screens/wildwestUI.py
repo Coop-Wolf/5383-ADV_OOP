@@ -14,7 +14,7 @@ from UI.widgets import Button
 from Classes.player import Player
 from Classes.Slots.wildwest import WildWest
 from UI.slots_helper import Reel, draw_slot_panel, draw_paytable_panel
-from UI.symbols import draw_symbol
+from UI.symbols import draw_symbol, get_font
 from UI.constants import (
     WIDTH,
     HEIGHT,
@@ -24,7 +24,6 @@ from UI.constants import (
     GOLD,
     LIGHT_RED,
     GRAY,
-    FONT_NAME,
     FONT_SIZE_TITLE,
     FONT_SIZE_LARGE,
     FONT_SIZE_MEDIUM,
@@ -43,13 +42,6 @@ CELL_GAP = 0
 COL_GAP = 10
 GRID_ROWS = 4
 GRID_COLS = 3
-
-
-@lru_cache(maxsize=None)
-def get_font(size, bold=False):
-    font = pygame.font.Font(FONT_NAME, size)
-    font.set_bold(bold)
-    return font
 
 
 class WildWestUI(Screen):
@@ -306,6 +298,7 @@ class WildWestUI(Screen):
                 surface,
                 title="SALOON BONUS!",
                 line1=f"You won {len(self.free_spins)} Free Spins!",
+                line2 = "",
                 button=self.start_bonus_btn,
             )
         elif self.state == "BONUS_SUMMARY_MODAL":
@@ -352,17 +345,19 @@ class WildWestUI(Screen):
 
     def _draw_paytable(self, surface):
             lines = [
-                (f"{symbol.replace('_', ' ').title()}: {multiplier}x", WHITE)
-                for symbol, multiplier in self.machine.PAYTABLE.items()
+                f"3x {symbol.title()}  {mult}:1"
+                for symbol, mult in self.machine.PAYTABLE.items()
             ]
-            lines.append(("Outlaw = Wild", WHITE))
-            lines.append(("3 Saloon = 8 free spins", WHITE))
+
+            lines.append("Outlaw = Wild")
+            lines.append("3 Saloon = 10 free spins")
 
             draw_paytable_panel(
                 surface,
                 rect=(18, 175, 235, 260),
                 title="ROW PAYS",
                 lines=lines,
+                text_color=WHITE,
             )
 
     def _draw_status(self, surface):

@@ -1,10 +1,8 @@
-See if there is a better looking way to render the slot symbols
-Look into better visuals for slot game
-Implement GoldRush game screen
-Create another slots game?
+Fix padding between same column symbols in CGW game
+Bonus game needs to go from 3R x 4C to 4R x 4C then to 5R x 4C
+Bonus game play need to be slower, and symboles weren't being seen, only the jugs.
+ 
 Review code and reuse where possible
-
-
 
 
 

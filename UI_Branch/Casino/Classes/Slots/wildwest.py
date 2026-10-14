@@ -33,7 +33,7 @@ class WildWest(Slot):
     PAYTABLE = {"horseshoe": 1, "boot": 2, "hat": 3, "revolver": 5, "badge": 12, WILD: 40,}
  
     SCATTERS_NEEDED = 3
-    FREE_SPINS = 8
+    FREE_SPINS = 10
     FREE_SPIN_MULTIPLIER = 2
  
     # Payout multiple for one row

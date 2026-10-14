@@ -174,7 +174,7 @@ def draw_paytable_panel(
 
     title_surf = title_font.render(title, True, title_color)
     surface.blit(title_surf, (x, y))
-    y += title_surf.get_height() + 8
+    y += title_surf.get_height() + 12
 
     for line in lines:
         if isinstance(line, tuple):

@@ -28,11 +28,11 @@ class GoldRush(Slot):
     BONUS = "mine_cart"
  
     # symbol -> weight (higher = more common) | symbol -> pays N to 1 (net win = bet * N)
-    SYMBOLS = {"pickaxe": 26, "lantern": 22, "nugget": 18, "dynamite": 12, "gold_bar": 6, BONUS: 4,}
-    PAYTABLE = {"pickaxe": 1, "lantern": 2, "nugget": 3, "dynamite": 6, "gold_bar": 20,}
+    SYMBOLS = {"pickaxe": 26, "lantern": 22, "nugget": 18, "dynamite": 12, "gold_sack": 6, BONUS: 4}
+    PAYTABLE = {"pickaxe": 1, "lantern": 2, "nugget": 3, "dynamite": 6, "gold_sack": 20}
  
     CARTS_NEEDED = 3
-    BONUS_CARTS = 5
+    BONUS_CARTS = 6
  
     # bonus prize (pays N to 1) -> weight
     BONUS_PRIZES = {5: 35, 10: 30, 20: 20, 50: 10, 100: 4, 250: 1}

@@ -12,7 +12,6 @@ The screen only draws and handles input; all game logic lives in Slots.
 """
 
 import pygame
-from functools import lru_cache
 import random
 import math
 from .screenUI import Screen
@@ -20,33 +19,22 @@ from UI.widgets import Button
 from Classes.player import Player
 from Classes.Slots.fruits import Fruits
 from UI.slots_helper import Reel, draw_slot_panel, draw_paytable_panel
-from UI.symbols import draw_symbol
+from UI.symbols import draw_symbol, get_font
 from UI.constants import (
-    DARK_GREEN,
     WIDTH,
     FELT_GREEN,
     WHITE,
     GOLD,
     LIGHT_RED,
-    FONT_NAME,
     FONT_SIZE_TITLE,
     FONT_SIZE_LARGE,
     FONT_SIZE_MEDIUM,
     FONT_SIZE_SMALL,
-    CELL_BORDER,
     BETS,
     DARK,
     GREY,
     REEL_BG,
-    CELL_BORDER,
 )
-
-
-@lru_cache(maxsize=None)
-def get_font(size, bold=False):
-    font = pygame.font.Font(FONT_NAME, size)
-    font.set_bold(bold)
-    return font
 
 
 class FruitsUI(Screen):
@@ -55,10 +43,10 @@ class FruitsUI(Screen):
         super().__init__(app)
         self.menu = menu
 
-        self.title_font = pygame.font.Font(FONT_NAME, FONT_SIZE_TITLE)
-        self.large = pygame.font.Font(FONT_NAME, FONT_SIZE_LARGE)
-        self.med = pygame.font.Font(FONT_NAME, FONT_SIZE_MEDIUM)
-        self.small = pygame.font.Font(FONT_NAME, FONT_SIZE_SMALL)
+        self.title_font = get_font(FONT_SIZE_TITLE, True)
+        self.large = get_font(FONT_SIZE_LARGE, True)
+        self.med = get_font(FONT_SIZE_MEDIUM)
+        self.small = get_font(FONT_SIZE_SMALL)
 
         casino_player = Player(app.player["username"], app.player["chips"], app.player["id"])
 

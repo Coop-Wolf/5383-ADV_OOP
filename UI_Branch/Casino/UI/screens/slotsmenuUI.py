@@ -12,15 +12,19 @@ Slots lobby for the Casino App.
  
 import pygame
 from UI.widgets import Button
+
 from .screenUI import Screen
 from .fruitsUI import FruitsUI
 from .wildwestUI import WildWestUI
+from .goldrushUI import GoldRushUI
+from .cowsgonewildUI import CowsGoneWildUI
 from Classes.Slots.fruits import Fruits
 from Classes.Slots.wildwest import WildWest
 from Classes.Slots.goldrush import GoldRush
+from Classes.Slots.cowsgonewild import CowsGoneWild
 from UI.constants import (WIDTH, FELT_GREEN, WHITE, GOLD, FONT_NAME, FONT_SIZE_TITLE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL,)
  
-SLOT_MACHINES = [Fruits, WildWest, GoldRush]
+SLOT_MACHINES = [Fruits, WildWest, GoldRush, CowsGoneWild]
  
  
 class SlotsMenuScreen(Screen):
@@ -66,8 +70,10 @@ class SlotsMenuScreen(Screen):
             self.app.change_screen(FruitsUI(self.app, self, self.machines[label]))
         elif label == SLOT_MACHINES[1].title:
             self.app.change_screen(WildWestUI(self.app, self, self.machines[label]))
-        #elif label == SLOT_MACHINES[2].title:
-        #    self.app.change_screen(GoldRushUI(self.app, self, self.machines[label]))
+        elif label == SLOT_MACHINES[2].title:
+            self.app.change_screen(GoldRushUI(self.app, self, self.machines[label]))
+        elif label == SLOT_MACHINES[3].title:
+            self.app.change_screen(CowsGoneWildUI(self.app, self, self.machines[label]))
 
     def draw(self, surface):
         surface.fill(FELT_GREEN)
