@@ -3,13 +3,13 @@ Cows Gone Wild: a 4 x 3 slot machine with Hold & Respin Barnyard Bonus.
 
     - Base grid is 4 columns x 3 rows (3 horizontal paylines of 4 matching symbols).
     - Golden Jug is the bonus coin symbol carrying random multiplier cash values.
-    - 4 or more Golden Jugs anywhere on the grid trigger the Barnyard Respin feature.
+    - Golden Jugs trigger the Barnyard Respin feature when reaching JUGS_NEEDED.
     - The bonus expands the grid vertically:
-        * Starts at 4 columns x 4 rows (16 cells) with 3 respins.
-        * Collecting 4 additional jugs (+4) unlocks the 5th row (4 cols x 5 rows = 20 cells)
-          and resets the respin counter back to 3.
-        * Boss Cow can land during respins to fire target beams multiplying all currently
-          locked jug values by 2x, 3x, or 5x, then vanishes (does not lock).
+        * Starts at 4 columns x 3 rows with 3 respins.
+        * Collecting +4 new jugs unlocks the 4th row (4x4) and resets respins to 3.
+        * Collecting +8 total new jugs (+4 more) unlocks the 5th row (4x5) and resets respins to 3.
+        * Boss Cow lands during respins, reveals its multiplier boost (2x, 3x, or 5x),
+          and fires sequential target bolts multiplying existing locked jugs.
     - Clearing all 20 cells awards the Grand Moo-lah Jackpot (+500x bet).
 """
 
@@ -48,7 +48,7 @@ class CowsGoneWild(Slot):
 
     JUGS_NEEDED = 1
     INITIAL_RESPINS = 3
-    EXPANSION_THRESHOLD = 4  # +4 new jugs during bonus unlocks 5th row
+    EXPANSION_THRESHOLD = 4  # +4 new jugs per expansion stage
     GRAND_JACKPOT = 500      # Awarded for full 20-cell grid fill
 
     # Base jug multiplier weights (Cash values on jugs)
@@ -92,15 +92,14 @@ class CowsGoneWild(Slot):
     @classmethod
     def _simulate_respins(cls, initial_jugs, rng):
         """
-        Simulate the Hold & Respin feature expanding from 4x4 up to 4x5.
+        Simulate the Hold & Respin feature expanding from 4x3 to 4x4, then to 4x5.
         Returns total feature payout and a step-by-step event log for the UI.
         """
         cols = 4
-        rows = 3  # <--- Start at 3 rows (matches the base game)
+        rows = 3
         respins_left = cls.INITIAL_RESPINS
         locked_jugs = dict(initial_jugs)
         new_jugs_collected = 0
-        expanded = False
         events = []
 
         events.append({
@@ -138,21 +137,30 @@ class CowsGoneWild(Slot):
 
             # 2. Spin remaining empty cells
             for pos in empty_cells:
-                # ~18% chance to land a new Golden Jug
                 if rng.random() < 0.18:
                     val = rng.choices(prizes, weights=prize_weights)[0]
                     new_spins[pos] = val
                 else:
-                    # Pick a regular farm symbol so non-locked cells aren't blank
                     unlocked_symbol_display[pos] = rng.choice(cls.NON_BONUS_SYMBOLS)
 
-            # Process Boss Cow multiplier strike event first if spawned
+            # Log symbol landing on reels first
+            events.append({
+                "type": "RESPIN_RESULT",
+                "rows": rows,
+                "cols": cols,
+                "respins_left": respins_left,
+                "new_jugs": [{"pos": list(pos), "val": val} for pos, val in new_spins.items()],
+                "unlocked_symbols": {f"{r},{c}": sym for (r, c), sym in unlocked_symbol_display.items()},
+                "boss_pos": list(boss_pos) if boss_spawned else None,
+                "boss_mult": boss_mult if boss_spawned else None,
+            })
+
+            # Process Boss Cow multiplier strike event if spawned
             if boss_spawned:
-                # Multiply all currently existing locked jugs
+                # Update all locked jugs with multiplier
                 for pos in locked_jugs:
                     locked_jugs[pos] *= boss_mult
 
-                # Sort targets in Column-Major order (col 0 top-to-bottom, col 1 top-to-bottom, etc.)
                 sorted_targets = sorted(
                     locked_jugs.keys(),
                     key=lambda p: (p[1], p[0])
@@ -169,7 +177,7 @@ class CowsGoneWild(Slot):
                 })
                 respins_left = cls.INITIAL_RESPINS
 
-            # Process New Jugs landing
+            # Lock newly landed jugs into locked_jugs dictionary
             if new_spins:
                 spin_landed_new_jug = True
                 respins_left = cls.INITIAL_RESPINS
@@ -177,31 +185,25 @@ class CowsGoneWild(Slot):
                     locked_jugs[pos] = val
                     new_jugs_collected += 1
 
-                events.append({
-                    "type": "NEW_JUGS_LOCKED",
-                    "new_jugs": [{"pos": list(pos), "val": val} for pos, val in new_spins.items()],
-                    "unlocked_symbols": {f"{r},{c}": sym for (r, c), sym in unlocked_symbol_display.items()},
-                    "respins_left": respins_left,
-                    "total_locked": len(locked_jugs),
-                })
-
-            # Check for vertical grid expansion (+4 jugs collected unlocks 5th row)
-            if not expanded and new_jugs_collected >= cls.EXPANSION_THRESHOLD:
-                rows = 5
-                expanded_to_5 = True
-                respins_left = cls.INITIAL_RESPINS  # Bonus reset reward on row unlock
+            # Check for vertical grid expansion
+            # Stage 1: +4 new jugs collected unlocks 4th row (4 cols x 4 rows)
+            if rows == 3 and new_jugs_collected >= cls.EXPANSION_THRESHOLD:
+                rows = 4
+                respins_left = cls.INITIAL_RESPINS
                 events.append({
                     "type": "EXPAND_GRID",
                     "cols": cols,
                     "rows": rows,
                     "respins_left": respins_left,
                 })
-
-            # If blank spin, log the decrement along with the symbols landed on empty cells
-            if not spin_landed_new_jug and not boss_spawned:
+            # Stage 2: +8 total new jugs collected (+4 more) unlocks 5th row (4 cols x 5 rows)
+            elif rows == 4 and new_jugs_collected >= (cls.EXPANSION_THRESHOLD * 2):
+                rows = 5
+                respins_left = cls.INITIAL_RESPINS
                 events.append({
-                    "type": "BLANK_RESPIN",
-                    "unlocked_symbols": {f"{r},{c}": sym for (r, c), sym in unlocked_symbol_display.items()},
+                    "type": "EXPAND_GRID",
+                    "cols": cols,
+                    "rows": rows,
                     "respins_left": respins_left,
                 })
 
