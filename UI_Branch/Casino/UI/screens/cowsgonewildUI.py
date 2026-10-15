@@ -4,8 +4,10 @@ Cows Gone Wild slot-machine screen for the Casino App.
 Features:
     - 4x3 Base Game with 3 horizontal paylines.
     - 4+ Golden Jugs triggers the Barnyard Respin bonus.
-    - Bonus expands dynamically to 5x3 and unlocks a 6th column (6x3) upon collecting +4 jugs.
-    - Sequential laser beam animation when the Boss Cow lands to multiply locked jugs.
+    - Bonus expands vertically upward to 4x4, then 4x5 upon collecting +4 jugs.
+    - Fixed bottom anchor so the grid grows upward without covering the bottom panel.
+    - Dynamic spinning animation on unlocked cells during bonus respins.
+    - Sequential column-major laser beam animation when the Boss Cow lands.
 """
 
 import math
@@ -42,16 +44,18 @@ WIN_GOLD = (255, 210, 70)
 CYAN_LASER = (50, 240, 255)
 
 CELL_W = 104
-CELL_H = 88
+CELL_H = 72
 COL_GAP = 8
-ROW_GAP = 6
 
 BASE_ROWS = 3
 BASE_COLS = 4
 
+# Bottom baseline for reel area (anchor so grid expands strictly UPWARD)
+GRID_BOTTOM_ANCHOR = 500
+
 
 class CowsGoneWildUI(Screen):
-    """4x3 base game expanding up to 6x3 in the Barnyard Respins bonus."""
+    """4x3 base game expanding vertically upward to 4x5 in the Barnyard Respins bonus."""
 
     def __init__(self, app, menu, machine=CowsGoneWild):
         super().__init__(app)
@@ -69,22 +73,22 @@ class CowsGoneWildUI(Screen):
         self.rng = random.Random()
 
         # Geometry anchors
-        self.grid_y = 175
         self.base_w = BASE_COLS * CELL_W + (BASE_COLS - 1) * COL_GAP
-        self.grid_h = BASE_ROWS * CELL_H + (BASE_ROWS - 1) * ROW_GAP
         self.grid_x = (WIDTH - self.base_w) // 2
+        self.base_grid_h = BASE_ROWS * CELL_H
+        self.base_grid_y = GRID_BOTTOM_ANCHOR - self.base_grid_h
 
-        self.grid_rect = pygame.Rect(self.grid_x, self.grid_y, self.base_w, self.grid_h)
+        self.grid_rect = pygame.Rect(self.grid_x, self.base_grid_y, self.base_w, self.base_grid_h)
 
         # 4 Base Reels
         self.columns = [
             Reel(
-                rect=pygame.Rect(self.grid_x + c * (CELL_W + COL_GAP), self.grid_y, CELL_W, self.grid_h),
+                rect=pygame.Rect(self.grid_x + c * (CELL_W + COL_GAP), self.base_grid_y, CELL_W, self.base_grid_h),
                 rng=self.rng,
                 machine=self.game,
                 rows=BASE_ROWS,
                 cell_height=CELL_H,
-                cell_gap=ROW_GAP,
+                cell_gap=0,
                 reel_bg=REEL_BG,
                 cell_border=CELL_BORDER,
                 border_radius=6,
@@ -92,7 +96,7 @@ class CowsGoneWildUI(Screen):
             for c in range(BASE_COLS)
         ]
 
-        # Standard Buttons
+        # Buttons
         self.menu_button = Button(30, 630, 120, 45, "Menu", font_size=FONT_SIZE_SMALL)
 
         btn_w, btn_h, btn_gap = 90, 45, 10
@@ -116,8 +120,7 @@ class CowsGoneWildUI(Screen):
         self.start_bonus_btn = Button(WIDTH // 2 - 95, 410, 190, 50, "Enter Barnyard", font_size=22)
         self.collect_bonus_btn = Button(WIDTH // 2 - 90, 410, 180, 50, "Collect Win", font_size=24)
 
-        # Base State Machine
-        # IDLE, SPIN, BONUS_PENDING, BONUS_MODAL, BONUS_ACTIVE, BONUS_SUMMARY
+        # State Machine
         self.state = "IDLE"
         self.bet = 0
         self.last_win = 0
@@ -132,13 +135,19 @@ class CowsGoneWildUI(Screen):
         # Respin Engine State
         self.bonus_events = []
         self.event_idx = 0
-        self.bonus_cols = 5
-        self.bonus_rows = 3
+        self.bonus_cols = 4
+        self.bonus_rows = 4
         self.respins_left = 3
-        self.locked_jugs = {}  # (row, col) -> multiplier
-        self.flashing_cells = {}  # (row, col) -> expiration_ms
+        self.locked_jugs = {}        # (row, col) -> multiplier
+        self.unlocked_symbols = {}   # (row, col) -> final settled symbol name
+        self.flashing_cells = {}     # (row, col) -> expiration_ms
+        self.pending_new_jugs = []
         self.respin_delay_until = 0
         self.bonus_total_payout = 0
+
+        # Respin active spinning animation
+        self.respin_spinning = False
+        self.respin_spin_until = 0
 
         # Boss Cow Beam Animation Sub-Engine
         self.beam_anim_active = False
@@ -214,7 +223,6 @@ class CowsGoneWildUI(Screen):
     def update(self):
         now = pygame.time.get_ticks()
 
-        # Update base reels
         for reel in self.columns:
             reel.update(now)
 
@@ -249,16 +257,19 @@ class CowsGoneWildUI(Screen):
     def _enter_bonus_mode(self):
         self.state = "BONUS_ACTIVE"
         self.event_idx = 0
-        self.bonus_cols = 5
-        self.bonus_rows = 3
+        self.bonus_cols = 4
+        self.bonus_rows = 4
         self.respins_left = 3
         self.locked_jugs.clear()
+        self.pending_new_jugs.clear()
+        self.unlocked_symbols.clear()
         self.flashing_cells.clear()
         self.beam_anim_active = False
+        self.respin_spinning = False
         self.respin_delay_until = pygame.time.get_ticks() + 600
 
     def _update_bonus_engine(self, now):
-        # Handle sequential Boss Cow beam target lock
+        # 1. Sequential Boss Cow target beam lock
         if self.beam_anim_active:
             if now >= self.beam_timer:
                 if self.current_target_idx < len(self.beam_targets):
@@ -267,20 +278,32 @@ class CowsGoneWildUI(Screen):
                     new_val = target["new_val"]
 
                     self.locked_jugs[pos] = new_val
-                    self.flashing_cells[pos] = now + 400
+                    self.flashing_cells[pos] = now + 650
                     self.current_target_idx += 1
-                    self.beam_timer = now + 480
+                    self.beam_timer = now + 900
                 else:
                     self.beam_anim_active = False
                     self.boss_pos = None
-                    self.respin_delay_until = now + 700
+                    self.respin_delay_until = now + 950
             return
 
-        # Wait out respin delay
+        # 2. Respin spinning animation timing
+        if self.respin_spinning:
+            if now >= self.respin_spin_until:
+                self.respin_spinning = False
+                
+                # Lock and reveal newly landed jugs NOW that the reels have settled
+                for item in self.pending_new_jugs:
+                    pos = tuple(item["pos"])
+                    self.locked_jugs[pos] = item["val"]
+                    self.flashing_cells[pos] = now + 600
+                    self.unlocked_symbols.pop(pos, None)
+                self.pending_new_jugs.clear()
+            return
+
         if now < self.respin_delay_until:
             return
 
-        # Advance next backend event
         if self.event_idx >= len(self.bonus_events):
             return
 
@@ -289,21 +312,35 @@ class CowsGoneWildUI(Screen):
         evt_type = evt.get("type")
 
         if evt_type == "INIT_BONUS":
-            self.bonus_cols = evt.get("cols", 5)
+            self.bonus_cols = evt.get("cols", 4)
+            self.bonus_rows = evt.get("rows", 4)
             self.respins_left = evt.get("respins_left", 3)
             raw_jugs = evt.get("locked_jugs", {})
             for key, val in raw_jugs.items():
                 r, c = map(int, key.split(","))
                 self.locked_jugs[(r, c)] = val
-            self.respin_delay_until = now + 900
+            self.respin_delay_until = now + 1000
 
         elif evt_type == "NEW_JUGS_LOCKED":
             self.respins_left = evt.get("respins_left", 3)
+            raw_syms = evt.get("unlocked_symbols", {})
+            for key, sym in raw_syms.items():
+                r, c = map(int, key.split(","))
+                self.unlocked_symbols[(r, c)] = sym
+
             for item in evt.get("new_jugs", []):
                 pos = tuple(item["pos"])
                 self.locked_jugs[pos] = item["val"]
-                self.flashing_cells[pos] = now + 500
-            self.respin_delay_until = now + 950
+                self.flashing_cells[pos] = now + 600
+                self.unlocked_symbols.pop(pos, None)
+
+            # Stage the new jugs — DO NOT put them in locked_jugs yet
+            self.pending_new_jugs = evt.get("new_jugs", [])
+
+            # Trigger a short spin roll before settling
+            self.respin_spinning = True
+            self.respin_spin_until = now + 1200
+            self.respin_delay_until = now + 2400
 
         elif evt_type == "BOSS_COW_STRIKE":
             self.beam_anim_active = True
@@ -311,16 +348,23 @@ class CowsGoneWildUI(Screen):
             self.boss_multiplier = evt.get("multiplier", 2)
             self.beam_targets = evt.get("targets", [])
             self.current_target_idx = 0
-            self.beam_timer = now + 350
+            self.beam_timer = now + 750
 
         elif evt_type == "EXPAND_GRID":
-            self.bonus_cols = evt.get("cols", 6)
+            self.bonus_rows = evt.get("rows", 5)
             self.respins_left = evt.get("respins_left", 3)
-            self.respin_delay_until = now + 1200
+            self.respin_delay_until = now + 1300
 
         elif evt_type == "BLANK_RESPIN":
             self.respins_left = evt.get("respins_left", 0)
-            self.respin_delay_until = now + 700
+            raw_syms = evt.get("unlocked_symbols", {})
+            for key, sym in raw_syms.items():
+                r, c = map(int, key.split(","))
+                self.unlocked_symbols[(r, c)] = sym
+
+            self.respin_spinning = True
+            self.respin_spin_until = now + 600
+            self.respin_delay_until = now + 950
 
         elif evt_type == "BONUS_COMPLETE":
             total_mult = evt.get("total_multiplier", 0)
@@ -333,13 +377,18 @@ class CowsGoneWildUI(Screen):
         self.state = "IDLE"
         self.shown_chips = self.app.player["chips"]
         self.locked_jugs.clear()
+        self.pending_new_jugs.clear()
+        self.unlocked_symbols.clear()
         self.flashing_cells.clear()
 
-    def _get_cell_rect(self, r, c, total_cols):
-        grid_w = total_cols * CELL_W + (total_cols - 1) * COL_GAP
-        start_x = (WIDTH - grid_w) // 2
-        rx = start_x + c * (CELL_W + COL_GAP)
-        ry = self.grid_y + r * (CELL_H + ROW_GAP)
+    def _get_bonus_grid_y(self, total_rows):
+        """Top-left Y coordinate anchored so bottom never moves."""
+        return GRID_BOTTOM_ANCHOR - (total_rows * CELL_H)
+
+    def _get_cell_rect(self, r, c, total_rows):
+        start_y = self._get_bonus_grid_y(total_rows)
+        rx = self.grid_x + c * (CELL_W + COL_GAP)
+        ry = start_y + r * CELL_H
         return pygame.Rect(rx, ry, CELL_W, CELL_H)
 
     def draw(self, surface):
@@ -352,11 +401,11 @@ class CowsGoneWildUI(Screen):
         surface.blit(chips, chips.get_rect(topright=(WIDTH - 30, 24)))
 
         title = self.title_font.render("COWS GONE WILD", True, GOLD)
-        surface.blit(title, title.get_rect(center=(WIDTH // 2, 85)))
+        surface.blit(title, title.get_rect(center=(WIDTH // 2, 45)))
 
         subtitle_text = "Match symbols across rows. 4+ Golden Jugs triggers the Barnyard Respin!"
         subtitle = self.tiny.render(subtitle_text, True, WHITE)
-        surface.blit(subtitle, subtitle.get_rect(center=(WIDTH // 2, 125)))
+        surface.blit(subtitle, subtitle.get_rect(center=(WIDTH // 2, 75)))
 
         self._draw_paytable(surface)
 
@@ -365,7 +414,7 @@ class CowsGoneWildUI(Screen):
         else:
             self._draw_base_board(surface)
 
-        draw_slot_panel(surface, WIDTH // 2, self.grid_rect.bottom + 12, self.shown_chips, self.bet, self.last_win)
+        draw_slot_panel(surface, WIDTH // 2, GRID_BOTTOM_ANCHOR + 12, self.shown_chips, self.bet, self.last_win)
         self._draw_status(surface)
         self._draw_bet_controls(surface)
 
@@ -377,7 +426,7 @@ class CowsGoneWildUI(Screen):
                 surface,
                 title="BARNYARD RESPIN!",
                 line1="4+ Golden Jugs Discovered!",
-                line2="Reels expand to 5x3 with 3 Respins!",
+                line2="Reels expand to 4x4 with 3 Respins!",
                 button=self.start_bonus_btn,
             )
         elif self.state == "BONUS_SUMMARY":
@@ -404,62 +453,97 @@ class CowsGoneWildUI(Screen):
         pygame.draw.rect(surface, GRAY, outer, 2, border_radius=14)
 
     def _draw_bonus_board(self, surface):
-        now = pygame.time.get_ticks()
-        total_cols = self.bonus_cols
-        grid_w = total_cols * CELL_W + (total_cols - 1) * COL_GAP
-        grid_x = (WIDTH - grid_w) // 2
-        bounds = pygame.Rect(grid_x, self.grid_y, grid_w, self.grid_h).inflate(16, 16)
+            now = pygame.time.get_ticks()
+            total_rows = self.bonus_rows
+            grid_y = self._get_bonus_grid_y(total_rows)
+            total_h = total_rows * CELL_H
+            outer_bounds = pygame.Rect(self.grid_x, grid_y, self.base_w, total_h).inflate(16, 16)
 
-        pygame.draw.rect(surface, (18, 22, 26), bounds, border_radius=14)
-        pygame.draw.rect(surface, GOLD, bounds, 3, border_radius=14)
+            # 1. Matching outer frame (DARK_GREEN and GRAY border like base game)
+            pygame.draw.rect(surface, DARK_GREEN, outer_bounds, border_radius=14)
 
-        # Header: Respins left
-        info_font = get_font(20, True)
-        respin_txt = f"RESPINS REMAINING: {self.respins_left}"
-        info_surf = info_font.render(respin_txt, True, WIN_GOLD)
-        surface.blit(info_surf, info_surf.get_rect(center=(WIDTH // 2, self.grid_y - 20)))
+            # Header: Respins left
+            info_font = get_font(20, True)
+            respin_txt = f"RESPINS REMAINING: {self.respins_left}"
+            info_surf = info_font.render(respin_txt, True, WIN_GOLD)
+            surface.blit(info_surf, info_surf.get_rect(center=(WIDTH // 2, grid_y - 18)))
 
-        # Draw Cells
-        for r in range(self.bonus_rows):
-            for c in range(total_cols):
-                rect = self._get_cell_rect(r, c, total_cols)
-                pos = (r, c)
+            # 2. Draw each column with REEL_BG and CELL_BORDER
+            for c in range(self.bonus_cols):
+                col_x = self.grid_x + c * (CELL_W + COL_GAP)
+                col_rect = pygame.Rect(col_x, grid_y, CELL_W, total_h)
 
-                pygame.draw.rect(surface, (32, 36, 44), rect, border_radius=6)
+                # Reel column background
+                pygame.draw.rect(surface, REEL_BG, col_rect, border_radius=6)
 
-                if pos in self.locked_jugs:
-                    mult = self.locked_jugs[pos]
-                    draw_golden_jug(surface, rect, multiplier=mult)
+                for r in range(total_rows):
+                    rect = pygame.Rect(col_x, grid_y + r * CELL_H, CELL_W, CELL_H)
+                    pos = (r, c)
 
-                    # Pop flash effect on multiplier update
-                    if pos in self.flashing_cells and now < self.flashing_cells[pos]:
-                        flash_s = pygame.Surface((rect.w, rect.h), pygame.SRCALPHA)
-                        flash_s.fill((255, 255, 255, 140))
-                        surface.blit(flash_s, rect.topleft)
-                    pygame.draw.rect(surface, GOLD, rect, 2, border_radius=6)
+                    if pos in self.locked_jugs:
+                        # Locked Jug cell: crisp and stationary
+                        mult = self.locked_jugs[pos]
+                        draw_golden_jug(surface, rect, multiplier=mult)
 
-                elif self.boss_pos == pos:
-                    draw_symbol(surface, "boss_cow", rect)
-                    pygame.draw.rect(surface, CYAN_LASER, rect, 3, border_radius=6)
+                        if pos in self.flashing_cells and now < self.flashing_cells[pos]:
+                            flash_s = pygame.Surface((rect.w, rect.h), pygame.SRCALPHA)
+                            flash_s.fill((255, 255, 255, 140))
+                            surface.blit(flash_s, rect.topleft)
+                        pygame.draw.rect(surface, GOLD, rect, 2)
 
-                else:
-                    pygame.draw.rect(surface, (50, 54, 62), rect, 1, border_radius=6)
+                    elif self.boss_pos == pos:
+                        # Boss cow cell
+                        draw_symbol(surface, "boss_cow", rect)
+                        pygame.draw.rect(surface, CYAN_LASER, rect, 3)
 
-        # Render Active Boss Cow Laser Beam
-        if self.beam_anim_active and self.boss_pos and self.current_target_idx < len(self.beam_targets):
-            target_pos = tuple(self.beam_targets[self.current_target_idx]["pos"])
-            start_rect = self._get_cell_rect(self.boss_pos[0], self.boss_pos[1], total_cols)
-            end_rect = self._get_cell_rect(target_pos[0], target_pos[1], total_cols)
+                    else:
+                        # Unlocked cell
+                        old_clip = surface.get_clip()
+                        surface.set_clip(rect)
 
-            p1 = start_rect.center
-            p2 = end_rect.center
+                        if self.respin_spinning:
+                            # Smooth continuous vertical scroll
+                            scroll_speed = 0.55  # pixels per millisecond
+                            scroll_offset = int((now * scroll_speed + (c * 37)) % CELL_H)
 
-            # Outer glow and core laser line
-            pygame.draw.line(surface, (30, 180, 255), p1, p2, 6)
-            pygame.draw.line(surface, (255, 255, 255), p1, p2, 2)
-            pygame.draw.circle(surface, (255, 255, 255), p2, 9)
-            pygame.draw.circle(surface, CYAN_LASER, p2, 14, 2)
+                            symbols_list = self.game.NON_BONUS_SYMBOLS
+                            sym1_idx = (r + now // 180 + c * 2) % len(symbols_list)
+                            sym2_idx = (sym1_idx + 1) % len(symbols_list)
 
+                            # Draw current and incoming rolling symbols
+                            r1 = rect.move(0, scroll_offset)
+                            r2 = rect.move(0, scroll_offset - CELL_H)
+                            draw_symbol(surface, symbols_list[sym1_idx], r1)
+                            draw_symbol(surface, symbols_list[sym2_idx], r2)
+                        elif pos in self.unlocked_symbols:
+                            draw_symbol(surface, self.unlocked_symbols[pos], rect)
+
+                        surface.set_clip(old_clip)
+
+                    # Shared horizontal divider line between stacked cells
+                    if r < total_rows - 1:
+                        pygame.draw.line(surface, CELL_BORDER, (rect.left, rect.bottom), (rect.right, rect.bottom), 1)
+
+                # Outer border per column
+                pygame.draw.rect(surface, CELL_BORDER, col_rect, 3, border_radius=6)
+
+            # Outer casing border matching base game
+            pygame.draw.rect(surface, GRAY, outer_bounds, 2, border_radius=14)
+
+            # 3. Boss Cow Laser Beam
+            if self.beam_anim_active and self.boss_pos and self.current_target_idx < len(self.beam_targets):
+                target_pos = tuple(self.beam_targets[self.current_target_idx]["pos"])
+                start_rect = self._get_cell_rect(self.boss_pos[0], self.boss_pos[1], total_rows)
+                end_rect = self._get_cell_rect(target_pos[0], target_pos[1], total_rows)
+
+                p1 = start_rect.center
+                p2 = end_rect.center
+
+                pygame.draw.line(surface, (30, 180, 255), p1, p2, 6)
+                pygame.draw.line(surface, (255, 255, 255), p1, p2, 2)
+                pygame.draw.circle(surface, (255, 255, 255), p2, 9)
+                pygame.draw.circle(surface, CYAN_LASER, p2, 14, 2)
+                
     def _draw_initial_jug_highlights(self, surface):
         if not self.current_grid:
             return
@@ -469,15 +553,17 @@ class CowsGoneWildUI(Screen):
         for r_idx, row in enumerate(self.current_grid):
             for c_idx, symbol in enumerate(row):
                 if symbol == self.machine.BONUS:
-                    rect = self._get_cell_rect(r_idx, c_idx, BASE_COLS)
-                    pygame.draw.rect(surface, WIN_GOLD, rect.inflate(6, 6), pulse, border_radius=6)
+                    x = self.grid_x + c_idx * (CELL_W + COL_GAP)
+                    y = self.base_grid_y + r_idx * CELL_H
+                    cell = pygame.Rect(x, y, CELL_W, CELL_H)
+                    pygame.draw.rect(surface, WIN_GOLD, cell.inflate(6, 6), pulse, border_radius=6)
 
     def _draw_winning_rows(self, surface):
         for win in self.current_wins:
             row = win.get("row")
             if not isinstance(row, int) or not 0 <= row < BASE_ROWS:
                 continue
-            y = self.grid_y + row * (CELL_H + ROW_GAP)
+            y = self.base_grid_y + row * CELL_H
             row_rect = pygame.Rect(self.grid_rect.x - 3, y - 3, self.grid_rect.w + 6, CELL_H + 6)
             pygame.draw.rect(surface, WIN_GOLD, row_rect, width=3, border_radius=8)
 
@@ -486,7 +572,7 @@ class CowsGoneWildUI(Screen):
             f"4x {symbol.title()}  {mult}:1"
             for symbol, mult in self.machine.PAYTABLE.items()
         ]
-        lines.append(("4 Jugs = Respins", GOLD))
+        lines.append("4 Jugs = Respins")
 
         draw_paytable_panel(
             surface,
@@ -520,7 +606,7 @@ class CowsGoneWildUI(Screen):
         button.draw(surface)
 
     def _draw_status(self, surface):
-        status_y = self.grid_rect.bottom + 72
+        status_y = GRID_BOTTOM_ANCHOR + 72
         if self.state == "BONUS_ACTIVE":
             status = f"Locked Jugs: {len(self.locked_jugs)} / {self.bonus_cols * self.bonus_rows}"
             status_surf = self.small.render(status, True, WIN_GOLD)

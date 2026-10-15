@@ -4,13 +4,13 @@ Cows Gone Wild: a 4 x 3 slot machine with Hold & Respin Barnyard Bonus.
     - Base grid is 4 columns x 3 rows (3 horizontal paylines of 4 matching symbols).
     - Golden Jug is the bonus coin symbol carrying random multiplier cash values.
     - 4 or more Golden Jugs anywhere on the grid trigger the Barnyard Respin feature.
-    - The bonus expands the grid dynamically:
-        * Starts at 5 columns x 3 rows (15 cells) with 3 respins.
-        * Collecting 4 additional jugs (+4) unlocks the 6th column (6 cols x 3 rows = 18 cells)
+    - The bonus expands the grid vertically:
+        * Starts at 4 columns x 4 rows (16 cells) with 3 respins.
+        * Collecting 4 additional jugs (+4) unlocks the 5th row (4 cols x 5 rows = 20 cells)
           and resets the respin counter back to 3.
         * Boss Cow can land during respins to fire target beams multiplying all currently
           locked jug values by 2x, 3x, or 5x, then vanishes (does not lock).
-    - Clearing all 18 cells awards the Grand Moo-lah Jackpot (+500x bet).
+    - Clearing all 20 cells awards the Grand Moo-lah Jackpot (+500x bet).
 """
 
 from .slot import Slot
@@ -34,6 +34,9 @@ class CowsGoneWild(Slot):
         BONUS: 6,
     }
 
+    # Standard farm symbols available to land on unlocked bonus cells
+    NON_BONUS_SYMBOLS = ["milk_carton", "barn", "tractor", "farmer", "ufo"]
+
     # 4 matching symbols across a 4-symbol row
     PAYTABLE = {
         "milk_carton": 2,
@@ -43,10 +46,10 @@ class CowsGoneWild(Slot):
         "ufo": 50,
     }
 
-    JUGS_NEEDED = 4
+    JUGS_NEEDED = 1
     INITIAL_RESPINS = 3
-    EXPANSION_THRESHOLD = 4  # +4 new jugs during bonus unlocks 6th column
-    GRAND_JACKPOT = 500      # Awarded for full 18-cell grid fill
+    EXPANSION_THRESHOLD = 4  # +4 new jugs during bonus unlocks 5th row
+    GRAND_JACKPOT = 500      # Awarded for full 20-cell grid fill
 
     # Base jug multiplier weights (Cash values on jugs)
     JUG_PRIZES = {1: 40, 2: 30, 3: 15, 5: 10, 10: 4, 25: 1}
@@ -65,7 +68,7 @@ class CowsGoneWild(Slot):
 
     @classmethod
     def grid_pay(cls, grid):
-        """Calculate line pay across all 3 rows."""
+        """Calculate line pay across all rows."""
         wins = []
         for i, row in enumerate(grid):
             pay = cls.row_pay(row)
@@ -89,18 +92,17 @@ class CowsGoneWild(Slot):
     @classmethod
     def _simulate_respins(cls, initial_jugs, rng):
         """
-        Simulate the entire Hold & Respin game from 5x3 up to 6x3.
+        Simulate the Hold & Respin feature expanding from 4x4 up to 4x5.
         Returns total feature payout and a step-by-step event log for the UI.
         """
-        cols = 5
-        rows = 3
+        cols = 4
+        rows = 3  # <--- Start at 3 rows (matches the base game)
         respins_left = cls.INITIAL_RESPINS
         locked_jugs = dict(initial_jugs)
         new_jugs_collected = 0
-        expanded_to_6 = False
+        expanded = False
         events = []
 
-        # Record initial trigger setup
         events.append({
             "type": "INIT_BONUS",
             "cols": cols,
@@ -122,6 +124,7 @@ class CowsGoneWild(Slot):
             boss_pos = None
             boss_mult = 1
             new_spins = {}
+            unlocked_symbol_display = {}
 
             # All unlocked open cells spin
             empty_cells = [(r, c) for r in range(rows) for c in range(cols) if (r, c) not in locked_jugs]
@@ -133,11 +136,15 @@ class CowsGoneWild(Slot):
                 boss_spawned = True
                 empty_cells.remove(boss_pos)
 
-            # 2. Spin remaining empty cells (~16% chance to land a new Golden Jug)
+            # 2. Spin remaining empty cells
             for pos in empty_cells:
-                if rng.random() < 0.16:
+                # ~18% chance to land a new Golden Jug
+                if rng.random() < 0.18:
                     val = rng.choices(prizes, weights=prize_weights)[0]
                     new_spins[pos] = val
+                else:
+                    # Pick a regular farm symbol so non-locked cells aren't blank
+                    unlocked_symbol_display[pos] = rng.choice(cls.NON_BONUS_SYMBOLS)
 
             # Process Boss Cow multiplier strike event first if spawned
             if boss_spawned:
@@ -145,13 +152,19 @@ class CowsGoneWild(Slot):
                 for pos in locked_jugs:
                     locked_jugs[pos] *= boss_mult
 
+                # Sort targets in Column-Major order (col 0 top-to-bottom, col 1 top-to-bottom, etc.)
+                sorted_targets = sorted(
+                    locked_jugs.keys(),
+                    key=lambda p: (p[1], p[0])
+                )
+
                 events.append({
                     "type": "BOSS_COW_STRIKE",
                     "boss_pos": boss_pos,
                     "multiplier": boss_mult,
                     "targets": [
                         {"pos": list(pos), "new_val": locked_jugs[pos]}
-                        for pos in locked_jugs
+                        for pos in sorted_targets
                     ],
                 })
                 respins_left = cls.INITIAL_RESPINS
@@ -166,16 +179,17 @@ class CowsGoneWild(Slot):
 
                 events.append({
                     "type": "NEW_JUGS_LOCKED",
-                    "new_jugs": [{ "pos": list(pos), "val": val } for pos, val in new_spins.items()],
+                    "new_jugs": [{"pos": list(pos), "val": val} for pos, val in new_spins.items()],
+                    "unlocked_symbols": {f"{r},{c}": sym for (r, c), sym in unlocked_symbol_display.items()},
                     "respins_left": respins_left,
                     "total_locked": len(locked_jugs),
                 })
 
-            # Check for grid expansion (+4 jugs collected from bonus spins)
-            if not expanded_to_6 and new_jugs_collected >= cls.EXPANSION_THRESHOLD:
-                cols = 6
-                expanded_to_6 = True
-                respins_left = cls.INITIAL_RESPINS  # Bonus reset reward on column unlock
+            # Check for vertical grid expansion (+4 jugs collected unlocks 5th row)
+            if not expanded and new_jugs_collected >= cls.EXPANSION_THRESHOLD:
+                rows = 5
+                expanded_to_5 = True
+                respins_left = cls.INITIAL_RESPINS  # Bonus reset reward on row unlock
                 events.append({
                     "type": "EXPAND_GRID",
                     "cols": cols,
@@ -183,10 +197,11 @@ class CowsGoneWild(Slot):
                     "respins_left": respins_left,
                 })
 
-            # If blank spin, log the decrement
+            # If blank spin, log the decrement along with the symbols landed on empty cells
             if not spin_landed_new_jug and not boss_spawned:
                 events.append({
                     "type": "BLANK_RESPIN",
+                    "unlocked_symbols": {f"{r},{c}": sym for (r, c), sym in unlocked_symbol_display.items()},
                     "respins_left": respins_left,
                 })
 
