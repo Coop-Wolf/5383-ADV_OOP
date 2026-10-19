@@ -70,6 +70,8 @@ class CowsGoneWildUI(Screen):
         self.game = machine(casino_player, db=app.db)
         self.rng = random.Random()
 
+        self.base_jug_values = {}
+
         # Geometry anchors
         self.base_w = BASE_COLS * CELL_W + (BASE_COLS - 1) * COL_GAP
         self.grid_x = (WIDTH - self.base_w) // 2
@@ -158,6 +160,21 @@ class CowsGoneWildUI(Screen):
         self.target_travel_duration = 140
         self.target_pop_duration = 320
         self.popping_jugs = {}       # (r, c) -> {start_time, duration, mult_text}
+        self.boss_cow_banner_text = ""
+        self.reels_just_settled = False
+
+        # Smooth Grid Growth State
+        self.anim_grid_h = float(BASE_ROWS * CELL_H)
+        self.target_grid_h = float(BASE_ROWS * CELL_H)
+        self.grid_growth_start_time = 0
+        self.grid_growth_start_h = float(BASE_ROWS * CELL_H)
+        self.grid_growth_duration = 450  # milliseconds
+        self.is_growing_grid = False
+
+        # Grid Expanded Toast Banner State
+        self.toast_text = ""
+        self.toast_start_time = 0
+        self.toast_duration = 1300  # milliseconds
 
     def _go_to_menu(self):
         self.app.change_screen(self.menu)
@@ -206,6 +223,12 @@ class CowsGoneWildUI(Screen):
 
         self.result = self.game.determine_winner()
         self.app.player["chips"] = self.game.game_player.chips
+
+        # Extract base game jug multiplier values
+        raw_initial = self.result.get("features", {}).get("initial_jugs", {})
+        self.base_jug_values = {
+            tuple(map(int, k.split(","))): val for k, val in raw_initial.items()
+        }
 
         self.bet = bet
         self.last_win = 0
@@ -285,8 +308,13 @@ class CowsGoneWildUI(Screen):
         self.respins_left = 3
         self.boss_pos = None
         self.boss_mult = 1
+        self.boss_cow_banner_text = ""
         self.beam_anim_active = False
         self.popping_jugs.clear()
+        self.anim_grid_h = float(self.bonus_rows * CELL_H)
+        self.target_grid_h = float(self.bonus_rows * CELL_H)
+        self.is_growing_grid = False
+        self.toast_text = ""
 
         # Seed initial locked jugs directly from triggering event without wiping the board
         if self.bonus_events and self.bonus_events[0].get("type") == "INIT_BONUS":
@@ -305,7 +333,8 @@ class CowsGoneWildUI(Screen):
         if self.beam_anim_active:
             if self.current_target_idx >= len(self.beam_targets):
                 self.beam_anim_active = False
-                self.respin_delay_until = now + 900
+                self.boss_cow_banner_text = ""
+                self.respin_delay_until = now + 1200
                 return
 
             target = self.beam_targets[self.current_target_idx]
@@ -313,7 +342,6 @@ class CowsGoneWildUI(Screen):
 
             if self.target_phase == "TRAVEL":
                 if now - self.target_start_time >= self.target_travel_duration:
-                    # Laser struck target: upgrade multiplier value & initiate pop
                     self.locked_jugs[pos] = target["new_val"]
                     self.popping_jugs[pos] = {
                         "start_time": now,
@@ -325,9 +353,8 @@ class CowsGoneWildUI(Screen):
 
             elif self.target_phase == "POP":
                 if now >= self.target_timer:
-                    # Brief breath before next bolt
                     self.target_phase = "PAUSE"
-                    self.target_timer = now + 120
+                    self.target_timer = now + 140
 
             elif self.target_phase == "PAUSE":
                 if now >= self.target_timer:
@@ -337,18 +364,37 @@ class CowsGoneWildUI(Screen):
                         self.target_start_time = now
                     else:
                         self.beam_anim_active = False
-                        self.respin_delay_until = now + 850
+                        self.boss_cow_banner_text = ""
+                        self.respin_delay_until = now + 1200
             return
+
+        # Update smooth grid height interpolation
+        if self.is_growing_grid:
+            progress = min(1.0, (now - self.grid_growth_start_time) / self.grid_growth_duration)
+            eased = 1 - (1 - progress) ** 3  # cubic ease-out
+            self.anim_grid_h = self.grid_growth_start_h + (self.target_grid_h - self.grid_growth_start_h) * eased
+            if progress >= 1.0:
+                self.anim_grid_h = self.target_grid_h
+                self.is_growing_grid = False
 
         # 2. Wait for staggered reels to finish spinning before locking new symbols
-        if any(reel.spinning for reel in self.bonus_reels):
+        reels_active = any(reel.spinning for reel in self.bonus_reels)
+        if reels_active:
+            self.reels_just_settled = True
             return
 
-        if self.pending_new_jugs:
-            for pos, val in self.pending_new_jugs.items():
-                self.locked_jugs[pos] = val
-                self.unlocked_symbols.pop(pos, None)
-            self.pending_new_jugs.clear()
+        # Reels have just stopped: transfer pending jugs into locked_jugs and pause for dwell time
+        if self.reels_just_settled:
+            self.reels_just_settled = False
+            if self.pending_new_jugs:
+                for pos, val in self.pending_new_jugs.items():
+                    self.locked_jugs[pos] = val
+                    self.unlocked_symbols.pop(pos, None)
+                self.pending_new_jugs.clear()
+
+            # Hold results on screen so player can see what landed
+            self.respin_delay_until = now + 1400
+            return
 
         if now < self.respin_delay_until:
             return
@@ -361,6 +407,7 @@ class CowsGoneWildUI(Screen):
         evt_type = evt.get("type")
 
         if evt_type == "RESPIN_RESULT":
+            self.boss_cow_banner_text = ""
             self.respins_left = evt.get("respins_left", 3)
             raw_syms = evt.get("unlocked_symbols", {})
             self.unlocked_symbols = {tuple(map(int, k.split(","))): s for k, s in raw_syms.items()}
@@ -398,16 +445,29 @@ class CowsGoneWildUI(Screen):
             self.beam_anim_active = True
             self.boss_pos = tuple(evt.get("boss_pos"))
             self.boss_mult = evt.get("multiplier", 2)
+            self.boss_cow_banner_text = f"BOSS COW MULTIPLIER! ({self.boss_mult}x BOOST)"
             self.beam_targets = evt.get("targets", [])
             self.current_target_idx = 0
             self.target_phase = "TRAVEL"
             self.target_start_time = now
 
         elif evt_type == "EXPAND_GRID":
-            self.bonus_rows = evt.get("rows", self.bonus_rows + 1)
+            target_rows = evt.get("rows", self.bonus_rows + 1)
+            self.bonus_rows = target_rows
             self.respins_left = evt.get("respins_left", 3)
+
+            # Start smooth upward height growth
+            self.grid_growth_start_h = self.anim_grid_h
+            self.target_grid_h = float(target_rows * CELL_H)
+            self.grid_growth_start_time = now
+            self.is_growing_grid = True
+
+            # Trigger non-modal fading toast
+            self.toast_text = f"GRID EXPANDED TO {self.bonus_cols}x{self.bonus_rows}!"
+            self.toast_start_time = now
+
             self._rebuild_bonus_reels(self.bonus_rows)
-            self.respin_delay_until = now + 1200
+            self.respin_delay_until = now + 1400
 
         elif evt_type == "BONUS_COMPLETE":
             total_mult = evt.get("total_multiplier", 0)
@@ -425,8 +485,11 @@ class CowsGoneWildUI(Screen):
         self.popping_jugs.clear()
         self.boss_pos = None
 
-    def _get_bonus_grid_y(self, total_rows):
-        return GRID_BOTTOM_ANCHOR - (total_rows * CELL_H)
+    def _get_bonus_grid_y(self, total_rows=None):
+        # Anchor bottom baseline at 500 px and expand upward smoothly
+        if total_rows is not None:
+            return GRID_BOTTOM_ANCHOR - (total_rows * CELL_H)
+        return GRID_BOTTOM_ANCHOR - int(self.anim_grid_h)
 
     def _get_cell_rect(self, r, c, total_rows):
         start_y = self._get_bonus_grid_y(total_rows)
@@ -487,6 +550,20 @@ class CowsGoneWildUI(Screen):
         for reel in self.columns:
             reel.draw(surface, draw_symbol)
 
+        # Draw multipliers over settled golden jugs in base game
+        if not any(reel.spinning for reel in self.columns) and self.current_grid is not None:
+            for r in range(BASE_ROWS):
+                for c in range(BASE_COLS):
+                    if self.current_grid[r][c] == self.machine.BONUS:
+                        val = self.base_jug_values.get((r, c))
+                        cell = pygame.Rect(
+                            self.grid_x + c * (CELL_W + COL_GAP),
+                            self.base_grid_y + r * CELL_H,
+                            CELL_W,
+                            CELL_H,
+                        )
+                        draw_golden_jug(surface, cell, multiplier=val)
+
         if self.state == "IDLE" and self.current_grid is not None:
             self._draw_winning_rows(surface)
 
@@ -498,8 +575,8 @@ class CowsGoneWildUI(Screen):
     def _draw_bonus_board(self, surface):
         now = pygame.time.get_ticks()
         total_rows = self.bonus_rows
-        grid_y = self._get_bonus_grid_y(total_rows)
-        total_h = total_rows * CELL_H
+        grid_y = self._get_bonus_grid_y()
+        total_h = int(self.anim_grid_h)
         outer_bounds = pygame.Rect(self.grid_x, grid_y, self.base_w, total_h).inflate(16, 16)
 
         pygame.draw.rect(surface, DARK_GREEN, outer_bounds, border_radius=14)
@@ -510,9 +587,49 @@ class CowsGoneWildUI(Screen):
         info_surf = info_font.render(respin_txt, True, WIN_GOLD)
         surface.blit(info_surf, info_surf.get_rect(center=(WIDTH // 2, grid_y - 18)))
 
-        # Draw staggered animated reels
+        # Boss Cow Text Announcement Banner (Non-modal)
+        if self.boss_cow_banner_text:
+            banner_font = get_font(22, True)
+            b_text = banner_font.render(self.boss_cow_banner_text, True, CYAN_LASER)
+            surface.blit(b_text, b_text.get_rect(center=(WIDTH // 2, grid_y - 42)))
+
+        # Fading "GRID EXPANDED!" Toast Banner
+        if self.toast_text:
+            elapsed = now - self.toast_start_time
+            if elapsed < self.toast_duration:
+                # Fade out in the last 400ms
+                alpha = 255
+                fade_start = self.toast_duration - 400
+                if elapsed > fade_start:
+                    alpha = int(255 * (1.0 - (elapsed - fade_start) / 400))
+
+                t_font = get_font(24, True)
+                t_surf = t_font.render(self.toast_text, True, WIN_GOLD)
+                t_surf.set_alpha(alpha)
+                t_rect = t_surf.get_rect(center=(WIDTH // 2, grid_y - 44))
+
+                # Soft backdrop pill
+                pill_rect = t_rect.inflate(24, 10)
+                pill_s = pygame.Surface((pill_rect.w, pill_rect.h), pygame.SRCALPHA)
+                pill_s.fill((15, 15, 15, int(alpha * 0.85)))
+                pygame.draw.rect(pill_s, (212, 175, 55, alpha), pill_s.get_rect(), 2, border_radius=8)
+                surface.blit(pill_s, pill_rect.topleft)
+                surface.blit(t_surf, t_rect)
+            else:
+                self.toast_text = ""
+
+        # Draw staggered animated reels, clipped to current animated height
+        clip_bounds = pygame.Rect(self.grid_x, grid_y, self.base_w, total_h)
+        old_clip = surface.get_clip()
+        surface.set_clip(clip_bounds)
+
         for reel in self.bonus_reels:
+            # Sync reel rect position with animated upward growth
+            reel.rect.y = grid_y
+            reel.rect.h = total_h
             reel.draw(surface, draw_symbol)
+
+        reels_spinning = any(reel.spinning for reel in self.bonus_reels)
 
         # Overlay static elements (Locked Jugs, Boss Cow, Multiplier Pops)
         for c in range(self.bonus_cols):
@@ -520,10 +637,13 @@ class CowsGoneWildUI(Screen):
                 pos = (r, c)
                 rect = self._get_cell_rect(r, c, total_rows)
 
-                # Draw stationary locked jug
+                # Skip drawing cells that haven't emerged into view yet during growth
+                if rect.bottom < grid_y or rect.top > GRID_BOTTOM_ANCHOR:
+                    continue
+
                 if pos in self.locked_jugs:
                     mult = self.locked_jugs[pos]
-                    
+
                     # Elastic scale pop calculation
                     pop_data = self.popping_jugs.get(pos)
                     scale = 0.35
@@ -535,7 +655,12 @@ class CowsGoneWildUI(Screen):
 
                     pygame.draw.rect(surface, REEL_BG, rect)
                     draw_golden_jug(surface, rect, multiplier=mult, scale=scale)
-                    pygame.draw.rect(surface, CELL_BORDER, rect, 1)
+
+                    # Highlight border strictly AFTER reels have finished spinning
+                    if not reels_spinning:
+                        pygame.draw.rect(surface, WIN_GOLD, rect.inflate(-2, -2), 2, border_radius=4)
+                    else:
+                        pygame.draw.rect(surface, CELL_BORDER, rect, 1)
 
                     # Floating multiplier indicator
                     if pop_data:
@@ -546,7 +671,6 @@ class CowsGoneWildUI(Screen):
                         tag_rect = tag_surf.get_rect(center=(rect.centerx, float_y))
                         surface.blit(tag_surf, tag_rect)
 
-                # Draw Boss Cow with its multiplier badge
                 elif self.boss_pos == pos and not self.bonus_reels[c].spinning:
                     pygame.draw.rect(surface, REEL_BG, rect)
                     draw_symbol(surface, "boss_cow", rect)
@@ -557,6 +681,8 @@ class CowsGoneWildUI(Screen):
                     pygame.draw.rect(surface, GOLD, b_rect.inflate(6, 4), 1, border_radius=4)
                     surface.blit(b_surf, b_rect)
                     pygame.draw.rect(surface, CELL_BORDER, rect, 1)
+
+        surface.set_clip(old_clip)
 
         # Draw outer casing border
         pygame.draw.rect(surface, GRAY, outer_bounds, 2, border_radius=14)

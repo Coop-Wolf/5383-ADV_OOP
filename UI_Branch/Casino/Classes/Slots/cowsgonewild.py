@@ -143,7 +143,7 @@ class CowsGoneWild(Slot):
                 else:
                     unlocked_symbol_display[pos] = rng.choice(cls.NON_BONUS_SYMBOLS)
 
-            # Log symbol landing on reels first
+            # Record landing event for UI reel stop
             events.append({
                 "type": "RESPIN_RESULT",
                 "rows": rows,
@@ -155,9 +155,16 @@ class CowsGoneWild(Slot):
                 "boss_mult": boss_mult if boss_spawned else None,
             })
 
-            # Process Boss Cow multiplier strike event if spawned
+            # LOCK NEW JUGS FIRST so Boss Cow can target them if spawned on the same spin
+            if new_spins:
+                spin_landed_new_jug = True
+                respins_left = cls.INITIAL_RESPINS
+                for pos, val in new_spins.items():
+                    locked_jugs[pos] = val
+                    new_jugs_collected += 1
+
+            # PROCESS BOSS COW STRIKE (now targeting ALL locked jugs, including newly landed ones)
             if boss_spawned:
-                # Update all locked jugs with multiplier
                 for pos in locked_jugs:
                     locked_jugs[pos] *= boss_mult
 
@@ -177,16 +184,7 @@ class CowsGoneWild(Slot):
                 })
                 respins_left = cls.INITIAL_RESPINS
 
-            # Lock newly landed jugs into locked_jugs dictionary
-            if new_spins:
-                spin_landed_new_jug = True
-                respins_left = cls.INITIAL_RESPINS
-                for pos, val in new_spins.items():
-                    locked_jugs[pos] = val
-                    new_jugs_collected += 1
-
-            # Check for vertical grid expansion
-            # Stage 1: +4 new jugs collected unlocks 4th row (4 cols x 4 rows)
+            # Check for vertical grid expansion (Stage 1: +4 -> 4 rows; Stage 2: +8 -> 5 rows)
             if rows == 3 and new_jugs_collected >= cls.EXPANSION_THRESHOLD:
                 rows = 4
                 respins_left = cls.INITIAL_RESPINS
@@ -196,7 +194,6 @@ class CowsGoneWild(Slot):
                     "rows": rows,
                     "respins_left": respins_left,
                 })
-            # Stage 2: +8 total new jugs collected (+4 more) unlocks 5th row (4 cols x 5 rows)
             elif rows == 4 and new_jugs_collected >= (cls.EXPANSION_THRESHOLD * 2):
                 rows = 5
                 respins_left = cls.INITIAL_RESPINS
@@ -229,6 +226,9 @@ class CowsGoneWild(Slot):
         features = {}
 
         initial_jugs = cls.find_initial_jugs(grid, rng)
+        # Store initial jug values so base spins always render their multipliers
+        features["initial_jugs"] = {f"{r},{c}": val for (r, c), val in initial_jugs.items()}
+
         if len(initial_jugs) >= cls.JUGS_NEEDED:
             bonus_multiplier, respin_events = cls._simulate_respins(initial_jugs, rng)
             total_payout += bonus_multiplier
