@@ -210,3 +210,19 @@ class BetPanel:
             if affordable and self._in_circle(mouse, center, self.CHIP_RADIUS):
                 pygame.draw.circle(surface, GOLD, center, self.CHIP_RADIUS + 4, width=3)
             draw_chip(surface, center, self.CHIP_RADIUS, chip, self.font, dimmed=not affordable)
+            
+            
+            
+def create_chip_icon(size=32):
+    """Renders the red chip from CHIP_TYPES as a 32x32 window icon surface."""
+    surf = pygame.Surface((size, size), pygame.SRCALPHA)
+    red_chip = CHIP_TYPES[2]  # (50, (190, 35, 35), WHITE, WHITE)[cite: 12]
+    radius = size // 2
+
+    # Dummy font object that renders empty text so the icon has no dollar sign clutter
+    class _BlankFont:
+        def render(self, text, antialias, color):
+            return pygame.Surface((0, 0), pygame.SRCALPHA)
+
+    draw_chip(surf, (radius, radius), radius - 1, red_chip, _BlankFont())
+    return surf

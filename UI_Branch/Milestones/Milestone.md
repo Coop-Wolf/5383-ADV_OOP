@@ -139,6 +139,7 @@ Game Logic ──┤
 
 ### Tasks
 
+- [ ] Maximize screen
 - [ ] Create a player statistics screen
 - [ ] Make Blackjack fully playable end to end
 - [ ] Make Video Poker fully playable end to end
