@@ -37,10 +37,9 @@ on that line, so you know which check failed.
  
 import os
 import tempfile
- 
 from database import Database, STARTING_CHIPS
- 
- 
+
+
 def test_data_survives_restart():
     path = os.path.join(tempfile.mkdtemp(), "test_casino.db")
  
@@ -74,4 +73,3 @@ def test_data_survives_restart():
 if __name__ == "__main__":
     test_data_survives_restart()
     print("All checkpoint tests passed.")
- 
