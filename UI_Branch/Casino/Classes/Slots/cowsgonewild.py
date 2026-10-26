@@ -46,7 +46,7 @@ class CowsGoneWild(Slot):
         "ufo": 50,
     }
 
-    JUGS_NEEDED = 1
+    JUGS_NEEDED = 4
     INITIAL_RESPINS = 3
     EXPANSION_THRESHOLD = 4  # +4 new jugs per expansion stage
     GRAND_JACKPOT = 500      # Awarded for full 20-cell grid fill

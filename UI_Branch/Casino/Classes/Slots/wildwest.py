@@ -67,15 +67,40 @@ class WildWest(Slot):
     def resolve(cls, grid, rng):
         total, wins = cls.grid_pay(grid)
         features = {}
- 
+
         if cls.scatter_count(grid) >= cls.SCATTERS_NEEDED:
             spins = []
-            for _ in range(cls.FREE_SPINS):
+            spins_remaining = cls.FREE_SPINS
+            total_awarded = cls.FREE_SPINS
+            max_spins = 50  # Safeguard ceiling to prevent runaway loops
+
+            while spins_remaining > 0:
+                spins_remaining -= 1
                 free_grid = cls.spin_grid(rng)
                 pay, free_wins = cls.grid_pay(free_grid)
+                
+                # Double line payouts for both the summary and individual row entries
+                for w in free_wins:
+                    w["multiplier"] *= cls.FREE_SPIN_MULTIPLIER
                 pay *= cls.FREE_SPIN_MULTIPLIER
-                spins.append({"grid": free_grid, "wins": free_wins, "multiplier": pay})
+
+                # Check for retrigger on the free spin grid under the cap
+                hit_retrigger = cls.scatter_count(free_grid) >= cls.SCATTERS_NEEDED
+                can_retrigger = (total_awarded + cls.FREE_SPINS) <= max_spins
+                retrigger = hit_retrigger and can_retrigger
+
+                if retrigger:
+                    spins_remaining += cls.FREE_SPINS
+                    total_awarded += cls.FREE_SPINS
+
+                spins.append({
+                    "grid": free_grid,
+                    "wins": free_wins,
+                    "multiplier": pay,
+                    "retriggered": retrigger,
+                })
                 total += pay
+
             features["free_spins"] = spins
- 
+
         return {"multiplier": total, "wins": wins, "features": features}

@@ -7,7 +7,7 @@ Gold Rush: a 4 x 3 slot machine with a pick-a-mine-cart bonus game.
     - Mine Cart is the bonus symbol. It never pays on a line, and a row that
       contains one does not pay.
     - 3 or more Mine Carts anywhere on the grid open the bonus: the player picks
-      one of 5 mine carts and wins the prize inside it.
+      one of 6 mine carts and wins the prize inside it.
  
     The prize is decided inside resolve(), so the bet is settled once for the whole
     round. The pick is for show: the result carries the prize plus the other carts'

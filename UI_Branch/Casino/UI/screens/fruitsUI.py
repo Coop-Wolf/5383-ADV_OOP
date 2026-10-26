@@ -178,7 +178,7 @@ class FruitsUI(Screen):
         for reel in self.reels:
             reel.draw(surface, draw_symbol)
 
-        if self.state == "IDLE" and self.result and self.result["multiplier"] > 0:
+        if self.state == "IDLE" and self.result and self.result.get("multiplier", 0) > 0:
             pulse = math.sin((pygame.time.get_ticks() - self.result_ms) / 1000 * 8)
             width = 4 + int(3 * (1 + pulse) / 2)
             pygame.draw.rect(surface, GOLD, self.frame, width, border_radius=16)

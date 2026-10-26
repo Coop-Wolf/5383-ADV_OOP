@@ -196,20 +196,23 @@ class WildWestUI(Screen):
                 return
 
     def update(self):
-        now = pygame.time.get_ticks()
-        for reel in self.columns:
-            reel.update(now)
+            now = pygame.time.get_ticks()
+            for reel in self.columns:
+                reel.update(now)
 
-        if self.state in ("SPIN", "FREE_SPIN") and not any(reel.spinning for reel in self.columns):
-            self._finish_grid_animation(now)
+            if self.state in ("SPIN", "FREE_SPIN") and not any(reel.spinning for reel in self.columns):
+                self._finish_grid_animation(now)
 
-        elif self.state == "FREE_SPIN_RESULT" and now >= self.result_pause_until:
-            self.free_spin_index += 1
-            if self.free_spin_index < len(self.free_spins):
-                self.state = "FREE_SPIN"
-                self._start_free_spin(now)
-            else:
-                self.state = "BONUS_SUMMARY_MODAL"
+            elif self.state == "BONUS_TRIGGER_PAUSE" and now >= self.result_pause_until:
+                self.state = "BONUS_MODAL"
+
+            elif self.state == "FREE_SPIN_RESULT" and now >= self.result_pause_until:
+                self.free_spin_index += 1
+                if self.free_spin_index < len(self.free_spins):
+                    self.state = "FREE_SPIN"
+                    self._start_free_spin(now)
+                else:
+                    self.state = "BONUS_SUMMARY_MODAL"
 
     def _finish_grid_animation(self, now):
             if self.state == "SPIN":
@@ -218,13 +221,13 @@ class WildWestUI(Screen):
                 # Support both "payout" and "multiplier" * bet
                 main_payout = sum(
                     w.get("payout", w.get("multiplier", 0) * self.bet)
-                    for w in self.current_wins
-                )
+                    for w in self.current_wins)
                 self.shown_chips += main_payout
                 self.last_win += main_payout
 
                 if self.free_spins:
-                    self.state = "BONUS_MODAL"
+                    self.state = "BONUS_TRIGGER_PAUSE"
+                    self.result_pause_until = now + 1500
                     return
 
                 self._finish_round(now)
@@ -232,16 +235,16 @@ class WildWestUI(Screen):
 
             free_spin = self.free_spins[self.free_spin_index]
             self.current_wins = free_spin.get("wins", []) or []
-            spin_win = sum(
-                w.get("payout", w.get("multiplier", 0) * self.bet)
-                for w in self.current_wins
-            )
+            spin_win = sum(w.get("payout", w.get("multiplier", 0) * self.bet) for w in self.current_wins)
             self.free_spin_accumulated_win += spin_win
             self.shown_chips += spin_win
             self.last_win += spin_win
 
+            if free_spin.get("retriggered"):
+                self.message = f"+{self.machine.FREE_SPINS} FREE SPINS AWARDED!"
+
             self.state = "FREE_SPIN_RESULT"
-            self.result_pause_until = now + 900
+            self.result_pause_until = now + (1400 if free_spin.get("retriggered") else 900)
 
     def _start_free_spin(self, now):
         free_spin = self.free_spins[self.free_spin_index]
@@ -281,7 +284,7 @@ class WildWestUI(Screen):
         for reel in self.columns:
             reel.draw(surface, draw_symbol)
 
-        if self.state in ("IDLE", "FREE_SPIN_RESULT") and self.current_grid is not None:
+        if self.state in ("IDLE", "FREE_SPIN_RESULT", "BONUS_TRIGGER_PAUSE") and self.current_grid is not None:
             self._draw_winning_rows(surface)
 
         pygame.draw.rect(surface, GRAY, self.grid_rect.inflate(16, 16), 2, border_radius=14)
@@ -297,7 +300,7 @@ class WildWestUI(Screen):
             self._draw_modal(
                 surface,
                 title="SALOON BONUS!",
-                line1=f"You won {len(self.free_spins)} Free Spins!",
+                line1=f"You won {self.machine.FREE_SPINS} Free Spins!",
                 line2 = "",
                 button=self.start_bonus_btn,
             )

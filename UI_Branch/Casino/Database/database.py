@@ -23,7 +23,6 @@ class Database:
     def __exit__(self, *exc):
         self.close()
  
- 
     # Players
     def get_or_create_player(self, username):
         """

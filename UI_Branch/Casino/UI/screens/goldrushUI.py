@@ -227,12 +227,15 @@ class GoldRushUI(Screen):
         if self.state == "SPIN" and not any(reel.spinning for reel in self.columns):
             self._finish_grid_animation()
 
+        elif self.state == "BONUS_PENDING" and now >= self.bonus_modal_delay_until:
+            self.state = "BONUS_MODAL"
+
         elif self.state == "FADE_IN":
             self.fade_alpha = min(255, self.fade_alpha + FADE_SPEED)
             if self.fade_alpha >= 255:
                 self._setup_bonus_game()
                 self.state = "BONUS_PICK"
-
+                
         elif self.state == "BONUS_REVEAL":
             if self.bonus_stage == 1 and now >= self.reveal_timer:
                 # Stage 2: Reveal the remaining unpicked carts
@@ -257,8 +260,8 @@ class GoldRushUI(Screen):
         self.last_win += main_payout
 
         if self.bonus_feature:
-            self.state = "BONUS_MODAL"
-            self.bonus_modal_delay_until = pygame.time.get_ticks() + 1800
+            self.state = "BONUS_PENDING"
+            self.bonus_modal_delay_until = pygame.time.get_ticks() + 1500
         else:
             self._finish_round()
 
@@ -319,7 +322,7 @@ class GoldRushUI(Screen):
         if self.state == "IDLE" and self.current_grid is not None:
             self._draw_winning_rows(surface)
 
-        if self.bonus_feature and self.state == "BONUS_MODAL":
+        if self.bonus_feature and self.state in ("BONUS_PENDING", "BONUS_MODAL"):
             self._draw_cart_highlights(surface)
 
         pygame.draw.rect(surface, GRAY, self.overlay_rect, 2, border_radius=14)
