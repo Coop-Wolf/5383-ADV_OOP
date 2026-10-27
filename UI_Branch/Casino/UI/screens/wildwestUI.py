@@ -170,6 +170,7 @@ class WildWestUI(Screen):
     def handle_event(self, event):
         if self.state == "BONUS_MODAL":
             if self.start_bonus_btn.handle_event(event):
+                self.app.chat_client.send_announcement(f"{self.app.player['username']} won 10 Free Spins on Wild West!")
                 now = pygame.time.get_ticks()
                 self.free_spin_index = 0
                 self.state = "FREE_SPIN"

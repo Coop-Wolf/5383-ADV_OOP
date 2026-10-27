@@ -1,18 +1,19 @@
 """
-
 Main entry point for the Casino App.
 
     Initializes the Pygame window, the database, and the first screen (LoginScreen).
     Sets up the main loop.
     Manages screen transitions.
     Scales the 1000x700 virtual canvas and remaps mouse coordinates on resize/maximize.
-
 """
 
 import pygame
 from UI.constants import WIDTH, HEIGHT, FPS, TITLE, FELT_GREEN
+from UI.symbols import get_font
 from UI.screens.loginUI import LoginScreen
 from Database.database import Database
+from Chat.client import ChatClient
+from UI.chat_overlay import ChatOverlay
 from UI.chips import create_chip_icon
 
 
@@ -34,12 +35,21 @@ class App:
 
         self.db = Database()
         self.player = None
+
+        # Chat networking and overlay (unconnected until login)
+        self.chat_client = ChatClient(host="127.0.0.1", port=9001)
+        self.chat_overlay = ChatOverlay(self.chat_client, get_font(15))
+
         self.current = LoginScreen(self)
 
         # Hook into Pygame's mouse polling so button hover checks
         # across all screens automatically receive virtual canvas coordinates
         self._real_get_pos = pygame.mouse.get_pos
         pygame.mouse.get_pos = self._get_canvas_mouse_pos
+
+    def connect_chat(self, username):
+        """Connects chat client to server using the authenticated username."""
+        self.chat_client.connect(username)
 
     def _get_canvas_mouse_pos(self):
         """Translates raw OS mouse coordinates to the 1000x700 virtual canvas."""
@@ -103,25 +113,34 @@ class App:
 
                         event = self._transform_mouse_event(event)
 
+                    # Let the chat overlay intercept typing / keystrokes
+                    if self.chat_overlay.handle_event(event):
+                        continue
+
+                    # Pass event to the active game screen
                     self.current.handle_event(event)
 
             self.current.update()
 
-            # 1. Render game screen directly onto the 1000x700 virtual canvas
+            # Render active game screen directly onto the 1000x700 virtual canvas
             self.current.draw(self.canvas)
 
-            # 2. Scale the canvas to fit the maximized display
+            # Render chat overlay on top of the virtual canvas (only if connected)
+            self.chat_overlay.draw(self.canvas)
+
+            # Scale the canvas to fit the window display
             scaled_w = int(WIDTH * self.scale)
             scaled_h = int(HEIGHT * self.scale)
             scaled_canvas = pygame.transform.smoothscale(self.canvas, (scaled_w, scaled_h))
 
-            # 3. Clear window with felt green and blit canvas centered
+            # Clear window with felt green and blit canvas centered
             self.window.fill(FELT_GREEN)
             self.window.blit(scaled_canvas, (self.offset_x, self.offset_y))
 
             pygame.display.flip()
             self.clock.tick(FPS)
 
+        self.chat_client.close()
         self.db.close()
         pygame.quit()
 

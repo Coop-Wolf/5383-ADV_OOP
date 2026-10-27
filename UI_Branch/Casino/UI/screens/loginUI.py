@@ -32,6 +32,10 @@ class LoginScreen(Screen):
 
         player, is_new = self.app.db.get_or_create_player(username)
         self.app.player = player
+        
+        # Connect to chat after successful login
+        self.app.connect_chat(username)
+        
         self.app.change_screen(MenuScreen(self.app, is_new))
 
     def draw(self, surface):
