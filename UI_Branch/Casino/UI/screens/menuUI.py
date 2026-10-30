@@ -52,6 +52,7 @@ class MenuScreen(Screen):
  
         if label == "Logout":
             from .loginUI import LoginScreen
+            self.app.disconnect_chat()
             self.app.player = None
             self.app.change_screen(LoginScreen(self.app))
         elif label == "Quit":

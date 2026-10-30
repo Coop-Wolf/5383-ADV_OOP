@@ -78,11 +78,21 @@ class FruitsUI(Screen):
         # BUTTONS
         self.menu_button = Button(30, 630, 120, 45, "Menu", font_size=FONT_SIZE_SMALL)
 
-        btn_w, btn_h, btn_gap = 110, 55, 14
+        btn_w, btn_h, btn_gap = 90, 45, 10
         row_w = len(BETS) * btn_w + (len(BETS) - 1) * btn_gap
         row_x = (WIDTH - row_w) // 2
         self.bet_buttons = [
-            (bet, Button(row_x + i * (btn_w + btn_gap), 530, btn_w, btn_h, f"${bet}"))
+            (
+                bet,
+                Button(
+                    row_x + i * (btn_w + btn_gap),
+                    626,
+                    btn_w,
+                    btn_h,
+                    f"${bet}",
+                    font_size=FONT_SIZE_SMALL,
+                ),
+            )
             for i, bet in enumerate(BETS)
         ]
 
@@ -196,7 +206,7 @@ class FruitsUI(Screen):
             prompt = self.small.render("Reels spinning...", True, WHITE)
         else:
             prompt = self.small.render("Click a bet to spin", True, WHITE)
-        surface.blit(prompt, prompt.get_rect(center=(WIDTH // 2, 508)))
+        surface.blit(prompt, prompt.get_rect(center=(WIDTH // 2, 600)))
 
         for bet, button in self.bet_buttons:
             if self.state == "IDLE" and bet <= chips_now:
@@ -224,7 +234,7 @@ class FruitsUI(Screen):
         )
 
     def _draw_disabled(self, surface, rect, label):
-        pygame.draw.rect(surface, GREY, rect, border_radius=10)
-        pygame.draw.rect(surface, DARK, rect, 3, border_radius=10)
-        text = self.med.render(label, True, DARK)
+        pygame.draw.rect(surface, GREY, rect, border_radius=8)
+        pygame.draw.rect(surface, DARK, rect, 2, border_radius=8)
+        text = self.small.render(label, True, DARK)
         surface.blit(text, text.get_rect(center=rect.center))

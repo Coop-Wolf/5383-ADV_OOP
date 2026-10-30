@@ -51,6 +51,12 @@ class App:
         """Connects chat client to server using the authenticated username."""
         self.chat_client.connect(username)
 
+    def disconnect_chat(self):
+        """Disconnects chat client and clears overlay state on logout."""
+        self.chat_client.disconnect()
+        self.chat_overlay.active = False
+        self.chat_overlay.input_text = ""
+
     def _get_canvas_mouse_pos(self):
         """Translates raw OS mouse coordinates to the 1000x700 virtual canvas."""
         raw_x, raw_y = self._real_get_pos()

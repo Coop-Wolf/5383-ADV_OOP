@@ -61,6 +61,23 @@ class ChatClient:
         """Emitted when landing a big win or entering bonus features."""
         self._send({"type": "announcement", "text": text})
 
+    def disconnect(self):
+        """Disconnects the socket, stops listening, and clears chat history."""
+        self.running = False
+        self.connected = False
+        if self.sock:
+            try:
+                self.sock.shutdown(socket.SHUT_RDWR)
+            except Exception:
+                pass
+            try:
+                self.sock.close()
+            except Exception:
+                pass
+            self.sock = None
+        self.messages.clear()
+
+
     def close(self):
         self.running = False
         if self.sock:

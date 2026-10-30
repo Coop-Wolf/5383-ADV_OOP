@@ -4,6 +4,15 @@ Chat box
     need ability to hide chat completely
     other fixes are needed
 
+When getting free spins in wildwest, if it were to get 10 more free spins, it is already added to the free spins count before the additional free spin reel is played
+for examble when i get the feels settled that triggered the free spins. the text below the slots already said 1/20 instead of 1/10, because it already know that the 
+additional 10 free spins was already going to hit so it had already changed the amount of free spins to 20. I dont want that. i want it to stay 1/10 until the additional
+spins reel is played to the user, then it hsould be updated to x/20.
+
+The chat wraps well in the messages part, but not when im actually typing things out.
+Need to add ability to hide chat completely if i want to
+Add toolbar to tell me what i can type to do what like t - hide chat, b - shadow chat etc
+
 Review code and reuse where possible
 
 
