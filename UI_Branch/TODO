@@ -1,22 +1,22 @@
-Chat box
+1. Chat box
     allow for long sentenses to wrap.
     able to scroll up
     need ability to hide chat completely
     other fixes are needed
+    The chat wraps well in the messages part, but not when im actually typing things out.
+    Need to add ability to hide chat completely if i want to
+    Add toolbar to tell me what i can type to do what like t - hide chat, b - shadow chat etc
 
-When getting free spins in wildwest, if it were to get 10 more free spins, it is already added to the free spins count before the additional free spin reel is played
+2. When getting free spins in wildwest, if it were to get 10 more free spins, it is already added to the free spins count before the additional free spin reel is played
 for examble when i get the feels settled that triggered the free spins. the text below the slots already said 1/20 instead of 1/10, because it already know that the 
 additional 10 free spins was already going to hit so it had already changed the amount of free spins to 20. I dont want that. i want it to stay 1/10 until the additional
 spins reel is played to the user, then it hsould be updated to x/20.
 
-The chat wraps well in the messages part, but not when im actually typing things out.
-Need to add ability to hide chat completely if i want to
-Add toolbar to tell me what i can type to do what like t - hide chat, b - shadow chat etc
-
-Review code and reuse where possible
 
 
+3. Figure out if im able to create an installer for this app and if two people were to install it and play if they are able to still
+communicate with eachother through the application.
 
-Later:
---------------------
-Create Installer for application
+4. Review code and reuse where possible
+
+5. Create Installer for application
