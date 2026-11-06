@@ -96,6 +96,16 @@ class VideoPokerScreen(Screen):
         self.held.clear()
         self._set_state("RESULT")
         
+        # Total gross return = net_change + bet (or payout)
+        gross_win = self.net_change + self.bet if self.net_change > 0 else 0
+        if getattr(self.app, "chat_client", None) and getattr(self.app.chat_client, "connected", False):
+            if self.bet > 0 and gross_win >= self.bet * 20:
+                mult = round(gross_win / self.bet, 1)
+                mult_str = f"{int(mult)}x" if mult.is_integer() else f"{mult}x"
+                self.app.chat_client.send_announcement(
+                    f"★ BIG WIN: {self.app.player['username']} won ${gross_win} in Video Poker with a {self.hand_name} ({mult_str})!"
+                )
+        
     def _scoring_cards(self):
         """Indices of the cards that make up a paying hand."""
         if self.net_change < 0:

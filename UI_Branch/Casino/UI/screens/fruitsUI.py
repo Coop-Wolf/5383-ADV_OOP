@@ -165,6 +165,15 @@ class FruitsUI(Screen):
         self.shown_chips = self.app.player["chips"]
         gross_win = self.result.get("net_change", 0) + self.bet if self.result.get("multiplier", 0) > 0 else 0
         self.last_win = max(0, gross_win)
+        
+        # Broadcast 20x Big Win
+        if getattr(self.app, "chat_client", None) and getattr(self.app.chat_client, "connected", False):
+            if self.bet > 0 and self.last_win >= self.bet * 20:
+                mult = round(self.last_win / self.bet, 1)
+                mult_str = f"{int(mult)}x" if mult.is_integer() else f"{mult}x"
+                self.app.chat_client.send_announcement(
+                    f"★ BIG WIN: {self.app.player['username']} won ${self.last_win} in Classic Fruits ({mult_str})!"
+                )
 
     def draw(self, surface):
         surface.fill(FELT_GREEN)

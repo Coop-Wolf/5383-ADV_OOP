@@ -1,21 +1,40 @@
-1. Chat box
-    allow for long sentenses to wrap.
-    able to scroll up
-    need ability to hide chat completely
-    other fixes are needed
-    The chat wraps well in the messages part, but not when im actually typing things out.
-    Need to add ability to hide chat completely if i want to
-    Add toolbar to tell me what i can type to do what like t - hide chat, b - shadow chat etc
+1. Chat box [CHECK]
 
 2. When getting free spins in wildwest, if it were to get 10 more free spins, it is already added to the free spins count before the additional free spin reel is played
 for examble when i get the feels settled that triggered the free spins. the text below the slots already said 1/20 instead of 1/10, because it already know that the 
 additional 10 free spins was already going to hit so it had already changed the amount of free spins to 20. I dont want that. i want it to stay 1/10 until the additional
-spins reel is played to the user, then it hsould be updated to x/20.
+spins reel is played to the user, then it should be updated to x/20.
 
-
+3. Make sure all games have code that will send a global message when something won big or triggered bonus game or free spins.
 
 3. Figure out if im able to create an installer for this app and if two people were to install it and play if they are able to still
 communicate with eachother through the application.
+
+    [ ] NETWORK SETUP
+        [ ] Enable Personal Hotspot on phone (enable "Maximize Compatibility" if on iPhone).
+        [ ] Connect host laptop (server) and secondary test laptop to the hotspot.
+        [ ] Open PowerShell as Admin on host laptop and run firewall rules:
+            New-NetFirewallRule -DisplayName "Casino Demo TCP" -Direction Inbound -LocalPort 9001 -Protocol TCP -Action Allow
+            New-NetFirewallRule -DisplayName "Casino Demo UDP" -Direction Inbound -LocalPort 9002 -Protocol UDP -Action Allow
+
+    [ ] SANITY CHECK (RAW NETWORK SCRIPTS)
+        [ ] Start server.py on host laptop (verify listening on 0.0.0.0:9001, UDP 9002).
+        [ ] Run standalone test script on secondary laptop to test UDP auto-discovery.
+        [ ] Confirm TCP handshake completes and test message arrives without timeout.
+        [ ] Confirm server terminal prints join/leave notifications cleanly.
+
+    [ ] FULL PYGAME & UI INTEGRATION TEST
+        [ ] Launch server.py on host machine.
+        [ ] Launch main.py on host laptop and log in as Cooper.
+        [ ] Launch main.py on secondary laptop and log in under a test account.
+        [ ] Toggle ChatOverlay on both screens and verify bi-directional message delivery.
+        [ ] Verify game announcements (big wins, bonus triggers) display on both clients.
+
+    [ ] EDGE CASE & LIFECYCLE VERIFICATION
+        [ ] Test clean disconnect via menu.UI logout/exit on secondary laptop.
+        [ ] Re-login as Cooper and verify chat history does not duplicate messages.
+        [ ] Terminate server.py, launch client, and verify graceful offline fallback (no Pygame freeze/crash).
+
 
 4. Review code and reuse where possible
 

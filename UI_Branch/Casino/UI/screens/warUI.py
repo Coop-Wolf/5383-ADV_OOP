@@ -91,6 +91,16 @@ class WarScreen(Screen):
 
             self._set_state("RESULT")
 
+            # War pays 1:1, but if ties or special war rules compound to 20x+:
+            gross_win = self.bet * 2 if self.outcome == "win" else 0
+            if getattr(self.app, "chat_client", None) and getattr(self.app.chat_client, "connected", False):
+                if self.bet > 0 and gross_win >= self.bet * 20:
+                    mult = round(gross_win / self.bet, 1)
+                    mult_str = f"{int(mult)}x" if mult.is_integer() else f"{mult}x"
+                    self.app.chat_client.send_announcement(
+                        f"★ BIG WIN: {self.app.player['username']} won ${gross_win} in War ({mult_str})!"
+                    )
+
     def draw(self, surface):
         surface.fill(FELT_GREEN)
 

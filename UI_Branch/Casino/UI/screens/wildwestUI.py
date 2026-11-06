@@ -7,7 +7,6 @@ the result, including any free spins already resolved by the backend.
 """
 
 import random
-from functools import lru_cache
 import pygame
 from .screenUI import Screen
 from UI.widgets import Button
@@ -117,6 +116,7 @@ class WildWestUI(Screen):
         self.free_spins = []
         self.free_spin_index = -1
         self.free_spin_accumulated_win = 0
+        self.displayed_total_spins = 0
         self.shown_chips = app.player["chips"]
         self.message = "Choose a bet to spin"
         self.message_color = WHITE
@@ -160,6 +160,7 @@ class WildWestUI(Screen):
         self.free_spins = self.features.get("free_spins", []) or []
         self.free_spin_index = -1
         self.free_spin_accumulated_win = 0
+        self.displayed_total_spins = getattr(self.machine, "FREE_SPINS", 10)
         self.message = "Spinning..."
         self.message_color = WHITE
 
@@ -171,6 +172,13 @@ class WildWestUI(Screen):
         if self.state == "BONUS_MODAL":
             if self.start_bonus_btn.handle_event(event):
                 self.app.chat_client.send_announcement(f"{self.app.player['username']} won 10 Free Spins on Wild West!")
+                
+                # Global Announcement
+                if getattr(self.app, "chat_client", None) and getattr(self.app.chat_client, "connected", False):
+                    self.app.chat_client.send_announcement(
+                        f"★ FREE SPINS: {self.app.player['username']} triggered {self.machine.FREE_SPINS} Free Spins in Wild West!"
+                    )
+                
                 now = pygame.time.get_ticks()
                 self.free_spin_index = 0
                 self.state = "FREE_SPIN"
@@ -242,6 +250,8 @@ class WildWestUI(Screen):
             self.last_win += spin_win
 
             if free_spin.get("retriggered"):
+                # Retrigger animation is settled; now increase the displayed total
+                self.displayed_total_spins += getattr(self.machine, "FREE_SPINS", 10)
                 self.message = f"+{self.machine.FREE_SPINS} FREE SPINS AWARDED!"
 
             self.state = "FREE_SPIN_RESULT"
@@ -250,7 +260,7 @@ class WildWestUI(Screen):
     def _start_free_spin(self, now):
         free_spin = self.free_spins[self.free_spin_index]
         self.current_wins = []
-        self.message = f"Free spin {self.free_spin_index + 1}/{len(self.free_spins)}"
+        self.message = f"Free spin {self.free_spin_index + 1}/{self.displayed_total_spins}"
         self.message_color = WIN_GOLD
         self._start_grid_animation(free_spin["grid"], now, duration_base=800)
 
@@ -259,9 +269,26 @@ class WildWestUI(Screen):
             self.result_ms = now
             self.shown_chips = self.app.player["chips"]
             self.current_wins = self.result.get("wins", []) or []
-            if not self.free_spins:
-                total_payout = self.result.get("net_change", 0) + self.bet if self.result.get("multiplier", 0) > 0 else 0
-                self.last_win = max(0, total_payout)
+
+            if getattr(self.app, "chat_client", None) and getattr(self.app.chat_client, "connected", False):
+                # If coming out of free spins, check cumulative bonus total
+                if self.free_spins:
+                    if self.bet > 0 and self.free_spin_accumulated_win >= self.bet * 20:
+                        mult = round(self.free_spin_accumulated_win / self.bet, 1)
+                        mult_str = f"{int(mult)}x" if mult.is_integer() else f"{mult}x"
+                        self.app.chat_client.send_announcement(
+                            f"★ BIG WIN: {self.app.player['username']} won ${self.free_spin_accumulated_win} in Wild West Free Spins ({mult_str})!"
+                        )
+                else:
+                    # Base game single spin hit
+                    total_payout = self.result.get("net_change", 0) + self.bet if self.result.get("multiplier", 0) > 0 else 0
+                    self.last_win = max(0, total_payout)
+                    if self.bet > 0 and self.last_win >= self.bet * 20:
+                        mult = round(self.last_win / self.bet, 1)
+                        mult_str = f"{int(mult)}x" if mult.is_integer() else f"{mult}x"
+                        self.app.chat_client.send_announcement(
+                            f"★ BIG WIN: {self.app.player['username']} won ${self.last_win} in Wild West ({mult_str})!"
+                        )
 
     def draw(self, surface):
         surface.fill(FELT_GREEN)
@@ -368,7 +395,7 @@ class WildWestUI(Screen):
             status_y = self.grid_rect.bottom + 72
 
             if self.state in ("FREE_SPIN", "FREE_SPIN_RESULT") and self.free_spins:
-                status = f"Free spin {self.free_spin_index + 1}/{len(self.free_spins)}"
+                status = f"Free spin {self.free_spin_index + 1}/{self.displayed_total_spins}"
                 color = WIN_GOLD
                 status_surface = self.small.render(status, True, color)
                 surface.blit(status_surface, status_surface.get_rect(center=(WIDTH // 2, status_y)))

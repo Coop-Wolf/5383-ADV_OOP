@@ -132,7 +132,18 @@ Game Logic ──┤
 
 ---
 
-# Milestone 6 — Integration, Polish, and Testing
+# Milestone 6 - Game Chat
+
+### Tasks
+
+- [ ] Create Chat class
+- [ ] Create server and client files that will allow clients to message eachother
+- [ ] Add a message box to the screen
+- [ ] Create functionality to send message, receive message, hide chat, wrap text, scroll
+- [ ] Add messages in slot games what will send a global message like, "Travis won $20000 on Wild Wild West!"
+
+
+# Milestone 7 — Integration, Polish, and Testing
 *Week 10*
 
 **Goal:** Make the desktop application complete, stable, and demo-ready.
@@ -171,7 +182,12 @@ Game Logic ──┤
 
 ---
 
-# Removed from the Original Plan
+# Milestone 8 - Packaging and creating installer
+
+**Goal:** Make the desktop application installable to anyone
+
+- [ ] Create installer
+
 
 The following milestones were dropped because the project is now a desktop app instead of a web app:
 

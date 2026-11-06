@@ -1,12 +1,26 @@
 import socket
 import threading
 import json
+import time
 
 HOST = "0.0.0.0"
 PORT = 9001
+DISCOVERY_PORT = 9002
 
 clients = {}  # socket -> username
 clients_lock = threading.Lock()
+
+def _udp_beacon():
+    """Broadcasts presence across the local subnet so clients auto-connect."""
+    beacon_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    beacon_sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+    payload = f"CASINO_BEACON:{PORT}".encode("utf-8")
+    while True:
+        try:
+            beacon_sock.sendto(payload, ("<broadcast>", DISCOVERY_PORT))
+        except Exception:
+            pass
+        time.sleep(1.5)
 
 def broadcast(payload, exclude_sock=None):
     raw_data = (json.dumps(payload) + "\n").encode("utf-8")
@@ -43,7 +57,6 @@ def handle_client(sock, addr):
                     broadcast({"type": "chat", "sender": username, "text": text[:120]})
 
             elif msg_type == "announcement":
-                # System broadcast for big wins or bonus rounds
                 broadcast({"type": "announcement", "text": data.get("text", "")})
 
     except Exception:
@@ -56,11 +69,14 @@ def handle_client(sock, addr):
         sock.close()
 
 def run_server():
+    # Start UDP discovery beacon in background
+    threading.Thread(target=_udp_beacon, daemon=True).start()
+
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     server.bind((HOST, PORT))
     server.listen(15)
-    print(f"Casino Chat Server listening on {HOST}:{PORT}")
+    print(f"Casino Chat Server listening on {HOST}:{PORT} (Discovery on UDP {DISCOVERY_PORT})")
 
     while True:
         client_sock, addr = server.accept()

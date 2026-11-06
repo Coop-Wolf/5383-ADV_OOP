@@ -306,14 +306,29 @@ class CowsGoneWildUI(Screen):
         respins_data = features.get("respins")
 
         if respins_data:
-            self.bonus_events = respins_data.get("events", [])
-            self.state = "BONUS_PENDING"
-            self.bonus_modal_delay_until = pygame.time.get_ticks() + 1400
+                    self.bonus_events = respins_data.get("events", [])
+                    self.state = "BONUS_PENDING"
+                    self.bonus_modal_delay_until = pygame.time.get_ticks() + 1400
         else:
+            # Check base game 20x win
+            if getattr(self.app, "chat_client", None) and getattr(self.app.chat_client, "connected", False):
+                if self.bet > 0 and self.last_win >= self.bet * 20:
+                    mult = round(self.last_win / self.bet, 1)
+                    mult_str = f"{int(mult)}x" if mult.is_integer() else f"{mult}x"
+                    self.app.chat_client.send_announcement(
+                        f"★ BIG WIN: {self.app.player['username']} won ${self.last_win} in Cows Gone Wild ({mult_str})!"
+                    )
             self._finish_round()
 
     def _enter_bonus_mode(self):
         self.state = "BONUS_ACTIVE"
+        
+        # Broadcast bonus entry
+        if getattr(self.app, "chat_client", None) and getattr(self.app.chat_client, "connected", False):
+            self.app.chat_client.send_announcement(
+                f"★ BONUS: {self.app.player['username']} triggered the bonus game in Cows Gone Wild!"
+            )
+        
         self.event_idx = 0
         self.bonus_cols = BASE_COLS
         self.bonus_rows = BASE_ROWS
@@ -482,6 +497,15 @@ class CowsGoneWildUI(Screen):
             self.shown_chips += self.bonus_total_payout
             self.last_win += self.bonus_total_payout
             self.state = "BONUS_SUMMARY"
+
+            # Check 20x threshold on cumulative respin winnings
+            if getattr(self.app, "chat_client", None) and getattr(self.app.chat_client, "connected", False):
+                if self.bet > 0 and self.bonus_total_payout >= self.bet * 20:
+                    mult = round(self.bonus_total_payout / self.bet, 1)
+                    mult_str = f"{int(mult)}x" if mult.is_integer() else f"{mult}x"
+                    self.app.chat_client.send_announcement(
+                        f"★ BIG WIN: {self.app.player['username']} won ${self.bonus_total_payout} in Cows Gone Wild Bonus ({mult_str})!"
+                    )
 
     def _finish_round(self):
         self.state = "IDLE"

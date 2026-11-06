@@ -194,6 +194,10 @@ class GoldRushUI(Screen):
     def handle_event(self, event):
         if self.state == "BONUS_MODAL":
             if self.start_bonus_btn.handle_event(event):
+                if getattr(self.app, "chat_client", None) and getattr(self.app.chat_client, "connected", False):
+                    self.app.chat_client.send_announcement(
+                        f"★ BONUS: {self.app.player['username']} triggered the bonus game in Gold Rush!"
+                    )
                 self.state = "FADE_IN"
             return
 
@@ -263,6 +267,13 @@ class GoldRushUI(Screen):
             self.state = "BONUS_PENDING"
             self.bonus_modal_delay_until = pygame.time.get_ticks() + 1500
         else:
+            if getattr(self.app, "chat_client", None) and getattr(self.app.chat_client, "connected", False):
+                if self.bet > 0 and self.last_win >= self.bet * 20:
+                    mult = round(self.last_win / self.bet, 1)
+                    mult_str = f"{int(mult)}x" if mult.is_integer() else f"{mult}x"
+                    self.app.chat_client.send_announcement(
+                        f"★ BIG WIN: {self.app.player['username']} won ${self.last_win} in Gold Rush ({mult_str})!"
+                    )
             self._finish_round()
 
     def _setup_bonus_game(self):
@@ -278,6 +289,13 @@ class GoldRushUI(Screen):
         self.bonus_win_amount = prize_mult * self.bet
         self.shown_chips += self.bonus_win_amount
         self.last_win += self.bonus_win_amount
+
+        # Check 20x threshold on bonus cart prize
+        if getattr(self.app, "chat_client", None) and getattr(self.app.chat_client, "connected", False):
+            if prize_mult >= 20:
+                self.app.chat_client.send_announcement(
+                    f"★ BIG WIN: {self.app.player['username']} won ${self.bonus_win_amount} in Gold Rush Bonus ({prize_mult}x)!"
+                )
 
         self.bonus_stage = 1
         self.reveal_timer = pygame.time.get_ticks() + 750
