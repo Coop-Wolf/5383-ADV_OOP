@@ -171,7 +171,6 @@ class WildWestUI(Screen):
     def handle_event(self, event):
         if self.state == "BONUS_MODAL":
             if self.start_bonus_btn.handle_event(event):
-                self.app.chat_client.send_announcement(f"{self.app.player['username']} won 10 Free Spins on Wild West!")
                 
                 # Global Announcement
                 if getattr(self.app, "chat_client", None) and getattr(self.app.chat_client, "connected", False):

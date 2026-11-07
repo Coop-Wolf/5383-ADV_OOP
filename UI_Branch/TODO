@@ -1,11 +1,11 @@
-1. Chat box [CHECK]
+
 
 2. When getting free spins in wildwest, if it were to get 10 more free spins, it is already added to the free spins count before the additional free spin reel is played
 for examble when i get the feels settled that triggered the free spins. the text below the slots already said 1/20 instead of 1/10, because it already know that the 
 additional 10 free spins was already going to hit so it had already changed the amount of free spins to 20. I dont want that. i want it to stay 1/10 until the additional
 spins reel is played to the user, then it should be updated to x/20.
 
-3. Make sure all games have code that will send a global message when something won big or triggered bonus game or free spins.
+
 
 3. Figure out if im able to create an installer for this app and if two people were to install it and play if they are able to still
 communicate with eachother through the application.
@@ -39,3 +39,9 @@ communicate with eachother through the application.
 4. Review code and reuse where possible
 
 5. Create Installer for application
+
+
+
+
+x. Chat box [CHECK]
+x. Make sure all games have code that will send a global message when something won big or triggered bonus game or free spins. [CHECK]

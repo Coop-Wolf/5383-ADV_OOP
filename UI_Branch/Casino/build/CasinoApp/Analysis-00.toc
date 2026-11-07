@@ -1,0 +1,3561 @@
+(['C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+  'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\main.py'],
+ ['C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+  'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino'],
+ [],
+ [('C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\__pyinstaller',
+   0),
+  ('C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks',
+   -1000),
+  ('C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\_pyinstaller_hooks_contrib',
+   -1000)],
+ {},
+ [],
+ [],
+ False,
+ {},
+ 0,
+ [],
+ [('Classes\\Blackjack\\__pycache__\\blackjack.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Blackjack\\__pycache__\\blackjack.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\Blackjack\\__pycache__\\blackjackdealer.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Blackjack\\__pycache__\\blackjackdealer.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\Blackjack\\__pycache__\\blackjackhand.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Blackjack\\__pycache__\\blackjackhand.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\Blackjack\\__pycache__\\blackjackplayer.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Blackjack\\__pycache__\\blackjackplayer.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\Blackjack\\blackjack.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Blackjack\\blackjack.py',
+   'DATA'),
+  ('Classes\\Blackjack\\blackjackdealer.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Blackjack\\blackjackdealer.py',
+   'DATA'),
+  ('Classes\\Blackjack\\blackjackhand.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Blackjack\\blackjackhand.py',
+   'DATA'),
+  ('Classes\\Blackjack\\blackjackplayer.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Blackjack\\blackjackplayer.py',
+   'DATA'),
+  ('Classes\\Slots\\__pycache__\\cowsgonewild.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\__pycache__\\cowsgonewild.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\Slots\\__pycache__\\fruits.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\__pycache__\\fruits.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\Slots\\__pycache__\\goldrush.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\__pycache__\\goldrush.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\Slots\\__pycache__\\slot.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\__pycache__\\slot.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\Slots\\__pycache__\\slots.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\__pycache__\\slots.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\Slots\\__pycache__\\wildwest.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\__pycache__\\wildwest.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\Slots\\cowsgonewild.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\cowsgonewild.py',
+   'DATA'),
+  ('Classes\\Slots\\fruits.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\fruits.py',
+   'DATA'),
+  ('Classes\\Slots\\goldrush.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\goldrush.py',
+   'DATA'),
+  ('Classes\\Slots\\slot.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\slot.py',
+   'DATA'),
+  ('Classes\\Slots\\wildwest.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\wildwest.py',
+   'DATA'),
+  ('Classes\\VideoPoker\\__pycache__\\videopoker.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\VideoPoker\\__pycache__\\videopoker.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\VideoPoker\\__pycache__\\videopokerhand.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\VideoPoker\\__pycache__\\videopokerhand.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\VideoPoker\\__pycache__\\videopokerplayer.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\VideoPoker\\__pycache__\\videopokerplayer.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\VideoPoker\\videopoker.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\VideoPoker\\videopoker.py',
+   'DATA'),
+  ('Classes\\VideoPoker\\videopokerhand.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\VideoPoker\\videopokerhand.py',
+   'DATA'),
+  ('Classes\\VideoPoker\\videopokerplayer.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\VideoPoker\\videopokerplayer.py',
+   'DATA'),
+  ('Classes\\War\\__pycache__\\war.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\War\\__pycache__\\war.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\War\\__pycache__\\wardealer.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\War\\__pycache__\\wardealer.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\War\\__pycache__\\warplayer.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\War\\__pycache__\\warplayer.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\War\\war.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\War\\war.py',
+   'DATA'),
+  ('Classes\\War\\warplayer.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\War\\warplayer.py',
+   'DATA'),
+  ('Classes\\__pycache__\\__init__.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\__init__.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\__init__.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\__init__.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\blackjack.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\blackjack.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\blackjack.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\blackjack.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\blackjackhand.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\blackjackhand.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\blackjackhand.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\blackjackhand.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\blackjackplayer.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\blackjackplayer.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\blackjackplayer.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\blackjackplayer.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\card.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\card.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\card.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\card.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\casino.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\casino.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\casino.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\casino.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\dealer.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\dealer.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\dealer.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\dealer.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\deck.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\deck.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\deck.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\deck.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\game.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\game.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\game.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\game.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\hand.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\hand.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\hand.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\hand.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\person.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\person.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\player.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\player.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\player.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\player.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\poker.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\poker.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\poker.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\poker.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\pokerhand.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\pokerhand.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\pokerplayer.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\pokerplayer.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\pot.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\pot.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\terminal_ui.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\terminal_ui.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\util.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\util.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\util.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\util.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\card.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\card.py',
+   'DATA'),
+  ('Classes\\dealer.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\dealer.py',
+   'DATA'),
+  ('Classes\\deck.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\deck.py',
+   'DATA'),
+  ('Classes\\game.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\game.py',
+   'DATA'),
+  ('Classes\\hand.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\hand.py',
+   'DATA'),
+  ('Classes\\player.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\player.py',
+   'DATA'),
+  ('Classes\\util.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\util.py',
+   'DATA'),
+  ('UI\\__pycache__\\__init__.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\__init__.cpython-311.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\__init__.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\__init__.cpython-312.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\cards.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\cards.cpython-311.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\chat_overlay.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\chat_overlay.cpython-311.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\chips.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\chips.cpython-311.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\chips.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\chips.cpython-312.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\constants.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\constants.cpython-311.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\constants.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\constants.cpython-312.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\reel.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\reel.cpython-311.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\slots_helper.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\slots_helper.cpython-311.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\symbols.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\symbols.cpython-311.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\widgets.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\widgets.cpython-311.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\widgets.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\widgets.cpython-312.pyc',
+   'DATA'),
+  ('UI\\cards.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\cards.py',
+   'DATA'),
+  ('UI\\chat_overlay.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\chat_overlay.py',
+   'DATA'),
+  ('UI\\chips.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\chips.py',
+   'DATA'),
+  ('UI\\constants.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\constants.py',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\__init__.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\__init__.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\__init__.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\__init__.cpython-312.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\add_fundsUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\add_fundsUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\base.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\base.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\blackjackUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\blackjackUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\cowsgonewildUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\cowsgonewildUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\fruitsUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\fruitsUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\goldrushUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\goldrushUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\login.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\login.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\login.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\login.cpython-312.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\loginUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\loginUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\menu.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\menu.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\menu.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\menu.cpython-312.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\menuUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\menuUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\placeholder.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\placeholder.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\placeholder.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\placeholder.cpython-312.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\placeholderUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\placeholderUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\screen.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\screen.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\screen.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\screen.cpython-312.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\screenUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\screenUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\slotsUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\slotsUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\slotsmenuUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\slotsmenuUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\stats.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\stats.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\stats.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\stats.cpython-312.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\statsUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\statsUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\videoPokerUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\videoPokerUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\war.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\war.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\war.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\war.cpython-312.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\warUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\warUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\wildwestUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\wildwestUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\add_fundsUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\add_fundsUI.py',
+   'DATA'),
+  ('UI\\screens\\blackjackUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\blackjackUI.py',
+   'DATA'),
+  ('UI\\screens\\cowsgonewildUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\cowsgonewildUI.py',
+   'DATA'),
+  ('UI\\screens\\fruitsUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\fruitsUI.py',
+   'DATA'),
+  ('UI\\screens\\goldrushUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\goldrushUI.py',
+   'DATA'),
+  ('UI\\screens\\loginUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\loginUI.py',
+   'DATA'),
+  ('UI\\screens\\menuUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\menuUI.py',
+   'DATA'),
+  ('UI\\screens\\screenUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\screenUI.py',
+   'DATA'),
+  ('UI\\screens\\slotsmenuUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\slotsmenuUI.py',
+   'DATA'),
+  ('UI\\screens\\statsUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\statsUI.py',
+   'DATA'),
+  ('UI\\screens\\videoPokerUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\videoPokerUI.py',
+   'DATA'),
+  ('UI\\screens\\warUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\warUI.py',
+   'DATA'),
+  ('UI\\screens\\wildwestUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\wildwestUI.py',
+   'DATA'),
+  ('UI\\slots_helper.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\slots_helper.py',
+   'DATA'),
+  ('UI\\symbols.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\symbols.py',
+   'DATA'),
+  ('UI\\widgets.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\widgets.py',
+   'DATA')],
+ '3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit '
+ '(AMD64)]',
+ [('pyi_rth_inspect',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
+   'PYSOURCE'),
+  ('pyi_rth_pkgres',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgres.py',
+   'PYSOURCE'),
+  ('pyi_rth_multiprocessing',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_multiprocessing.py',
+   'PYSOURCE'),
+  ('pyi_rth_pkgutil',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgutil.py',
+   'PYSOURCE'),
+  ('main',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\main.py',
+   'PYSOURCE')],
+ [('pkgutil',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\pkgutil.py',
+   'PYMODULE'),
+  ('zipimport',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\zipimport.py',
+   'PYMODULE'),
+  ('importlib.readers',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\readers.py',
+   'PYMODULE'),
+  ('importlib.resources.readers',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\readers.py',
+   'PYMODULE'),
+  ('importlib.resources._itertools',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\_itertools.py',
+   'PYMODULE'),
+  ('typing',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\typing.py',
+   'PYMODULE'),
+  ('contextlib',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\contextlib.py',
+   'PYMODULE'),
+  ('importlib.resources.abc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\abc.py',
+   'PYMODULE'),
+  ('importlib.resources',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\__init__.py',
+   'PYMODULE'),
+  ('importlib.resources._legacy',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\_legacy.py',
+   'PYMODULE'),
+  ('importlib.resources._common',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\_common.py',
+   'PYMODULE'),
+  ('importlib.resources._adapters',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\_adapters.py',
+   'PYMODULE'),
+  ('tempfile',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\tempfile.py',
+   'PYMODULE'),
+  ('random',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\random.py',
+   'PYMODULE'),
+  ('statistics',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\statistics.py',
+   'PYMODULE'),
+  ('decimal',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\decimal.py',
+   'PYMODULE'),
+  ('_pydecimal',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\_pydecimal.py',
+   'PYMODULE'),
+  ('contextvars',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\contextvars.py',
+   'PYMODULE'),
+  ('fractions',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\fractions.py',
+   'PYMODULE'),
+  ('numbers',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\numbers.py',
+   'PYMODULE'),
+  ('hashlib',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\hashlib.py',
+   'PYMODULE'),
+  ('logging',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\logging\\__init__.py',
+   'PYMODULE'),
+  ('pickle',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\pickle.py',
+   'PYMODULE'),
+  ('pprint',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\pprint.py',
+   'PYMODULE'),
+  ('dataclasses',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\dataclasses.py',
+   'PYMODULE'),
+  ('copy',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\copy.py',
+   'PYMODULE'),
+  ('_compat_pickle',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\_compat_pickle.py',
+   'PYMODULE'),
+  ('struct',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\struct.py',
+   'PYMODULE'),
+  ('threading',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\threading.py',
+   'PYMODULE'),
+  ('_threading_local',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\_threading_local.py',
+   'PYMODULE'),
+  ('string',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\string.py',
+   'PYMODULE'),
+  ('bisect',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\bisect.py',
+   'PYMODULE'),
+  ('shutil',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\shutil.py',
+   'PYMODULE'),
+  ('tarfile',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\tarfile.py',
+   'PYMODULE'),
+  ('argparse',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\argparse.py',
+   'PYMODULE'),
+  ('textwrap',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\textwrap.py',
+   'PYMODULE'),
+  ('gettext',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\gettext.py',
+   'PYMODULE'),
+  ('gzip',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\gzip.py',
+   'PYMODULE'),
+  ('_compression',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\_compression.py',
+   'PYMODULE'),
+  ('lzma',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\lzma.py',
+   'PYMODULE'),
+  ('bz2',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\bz2.py',
+   'PYMODULE'),
+  ('fnmatch',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\fnmatch.py',
+   'PYMODULE'),
+  ('zipfile',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\zipfile.py',
+   'PYMODULE'),
+  ('py_compile',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\py_compile.py',
+   'PYMODULE'),
+  ('importlib._bootstrap_external',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\_bootstrap_external.py',
+   'PYMODULE'),
+  ('importlib.metadata',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\__init__.py',
+   'PYMODULE'),
+  ('importlib.abc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\abc.py',
+   'PYMODULE'),
+  ('importlib._abc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\_abc.py',
+   'PYMODULE'),
+  ('importlib._bootstrap',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\_bootstrap.py',
+   'PYMODULE'),
+  ('importlib.metadata._itertools',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_itertools.py',
+   'PYMODULE'),
+  ('importlib.metadata._functools',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_functools.py',
+   'PYMODULE'),
+  ('importlib.metadata._collections',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_collections.py',
+   'PYMODULE'),
+  ('importlib.metadata._meta',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_meta.py',
+   'PYMODULE'),
+  ('importlib.metadata._adapters',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_adapters.py',
+   'PYMODULE'),
+  ('importlib.metadata._text',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_text.py',
+   'PYMODULE'),
+  ('email.message',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\email\\message.py',
+   'PYMODULE'),
+  ('email.policy',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\email\\policy.py',
+   'PYMODULE'),
+  ('email.contentmanager',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\email\\contentmanager.py',
+   'PYMODULE'),
+  ('email.quoprimime',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\email\\quoprimime.py',
+   'PYMODULE'),
+  ('email.headerregistry',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\email\\headerregistry.py',
+   'PYMODULE'),
+  ('email._header_value_parser',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\email\\_header_value_parser.py',
+   'PYMODULE'),
+  ('urllib',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\urllib\\__init__.py',
+   'PYMODULE'),
+  ('email.iterators',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\email\\iterators.py',
+   'PYMODULE'),
+  ('email.generator',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\email\\generator.py',
+   'PYMODULE'),
+  ('email._encoded_words',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\email\\_encoded_words.py',
+   'PYMODULE'),
+  ('base64',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\base64.py',
+   'PYMODULE'),
+  ('getopt',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\getopt.py',
+   'PYMODULE'),
+  ('email.charset',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\email\\charset.py',
+   'PYMODULE'),
+  ('email.encoders',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\email\\encoders.py',
+   'PYMODULE'),
+  ('email.base64mime',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\email\\base64mime.py',
+   'PYMODULE'),
+  ('email._policybase',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\email\\_policybase.py',
+   'PYMODULE'),
+  ('email.header',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\email\\header.py',
+   'PYMODULE'),
+  ('email.errors',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\email\\errors.py',
+   'PYMODULE'),
+  ('email.utils',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\email\\utils.py',
+   'PYMODULE'),
+  ('email._parseaddr',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\email\\_parseaddr.py',
+   'PYMODULE'),
+  ('calendar',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\calendar.py',
+   'PYMODULE'),
+  ('urllib.parse',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\urllib\\parse.py',
+   'PYMODULE'),
+  ('ipaddress',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\ipaddress.py',
+   'PYMODULE'),
+  ('datetime',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\datetime.py',
+   'PYMODULE'),
+  ('_strptime',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\_strptime.py',
+   'PYMODULE'),
+  ('socket',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\socket.py',
+   'PYMODULE'),
+  ('selectors',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\selectors.py',
+   'PYMODULE'),
+  ('quopri',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\quopri.py',
+   'PYMODULE'),
+  ('email',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\email\\__init__.py',
+   'PYMODULE'),
+  ('email.parser',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\email\\parser.py',
+   'PYMODULE'),
+  ('email.feedparser',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\email\\feedparser.py',
+   'PYMODULE'),
+  ('csv',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\csv.py',
+   'PYMODULE'),
+  ('tokenize',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\tokenize.py',
+   'PYMODULE'),
+  ('token',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\token.py',
+   'PYMODULE'),
+  ('pathlib',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\pathlib.py',
+   'PYMODULE'),
+  ('inspect',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\inspect.py',
+   'PYMODULE'),
+  ('dis',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\dis.py',
+   'PYMODULE'),
+  ('opcode',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\opcode.py',
+   'PYMODULE'),
+  ('ast',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\ast.py',
+   'PYMODULE'),
+  ('importlib.machinery',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\machinery.py',
+   'PYMODULE'),
+  ('importlib.util',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\util.py',
+   'PYMODULE'),
+  ('importlib',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\__init__.py',
+   'PYMODULE'),
+  ('subprocess',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\subprocess.py',
+   'PYMODULE'),
+  ('signal',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\signal.py',
+   'PYMODULE'),
+  ('multiprocessing.spawn',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\spawn.py',
+   'PYMODULE'),
+  ('multiprocessing.resource_tracker',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\resource_tracker.py',
+   'PYMODULE'),
+  ('multiprocessing.util',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\util.py',
+   'PYMODULE'),
+  ('multiprocessing.forkserver',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\forkserver.py',
+   'PYMODULE'),
+  ('multiprocessing.connection',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\connection.py',
+   'PYMODULE'),
+  ('multiprocessing.resource_sharer',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\resource_sharer.py',
+   'PYMODULE'),
+  ('xmlrpc.client',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\xmlrpc\\client.py',
+   'PYMODULE'),
+  ('xmlrpc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\xmlrpc\\__init__.py',
+   'PYMODULE'),
+  ('xml.parsers.expat',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\xml\\parsers\\expat.py',
+   'PYMODULE'),
+  ('xml.parsers',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\xml\\parsers\\__init__.py',
+   'PYMODULE'),
+  ('xml',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\xml\\__init__.py',
+   'PYMODULE'),
+  ('xml.sax.expatreader',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\xml\\sax\\expatreader.py',
+   'PYMODULE'),
+  ('xml.sax.saxutils',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\xml\\sax\\saxutils.py',
+   'PYMODULE'),
+  ('urllib.request',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\urllib\\request.py',
+   'PYMODULE'),
+  ('getpass',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\getpass.py',
+   'PYMODULE'),
+  ('nturl2path',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\nturl2path.py',
+   'PYMODULE'),
+  ('ftplib',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\ftplib.py',
+   'PYMODULE'),
+  ('netrc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\netrc.py',
+   'PYMODULE'),
+  ('shlex',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\shlex.py',
+   'PYMODULE'),
+  ('mimetypes',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\mimetypes.py',
+   'PYMODULE'),
+  ('http.cookiejar',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\http\\cookiejar.py',
+   'PYMODULE'),
+  ('http',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\http\\__init__.py',
+   'PYMODULE'),
+  ('ssl',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\ssl.py',
+   'PYMODULE'),
+  ('urllib.response',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\urllib\\response.py',
+   'PYMODULE'),
+  ('urllib.error',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\urllib\\error.py',
+   'PYMODULE'),
+  ('xml.sax',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\xml\\sax\\__init__.py',
+   'PYMODULE'),
+  ('xml.sax.handler',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\xml\\sax\\handler.py',
+   'PYMODULE'),
+  ('xml.sax._exceptions',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\xml\\sax\\_exceptions.py',
+   'PYMODULE'),
+  ('xml.sax.xmlreader',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\xml\\sax\\xmlreader.py',
+   'PYMODULE'),
+  ('http.client',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\http\\client.py',
+   'PYMODULE'),
+  ('hmac',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\hmac.py',
+   'PYMODULE'),
+  ('multiprocessing.context',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\context.py',
+   'PYMODULE'),
+  ('multiprocessing.popen_spawn_win32',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\popen_spawn_win32.py',
+   'PYMODULE'),
+  ('multiprocessing.popen_forkserver',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\popen_forkserver.py',
+   'PYMODULE'),
+  ('multiprocessing.popen_spawn_posix',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\popen_spawn_posix.py',
+   'PYMODULE'),
+  ('multiprocessing.popen_fork',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\popen_fork.py',
+   'PYMODULE'),
+  ('multiprocessing.sharedctypes',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\sharedctypes.py',
+   'PYMODULE'),
+  ('multiprocessing.heap',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\heap.py',
+   'PYMODULE'),
+  ('ctypes',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\ctypes\\__init__.py',
+   'PYMODULE'),
+  ('ctypes._endian',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\ctypes\\_endian.py',
+   'PYMODULE'),
+  ('multiprocessing.pool',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\pool.py',
+   'PYMODULE'),
+  ('multiprocessing.dummy',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\dummy\\__init__.py',
+   'PYMODULE'),
+  ('multiprocessing.dummy.connection',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\dummy\\connection.py',
+   'PYMODULE'),
+  ('queue',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\queue.py',
+   'PYMODULE'),
+  ('multiprocessing.queues',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\queues.py',
+   'PYMODULE'),
+  ('multiprocessing.synchronize',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\synchronize.py',
+   'PYMODULE'),
+  ('multiprocessing.managers',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\managers.py',
+   'PYMODULE'),
+  ('multiprocessing.shared_memory',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\shared_memory.py',
+   'PYMODULE'),
+  ('secrets',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\secrets.py',
+   'PYMODULE'),
+  ('multiprocessing.reduction',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\reduction.py',
+   'PYMODULE'),
+  ('multiprocessing.process',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\process.py',
+   'PYMODULE'),
+  ('runpy',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\runpy.py',
+   'PYMODULE'),
+  ('multiprocessing',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\__init__.py',
+   'PYMODULE'),
+  ('pkg_resources',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\__init__.py',
+   'PYMODULE'),
+  ('packaging.version',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\packaging\\version.py',
+   'PYMODULE'),
+  ('typing_extensions',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\typing_extensions.py',
+   'PYMODULE'),
+  ('asyncio.coroutines',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\coroutines.py',
+   'PYMODULE'),
+  ('asyncio',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\__init__.py',
+   'PYMODULE'),
+  ('asyncio.unix_events',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\unix_events.py',
+   'PYMODULE'),
+  ('asyncio.log',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\log.py',
+   'PYMODULE'),
+  ('asyncio.windows_events',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\windows_events.py',
+   'PYMODULE'),
+  ('asyncio.windows_utils',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\windows_utils.py',
+   'PYMODULE'),
+  ('asyncio.selector_events',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\selector_events.py',
+   'PYMODULE'),
+  ('asyncio.proactor_events',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\proactor_events.py',
+   'PYMODULE'),
+  ('asyncio.base_subprocess',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\base_subprocess.py',
+   'PYMODULE'),
+  ('asyncio.threads',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\threads.py',
+   'PYMODULE'),
+  ('asyncio.timeouts',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\timeouts.py',
+   'PYMODULE'),
+  ('asyncio.taskgroups',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\taskgroups.py',
+   'PYMODULE'),
+  ('asyncio.subprocess',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\subprocess.py',
+   'PYMODULE'),
+  ('asyncio.streams',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\streams.py',
+   'PYMODULE'),
+  ('asyncio.queues',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\queues.py',
+   'PYMODULE'),
+  ('asyncio.runners',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\runners.py',
+   'PYMODULE'),
+  ('asyncio.base_events',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\base_events.py',
+   'PYMODULE'),
+  ('concurrent.futures',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\concurrent\\futures\\__init__.py',
+   'PYMODULE'),
+  ('concurrent.futures.thread',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\concurrent\\futures\\thread.py',
+   'PYMODULE'),
+  ('concurrent.futures.process',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\concurrent\\futures\\process.py',
+   'PYMODULE'),
+  ('concurrent.futures._base',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\concurrent\\futures\\_base.py',
+   'PYMODULE'),
+  ('concurrent',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\concurrent\\__init__.py',
+   'PYMODULE'),
+  ('asyncio.trsock',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\trsock.py',
+   'PYMODULE'),
+  ('asyncio.staggered',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\staggered.py',
+   'PYMODULE'),
+  ('asyncio.tasks',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\tasks.py',
+   'PYMODULE'),
+  ('asyncio.locks',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\locks.py',
+   'PYMODULE'),
+  ('asyncio.base_tasks',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\base_tasks.py',
+   'PYMODULE'),
+  ('asyncio.mixins',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\mixins.py',
+   'PYMODULE'),
+  ('asyncio.sslproto',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\sslproto.py',
+   'PYMODULE'),
+  ('asyncio.transports',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\transports.py',
+   'PYMODULE'),
+  ('asyncio.protocols',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\protocols.py',
+   'PYMODULE'),
+  ('asyncio.futures',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\futures.py',
+   'PYMODULE'),
+  ('asyncio.base_futures',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\base_futures.py',
+   'PYMODULE'),
+  ('asyncio.exceptions',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\exceptions.py',
+   'PYMODULE'),
+  ('asyncio.events',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\events.py',
+   'PYMODULE'),
+  ('asyncio.format_helpers',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\format_helpers.py',
+   'PYMODULE'),
+  ('asyncio.constants',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\constants.py',
+   'PYMODULE'),
+  ('__future__',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\__future__.py',
+   'PYMODULE'),
+  ('packaging.utils',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\packaging\\utils.py',
+   'PYMODULE'),
+  ('packaging.tags',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\packaging\\tags.py',
+   'PYMODULE'),
+  ('packaging.specifiers',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\packaging\\specifiers.py',
+   'PYMODULE'),
+  ('packaging.requirements',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\packaging\\requirements.py',
+   'PYMODULE'),
+  ('packaging.ranges',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\packaging\\ranges.py',
+   'PYMODULE'),
+  ('packaging.pylock',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\packaging\\pylock.py',
+   'PYMODULE'),
+  ('packaging.metadata',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\packaging\\metadata.py',
+   'PYMODULE'),
+  ('packaging.markers',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\packaging\\markers.py',
+   'PYMODULE'),
+  ('packaging.licenses._spdx',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\packaging\\licenses\\_spdx.py',
+   'PYMODULE'),
+  ('packaging.licenses',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\packaging\\licenses\\__init__.py',
+   'PYMODULE'),
+  ('packaging.errors',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\packaging\\errors.py',
+   'PYMODULE'),
+  ('packaging.direct_url',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\packaging\\direct_url.py',
+   'PYMODULE'),
+  ('packaging.dependency_groups',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\packaging\\dependency_groups.py',
+   'PYMODULE'),
+  ('packaging._tokenizer',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\packaging\\_tokenizer.py',
+   'PYMODULE'),
+  ('packaging._structures',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\packaging\\_structures.py',
+   'PYMODULE'),
+  ('packaging._ranges',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\packaging\\_ranges.py',
+   'PYMODULE'),
+  ('packaging._parser',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\packaging\\_parser.py',
+   'PYMODULE'),
+  ('packaging._musllinux',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\packaging\\_musllinux.py',
+   'PYMODULE'),
+  ('packaging._manylinux',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\packaging\\_manylinux.py',
+   'PYMODULE'),
+  ('packaging._elffile',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\packaging\\_elffile.py',
+   'PYMODULE'),
+  ('packaging',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\packaging\\__init__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.zipp',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\zipp.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.pyparsing.util',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\pyparsing\\util.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.pyparsing.unicode',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\pyparsing\\unicode.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.pyparsing.testing',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\pyparsing\\testing.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.pyparsing.results',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\pyparsing\\results.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.pyparsing.helpers',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\pyparsing\\helpers.py',
+   'PYMODULE'),
+  ('html.entities',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\html\\entities.py',
+   'PYMODULE'),
+  ('html',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\html\\__init__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.pyparsing.exceptions',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\pyparsing\\exceptions.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.pyparsing.core',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\pyparsing\\core.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.pyparsing.diagram',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\pyparsing\\diagram\\__init__.py',
+   'PYMODULE'),
+  ('pdb',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\pdb.py',
+   'PYMODULE'),
+  ('pydoc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\pydoc.py',
+   'PYMODULE'),
+  ('webbrowser',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\webbrowser.py',
+   'PYMODULE'),
+  ('http.server',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\http\\server.py',
+   'PYMODULE'),
+  ('socketserver',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\socketserver.py',
+   'PYMODULE'),
+  ('pydoc_data.topics',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\pydoc_data\\topics.py',
+   'PYMODULE'),
+  ('pydoc_data',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\pydoc_data\\__init__.py',
+   'PYMODULE'),
+  ('tty',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\tty.py',
+   'PYMODULE'),
+  ('glob',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\glob.py',
+   'PYMODULE'),
+  ('code',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\code.py',
+   'PYMODULE'),
+  ('codeop',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\codeop.py',
+   'PYMODULE'),
+  ('bdb',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\bdb.py',
+   'PYMODULE'),
+  ('cmd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\cmd.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.pyparsing.common',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\pyparsing\\common.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.pyparsing.actions',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\pyparsing\\actions.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.pyparsing',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\pyparsing\\__init__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.version',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\packaging\\version.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.utils',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\packaging\\utils.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.tags',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\packaging\\tags.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.specifiers',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\packaging\\specifiers.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.requirements',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\packaging\\requirements.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.markers',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\packaging\\markers.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging._structures',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_structures.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging._musllinux',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_musllinux.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging._manylinux',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_manylinux.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.__about__',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__about__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__init__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.more_itertools.recipes',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\more_itertools\\recipes.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.more_itertools.more',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\more_itertools\\more.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.more_itertools',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\more_itertools\\__init__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.jaraco.text',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\jaraco\\text\\__init__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.jaraco.functools',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\jaraco\\functools.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.jaraco.context',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\jaraco\\context.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.jaraco',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\jaraco\\__init__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.importlib_resources.simple',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\importlib_resources\\simple.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.importlib_resources.readers',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\importlib_resources\\readers.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.importlib_resources.abc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\importlib_resources\\abc.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.importlib_resources._legacy',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\importlib_resources\\_legacy.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.importlib_resources._itertools',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\importlib_resources\\_itertools.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.importlib_resources._compat',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\importlib_resources\\_compat.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.importlib_resources._common',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\importlib_resources\\_common.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.importlib_resources._adapters',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\importlib_resources\\_adapters.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.importlib_resources',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\importlib_resources\\__init__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.appdirs',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\appdirs.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\_vendor\\__init__.py',
+   'PYMODULE'),
+  ('sysconfig',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\sysconfig.py',
+   'PYMODULE'),
+  ('_aix_support',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\_aix_support.py',
+   'PYMODULE'),
+  ('_bootsubprocess',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\_bootsubprocess.py',
+   'PYMODULE'),
+  ('pkg_resources.extern',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pkg_resources\\extern\\__init__.py',
+   'PYMODULE'),
+  ('imp',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\imp.py',
+   'PYMODULE'),
+  ('plistlib',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\plistlib.py',
+   'PYMODULE'),
+  ('platform',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\platform.py',
+   'PYMODULE'),
+  ('stringprep',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\stringprep.py',
+   'PYMODULE'),
+  ('tracemalloc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\tracemalloc.py',
+   'PYMODULE'),
+  ('_py_abc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\_py_abc.py',
+   'PYMODULE'),
+  ('UI.chips',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\chips.py',
+   'PYMODULE'),
+  ('UI', '-', 'PYMODULE'),
+  ('UI.widgets',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\widgets.py',
+   'PYMODULE'),
+  ('UI.chat_overlay',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\chat_overlay.py',
+   'PYMODULE'),
+  ('client',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\client.py',
+   'PYMODULE'),
+  ('json',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\json\\__init__.py',
+   'PYMODULE'),
+  ('json.encoder',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\json\\encoder.py',
+   'PYMODULE'),
+  ('json.decoder',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\json\\decoder.py',
+   'PYMODULE'),
+  ('json.scanner',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\json\\scanner.py',
+   'PYMODULE'),
+  ('Database.database',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Database\\database.py',
+   'PYMODULE'),
+  ('Database', '-', 'PYMODULE'),
+  ('Database.createDB',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Database\\createDB.py',
+   'PYMODULE'),
+  ('sqlite3',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\sqlite3\\__init__.py',
+   'PYMODULE'),
+  ('sqlite3.dump',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\sqlite3\\dump.py',
+   'PYMODULE'),
+  ('sqlite3.dbapi2',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\sqlite3\\dbapi2.py',
+   'PYMODULE'),
+  ('UI.screens.loginUI',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\loginUI.py',
+   'PYMODULE'),
+  ('UI.screens.menuUI',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\menuUI.py',
+   'PYMODULE'),
+  ('UI.screens.slotsmenuUI',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\slotsmenuUI.py',
+   'PYMODULE'),
+  ('Classes.Slots.cowsgonewild',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\cowsgonewild.py',
+   'PYMODULE'),
+  ('Classes.Slots', '-', 'PYMODULE'),
+  ('Classes', '-', 'PYMODULE'),
+  ('Classes.Slots.slot',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\slot.py',
+   'PYMODULE'),
+  ('Classes.player',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\player.py',
+   'PYMODULE'),
+  ('Classes.game',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\game.py',
+   'PYMODULE'),
+  ('Classes.Slots.goldrush',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\goldrush.py',
+   'PYMODULE'),
+  ('Classes.Slots.wildwest',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\wildwest.py',
+   'PYMODULE'),
+  ('Classes.Slots.fruits',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\fruits.py',
+   'PYMODULE'),
+  ('UI.screens.cowsgonewildUI',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\cowsgonewildUI.py',
+   'PYMODULE'),
+  ('UI.slots_helper',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\slots_helper.py',
+   'PYMODULE'),
+  ('UI.screens.goldrushUI',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\goldrushUI.py',
+   'PYMODULE'),
+  ('UI.screens.wildwestUI',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\wildwestUI.py',
+   'PYMODULE'),
+  ('UI.screens.fruitsUI',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\fruitsUI.py',
+   'PYMODULE'),
+  ('UI.screens.add_fundsUI',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\add_fundsUI.py',
+   'PYMODULE'),
+  ('UI.screens.videoPokerUI',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\videoPokerUI.py',
+   'PYMODULE'),
+  ('Classes.VideoPoker.videopoker',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\VideoPoker\\videopoker.py',
+   'PYMODULE'),
+  ('Classes.VideoPoker', '-', 'PYMODULE'),
+  ('Classes.VideoPoker.videopokerplayer',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\VideoPoker\\videopokerplayer.py',
+   'PYMODULE'),
+  ('Classes.VideoPoker.videopokerhand',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\VideoPoker\\videopokerhand.py',
+   'PYMODULE'),
+  ('Classes.hand',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\hand.py',
+   'PYMODULE'),
+  ('Classes.deck',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\deck.py',
+   'PYMODULE'),
+  ('Classes.card',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\card.py',
+   'PYMODULE'),
+  ('UI.cards',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\cards.py',
+   'PYMODULE'),
+  ('UI.screens.blackjackUI',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\blackjackUI.py',
+   'PYMODULE'),
+  ('Classes.Blackjack.blackjack',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Blackjack\\blackjack.py',
+   'PYMODULE'),
+  ('Classes.Blackjack', '-', 'PYMODULE'),
+  ('Classes.Blackjack.blackjackdealer',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Blackjack\\blackjackdealer.py',
+   'PYMODULE'),
+  ('Classes.Blackjack.blackjackhand',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Blackjack\\blackjackhand.py',
+   'PYMODULE'),
+  ('Classes.dealer',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\dealer.py',
+   'PYMODULE'),
+  ('Classes.Blackjack.blackjackplayer',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Blackjack\\blackjackplayer.py',
+   'PYMODULE'),
+  ('UI.screens.warUI',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\warUI.py',
+   'PYMODULE'),
+  ('Classes.War.war',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\War\\war.py',
+   'PYMODULE'),
+  ('Classes.War', '-', 'PYMODULE'),
+  ('Classes.War.warplayer',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\War\\warplayer.py',
+   'PYMODULE'),
+  ('UI.screens.statsUI',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\statsUI.py',
+   'PYMODULE'),
+  ('UI.screens', '-', 'PYMODULE'),
+  ('UI.screens.screenUI',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\screenUI.py',
+   'PYMODULE'),
+  ('Classes.util',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\util.py',
+   'PYMODULE'),
+  ('UI.symbols',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\symbols.py',
+   'PYMODULE'),
+  ('UI.constants',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\constants.py',
+   'PYMODULE'),
+  ('pygame',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\__init__.py',
+   'PYMODULE'),
+  ('pygame.colordict',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\colordict.py',
+   'PYMODULE'),
+  ('pygame.macosx',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\macosx.py',
+   'PYMODULE'),
+  ('pygame.pkgdata',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\pkgdata.py',
+   'PYMODULE'),
+  ('pygame.fastevent',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\fastevent.py',
+   'PYMODULE'),
+  ('pygame.sndarray',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\sndarray.py',
+   'PYMODULE'),
+  ('pygame.surfarray',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\surfarray.py',
+   'PYMODULE'),
+  ('pygame.sysfont',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\sysfont.py',
+   'PYMODULE'),
+  ('pygame.ftfont',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\ftfont.py',
+   'PYMODULE'),
+  ('pygame.threads',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\threads\\__init__.py',
+   'PYMODULE'),
+  ('pygame.sprite',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\sprite.py',
+   'PYMODULE'),
+  ('pygame.cursors',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\cursors.py',
+   'PYMODULE'),
+  ('pygame.version',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\version.py',
+   'PYMODULE')],
+ [('python311.dll',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\python311.dll',
+   'BINARY'),
+  ('libpng16-16.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\libpng16-16.dll',
+   'BINARY'),
+  ('libopusfile-0.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\libopusfile-0.dll',
+   'BINARY'),
+  ('SDL2_ttf.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\SDL2_ttf.dll',
+   'BINARY'),
+  ('libopus-0.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\libopus-0.dll',
+   'BINARY'),
+  ('libwebp-7.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\libwebp-7.dll',
+   'BINARY'),
+  ('libtiff-5.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\libtiff-5.dll',
+   'BINARY'),
+  ('freetype.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\freetype.dll',
+   'BINARY'),
+  ('libogg-0.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\libogg-0.dll',
+   'BINARY'),
+  ('zlib1.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\zlib1.dll',
+   'BINARY'),
+  ('SDL2_mixer.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\SDL2_mixer.dll',
+   'BINARY'),
+  ('portmidi.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\portmidi.dll',
+   'BINARY'),
+  ('SDL2.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\SDL2.dll',
+   'BINARY'),
+  ('libjpeg-9.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\libjpeg-9.dll',
+   'BINARY'),
+  ('libmodplug-1.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\libmodplug-1.dll',
+   'BINARY'),
+  ('SDL2_image.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\SDL2_image.dll',
+   'BINARY'),
+  ('_decimal.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\_decimal.pyd',
+   'EXTENSION'),
+  ('_hashlib.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\_hashlib.pyd',
+   'EXTENSION'),
+  ('_lzma.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\_lzma.pyd',
+   'EXTENSION'),
+  ('_bz2.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\_bz2.pyd',
+   'EXTENSION'),
+  ('unicodedata.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\unicodedata.pyd',
+   'EXTENSION'),
+  ('select.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\select.pyd',
+   'EXTENSION'),
+  ('_socket.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\_socket.pyd',
+   'EXTENSION'),
+  ('_multiprocessing.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\_multiprocessing.pyd',
+   'EXTENSION'),
+  ('pyexpat.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\pyexpat.pyd',
+   'EXTENSION'),
+  ('_ssl.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\_ssl.pyd',
+   'EXTENSION'),
+  ('_ctypes.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\_ctypes.pyd',
+   'EXTENSION'),
+  ('_queue.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\_queue.pyd',
+   'EXTENSION'),
+  ('_overlapped.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\_overlapped.pyd',
+   'EXTENSION'),
+  ('_asyncio.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\_asyncio.pyd',
+   'EXTENSION'),
+  ('_sqlite3.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\_sqlite3.pyd',
+   'EXTENSION'),
+  ('pygame\\imageext.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\imageext.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\scrap.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\scrap.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\mixer.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\mixer.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\mixer_music.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\mixer_music.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\font.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\font.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\_freetype.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\_freetype.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\transform.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\transform.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\time.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\time.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\pixelarray.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\pixelarray.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\mask.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\mask.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\surface.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\surface.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\pixelcopy.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\pixelcopy.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\mouse.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\mouse.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\key.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\key.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\joystick.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\joystick.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\image.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\image.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\event.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\event.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\draw.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\draw.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\display.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\display.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\math.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\math.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\bufferproxy.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\bufferproxy.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\color.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\color.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\surflock.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\surflock.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\rwobject.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\rwobject.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\rect.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\rect.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\constants.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\constants.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\base.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\base.cp311-win_amd64.pyd',
+   'EXTENSION'),
+  ('api-ms-win-crt-runtime-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-runtime-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-time-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-time-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-process-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-process-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-filesystem-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-filesystem-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-stdio-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-stdio-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-locale-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-locale-l1-1-0.dll',
+   'BINARY'),
+  ('VCRUNTIME140.dll',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\VCRUNTIME140.dll',
+   'BINARY'),
+  ('api-ms-win-crt-string-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-string-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-math-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-math-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-convert-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-convert-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-heap-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-heap-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-environment-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-environment-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-conio-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-conio-l1-1-0.dll',
+   'BINARY'),
+  ('pygame\\zlib1.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\zlib1.dll',
+   'BINARY'),
+  ('pygame\\libogg-0.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\libogg-0.dll',
+   'BINARY'),
+  ('pygame\\libopus-0.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\libopus-0.dll',
+   'BINARY'),
+  ('pygame\\SDL2.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\SDL2.dll',
+   'BINARY'),
+  ('pygame\\libjpeg-9.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\libjpeg-9.dll',
+   'BINARY'),
+  ('api-ms-win-crt-utility-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-utility-l1-1-0.dll',
+   'BINARY'),
+  ('libcrypto-3.dll',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\libcrypto-3.dll',
+   'BINARY'),
+  ('libssl-3.dll',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\libssl-3.dll',
+   'BINARY'),
+  ('libffi-8.dll',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\libffi-8.dll',
+   'BINARY'),
+  ('sqlite3.dll',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\DLLs\\sqlite3.dll',
+   'BINARY'),
+  ('pygame\\libpng16-16.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\libpng16-16.dll',
+   'BINARY'),
+  ('pygame\\SDL2_image.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\SDL2_image.dll',
+   'BINARY'),
+  ('pygame\\SDL2_mixer.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\SDL2_mixer.dll',
+   'BINARY'),
+  ('pygame\\SDL2_ttf.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\SDL2_ttf.dll',
+   'BINARY'),
+  ('pygame\\freetype.dll',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\freetype.dll',
+   'BINARY'),
+  ('ucrtbase.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\ucrtbase.dll',
+   'BINARY'),
+  ('api-ms-win-core-processenvironment-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-processenvironment-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-sysinfo-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-sysinfo-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-console-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-console-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-processthreads-l1-1-1.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-processthreads-l1-1-1.dll',
+   'BINARY'),
+  ('api-ms-win-core-file-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-file-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-memory-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-memory-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-datetime-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-datetime-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-rtlsupport-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-rtlsupport-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-localization-l1-2-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-localization-l1-2-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-interlocked-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-interlocked-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-errorhandling-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-errorhandling-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-namedpipe-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-namedpipe-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-file-l2-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-file-l2-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-util-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-util-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-timezone-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-timezone-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-string-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-string-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-libraryloader-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-libraryloader-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-synch-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-synch-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-file-l1-2-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-file-l1-2-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-profile-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-profile-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-handle-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-handle-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-processthreads-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-processthreads-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-fibers-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-fibers-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-synch-l1-2-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-synch-l1-2-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-heap-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-heap-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-debug-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-debug-l1-1-0.dll',
+   'BINARY')],
+ [],
+ [],
+ [('Classes\\Blackjack\\__pycache__\\blackjack.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Blackjack\\__pycache__\\blackjack.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\Blackjack\\__pycache__\\blackjackdealer.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Blackjack\\__pycache__\\blackjackdealer.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\Blackjack\\__pycache__\\blackjackhand.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Blackjack\\__pycache__\\blackjackhand.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\Blackjack\\__pycache__\\blackjackplayer.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Blackjack\\__pycache__\\blackjackplayer.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\Blackjack\\blackjack.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Blackjack\\blackjack.py',
+   'DATA'),
+  ('Classes\\Blackjack\\blackjackdealer.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Blackjack\\blackjackdealer.py',
+   'DATA'),
+  ('Classes\\Blackjack\\blackjackhand.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Blackjack\\blackjackhand.py',
+   'DATA'),
+  ('Classes\\Blackjack\\blackjackplayer.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Blackjack\\blackjackplayer.py',
+   'DATA'),
+  ('Classes\\Slots\\__pycache__\\cowsgonewild.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\__pycache__\\cowsgonewild.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\Slots\\__pycache__\\fruits.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\__pycache__\\fruits.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\Slots\\__pycache__\\goldrush.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\__pycache__\\goldrush.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\Slots\\__pycache__\\slot.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\__pycache__\\slot.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\Slots\\__pycache__\\slots.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\__pycache__\\slots.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\Slots\\__pycache__\\wildwest.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\__pycache__\\wildwest.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\Slots\\cowsgonewild.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\cowsgonewild.py',
+   'DATA'),
+  ('Classes\\Slots\\fruits.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\fruits.py',
+   'DATA'),
+  ('Classes\\Slots\\goldrush.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\goldrush.py',
+   'DATA'),
+  ('Classes\\Slots\\slot.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\slot.py',
+   'DATA'),
+  ('Classes\\Slots\\wildwest.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\Slots\\wildwest.py',
+   'DATA'),
+  ('Classes\\VideoPoker\\__pycache__\\videopoker.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\VideoPoker\\__pycache__\\videopoker.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\VideoPoker\\__pycache__\\videopokerhand.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\VideoPoker\\__pycache__\\videopokerhand.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\VideoPoker\\__pycache__\\videopokerplayer.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\VideoPoker\\__pycache__\\videopokerplayer.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\VideoPoker\\videopoker.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\VideoPoker\\videopoker.py',
+   'DATA'),
+  ('Classes\\VideoPoker\\videopokerhand.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\VideoPoker\\videopokerhand.py',
+   'DATA'),
+  ('Classes\\VideoPoker\\videopokerplayer.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\VideoPoker\\videopokerplayer.py',
+   'DATA'),
+  ('Classes\\War\\__pycache__\\war.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\War\\__pycache__\\war.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\War\\__pycache__\\wardealer.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\War\\__pycache__\\wardealer.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\War\\__pycache__\\warplayer.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\War\\__pycache__\\warplayer.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\War\\war.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\War\\war.py',
+   'DATA'),
+  ('Classes\\War\\warplayer.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\War\\warplayer.py',
+   'DATA'),
+  ('Classes\\__pycache__\\__init__.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\__init__.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\__init__.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\__init__.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\blackjack.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\blackjack.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\blackjack.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\blackjack.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\blackjackhand.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\blackjackhand.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\blackjackhand.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\blackjackhand.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\blackjackplayer.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\blackjackplayer.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\blackjackplayer.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\blackjackplayer.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\card.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\card.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\card.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\card.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\casino.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\casino.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\casino.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\casino.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\dealer.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\dealer.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\dealer.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\dealer.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\deck.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\deck.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\deck.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\deck.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\game.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\game.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\game.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\game.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\hand.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\hand.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\hand.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\hand.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\person.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\person.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\player.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\player.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\player.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\player.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\poker.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\poker.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\poker.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\poker.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\pokerhand.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\pokerhand.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\pokerplayer.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\pokerplayer.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\pot.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\pot.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\terminal_ui.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\terminal_ui.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\util.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\util.cpython-311.pyc',
+   'DATA'),
+  ('Classes\\__pycache__\\util.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\__pycache__\\util.cpython-312.pyc',
+   'DATA'),
+  ('Classes\\card.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\card.py',
+   'DATA'),
+  ('Classes\\dealer.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\dealer.py',
+   'DATA'),
+  ('Classes\\deck.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\deck.py',
+   'DATA'),
+  ('Classes\\game.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\game.py',
+   'DATA'),
+  ('Classes\\hand.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\hand.py',
+   'DATA'),
+  ('Classes\\player.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\player.py',
+   'DATA'),
+  ('Classes\\util.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\Classes\\util.py',
+   'DATA'),
+  ('UI\\__pycache__\\__init__.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\__init__.cpython-311.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\__init__.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\__init__.cpython-312.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\cards.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\cards.cpython-311.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\chat_overlay.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\chat_overlay.cpython-311.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\chips.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\chips.cpython-311.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\chips.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\chips.cpython-312.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\constants.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\constants.cpython-311.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\constants.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\constants.cpython-312.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\reel.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\reel.cpython-311.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\slots_helper.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\slots_helper.cpython-311.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\symbols.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\symbols.cpython-311.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\widgets.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\widgets.cpython-311.pyc',
+   'DATA'),
+  ('UI\\__pycache__\\widgets.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\__pycache__\\widgets.cpython-312.pyc',
+   'DATA'),
+  ('UI\\cards.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\cards.py',
+   'DATA'),
+  ('UI\\chat_overlay.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\chat_overlay.py',
+   'DATA'),
+  ('UI\\chips.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\chips.py',
+   'DATA'),
+  ('UI\\constants.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\constants.py',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\__init__.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\__init__.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\__init__.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\__init__.cpython-312.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\add_fundsUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\add_fundsUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\base.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\base.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\blackjackUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\blackjackUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\cowsgonewildUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\cowsgonewildUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\fruitsUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\fruitsUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\goldrushUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\goldrushUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\login.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\login.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\login.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\login.cpython-312.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\loginUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\loginUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\menu.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\menu.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\menu.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\menu.cpython-312.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\menuUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\menuUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\placeholder.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\placeholder.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\placeholder.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\placeholder.cpython-312.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\placeholderUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\placeholderUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\screen.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\screen.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\screen.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\screen.cpython-312.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\screenUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\screenUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\slotsUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\slotsUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\slotsmenuUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\slotsmenuUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\stats.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\stats.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\stats.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\stats.cpython-312.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\statsUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\statsUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\videoPokerUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\videoPokerUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\war.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\war.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\war.cpython-312.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\war.cpython-312.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\warUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\warUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\__pycache__\\wildwestUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\wildwestUI.cpython-311.pyc',
+   'DATA'),
+  ('UI\\screens\\add_fundsUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\add_fundsUI.py',
+   'DATA'),
+  ('UI\\screens\\blackjackUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\blackjackUI.py',
+   'DATA'),
+  ('UI\\screens\\cowsgonewildUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\cowsgonewildUI.py',
+   'DATA'),
+  ('UI\\screens\\fruitsUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\fruitsUI.py',
+   'DATA'),
+  ('UI\\screens\\goldrushUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\goldrushUI.py',
+   'DATA'),
+  ('UI\\screens\\loginUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\loginUI.py',
+   'DATA'),
+  ('UI\\screens\\menuUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\menuUI.py',
+   'DATA'),
+  ('UI\\screens\\screenUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\screenUI.py',
+   'DATA'),
+  ('UI\\screens\\slotsmenuUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\slotsmenuUI.py',
+   'DATA'),
+  ('UI\\screens\\statsUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\statsUI.py',
+   'DATA'),
+  ('UI\\screens\\videoPokerUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\videoPokerUI.py',
+   'DATA'),
+  ('UI\\screens\\warUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\warUI.py',
+   'DATA'),
+  ('UI\\screens\\wildwestUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\wildwestUI.py',
+   'DATA'),
+  ('UI\\slots_helper.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\slots_helper.py',
+   'DATA'),
+  ('UI\\symbols.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\symbols.py',
+   'DATA'),
+  ('UI\\widgets.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\widgets.py',
+   'DATA'),
+  ('pygame\\pygame_icon.bmp',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\pygame_icon.bmp',
+   'DATA'),
+  ('pygame\\freesansbold.ttf',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\freesansbold.ttf',
+   'DATA'),
+  ('base_library.zip',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\build\\CasinoApp\\base_library.zip',
+   'DATA')],
+ [('_collections_abc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\_collections_abc.py',
+   'PYMODULE'),
+  ('operator',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\operator.py',
+   'PYMODULE'),
+  ('encodings.zlib_codec',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\zlib_codec.py',
+   'PYMODULE'),
+  ('encodings.uu_codec',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\uu_codec.py',
+   'PYMODULE'),
+  ('encodings.utf_8_sig',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\utf_8_sig.py',
+   'PYMODULE'),
+  ('encodings.utf_8',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\utf_8.py',
+   'PYMODULE'),
+  ('encodings.utf_7',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\utf_7.py',
+   'PYMODULE'),
+  ('encodings.utf_32_le',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\utf_32_le.py',
+   'PYMODULE'),
+  ('encodings.utf_32_be',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\utf_32_be.py',
+   'PYMODULE'),
+  ('encodings.utf_32',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\utf_32.py',
+   'PYMODULE'),
+  ('encodings.utf_16_le',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\utf_16_le.py',
+   'PYMODULE'),
+  ('encodings.utf_16_be',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\utf_16_be.py',
+   'PYMODULE'),
+  ('encodings.utf_16',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\utf_16.py',
+   'PYMODULE'),
+  ('encodings.unicode_escape',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\unicode_escape.py',
+   'PYMODULE'),
+  ('encodings.undefined',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\undefined.py',
+   'PYMODULE'),
+  ('encodings.tis_620',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\tis_620.py',
+   'PYMODULE'),
+  ('encodings.shift_jisx0213',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\shift_jisx0213.py',
+   'PYMODULE'),
+  ('encodings.shift_jis_2004',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\shift_jis_2004.py',
+   'PYMODULE'),
+  ('encodings.shift_jis',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\shift_jis.py',
+   'PYMODULE'),
+  ('encodings.rot_13',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\rot_13.py',
+   'PYMODULE'),
+  ('encodings.raw_unicode_escape',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\raw_unicode_escape.py',
+   'PYMODULE'),
+  ('encodings.quopri_codec',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\quopri_codec.py',
+   'PYMODULE'),
+  ('encodings.punycode',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\punycode.py',
+   'PYMODULE'),
+  ('encodings.ptcp154',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\ptcp154.py',
+   'PYMODULE'),
+  ('encodings.palmos',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\palmos.py',
+   'PYMODULE'),
+  ('encodings.oem',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\oem.py',
+   'PYMODULE'),
+  ('encodings.mbcs',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\mbcs.py',
+   'PYMODULE'),
+  ('encodings.mac_turkish',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\mac_turkish.py',
+   'PYMODULE'),
+  ('encodings.mac_romanian',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\mac_romanian.py',
+   'PYMODULE'),
+  ('encodings.mac_roman',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\mac_roman.py',
+   'PYMODULE'),
+  ('encodings.mac_latin2',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\mac_latin2.py',
+   'PYMODULE'),
+  ('encodings.mac_iceland',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\mac_iceland.py',
+   'PYMODULE'),
+  ('encodings.mac_greek',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\mac_greek.py',
+   'PYMODULE'),
+  ('encodings.mac_farsi',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\mac_farsi.py',
+   'PYMODULE'),
+  ('encodings.mac_cyrillic',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\mac_cyrillic.py',
+   'PYMODULE'),
+  ('encodings.mac_croatian',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\mac_croatian.py',
+   'PYMODULE'),
+  ('encodings.mac_arabic',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\mac_arabic.py',
+   'PYMODULE'),
+  ('encodings.latin_1',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\latin_1.py',
+   'PYMODULE'),
+  ('encodings.kz1048',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\kz1048.py',
+   'PYMODULE'),
+  ('encodings.koi8_u',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\koi8_u.py',
+   'PYMODULE'),
+  ('encodings.koi8_t',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\koi8_t.py',
+   'PYMODULE'),
+  ('encodings.koi8_r',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\koi8_r.py',
+   'PYMODULE'),
+  ('encodings.johab',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\johab.py',
+   'PYMODULE'),
+  ('encodings.iso8859_9',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_9.py',
+   'PYMODULE'),
+  ('encodings.iso8859_8',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_8.py',
+   'PYMODULE'),
+  ('encodings.iso8859_7',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_7.py',
+   'PYMODULE'),
+  ('encodings.iso8859_6',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_6.py',
+   'PYMODULE'),
+  ('encodings.iso8859_5',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_5.py',
+   'PYMODULE'),
+  ('encodings.iso8859_4',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_4.py',
+   'PYMODULE'),
+  ('encodings.iso8859_3',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_3.py',
+   'PYMODULE'),
+  ('encodings.iso8859_2',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_2.py',
+   'PYMODULE'),
+  ('encodings.iso8859_16',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_16.py',
+   'PYMODULE'),
+  ('encodings.iso8859_15',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_15.py',
+   'PYMODULE'),
+  ('encodings.iso8859_14',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_14.py',
+   'PYMODULE'),
+  ('encodings.iso8859_13',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_13.py',
+   'PYMODULE'),
+  ('encodings.iso8859_11',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_11.py',
+   'PYMODULE'),
+  ('encodings.iso8859_10',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_10.py',
+   'PYMODULE'),
+  ('encodings.iso8859_1',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_1.py',
+   'PYMODULE'),
+  ('encodings.iso2022_kr',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso2022_kr.py',
+   'PYMODULE'),
+  ('encodings.iso2022_jp_ext',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso2022_jp_ext.py',
+   'PYMODULE'),
+  ('encodings.iso2022_jp_3',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso2022_jp_3.py',
+   'PYMODULE'),
+  ('encodings.iso2022_jp_2004',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso2022_jp_2004.py',
+   'PYMODULE'),
+  ('encodings.iso2022_jp_2',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso2022_jp_2.py',
+   'PYMODULE'),
+  ('encodings.iso2022_jp_1',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso2022_jp_1.py',
+   'PYMODULE'),
+  ('encodings.iso2022_jp',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso2022_jp.py',
+   'PYMODULE'),
+  ('encodings.idna',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\idna.py',
+   'PYMODULE'),
+  ('encodings.hz',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\hz.py',
+   'PYMODULE'),
+  ('encodings.hp_roman8',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\hp_roman8.py',
+   'PYMODULE'),
+  ('encodings.hex_codec',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\hex_codec.py',
+   'PYMODULE'),
+  ('encodings.gbk',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\gbk.py',
+   'PYMODULE'),
+  ('encodings.gb2312',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\gb2312.py',
+   'PYMODULE'),
+  ('encodings.gb18030',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\gb18030.py',
+   'PYMODULE'),
+  ('encodings.euc_kr',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\euc_kr.py',
+   'PYMODULE'),
+  ('encodings.euc_jp',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\euc_jp.py',
+   'PYMODULE'),
+  ('encodings.euc_jisx0213',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\euc_jisx0213.py',
+   'PYMODULE'),
+  ('encodings.euc_jis_2004',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\euc_jis_2004.py',
+   'PYMODULE'),
+  ('encodings.cp950',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp950.py',
+   'PYMODULE'),
+  ('encodings.cp949',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp949.py',
+   'PYMODULE'),
+  ('encodings.cp932',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp932.py',
+   'PYMODULE'),
+  ('encodings.cp875',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp875.py',
+   'PYMODULE'),
+  ('encodings.cp874',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp874.py',
+   'PYMODULE'),
+  ('encodings.cp869',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp869.py',
+   'PYMODULE'),
+  ('encodings.cp866',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp866.py',
+   'PYMODULE'),
+  ('encodings.cp865',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp865.py',
+   'PYMODULE'),
+  ('encodings.cp864',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp864.py',
+   'PYMODULE'),
+  ('encodings.cp863',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp863.py',
+   'PYMODULE'),
+  ('encodings.cp862',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp862.py',
+   'PYMODULE'),
+  ('encodings.cp861',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp861.py',
+   'PYMODULE'),
+  ('encodings.cp860',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp860.py',
+   'PYMODULE'),
+  ('encodings.cp858',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp858.py',
+   'PYMODULE'),
+  ('encodings.cp857',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp857.py',
+   'PYMODULE'),
+  ('encodings.cp856',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp856.py',
+   'PYMODULE'),
+  ('encodings.cp855',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp855.py',
+   'PYMODULE'),
+  ('encodings.cp852',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp852.py',
+   'PYMODULE'),
+  ('encodings.cp850',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp850.py',
+   'PYMODULE'),
+  ('encodings.cp775',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp775.py',
+   'PYMODULE'),
+  ('encodings.cp737',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp737.py',
+   'PYMODULE'),
+  ('encodings.cp720',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp720.py',
+   'PYMODULE'),
+  ('encodings.cp500',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp500.py',
+   'PYMODULE'),
+  ('encodings.cp437',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp437.py',
+   'PYMODULE'),
+  ('encodings.cp424',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp424.py',
+   'PYMODULE'),
+  ('encodings.cp273',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp273.py',
+   'PYMODULE'),
+  ('encodings.cp1258',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1258.py',
+   'PYMODULE'),
+  ('encodings.cp1257',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1257.py',
+   'PYMODULE'),
+  ('encodings.cp1256',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1256.py',
+   'PYMODULE'),
+  ('encodings.cp1255',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1255.py',
+   'PYMODULE'),
+  ('encodings.cp1254',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1254.py',
+   'PYMODULE'),
+  ('encodings.cp1253',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1253.py',
+   'PYMODULE'),
+  ('encodings.cp1252',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1252.py',
+   'PYMODULE'),
+  ('encodings.cp1251',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1251.py',
+   'PYMODULE'),
+  ('encodings.cp1250',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1250.py',
+   'PYMODULE'),
+  ('encodings.cp1140',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1140.py',
+   'PYMODULE'),
+  ('encodings.cp1125',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1125.py',
+   'PYMODULE'),
+  ('encodings.cp1026',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1026.py',
+   'PYMODULE'),
+  ('encodings.cp1006',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1006.py',
+   'PYMODULE'),
+  ('encodings.cp037',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp037.py',
+   'PYMODULE'),
+  ('encodings.charmap',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\charmap.py',
+   'PYMODULE'),
+  ('encodings.bz2_codec',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\bz2_codec.py',
+   'PYMODULE'),
+  ('encodings.big5hkscs',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\big5hkscs.py',
+   'PYMODULE'),
+  ('encodings.big5',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\big5.py',
+   'PYMODULE'),
+  ('encodings.base64_codec',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\base64_codec.py',
+   'PYMODULE'),
+  ('encodings.ascii',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\ascii.py',
+   'PYMODULE'),
+  ('encodings.aliases',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\aliases.py',
+   'PYMODULE'),
+  ('encodings',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\__init__.py',
+   'PYMODULE'),
+  ('sre_compile',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\sre_compile.py',
+   'PYMODULE'),
+  ('traceback',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\traceback.py',
+   'PYMODULE'),
+  ('genericpath',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\genericpath.py',
+   'PYMODULE'),
+  ('enum',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\enum.py',
+   'PYMODULE'),
+  ('linecache',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\linecache.py',
+   'PYMODULE'),
+  ('copyreg',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\copyreg.py',
+   'PYMODULE'),
+  ('types',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\types.py',
+   'PYMODULE'),
+  ('sre_parse',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\sre_parse.py',
+   'PYMODULE'),
+  ('_weakrefset',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\_weakrefset.py',
+   'PYMODULE'),
+  ('functools',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\functools.py',
+   'PYMODULE'),
+  ('os',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\os.py',
+   'PYMODULE'),
+  ('sre_constants',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\sre_constants.py',
+   'PYMODULE'),
+  ('reprlib',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\reprlib.py',
+   'PYMODULE'),
+  ('keyword',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\keyword.py',
+   'PYMODULE'),
+  ('re._parser',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\re\\_parser.py',
+   'PYMODULE'),
+  ('re._constants',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\re\\_constants.py',
+   'PYMODULE'),
+  ('re._compiler',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\re\\_compiler.py',
+   'PYMODULE'),
+  ('re._casefix',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\re\\_casefix.py',
+   'PYMODULE'),
+  ('re',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\re\\__init__.py',
+   'PYMODULE'),
+  ('io',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\io.py',
+   'PYMODULE'),
+  ('weakref',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\weakref.py',
+   'PYMODULE'),
+  ('stat',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\stat.py',
+   'PYMODULE'),
+  ('collections.abc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\collections\\abc.py',
+   'PYMODULE'),
+  ('collections',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\collections\\__init__.py',
+   'PYMODULE'),
+  ('ntpath',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\ntpath.py',
+   'PYMODULE'),
+  ('locale',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\locale.py',
+   'PYMODULE'),
+  ('warnings',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\warnings.py',
+   'PYMODULE'),
+  ('abc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\abc.py',
+   'PYMODULE'),
+  ('heapq',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\heapq.py',
+   'PYMODULE'),
+  ('posixpath',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\posixpath.py',
+   'PYMODULE'),
+  ('codecs',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\codecs.py',
+   'PYMODULE')])

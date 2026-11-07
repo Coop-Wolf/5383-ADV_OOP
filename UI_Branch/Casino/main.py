@@ -12,7 +12,7 @@ from UI.constants import WIDTH, HEIGHT, FPS, TITLE, FELT_GREEN
 from UI.symbols import get_font
 from UI.screens.loginUI import LoginScreen
 from Database.database import Database
-from Chat.client import ChatClient
+from client import ChatClient
 from UI.chat_overlay import ChatOverlay
 from UI.chips import create_chip_icon
 
