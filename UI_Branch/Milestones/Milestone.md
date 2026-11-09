@@ -132,7 +132,7 @@ Game Logic ──┤
 
 ---
 
-# Milestone 6 - Game Chat
+# Milestone 6 - Game Chat for multiplayer communication
 
 ### Tasks
 
