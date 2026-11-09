@@ -85,7 +85,7 @@
  [],
  False,
  False,
- 1794251784,
+ 1794253586,
  [('run.exe',
    'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
    'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\run.exe',

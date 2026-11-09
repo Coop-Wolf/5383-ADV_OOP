@@ -1,0 +1,6 @@
+To create the installer after a code update.
+
+1. delete dist folder
+2. run: pyinstaller --onedir --name "CasinoApp" --add-data "UI;UI" --add-data "Classes;Classes" main.py
+3. Run the Inno installer
+4. Updated installer will be in the Output Folder.

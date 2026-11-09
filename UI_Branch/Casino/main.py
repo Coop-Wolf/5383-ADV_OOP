@@ -37,7 +37,7 @@ class App:
         self.player = None
 
         # Chat networking and overlay (unconnected until login)
-        self.chat_client = ChatClient(host="127.0.0.1", port=9001)
+        self.chat_client = ChatClient()
         self.chat_overlay = ChatOverlay(self.chat_client, get_font(15))
 
         self.current = LoginScreen(self)
@@ -119,8 +119,8 @@ class App:
 
                         event = self._transform_mouse_event(event)
 
-                    # Let the chat overlay intercept typing / keystrokes
-                    if self.chat_overlay.handle_event(event):
+                    # Let the chat overlay intercept typing / keystrokes once connected 
+                    if self.chat_client.connected and self.chat_overlay.handle_event(event):
                         continue
 
                     # Pass event to the active game screen
