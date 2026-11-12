@@ -29,10 +29,9 @@ class MenuScreen(Screen):
             self.buttons.append(Button(x, y + i * (bh + gap), bw, bh, label))
 
         # Settings & Chat: two per row
-        half_w = (bw - 10) // 2
-        row_y = y + len(GAMES) * (bh + gap) + 10
-        self.buttons.append(Button(x, row_y, half_w, bh, "Settings"))
-        self.buttons.append(Button(x + half_w + 10, row_y, half_w, bh, "Chat"))
+        half_w = (bw - gap) // 2
+        row_y = y + len(GAMES) * (bh + gap)
+        self.buttons.append(Button(x, row_y, bw, bh, "Settings"))
 
         # Quit: full-width button at the bottom
         quit_y = row_y + bh + gap
@@ -52,8 +51,6 @@ class MenuScreen(Screen):
             pygame.event.post(pygame.event.Event(pygame.QUIT))
         elif label == "Settings":
             self.app.change_screen(SettingsScreen(self.app, self))
-        elif label == "Chat":
-            pass  # Ready to wire up to chat toggle or chat screen
         elif label == "War":
             self.app.change_screen(WarScreen(self.app, self))
         elif label == "Blackjack":
