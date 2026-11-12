@@ -175,7 +175,7 @@ class WildWestUI(Screen):
                 # Global Announcement
                 if getattr(self.app, "chat_client", None) and getattr(self.app.chat_client, "connected", False):
                     self.app.chat_client.send_announcement(
-                        f"★ FREE SPINS: {self.app.player['username']} triggered {self.machine.FREE_SPINS} Free Spins in Wild West!"
+                        f"FREE SPINS: {self.app.player['username']} triggered {self.machine.FREE_SPINS} Free Spins in Wild West!"
                     )
                 
                 now = pygame.time.get_ticks()

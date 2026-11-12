@@ -76,20 +76,20 @@ class StatsScreen(Screen):
         surface.fill(FELT_GREEN)
 
         title = self.title_font.render(f"{self.app.player['username']}'s Stats", True, GOLD)
-        surface.blit(title, title.get_rect(center=(WIDTH // 2, 80)))
+        surface.blit(title, title.get_rect(center=(WIDTH // 2, 60)))
 
         # Table panel
-        panel = pygame.Rect(40, 130, WIDTH - 80, 360)
+        panel = pygame.Rect(40, 125, WIDTH - 80, 320)
         pygame.draw.rect(surface, DARK_GREEN, panel, border_radius=10)
         pygame.draw.rect(surface, WHITE, panel, width=2, border_radius=10)
 
         # Header row
         header_cells = [(h, LIGHT_GRAY) for h in HEADERS]
-        self.draw_row(surface, 170, header_cells, self.header_font)
-        pygame.draw.line(surface, LIGHT_GRAY, (60, 195), (WIDTH - 60, 195), 1)
+        self.draw_row(surface, 150, header_cells, self.header_font)
+        pygame.draw.line(surface, LIGHT_GRAY, (60, 175), (WIDTH - 60, 175), 1)
 
         # Game rows
-        y = 230
+        y = 210
         for cells in self.rows:
             self.draw_row(surface, y, cells, self.row_font)
             y += ROW_H

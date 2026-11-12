@@ -1,13 +1,12 @@
 import pygame
 from UI.widgets import Button
 from .screenUI import Screen
-from .statsUI import StatsScreen
 from .warUI import WarScreen
 from .blackjackUI import BlackjackScreen
 from .videoPokerUI import VideoPokerScreen
-from .add_fundsUI import AddFundsScreen
 from .slotsmenuUI import SlotsMenuScreen
-from UI.constants import (WIDTH, FELT_GREEN, WHITE, GOLD,FONT_NAME, FONT_SIZE_TITLE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL, GAMES)
+from .settingsUI import SettingsScreen
+from UI.constants import (WIDTH, FELT_GREEN, WHITE, GOLD, FONT_NAME, FONT_SIZE_TITLE, FONT_SIZE_MEDIUM, FONT_SIZE_SMALL, GAMES)
 
 
 class MenuScreen(Screen):
@@ -24,21 +23,20 @@ class MenuScreen(Screen):
         y = 200
  
         self.buttons = []
- 
 
         # Games: full-width buttons
         for i, label in enumerate(GAMES):
             self.buttons.append(Button(x, y + i * (bh + gap), bw, bh, label))
 
-        # Stats, Add Funds, Logout, Quit buttons: two per row
+        # Settings & Chat: two per row
         half_w = (bw - 10) // 2
         row_y = y + len(GAMES) * (bh + gap) + 10
-        rows = [("Stats", "Add Funds"), ("Logout", "Quit")]
- 
-        for r, (left, right) in enumerate(rows):
-            top = row_y + r * (bh + gap)
-            self.buttons.append(Button(x, top, half_w, bh, left))
-            self.buttons.append(Button(x + half_w + 10, top, half_w, bh, right))
+        self.buttons.append(Button(x, row_y, half_w, bh, "Settings"))
+        self.buttons.append(Button(x + half_w + 10, row_y, half_w, bh, "Chat"))
+
+        # Quit: full-width button at the bottom
+        quit_y = row_y + bh + gap
+        self.buttons.append(Button(x, quit_y, bw, bh, "Quit"))
  
     def handle_event(self, event):
         for button in self.buttons:
@@ -49,19 +47,13 @@ class MenuScreen(Screen):
         """
         Navigate to appropriate screen
         """
- 
-        if label == "Logout":
-            from .loginUI import LoginScreen
-            self.app.disconnect_chat()
-            self.app.player = None
-            self.app.change_screen(LoginScreen(self.app))
-        elif label == "Quit":
+        if label == "Quit":
             # App.run() sees QUIT, closes the database, and shuts pygame down
             pygame.event.post(pygame.event.Event(pygame.QUIT))
-        elif label == "Stats":
-            self.app.change_screen(StatsScreen(self.app, self))
-        elif label == "Add Funds":
-            self.app.change_screen(AddFundsScreen(self.app, self))
+        elif label == "Settings":
+            self.app.change_screen(SettingsScreen(self.app, self))
+        elif label == "Chat":
+            pass  # Ready to wire up to chat toggle or chat screen
         elif label == "War":
             self.app.change_screen(WarScreen(self.app, self))
         elif label == "Blackjack":

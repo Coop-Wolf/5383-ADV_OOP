@@ -6,7 +6,7 @@ Game base clas for all Casino games
     - record_result(outcome, net_change):           Save one finished hand to the database.
     - settle(player, bet, outcome, multiplier=1):   Apply a hand's result to the player's chips and record it in the database.
     - collect_bet(player, amount):                  Apply a bet to the player.
-    
+
 """
 
 from abc import ABC, abstractmethod

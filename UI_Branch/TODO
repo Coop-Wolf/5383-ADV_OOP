@@ -1,11 +1,12 @@
-1. Review messaging and see if UI changes could be made
-2. Play all games and verify runs smoothly
-3. Verify games have global message
-4. 
+!. Running the app, then closing the app and reopening it does not load the messaging. Not consistent so not sure how to troubleshoot. Ignore for now.
 
 
-1. Review code and reuse where possible
-2. Other ideas?
+
+1. Add settings button that will go to stats, add funds, and logout. [CHECK]
+2. Implement chat button that will open the messaging box in larger view, and show who is online off to the side.
+2. Chat button to open chat box and see who is all online
+2. Review code and reuse where possible
+3. Other ideas?
 
 
 

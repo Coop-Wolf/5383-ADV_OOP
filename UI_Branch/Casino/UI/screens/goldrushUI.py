@@ -196,7 +196,7 @@ class GoldRushUI(Screen):
             if self.start_bonus_btn.handle_event(event):
                 if getattr(self.app, "chat_client", None) and getattr(self.app.chat_client, "connected", False):
                     self.app.chat_client.send_announcement(
-                        f"★ BONUS: {self.app.player['username']} triggered the bonus game in Gold Rush!"
+                        f"BONUS: {self.app.player['username']} triggered the bonus game in Gold Rush!"
                     )
                 self.state = "FADE_IN"
             return
@@ -272,7 +272,7 @@ class GoldRushUI(Screen):
                     mult = round(self.last_win / self.bet, 1)
                     mult_str = f"{int(mult)}x" if mult.is_integer() else f"{mult}x"
                     self.app.chat_client.send_announcement(
-                        f"★ BIG WIN: {self.app.player['username']} won ${self.last_win} in Gold Rush ({mult_str})!"
+                        f"BIG WIN: {self.app.player['username']} won ${self.last_win} in Gold Rush ({mult_str})!"
                     )
             self._finish_round()
 
@@ -294,7 +294,7 @@ class GoldRushUI(Screen):
         if getattr(self.app, "chat_client", None) and getattr(self.app.chat_client, "connected", False):
             if prize_mult >= 20:
                 self.app.chat_client.send_announcement(
-                    f"★ BIG WIN: {self.app.player['username']} won ${self.bonus_win_amount} in Gold Rush Bonus ({prize_mult}x)!"
+                    f"BIG WIN: {self.app.player['username']} won ${self.bonus_win_amount} in Gold Rush Bonus ({prize_mult}x)!"
                 )
 
         self.bonus_stage = 1

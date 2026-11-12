@@ -316,7 +316,7 @@ class CowsGoneWildUI(Screen):
                     mult = round(self.last_win / self.bet, 1)
                     mult_str = f"{int(mult)}x" if mult.is_integer() else f"{mult}x"
                     self.app.chat_client.send_announcement(
-                        f"★ BIG WIN: {self.app.player['username']} won ${self.last_win} in Cows Gone Wild ({mult_str})!"
+                        f"BIG WIN: {self.app.player['username']} won ${self.last_win} in Cows Gone Wild ({mult_str})!"
                     )
             self._finish_round()
 
@@ -326,7 +326,7 @@ class CowsGoneWildUI(Screen):
         # Broadcast bonus entry
         if getattr(self.app, "chat_client", None) and getattr(self.app.chat_client, "connected", False):
             self.app.chat_client.send_announcement(
-                f"★ BONUS: {self.app.player['username']} triggered the bonus game in Cows Gone Wild!"
+                f"BONUS: {self.app.player['username']} triggered the bonus game in Cows Gone Wild!"
             )
         
         self.event_idx = 0
@@ -504,7 +504,7 @@ class CowsGoneWildUI(Screen):
                     mult = round(self.bonus_total_payout / self.bet, 1)
                     mult_str = f"{int(mult)}x" if mult.is_integer() else f"{mult}x"
                     self.app.chat_client.send_announcement(
-                        f"★ BIG WIN: {self.app.player['username']} won ${self.bonus_total_payout} in Cows Gone Wild Bonus ({mult_str})!"
+                        f"BIG WIN: {self.app.player['username']} won ${self.bonus_total_payout} in Cows Gone Wild Bonus ({mult_str})!"
                     )
 
     def _finish_round(self):
