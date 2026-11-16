@@ -130,7 +130,7 @@ One machine on the local network acts as the chat host:
 ## Installation & How to Run
 
 ### Option 1: Windows (Standalone Installer)
-1. Download the [Coop's Casino Windows Installer (`CasinoApp_Setup.exe`)](UI_Branch/Casino/Output/CasinoApp_Setup.exe).
+1. Download the [Coop's Casino Windows Installer (`CasinoApp_Setup.exe`)](Casino/Output/CasinoApp_Setup.exe).
 2. Run `CasinoApp_Setup.exe` and follow the installation wizard to install the application.
 3. Launch **Coop's Casino** from your Desktop or Start Menu (`CasinoApp.exe`). The SQLite database initializes automatically on first launch.
 
