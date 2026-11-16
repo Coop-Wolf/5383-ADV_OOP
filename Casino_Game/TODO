@@ -1,5 +1,5 @@
 
-1. Create readme for the applciation
+
 
 Running the app, then closing the app and reopening it does not load the messaging. Not consistent so not sure how to troubleshoot. Ignore for now.
 
@@ -12,6 +12,7 @@ communicate with eachother through the application. [CHECK!!!!!!!!!!]
     - Remember all devices must be connected to hotspot for it to work.
     - Expected IP addr is 172.20.10.2
 
+x. Create readme for the applciation [CHECK]
 x. Create Installer for application [CHECK]
 x. Chat box [CHECK]
 x. Make sure all games have code that will send a global message when something won big or triggered bonus game or free spins. [CHECK]
