@@ -98,7 +98,7 @@ class WarScreen(Screen):
                     mult = round(gross_win / self.bet, 1)
                     mult_str = f"{int(mult)}x" if mult.is_integer() else f"{mult}x"
                     self.app.chat_client.send_announcement(
-                        f"★ BIG WIN: {self.app.player['username']} won ${gross_win} in War ({mult_str})!"
+                        f"BIG WIN: {self.app.player['username']} won ${gross_win} in War ({mult_str})!"
                     )
 
     def draw(self, surface):

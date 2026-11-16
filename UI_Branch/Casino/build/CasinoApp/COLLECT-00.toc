@@ -438,6 +438,10 @@
    'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
    'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\screenUI.cpython-311.pyc',
    'DATA'),
+  ('UI\\screens\\__pycache__\\settingsUI.cpython-311.pyc',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\settingsUI.cpython-311.pyc',
+   'DATA'),
   ('UI\\screens\\__pycache__\\slotsUI.cpython-311.pyc',
    'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
    'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\__pycache__\\slotsUI.cpython-311.pyc',
@@ -509,6 +513,10 @@
   ('UI\\screens\\screenUI.py',
    'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
    'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\screenUI.py',
+   'DATA'),
+  ('UI\\screens\\settingsUI.py',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\UI_Branch\\Casino\\UI\\screens\\settingsUI.py',
    'DATA'),
   ('UI\\screens\\slotsmenuUI.py',
    'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
@@ -802,6 +810,34 @@
    'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
    'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\libwebp-7.dll',
    'BINARY'),
+  ('markupsafe-3.0.4.dist-info\\INSTALLER',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\markupsafe-3.0.4.dist-info\\INSTALLER',
+   'DATA'),
+  ('markupsafe-3.0.4.dist-info\\METADATA',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\markupsafe-3.0.4.dist-info\\METADATA',
+   'DATA'),
+  ('markupsafe-3.0.4.dist-info\\RECORD',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\markupsafe-3.0.4.dist-info\\RECORD',
+   'DATA'),
+  ('markupsafe-3.0.4.dist-info\\WHEEL',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\markupsafe-3.0.4.dist-info\\WHEEL',
+   'DATA'),
+  ('markupsafe-3.0.4.dist-info\\licenses\\LICENSE.txt',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\markupsafe-3.0.4.dist-info\\licenses\\LICENSE.txt',
+   'DATA'),
+  ('markupsafe-3.0.4.dist-info\\top_level.txt',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\markupsafe-3.0.4.dist-info\\top_level.txt',
+   'DATA'),
+  ('markupsafe\\_speedups.cp311-win_amd64.pyd',
+   'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
+   'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\markupsafe\\_speedups.cp311-win_amd64.pyd',
+   'EXTENSION'),
   ('portmidi.dll',
    'C:\\Users\\coope\\OneDrive\\Documents\\MSU-Computer Science '
    'Clases\\CMPS-5383-ADV_OOP\\5383-ADV_OOP\\.venv\\Lib\\site-packages\\pygame\\portmidi.dll',

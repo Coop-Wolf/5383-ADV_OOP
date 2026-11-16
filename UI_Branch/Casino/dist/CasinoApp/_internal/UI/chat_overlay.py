@@ -1,5 +1,5 @@
 import pygame
-from UI.constants import WHITE, GOLD, GRAY, DARK
+from UI.constants import WHITE, GOLD
 
 CHAT_CYAN = (80, 220, 255)
 SYSTEM_GRAY = (180, 180, 180)
@@ -7,32 +7,30 @@ ANNOUNCEMENT_GOLD = (255, 215, 0)
 HINT_COLOR = (150, 150, 165)
 
 class ChatOverlay:
-    def __init__(self, chat_client, font, screen_width=1280, screen_height=720):
+    def __init__(self, chat_client, font, screen_width=1000, screen_height=700):
         self.client = chat_client
         self.font = font
         self.active = False
         self.input_text = ""
 
-        # Visibility and mode states
-        self.visible = True          # Toggled with 'H' (Hide completely)
-        self.shadow_mode = False     # Toggled with 'B' Hides menu bar
+        # Visibility and scroll states
+        self.visible = True          # Toggled with 'H' (Hide/Show completely)
         self.scroll_offset = 0       # 0 = locked to newest messages
         self.last_msg_count = 0
 
-        # Dimensions & bottom-right coordinates
-        box_w, box_h = 240, 160
-        toolbar_h = 18
-        input_h = 32
-        margin_x = 300   # distance from right edge
-        margin_y = 100   # distance from bottom edge
+        # Dimensions & positioning
+        box_w, box_h = 240, 120
+        self.header_h = 20
+        input_h = 26
+        margin_x = 20    # distance from the right edge (puts box at X = 740)
+        margin_y = 98    # distance from the bottom edge
 
         box_x = screen_width - box_w - margin_x
         input_y = screen_height - input_h - margin_y
-        box_y = input_y - box_h - 6
-        toolbar_y = box_y - toolbar_h - 4
+        box_y = input_y - box_h - 4
 
-        self.toolbar_rect = pygame.Rect(box_x, toolbar_y, box_w, toolbar_h)
         self.rect = pygame.Rect(box_x, box_y, box_w, box_h)
+        self.header_rect = pygame.Rect(box_x, box_y, box_w, self.header_h)
         self.input_rect = pygame.Rect(box_x, input_y, box_w, input_h)
 
     def _wrap_text(self, text, max_w):
@@ -63,15 +61,12 @@ class ChatOverlay:
         return lines
 
     def handle_event(self, event):
-        # 1. Hotkeys when not actively typing in the input box
+        # 1. Hotkeys when idle
         if event.type == pygame.KEYDOWN and not self.active:
             if event.key == pygame.K_h:
                 self.visible = not self.visible
                 return True
-            elif event.key == pygame.K_b:
-                self.shadow_mode = not self.shadow_mode
-                return True
-            elif event.key in (pygame.K_RETURN, pygame.K_t):
+            elif event.key == pygame.K_RETURN:
                 if not self.visible:
                     self.visible = True
                 self.active = True
@@ -138,26 +133,20 @@ class ChatOverlay:
             self.scroll_offset = 0
             self.last_msg_count = current_msg_count
 
-        # 1. Render Toolbar / Action Legend
-        if not self.shadow_mode:
-            toolbar_surf = pygame.Surface((self.toolbar_rect.w, self.toolbar_rect.h), pygame.SRCALPHA)
-            toolbar_surf.fill((10, 10, 15, 200))
-            surface.blit(toolbar_surf, self.toolbar_rect.topleft)
-            pygame.draw.rect(surface, (60, 60, 70), self.toolbar_rect, 1, border_radius=4)
-            hint_txt = self.font.render("[Enter] Chat  [H] Hide  [B] Shadow", True, HINT_COLOR)
-            surface.blit(hint_txt, (self.toolbar_rect.x + 6, self.toolbar_rect.y + 2))
+        # 1. Main Background Box
+        log_surf = pygame.Surface((self.rect.w, self.rect.h), pygame.SRCALPHA)
+        log_surf.fill((15, 15, 20, 180 if self.active else 120))
+        surface.blit(log_surf, self.rect.topleft)
+        pygame.draw.rect(surface, (70, 70, 80) if not self.active else GOLD, self.rect, 1, border_radius=6)
 
-        # 2. Render Log Box Panel Background
-        if not self.shadow_mode:
-            log_surf = pygame.Surface((self.rect.w, self.rect.h), pygame.SRCALPHA)
-            log_surf.fill((15, 15, 20, 180 if self.active else 100))
-            surface.blit(log_surf, self.rect.topleft)
-            pygame.draw.rect(surface, (70, 70, 80) if not self.active else GOLD, self.rect, 1, border_radius=6)
-        else:
-            # Minimalist shadow mode: dim backdrop only
-            log_surf = pygame.Surface((self.rect.w, self.rect.h), pygame.SRCALPHA)
-            log_surf.fill((5, 5, 10, 75))
-            surface.blit(log_surf, self.rect.topleft)
+        # 2. Integrated Top Header / Tool Strip (pinned inside top of box)
+        header_surf = pygame.Surface((self.header_rect.w, self.header_rect.h), pygame.SRCALPHA)
+        header_surf.fill((25, 25, 35, 200))
+        surface.blit(header_surf, self.header_rect.topleft)
+        pygame.draw.line(surface, (60, 60, 70), (self.rect.left, self.rect.top + self.header_h), (self.rect.right, self.rect.top + self.header_h), 1)
+
+        hint_txt = self.font.render("Tools: [H] Hide/Show | [Enter] Type", True, HINT_COLOR)
+        surface.blit(hint_txt, (self.rect.x + 8, self.rect.y + 2))
 
         # 3. Prepare visual wrapped lines
         rendered_lines = []
@@ -178,8 +167,9 @@ class ChatOverlay:
                 for line in self._wrap_text(msg.get("text", ""), max_content_w):
                     rendered_lines.append(("", line, SYSTEM_GRAY, SYSTEM_GRAY))
 
-        # Calculate scroll bounds
-        max_visible_lines = max(1, (self.rect.h - 10) // line_height)
+        # Calculate message viewable area (stops below the header line)
+        message_area_h = self.rect.h - self.header_h - 6
+        max_visible_lines = max(1, message_area_h // line_height)
         max_scroll = max(0, len(rendered_lines) - max_visible_lines)
         self.scroll_offset = min(self.scroll_offset, max_scroll)
 
@@ -189,10 +179,10 @@ class ChatOverlay:
         else:
             sliced_lines = rendered_lines
 
-        # Blit messages bottom-up
-        cur_y = self.rect.bottom - line_height - 6
+        # Blit messages bottom-up, stopping strictly below the header divider
+        cur_y = self.rect.bottom - line_height - 4
         for prefix, text, prefix_col, text_col in reversed(sliced_lines):
-            if cur_y < self.rect.y + 4:
+            if cur_y < self.rect.top + self.header_h + 2:
                 break
             x_offset = self.rect.x + 8
             if prefix:
@@ -206,9 +196,9 @@ class ChatOverlay:
         # Scroll position indicator
         if self.scroll_offset > 0:
             scroll_indicator = self.font.render(f"▲ +{self.scroll_offset}", True, GOLD)
-            surface.blit(scroll_indicator, (self.rect.right - scroll_indicator.get_width() - 8, self.rect.y + 6))
+            surface.blit(scroll_indicator, (self.rect.right - scroll_indicator.get_width() - 8, self.rect.y + 2))
 
-        # 4. Render Active Input Field with dynamic text boundary clipping
+        # 4. Render Active Input Field
         if self.active:
             inp_surf = pygame.Surface((self.input_rect.w, self.input_rect.h), pygame.SRCALPHA)
             inp_surf.fill((20, 20, 25, 230))
@@ -219,9 +209,8 @@ class ChatOverlay:
             display_str = self.input_text + cursor
             max_input_w = self.input_rect.w - 16
 
-            # Shift text so the typing tail is always visible within the box
             while len(display_str) > 0 and self.font.size(display_str)[0] > max_input_w:
                 display_str = display_str[1:]
 
             txt = self.font.render(display_str, True, WHITE)
-            surface.blit(txt, (self.input_rect.x + 8, self.input_rect.y + 6))
+            surface.blit(txt, (self.input_rect.x + 8, self.input_rect.y + 4))

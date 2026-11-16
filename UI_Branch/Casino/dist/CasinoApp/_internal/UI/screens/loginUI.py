@@ -12,7 +12,6 @@ class LoginScreen(Screen):
         self.title_font = pygame.font.Font(FONT_NAME, FONT_SIZE_TITLE)
         self.label_font = pygame.font.Font(FONT_NAME, FONT_SIZE_MEDIUM)
         self.error_font = pygame.font.Font(FONT_NAME, FONT_SIZE_SMALL)
-
         self.box    = TextBox(WIDTH // 2 - 150, 300, 300, 50, max_length=10)
         self.button = Button(WIDTH // 2 - 100, 380, 200, 50, "Play")
         self.error = ""

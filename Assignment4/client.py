@@ -1,8 +1,3 @@
-"""
-Battleship console client. Run one copy per player (each in its own terminal).
-
-Requires:  pip install requests
-"""
 import random
 import time
 import requests
