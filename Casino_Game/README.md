@@ -88,7 +88,7 @@ Connect multiple players on the same Wi-Fi or mobile hotspot via **TCP port `555
 ## 🚀 Installation & How to Run
 
 ### 🪟 Windows (Recommended)
-1. Download **[CasinoApp_Setup.exe](UI_Branch/Casino/Output/CasinoApp_Setup.exe)** from the repository.
+1. Download **[CasinoApp_Setup.exe](Casino_Game/Casino/Output/CasinoApp_Setup.exe)** from the repository.
 2. Run the installer and launch **Coop's Casino** (`CasinoApp.exe`) from your Desktop or Start Menu.
 
 ### 🐧 Linux (via Wine)
@@ -105,8 +105,8 @@ Connect multiple players on the same Wi-Fi or mobile hotspot via **TCP port `555
 ### 💻 Run from Source
 **Requires:** Python 3.11+ and `pygame`
 ```bash
-git clone <your-repo-url>
-cd <project-folder>
+git clone https://github.com/Coop-Wolf/5383-ADV_OOP/
+cd Casino_Game/Casino
 pip install pygame
 python main.py
 ```
