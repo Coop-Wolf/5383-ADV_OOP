@@ -15,14 +15,17 @@ Players can create an account, manage their chip balance, track lifetime statist
 
 
 
+## Features
 
-
-
-
-
-
-
-Create Readme for Project
+* **Persistent Player Accounts & Profiles:** Create an account or log in to save chip balances and lifetime gameplay statistics locally via SQLite.
+* **Centralized Settings Menu:** Manage account options—including adding chips (**Add Funds**), viewing lifetime performance (**Stats**), and logging out—from a dedicated Settings screen accessible from the main menu.
+* **Seven Playable Casino Games:**
+  * **Card & Table Games:** Classic **Blackjack**, **Video Poker**, and **War** with custom betting controls and payout logic.
+  * **Four Custom Slot Machines:** **Fruits**, **Wild West**, **Gold Rush**, and **Cows Gone Wild**, featuring unique reel layouts, free-spin retriggers, pick-style bonus rounds, hold-and-spin mechanics, grid expansions, and win multipliers.
+* **Real-Time Local Multiplayer Chat:** A non-intrusive, toggleable bottom-right chat overlay (`[H]` to hide/show, `[Enter]` to type) powered by a multithreaded TCP server so players on the same local network or mobile hotspot can message each other while playing.
+* **Global Win & Bonus Broadcasts:** Automatic server-wide chat announcements whenever any connected player hits a 20x+ big win, triggers free spins, or enters a bonus game across any of the seven games.
+* **Object-Oriented Screen Architecture:** Built on a modular `Screen` base class and reusable UI widgets (`Button`, `ChatOverlay`) for clean state transitions and responsive Pygame rendering.
+* **Standalone Windows Distribution:** Packaged with PyInstaller and Inno Setup into a Windows desktop installer with automatic user-writable database initialization.
 
 
 
